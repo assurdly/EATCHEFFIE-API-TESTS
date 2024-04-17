@@ -3810,6 +3810,26 @@
 						},
 						{
 							"name": "Fetch Vendor Meal Availability - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fd080597-fab7-4091-8415-2dad45a07576",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code response is OK\", function () {",
+											"    pm.response.to.have.status('OK');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "dd5d3490-9236-4952-87c5-760dcd6c88fe",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
