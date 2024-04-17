@@ -3303,7 +3303,7 @@
 			"id": "b14883bb-ec65-4cff-be1a-526df5293106"
 		},
 		{
-			"name": "User Copy",
+			"name": "User",
 			"item": [
 				{
 					"name": "Change Password",
@@ -3455,7 +3455,7 @@
 			"id": "faeb8e23-d711-4e28-ad94-523aebfbc578"
 		},
 		{
-			"name": "Address Copy",
+			"name": "Address",
 			"item": [
 				{
 					"name": "Fetch Addresses",
@@ -3782,7 +3782,7 @@
 			"id": "8467b3f8-37df-4dc1-88ed-c3a580243825"
 		},
 		{
-			"name": "Misc Copy",
+			"name": "Misc",
 			"item": [
 				{
 					"name": "Fetch Delivery Areas",
@@ -3938,7 +3938,7 @@
 			"id": "e1d72c4d-216d-4312-a660-d438fce559ee"
 		},
 		{
-			"name": "Notifications Copy",
+			"name": "Notification",
 			"item": [
 				{
 					"name": "Save Push Notification Token",
