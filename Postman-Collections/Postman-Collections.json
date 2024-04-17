@@ -2853,7 +2853,7 @@
 										"id": "6c7e3217-d66f-4e1b-9b16-e30f02efd06b",
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(201);",
+											"    pm.response.to.have.status(200);",
 											"});",
 											"",
 											"",
@@ -2954,7 +2954,7 @@
 										"id": "6c7e3217-d66f-4e1b-9b16-e30f02efd06b",
 										"exec": [
 											"pm.test(\"Status code is 401\", function () {",
-											"    pm.response.to.have.status(201);",
+											"    pm.response.to.have.status(401);",
 											"});",
 											"",
 											"",
@@ -3058,7 +3058,7 @@
 										"id": "3961199c-da2c-4c42-931e-2e19007b6196",
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(201);",
+											"    pm.response.to.have.status(200);",
 											"});",
 											"",
 											"",
@@ -3152,16 +3152,33 @@
 						},
 						{
 							"name": "Fetch Categories - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a83fdc39-515b-4846-988d-aeb9813361f9",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code response is Unauthorized\", function () {",
+											"    pm.response.to.have.status('Unauthorized');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "72ba01e0-6c2b-4504-834f-d1c07e1a2554",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "GET",
 								"header": [],
@@ -3239,7 +3256,76 @@
 					"item": [
 						{
 							"name": "Fetch Meal By ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f9f1e2ce-8db2-4afe-b6fc-dade70e82e0c",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code response is OK\", function () {",
+											"    pm.response.to.have.status('OK');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "6b1eae61-a3b4-4d81-bd30-594f1b79528a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/meals/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"meals",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "2c503cbf-d07d-451a-9e49-4ad6c16d2f30",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Meal By ID - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "82cb841e-527a-4ed1-aa66-7d5b9dbceb53",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code response is Unauthorized\", function () {",
+											"    pm.response.to.have.status('Unauthorized');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "fb8a7b89-a7eb-4a4e-b49e-0545f02cfe8c",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -3277,6 +3363,36 @@
 			"item": [
 				{
 					"name": "Fetch Vendors",
+					"item": [],
+					"id": "bf9e8f78-678b-4458-b829-162ff4fe4292"
+				},
+				{
+					"name": "New Folder",
+					"item": [],
+					"id": "9991cc72-e215-455e-9379-026ca9ffad7b"
+				},
+				{
+					"name": "Fetch Vendors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4b69f098-790e-4652-973b-fe1831394263",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code response is OK\", function () {",
+									"    pm.response.to.have.status('OK');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "2bc6c633-e78e-44cc-8ec1-a692d439a404",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -3285,7 +3401,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/vendors?filter[category]=thai",
+							"raw": "{{base_url}}/vendors",
 							"host": [
 								"{{base_url}}"
 							],
@@ -3300,7 +3416,8 @@
 								},
 								{
 									"key": "filter[category]",
-									"value": "thai"
+									"value": "thai",
+									"disabled": true
 								},
 								{
 									"key": "filter[rating][gte]",
