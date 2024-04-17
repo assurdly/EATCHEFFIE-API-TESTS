@@ -2846,6 +2846,26 @@
 					"item": [
 						{
 							"name": "Fetch Meals - Valid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6c7e3217-d66f-4e1b-9b16-e30f02efd06b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code response is OK\", function () {",
+											"    pm.response.to.have.status('OK');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "62419022-397b-4c40-8d3e-d0fcbbc2e8a1",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2864,6 +2884,104 @@
 							"response": [
 								{
 									"id": "fe5e6eb1-9f92-43d6-8c0a-062d4c29a295",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "{{base_url}}/meals"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "645"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"285-FJl7G6JS4Olah+eozth2I+Qs1jw\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 20 Mar 2024 00:57:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Meals fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-19T23:57:04.155Z\",\n            \"updatedAt\": \"2024-03-19T23:57:04.155Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Burger and Shakes\",\n            \"slug\": \"burger_and_shakes\",\n            \"categoryId\": 6,\n            \"vendorId\": 1,\n            \"vendor\": {\n                \"id\": 1,\n                \"createdAt\": \"2024-03-19T23:56:43.805Z\",\n                \"updatedAt\": \"2024-03-19T23:56:43.805Z\",\n                \"deletedAt\": null,\n                \"deletedById\": null,\n                \"name\": \"Nexus Foods\",\n                \"description\": \"I cook with vibes\"\n            },\n            \"category\": {\n                \"id\": 6,\n                \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n                \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n                \"deletedAt\": null,\n                \"deletedById\": null,\n                \"name\": \"American\",\n                \"slug\": \"american\"\n            }\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Meals - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6c7e3217-d66f-4e1b-9b16-e30f02efd06b",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code response is Unauthorized\", function () {",
+											"    pm.response.to.have.status('Unauthorized');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "9df260c7-0fd5-4246-ac73-fd680b1930ee",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/meals"
+							},
+							"response": [
+								{
+									"id": "d6a03755-b140-4d93-b736-1c52424edbb1",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
