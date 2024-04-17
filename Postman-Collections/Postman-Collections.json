@@ -2843,209 +2843,212 @@
 			"item": [
 				{
 					"name": "Fetch Meals",
-					"item": [],
-					"id": "d3d29433-0936-4ba7-8f09-fcdefa411623"
-				},
-				{
-					"name": "Fetch Meals Categories",
-					"item": [],
-					"id": "601fd510-e23d-462f-92a6-adc1beb55794"
-				},
-				{
-					"name": "New Folder Copy",
-					"item": [],
-					"id": "09398d30-da1e-413f-b504-5d95a75e8756"
-				},
-				{
-					"name": "Fetch Meals",
-					"id": "62419022-397b-4c40-8d3e-d0fcbbc2e8a1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{accessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "{{base_url}}/meals"
-					},
-					"response": [
+					"item": [
 						{
-							"id": "fe5e6eb1-9f92-43d6-8c0a-062d4c29a295",
-							"name": "success",
-							"originalRequest": {
+							"name": "Fetch Meals",
+							"id": "62419022-397b-4c40-8d3e-d0fcbbc2e8a1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [],
 								"url": "{{base_url}}/meals"
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "60"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "645"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"285-FJl7G6JS4Olah+eozth2I+Qs1jw\""
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 20 Mar 2024 00:57:09 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Meals fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-19T23:57:04.155Z\",\n            \"updatedAt\": \"2024-03-19T23:57:04.155Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Burger and Shakes\",\n            \"slug\": \"burger_and_shakes\",\n            \"categoryId\": 6,\n            \"vendorId\": 1,\n            \"vendor\": {\n                \"id\": 1,\n                \"createdAt\": \"2024-03-19T23:56:43.805Z\",\n                \"updatedAt\": \"2024-03-19T23:56:43.805Z\",\n                \"deletedAt\": null,\n                \"deletedById\": null,\n                \"name\": \"Nexus Foods\",\n                \"description\": \"I cook with vibes\"\n            },\n            \"category\": {\n                \"id\": 6,\n                \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n                \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n                \"deletedAt\": null,\n                \"deletedById\": null,\n                \"name\": \"American\",\n                \"slug\": \"american\"\n            }\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Fetch Meal By ID",
-					"id": "6b1eae61-a3b4-4d81-bd30-594f1b79528a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/meals/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"meals",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "2c503cbf-d07d-451a-9e49-4ad6c16d2f30",
-									"key": "id",
-									"value": ""
+									"id": "fe5e6eb1-9f92-43d6-8c0a-062d4c29a295",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "{{base_url}}/meals"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "645"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"285-FJl7G6JS4Olah+eozth2I+Qs1jw\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 20 Mar 2024 00:57:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Meals fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-19T23:57:04.155Z\",\n            \"updatedAt\": \"2024-03-19T23:57:04.155Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Burger and Shakes\",\n            \"slug\": \"burger_and_shakes\",\n            \"categoryId\": 6,\n            \"vendorId\": 1,\n            \"vendor\": {\n                \"id\": 1,\n                \"createdAt\": \"2024-03-19T23:56:43.805Z\",\n                \"updatedAt\": \"2024-03-19T23:56:43.805Z\",\n                \"deletedAt\": null,\n                \"deletedById\": null,\n                \"name\": \"Nexus Foods\",\n                \"description\": \"I cook with vibes\"\n            },\n            \"category\": {\n                \"id\": 6,\n                \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n                \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n                \"deletedAt\": null,\n                \"deletedById\": null,\n                \"name\": \"American\",\n                \"slug\": \"american\"\n            }\n        }\n    ]\n}"
 								}
 							]
 						}
-					},
-					"response": []
+					],
+					"id": "d3d29433-0936-4ba7-8f09-fcdefa411623"
 				},
 				{
-					"name": "Fetch Categories",
-					"id": "9a955642-4e6a-44fb-8761-40a1c8c1bf56",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{accessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "{{base_url}}/meals/categories"
-					},
-					"response": [
+					"name": "Fetch Meals Categories",
+					"item": [
 						{
-							"id": "1095ff26-00fc-4f59-8962-cc818fc79476",
-							"name": "success",
-							"originalRequest": {
+							"name": "Fetch Categories",
+							"id": "9a955642-4e6a-44fb-8761-40a1c8c1bf56",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [],
 								"url": "{{base_url}}/meals/categories"
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "60"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1340"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"53c-wEFHP1DfXjPoEuF3293te8LxAJQ\""
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 20 Mar 2024 00:55:15 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"id": "1095ff26-00fc-4f59-8962-cc818fc79476",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "{{base_url}}/meals/categories"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1340"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"53c-wEFHP1DfXjPoEuF3293te8LxAJQ\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 20 Mar 2024 00:55:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Categories fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"African\",\n            \"slug\": \"african\"\n        },\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Italian\",\n            \"slug\": \"italian\"\n        },\n        {\n            \"id\": 3,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Chinese\",\n            \"slug\": \"chinese\"\n        },\n        {\n            \"id\": 4,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Indian\",\n            \"slug\": \"indian\"\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Thai\",\n            \"slug\": \"thai\"\n        },\n        {\n            \"id\": 6,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"American\",\n            \"slug\": \"american\"\n        },\n        {\n            \"id\": 7,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegan\",\n            \"slug\": \"vegan\"\n        },\n        {\n            \"id\": 8,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegetarian\",\n            \"slug\": \"vegetarian\"\n        }\n    ]\n}"
 								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Categories fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"African\",\n            \"slug\": \"african\"\n        },\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Italian\",\n            \"slug\": \"italian\"\n        },\n        {\n            \"id\": 3,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Chinese\",\n            \"slug\": \"chinese\"\n        },\n        {\n            \"id\": 4,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Indian\",\n            \"slug\": \"indian\"\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Thai\",\n            \"slug\": \"thai\"\n        },\n        {\n            \"id\": 6,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"American\",\n            \"slug\": \"american\"\n        },\n        {\n            \"id\": 7,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegan\",\n            \"slug\": \"vegan\"\n        },\n        {\n            \"id\": 8,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegetarian\",\n            \"slug\": \"vegetarian\"\n        }\n    ]\n}"
+							]
 						}
-					]
+					],
+					"id": "601fd510-e23d-462f-92a6-adc1beb55794"
+				},
+				{
+					"name": "Fetch Meals by ID",
+					"item": [
+						{
+							"name": "Fetch Meal By ID",
+							"id": "6b1eae61-a3b4-4d81-bd30-594f1b79528a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/meals/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"meals",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "2c503cbf-d07d-451a-9e49-4ad6c16d2f30",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "09398d30-da1e-413f-b504-5d95a75e8756"
 				}
 			],
 			"id": "8abc0d37-6438-4995-98bb-88062a4e8b46"
