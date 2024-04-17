@@ -3679,7 +3679,27 @@
 					"name": "Fetch Vendors Meals Availabilty",
 					"item": [
 						{
-							"name": "Fetch Vendor Meal Availability",
+							"name": "Fetch Vendor Meal Availability - Valid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "51fe03aa-83f0-4e3e-b09a-9483274fcfe8",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code response is OK\", function () {",
+											"    pm.response.to.have.status('OK');",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "cbe0916b-e34b-4922-a0b6-616f73561786",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3789,7 +3809,7 @@
 							]
 						},
 						{
-							"name": "Fetch Vendor Meal Availability Copy",
+							"name": "Fetch Vendor Meal Availability - No Auth",
 							"id": "dd5d3490-9236-4952-87c5-760dcd6c88fe",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
