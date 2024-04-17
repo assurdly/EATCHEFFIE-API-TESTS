@@ -3054,6 +3054,918 @@
 			"id": "8abc0d37-6438-4995-98bb-88062a4e8b46"
 		},
 		{
+			"name": "Vendor",
+			"item": [
+				{
+					"name": "Fetch Vendors",
+					"id": "2bc6c633-e78e-44cc-8ec1-a692d439a404",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/vendors?filter[category]=thai",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vendors"
+							],
+							"query": [
+								{
+									"key": "filter[q]",
+									"value": "luigi",
+									"disabled": true
+								},
+								{
+									"key": "filter[category]",
+									"value": "thai"
+								},
+								{
+									"key": "filter[rating][gte]",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "filter[rating][lte]",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "33d9fbbc-b4ca-4e38-975b-f750225a4fb9",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/vendors?filter[category]=thai",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendors"
+									],
+									"query": [
+										{
+											"key": "filter[q]",
+											"value": "luigi",
+											"disabled": true
+										},
+										{
+											"key": "filter[category]",
+											"value": "thai"
+										},
+										{
+											"key": "filter[rating][gte]",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "filter[rating][lte]",
+											"value": "5",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "92"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "55"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1015"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f7-2FPnFjwI8pC68D+LghyKkD1ijRY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 21:51:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Vendors fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-24T17:59:06.339Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.339Z\",\n            \"name\": \"Spicy Seoul\",\n            \"description\": \"Authentic Korean cuisine bursting with flavor. Try our bibimbap, bulgogi, or kimchi jjigae.\",\n            \"address\": \"456 Elm St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-24T17:59:06.389Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.389Z\",\n            \"name\": \"Smokey Q BBQ\",\n            \"description\": \"Slow-cooked and smoked meats that will tantalize your taste buds. We offer pulled pork, brisket, ribs, and more, all slathered in our signature BBQ sauce.\",\n            \"address\": \"1213 Pine St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 2,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Vendor Meal Availability",
+					"id": "cbe0916b-e34b-4922-a0b6-616f73561786",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/vendors/:id/meals/availability",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vendors",
+								":id",
+								"meals",
+								"availability"
+							],
+							"variable": [
+								{
+									"id": "f32b5c75-bbc5-437a-bd19-943810d029cc",
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "32a04d62-0331-484e-a35d-c638dc4ceaca",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/vendors/:id/meals/availability",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendors",
+										":id",
+										"meals",
+										"availability"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33678"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"838e-8SmApusoeMoSZdbCFoLEus1tpnI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 21:39:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched meals successfully\",\n    \"data\": {\n        \"sun\": {\n            \"meals\": [\n                {\n                    \"id\": 23,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 24,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 25,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 26,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 9.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Mushroom and Goat Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Mushrooms\",\n                        \"Goat Cheese\",\n                        \"Fresh Herbs\"\n                    ],\n                    \"additives\": [\n                        \"Caramelized Onions\",\n                        \"Walnuts\",\n                        \"Honey Drizzle\"\n                    ],\n                    \"rating\": 4.6,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 27,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 10.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Smoked Salmon and Cream Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Smoked Salmon\",\n                        \"Cream Cheese\",\n                        \"Fresh Dill\"\n                    ],\n                    \"additives\": [\n                        \"Capers\",\n                        \"Red Onions\",\n                        \"Dill Dressing\"\n                    ],\n                    \"rating\": 4.7,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                }\n            ],\n            \"date\": \"Sunday 24th\"\n        },\n        \"mon\": {\n            \"meals\": [\n                {\n                    \"id\": 23,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 24,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 25,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 26,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 9.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Mushroom and Goat Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Mushrooms\",\n                        \"Goat Cheese\",\n                        \"Fresh Herbs\"\n                    ],\n                    \"additives\": [\n                        \"Caramelized Onions\",\n                        \"Walnuts\",\n                        \"Honey Drizzle\"\n                    ],\n                    \"rating\": 4.6,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 27,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 10.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Smoked Salmon and Cream Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Smoked Salmon\",\n                        \"Cream Cheese\",\n                        \"Fresh Dill\"\n                    ],\n                    \"additives\": [\n                        \"Capers\",\n                        \"Red Onions\",\n                        \"Dill Dressing\"\n                    ],\n                    \"rating\": 4.7,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 22,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": false,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                }\n            ],\n            \"date\": \"Monday 25th\"\n        },\n        \"tue\": {\n            \"meals\": [\n                {\n                    \"id\": 23,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 24,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 25,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 26,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 9.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Mushroom and Goat Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Mushrooms\",\n                        \"Goat Cheese\",\n                        \"Fresh Herbs\"\n                    ],\n                    \"additives\": [\n                        \"Caramelized Onions\",\n                        \"Walnuts\",\n                        \"Honey Drizzle\"\n                    ],\n                    \"rating\": 4.6,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 27,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 10.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Smoked Salmon and Cream Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Smoked Salmon\",\n                        \"Cream Cheese\",\n                        \"Fresh Dill\"\n                    ],\n                    \"additives\": [\n                        \"Capers\",\n                        \"Red Onions\",\n                        \"Dill Dressing\"\n                    ],\n                    \"rating\": 4.7,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 22,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": false,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                }\n            ],\n            \"date\": \"Tuesday 26th\"\n        },\n        \"wed\": {\n            \"meals\": [\n                {\n                    \"id\": 23,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 24,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 25,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 26,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 9.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Mushroom and Goat Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Mushrooms\",\n                        \"Goat Cheese\",\n                        \"Fresh Herbs\"\n                    ],\n                    \"additives\": [\n                        \"Caramelized Onions\",\n                        \"Walnuts\",\n                        \"Honey Drizzle\"\n                    ],\n                    \"rating\": 4.6,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 27,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 10.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Smoked Salmon and Cream Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Smoked Salmon\",\n                        \"Cream Cheese\",\n                        \"Fresh Dill\"\n                    ],\n                    \"additives\": [\n                        \"Capers\",\n                        \"Red Onions\",\n                        \"Dill Dressing\"\n                    ],\n                    \"rating\": 4.7,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 22,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": false,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                }\n            ],\n            \"date\": \"Wednesday 27th\"\n        },\n        \"thu\": {\n            \"meals\": [\n                {\n                    \"id\": 23,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 24,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 25,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 26,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 9.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Mushroom and Goat Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Mushrooms\",\n                        \"Goat Cheese\",\n                        \"Fresh Herbs\"\n                    ],\n                    \"additives\": [\n                        \"Caramelized Onions\",\n                        \"Walnuts\",\n                        \"Honey Drizzle\"\n                    ],\n                    \"rating\": 4.6,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 27,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 10.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Smoked Salmon and Cream Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Smoked Salmon\",\n                        \"Cream Cheese\",\n                        \"Fresh Dill\"\n                    ],\n                    \"additives\": [\n                        \"Capers\",\n                        \"Red Onions\",\n                        \"Dill Dressing\"\n                    ],\n                    \"rating\": 4.7,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 22,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": false,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                }\n            ],\n            \"date\": \"Thursday 28th\"\n        },\n        \"fri\": {\n            \"meals\": [\n                {\n                    \"id\": 23,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 24,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 25,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 26,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 9.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Mushroom and Goat Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Mushrooms\",\n                        \"Goat Cheese\",\n                        \"Fresh Herbs\"\n                    ],\n                    \"additives\": [\n                        \"Caramelized Onions\",\n                        \"Walnuts\",\n                        \"Honey Drizzle\"\n                    ],\n                    \"rating\": 4.6,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 27,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 10.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Smoked Salmon and Cream Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Smoked Salmon\",\n                        \"Cream Cheese\",\n                        \"Fresh Dill\"\n                    ],\n                    \"additives\": [\n                        \"Capers\",\n                        \"Red Onions\",\n                        \"Dill Dressing\"\n                    ],\n                    \"rating\": 4.7,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 22,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": false,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                }\n            ],\n            \"date\": \"Friday 29th\"\n        },\n        \"sat\": {\n            \"meals\": [\n                {\n                    \"id\": 23,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 24,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 25,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 7.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Nutella and Banana Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Nutella\",\n                        \"Banana\"\n                    ],\n                    \"additives\": [\n                        \"Whipped Cream\",\n                        \"Strawberries\"\n                    ],\n                    \"rating\": 4.9,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 26,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 9.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Mushroom and Goat Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Mushrooms\",\n                        \"Goat Cheese\",\n                        \"Fresh Herbs\"\n                    ],\n                    \"additives\": [\n                        \"Caramelized Onions\",\n                        \"Walnuts\",\n                        \"Honey Drizzle\"\n                    ],\n                    \"rating\": 4.6,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 27,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 10.5,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Smoked Salmon and Cream Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": true,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Smoked Salmon\",\n                        \"Cream Cheese\",\n                        \"Fresh Dill\"\n                    ],\n                    \"additives\": [\n                        \"Capers\",\n                        \"Red Onions\",\n                        \"Dill Dressing\"\n                    ],\n                    \"rating\": 4.7,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                },\n                {\n                    \"id\": 22,\n                    \"createdAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"updatedAt\": \"2024-03-24T17:59:06.365Z\",\n                    \"basePrice\": 8.99,\n                    \"category\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                        \"updatedAt\": \"2024-03-24T20:38:24.955Z\",\n                        \"name\": \"Chinese\",\n                        \"slug\": \"chinese\"\n                    },\n                    \"name\": \"Ham and Cheese Crepe\",\n                    \"spiceLevel\": {\n                        \"default\": 1,\n                        \"available\": [\n                            1,\n                            2\n                        ]\n                    },\n                    \"daysAvailable\": {\n                        \"sun\": false,\n                        \"mon\": true,\n                        \"tue\": true,\n                        \"thu\": true,\n                        \"fri\": true,\n                        \"sat\": true\n                    },\n                    \"ingredients\": [\n                        \"Crepe\",\n                        \"Ham\",\n                        \"Swiss Cheese\"\n                    ],\n                    \"additives\": [\n                        \"Mushrooms\",\n                        \"Spinach\",\n                        \"Bechamel Sauce\"\n                    ],\n                    \"rating\": 4.1,\n                    \"vendor\": {\n                        \"id\": 3,\n                        \"createdAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"updatedAt\": \"2024-03-24T17:59:06.356Z\",\n                        \"name\": \"Crepe Craze\",\n                        \"description\": \"Sweet and savory crepes made to order. Choose from a variety of fillings and toppings to create your perfect crepe.\",\n                        \"address\": \"789 Oak St, Anytown, CA\",\n                        \"rating\": 0\n                    }\n                }\n            ],\n            \"date\": \"Saturday 30th\"\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "b14883bb-ec65-4cff-be1a-526df5293106"
+		},
+		{
+			"name": "User Copy",
+			"item": [
+				{
+					"name": "Change Password",
+					"id": "21127826-c431-4d00-8d85-e79a5a44eb36",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"Password1@\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/user/settings/password"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"id": "5708a7dd-7354-4a34-8c19-b5c227febb39",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/user/profile"
+					},
+					"response": [
+						{
+							"id": "b729c215-b900-42a8-b4f0-30e2228b5067",
+							"name": "success",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/user/profile"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "13"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b-Grc6FMlHFL7JTIsAdEPGuSUmlSU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Apr 2024 10:29:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Your profile has been updated successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Account",
+					"id": "ac8d7481-dfcd-4b2f-ad07-aa3359bbf470",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{base_url}}/user/me"
+					},
+					"response": []
+				}
+			],
+			"id": "faeb8e23-d711-4e28-ad94-523aebfbc578"
+		},
+		{
+			"name": "Address Copy",
+			"item": [
+				{
+					"name": "Fetch Addresses",
+					"id": "5c4dcc06-2f2a-4021-ab18-c8d47a4183c5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/address/:type",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"address",
+								":type"
+							],
+							"variable": [
+								{
+									"id": "d38cf487-7bb9-4e54-8884-2759a0098cba",
+									"key": "type",
+									"value": "delivery"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "57c4d011-4f65-430c-afe6-2efa4d6888ef",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/address/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "type",
+											"value": "delivery"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "370"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"172-IX7UJ+cUizSKIJO3mJq7/aUnknU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Apr 2024 12:40:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Addresses fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-04-02T11:40:07.816Z\",\n            \"updatedAt\": \"2024-04-02T11:40:07.816Z\",\n            \"longitude\": 3.3536909962760433,\n            \"latitude\": 6.505861209185118,\n            \"addressLine\": \"29 Akerele Street Surulere Lagos.\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Add address",
+					"id": "27c0a9dc-7004-48ce-9e69-0136411ed537",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere Lagos.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/address/:type",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"address",
+								":type"
+							],
+							"variable": [
+								{
+									"id": "bc564ac3-0820-4e14-a521-79ec1936bea6",
+									"key": "type",
+									"value": "delivery"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "912d8f70-c8b7-405b-a566-25336029e1ea",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere Lagos.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/address/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "type",
+											"value": "delivery"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "59"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-pI8OyNNf8KxFR8o2Ogtngf6M5PA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Apr 2024 12:40:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Address saved successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Address",
+					"id": "6bc2ba5c-5a6f-4ea7-8ff4-d8e45caa2ecf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/address/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"address",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "51f799cc-0b06-401b-99d7-c3885e1b5d44",
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"id": "6f5ca8c8-83dc-41e3-8426-6ab3bf2b12a0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/address/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"address",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "f984f89b-fed0-4971-a459-fde7a32f804b",
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "8467b3f8-37df-4dc1-88ed-c3a580243825"
+		},
+		{
+			"name": "Misc Copy",
+			"item": [
+				{
+					"name": "Fetch Delivery Areas",
+					"id": "1c40e7ec-c6f2-45e8-88b6-1a483b488c1e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/delivery/areas"
+					},
+					"response": [
+						{
+							"id": "60b5d056-cc5f-4af0-ab99-43a82e566069",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/delivery/areas"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6749"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a5d-ubHYG1ELpFwQZrPmn7dX7L4zoQY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 23:49:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully fetched delivery areas\",\n    \"data\": [\n        {\n            \"code\": \"AB\",\n            \"area\": \"Aberdeen\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"AL\",\n            \"area\": \"St. Albans\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"B\",\n            \"area\": \"Birmingham\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"BA\",\n            \"area\": \"Bath\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"BB\",\n            \"area\": \"Blackburn\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"BD\",\n            \"area\": \"Bradford\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"BH\",\n            \"area\": \"Bournemouth\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"BL\",\n            \"area\": \"Bolton\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"BN\",\n            \"area\": \"Brighton\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"BR\",\n            \"area\": \"Bromley\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"BS\",\n            \"area\": \"Bristol\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"BT\",\n            \"area\": \"Belfast\",\n            \"region\": \"Northern Ireland\"\n        },\n        {\n            \"code\": \"CA\",\n            \"area\": \"Carlisle\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"CB\",\n            \"area\": \"Cambridge\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"CF\",\n            \"area\": \"Cardiff\",\n            \"region\": \"Wales\"\n        },\n        {\n            \"code\": \"CH\",\n            \"area\": \"Chester\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"CM\",\n            \"area\": \"Chelmsford\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"CO\",\n            \"area\": \"Colchester\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"CR\",\n            \"area\": \"Croydon\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"CT\",\n            \"area\": \"Canterbury\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"CV\",\n            \"area\": \"Coventry\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"CW\",\n            \"area\": \"Crewe\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"DA\",\n            \"area\": \"Dartford\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"DD\",\n            \"area\": \"Dundee\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"DE\",\n            \"area\": \"Derby\",\n            \"region\": \"East Midlands\"\n        },\n        {\n            \"code\": \"DG\",\n            \"area\": \"Dumfries\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"DH\",\n            \"area\": \"Durham\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"DL\",\n            \"area\": \"Darlington\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"DN\",\n            \"area\": \"Doncaster\",\n            \"region\": \"East Midlands\"\n        },\n        {\n            \"code\": \"DT\",\n            \"area\": \"Dorchester\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"DY\",\n            \"area\": \"Dudley\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"E\",\n            \"area\": \"London\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"EC\",\n            \"area\": \"London\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"EH\",\n            \"area\": \"Edinburgh\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"EN\",\n            \"area\": \"Enfield\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"EX\",\n            \"area\": \"Exeter\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"FK\",\n            \"area\": \"Falkirk\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"FY\",\n            \"area\": \"Blackpool\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"G\",\n            \"area\": \"Glasgow\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"GL\",\n            \"area\": \"Gloucester\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"GU\",\n            \"area\": \"Guilford\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"HA\",\n            \"area\": \"Harrow\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"HD\",\n            \"area\": \"Huddersfield\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"HG\",\n            \"area\": \"Harrogate\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"HP\",\n            \"area\": \"Hemel\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"HR\",\n            \"area\": \"Hereford\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"HS\",\n            \"area\": \"Comhairle nan Eilean Siar\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"HU\",\n            \"area\": \"Hull\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"HX\",\n            \"area\": \"Halifax\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"IG\",\n            \"area\": \"Ilford\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"IP\",\n            \"area\": \"Ipswich\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"IV\",\n            \"area\": \"Inverness\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"KA\",\n            \"area\": \"Kilmarnock\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"KT\",\n            \"area\": \"Kingston\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"KW\",\n            \"area\": \"Kirkwall\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"KY\",\n            \"area\": \"Kirkaldy\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"L\",\n            \"area\": \"Liverpool\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"LA\",\n            \"area\": \"Lancaster\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"LD\",\n            \"area\": \"Llandrindod\",\n            \"region\": \"Wales\"\n        },\n        {\n            \"code\": \"LE\",\n            \"area\": \"Leicester\",\n            \"region\": \"East Midlands\"\n        },\n        {\n            \"code\": \"LL\",\n            \"area\": \"Llandudno\",\n            \"region\": \"Wales\"\n        },\n        {\n            \"code\": \"LN\",\n            \"area\": \"Lincoln\",\n            \"region\": \"East Midlands\"\n        },\n        {\n            \"code\": \"LS\",\n            \"area\": \"Leeds\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"LU\",\n            \"area\": \"Luton\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"M\",\n            \"area\": \"Manchester\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"ME\",\n            \"area\": \"Medway\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"MK\",\n            \"area\": \"Milton Keynes\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"ML\",\n            \"area\": \"Motherwell\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"N\",\n            \"area\": \"London\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"NE\",\n            \"area\": \"Newcastle\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"NG\",\n            \"area\": \"Nottingham\",\n            \"region\": \"East Midlands\"\n        },\n        {\n            \"code\": \"NN\",\n            \"area\": \"Northampton\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"NP\",\n            \"area\": \"Newport\",\n            \"region\": \"Wales\"\n        },\n        {\n            \"code\": \"NR\",\n            \"area\": \"Norwich\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"NW\",\n            \"area\": \"London\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"OL\",\n            \"area\": \"Oldham\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"OX\",\n            \"area\": \"Oxford\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"PA\",\n            \"area\": \"Paisley\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"PE\",\n            \"area\": \"Peterborough\",\n            \"region\": \"East England\"\n        },\n        {\n            \"code\": \"PH\",\n            \"area\": \"Perth\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"PL\",\n            \"area\": \"Plymouth\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"PO\",\n            \"area\": \"Portsmouth\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"PR\",\n            \"area\": \"Preston\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"RG\",\n            \"area\": \"Reading\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"RH\",\n            \"area\": \"Redhill\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"RM\",\n            \"area\": \"Romford\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"S\",\n            \"area\": \"Sheffield\",\n            \"region\": \"East Midlands\"\n        },\n        {\n            \"code\": \"SA\",\n            \"area\": \"Swansea\",\n            \"region\": \"Wales\"\n        },\n        {\n            \"code\": \"SE\",\n            \"area\": \"London\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"SG\",\n            \"area\": \"Stevenage\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"SK\",\n            \"area\": \"Stockport\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"SL\",\n            \"area\": \"Slough\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"SM\",\n            \"area\": \"Sutton\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"SN\",\n            \"area\": \"Swindon\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"SO\",\n            \"area\": \"Southampton\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"SP\",\n            \"area\": \"Salisbury\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"SR\",\n            \"area\": \"Sunderland\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"SS\",\n            \"area\": \"Southend\",\n            \"region\": \"East of England\"\n        },\n        {\n            \"code\": \"ST\",\n            \"area\": \"Stoke on Trent\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"SW\",\n            \"area\": \"London\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"SY\",\n            \"area\": \"Shrewsbury\",\n            \"region\": \"Wales\"\n        },\n        {\n            \"code\": \"TA\",\n            \"area\": \"Taunton\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"TD\",\n            \"area\": \"Galashiels\",\n            \"region\": \"Scotland\"\n        },\n        {\n            \"code\": \"TF\",\n            \"area\": \"Telford\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"TN\",\n            \"area\": \"Tonbridge\",\n            \"region\": \"South East\"\n        },\n        {\n            \"code\": \"TQ\",\n            \"area\": \"Torquay\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"TR\",\n            \"area\": \"Truro\",\n            \"region\": \"South West\"\n        },\n        {\n            \"code\": \"TS\",\n            \"area\": \"Cleveland\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"TW\",\n            \"area\": \"Twickenham\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"UB\",\n            \"area\": \"Southall\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"W\",\n            \"area\": \"London\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"WA\",\n            \"area\": \"Warrington\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"WC\",\n            \"area\": \"London\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"WD\",\n            \"area\": \"Watford\",\n            \"region\": \"Greater London\"\n        },\n        {\n            \"code\": \"WF\",\n            \"area\": \"Wakefield\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"WN\",\n            \"area\": \"Wigan\",\n            \"region\": \"North West\"\n        },\n        {\n            \"code\": \"WR\",\n            \"area\": \"Worcester\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"WS\",\n            \"area\": \"Walsall\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"WV\",\n            \"area\": \"Wolverhampton\",\n            \"region\": \"West Midlands\"\n        },\n        {\n            \"code\": \"YO\",\n            \"area\": \"York\",\n            \"region\": \"North East\"\n        },\n        {\n            \"code\": \"ZE\",\n            \"area\": \"Shetland\",\n            \"region\": \"Scotland\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Config",
+					"id": "112b7981-2bd2-49ce-940a-b9250ad186f6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/config"
+					},
+					"response": [
+						{
+							"id": "2301efc6-4091-430e-b645-79b76b29ce54",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/config"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "337"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"151-R268ltHmOGanuSQOyti+CmC+brA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 13:37:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully fetched config\",\n    \"data\": {\n        \"firebaseApiKey\": \"AIzaSyA-QhRaezxTMX0d15CSnqA6RKbwFEw6xp4\",\n        \"firebaseAuthDomain\": \"eat-cheffie-kd.firebaseapp.com\",\n        \"firebaseProjectId\": \"eat-cheffie-kd\",\n        \"firebaseMessagingSenderId\": \"421375344055\",\n        \"firebaseAppId\": \"1:421375344055:web:bfb8e469c125e400f5fc32\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "e1d72c4d-216d-4312-a660-d438fce559ee"
+		},
+		{
+			"name": "Notifications Copy",
+			"item": [
+				{
+					"name": "Save Push Notification Token",
+					"id": "c61d6fab-5883-4802-8b0d-e019d09fa743",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"cETknbR3JD0wXbBXwZJV7j:APA91bHN7JrpNI3pmjD5yBu-a0LTB1etD22eD9x5dwu0hNjDkKySHhFQc0ITL9NSCFMeLBLlzeHdU8RW-RNvbL-bu60cnNXaecanQP4UsN6-7rbf5LVZfw9SORtBElk4icZLTJVaKVv3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/notifications/token"
+					},
+					"response": []
+				}
+			],
+			"id": "502cd715-3f3a-4c84-9d6e-5595c0bd929c"
+		},
+		{
 			"name": "Get Health",
 			"id": "f11430bc-49a6-4354-ae55-690e8f7cb00d",
 			"protocolProfileBehavior": {
