@@ -1047,7 +1047,7 @@
 							"name": "Verify OTP",
 							"item": [
 								{
-									"name": "Verify OTP - Empty Fields Copy",
+									"name": "Verify OTP - Empty Fields",
 									"event": [
 										{
 											"listen": "test",
