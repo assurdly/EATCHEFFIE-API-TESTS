@@ -1838,7 +1838,7 @@
 									]
 								},
 								{
-									"name": "Update Profile - Invalid DOB Copy",
+									"name": "Update Profile - Valid",
 									"event": [
 										{
 											"listen": "test",
@@ -1898,133 +1898,6 @@
 									"response": [
 										{
 											"id": "9a0362d8-2266-4a24-8a41-d440f19ddb38",
-											"name": "success",
-											"originalRequest": {
-												"method": "PATCH",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"firstName\": \"Temitayo\",\n    \"lastName\": \"Osunkiyesi\",\n    \"dob\": \"2024-03-12\"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{base_url}}/onboard/profile"
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Date",
-													"value": "Tue, 12 Mar 2024 21:55:29 GMT"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json; charset=utf-8"
-												},
-												{
-													"key": "Content-Length",
-													"value": "76"
-												},
-												{
-													"key": "Connection",
-													"value": "keep-alive"
-												},
-												{
-													"key": "X-Powered-By",
-													"value": "Express"
-												},
-												{
-													"key": "Access-Control-Allow-Origin",
-													"value": "*"
-												},
-												{
-													"key": "X-RateLimit-Limit",
-													"value": "100"
-												},
-												{
-													"key": "X-RateLimit-Remaining",
-													"value": "99"
-												},
-												{
-													"key": "X-RateLimit-Reset",
-													"value": "60"
-												},
-												{
-													"key": "ETag",
-													"value": "W/\"4c-S1yOi7hqQjo48dfKrPIwo4A7LJc\""
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Profile updated successfully\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Update Profile - Invalid DOB Copy 2",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "aca0a28e-6f5b-4c79-b6dd-9b85017457bf",
-												"exec": [
-													"var jsonData = pm.response.json();",
-													"",
-													"pm.test(\"Status code is 200\", function () {",
-													"    pm.response.to.have.status(200);",
-													"});",
-													"",
-													"pm.test(\"Status code response is Bad Request\", function () {",
-													"    pm.response.to.have.status('OK');",
-													"});",
-													"",
-													"pm.test(\"Response body property\", function () {",
-													"    pm.expect(jsonData).to.be.an('object');",
-													"    pm.expect(jsonData.message).to.be.a('string');",
-													"});",
-													"",
-													"",
-													"pm.test(\"Message is validation error\", function () {",
-													"    pm.expect(jsonData.status).to.include('success')",
-													"    pm.expect(jsonData.message).to.include('Profile updated successfully')",
-													"});"
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"id": "e115d89d-4129-471f-bbf2-24b3946b73e5",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{onboardingToken}}"
-											}
-										},
-										"method": "PATCH",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Azeez\",\n    \"lastName\": \"Ibrahim\",\n    \"dob\": \"1990-03-12\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{base_url}}/onboard/profile"
-									},
-									"response": [
-										{
-											"id": "56dc241a-bc93-44b5-8f18-e3b587303ec0",
 											"name": "success",
 											"originalRequest": {
 												"method": "PATCH",
