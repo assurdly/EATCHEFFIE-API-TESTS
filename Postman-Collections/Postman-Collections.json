@@ -2611,27 +2611,16 @@
 								"id": "d3cf2643-000d-4cd7-b7df-8552b8d375f8",
 								"exec": [
 									"const jsonData = pm.response.json();",
-									"const accessToken = jsonData.data.accessToken",
-									"const refreshToken = jsonData.data.refreshToken",
-									"const req = JSON.parse(request.data);",
 									"",
-									"pm.environment.set(\"accessToken\", accessToken)",
-									"pm.environment.set(\"refreshToken\", refreshToken)",
-									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
 									"});",
-									"",
-									"pm.test(\"Status code response is Created\", function () {",
-									"    pm.response.to.have.status('Created');",
-									"});",
-									"",
 									"",
 									"pm.test(\"Response body property\", function () {",
 									"    pm.expect(jsonData).to.be.an('object');",
 									"    pm.expect(jsonData.status).to.be.a('string');",
 									"    pm.expect(jsonData.message).to.be.a('string');",
-									"    pm.expect(jsonData.data).to.be.a('object');",
+									"    pm.expect(jsonData.data).to.be.an('object');",
 									"});",
 									"",
 									"pm.test(\"Status is success\", function () {",
@@ -2639,9 +2628,8 @@
 									"});",
 									"",
 									"pm.test(\"Message is Successfully logged in\", function () {",
-									"    pm.expect(jsonData.message).to.include('Login successful') ;",
-									"});",
-									""
+									"    pm.expect(jsonData.message).to.include('Login successful');",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -2657,7 +2645,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password12@@\"\n}",
+							"raw": "{\n    \"email\": \"priscaline@assurdly.com\",//{{signedUpUserEmail}}\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password@1\"//Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
