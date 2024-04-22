@@ -4319,7 +4319,7 @@
 					"id": "50efcdd4-6700-435a-b97f-8abba992a1de"
 				},
 				{
-					"name": "New Folder",
+					"name": "Add address",
 					"item": [
 						{
 							"name": "Add address",
@@ -4480,6 +4480,27 @@
 					"item": [
 						{
 							"name": "Update Address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "6bc2ba5c-5a6f-4ea7-8ff4-d8e45caa2ecf",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4530,6 +4551,27 @@
 					"item": [
 						{
 							"name": "Delete Address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "432ea89e-1888-4356-9f07-fb238569001a",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "6f5ca8c8-83dc-41e3-8426-6ab3bf2b12a0",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4577,6 +4619,27 @@
 					"item": [
 						{
 							"name": "Fetch Delivery Areas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4b31588f-2d8e-4e12-87d4-6fae583d0922",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "1c40e7ec-c6f2-45e8-88b6-1a483b488c1e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4658,6 +4721,27 @@
 					"item": [
 						{
 							"name": "Get Config",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8bf56abd-1c1b-48a5-9b62-c93c7c479f87",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "112b7981-2bd2-49ce-940a-b9250ad186f6",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4742,6 +4826,27 @@
 			"item": [
 				{
 					"name": "Save Push Notification Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "87c43c46-f31d-498e-91cf-bd44ec4c18d4",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"pm.test(\"Status is success\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "c61d6fab-5883-4802-8b0d-e019d09fa743",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
