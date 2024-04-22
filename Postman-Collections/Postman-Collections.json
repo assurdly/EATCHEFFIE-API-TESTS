@@ -2844,6 +2844,7 @@
 											"const mealsId = jsonData.data[0].id; ",
 											"",
 											"pm.environment.set(\"mealsId\", mealsId);",
+											"",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
 											"});",
@@ -3308,7 +3309,7 @@
 										"id": "82cb841e-527a-4ed1-aa66-7d5b9dbceb53",
 										"exec": [
 											"pm.test(\"Status code is 401\", function () {",
-											"    pm.response.to.have.status(201);",
+											"    pm.response.to.have.status(401);",
 											"});",
 											"",
 											"",
