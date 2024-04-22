@@ -2941,13 +2941,13 @@
 									"script": {
 										"id": "6c7e3217-d66f-4e1b-9b16-e30f02efd06b",
 										"exec": [
-											"pm.test(\"Status code is 401\", function () {",
-											"    pm.response.to.have.status(401);",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
 											"});",
 											"",
 											"",
-											"pm.test(\"Status code response is Unauthorized\", function () {",
-											"    pm.response.to.have.status('Unauthorized');",
+											"pm.test(\"Status code response is OK\", function () {",
+											"    pm.response.to.have.status('OK');",
 											"});"
 										],
 										"type": "text/javascript",
