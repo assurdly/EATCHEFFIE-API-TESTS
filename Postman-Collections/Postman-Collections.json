@@ -3379,6 +3379,10 @@
 											"",
 											"pm.test(\"Status code response is OK\", function () {",
 											"    pm.response.to.have.status('OK');",
+											"});",
+											"",
+											"pm.test(\"Status code response is OK\", function () {",
+											"    pm.response.to.have.status('OK');",
 											"});"
 										],
 										"type": "text/javascript",
@@ -4681,41 +4685,6 @@
 					"body": "{\n    \"status\": \"OK\",\n    \"timestamp\": \"2024-02-24T21:14:25.865Z\"\n}"
 				}
 			]
-		},
-		{
-			"name": "http://universities.hipolabs.com/search",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "b267c249-36bd-4ae5-a845-0373aa1aaa72",
-						"exec": [
-							"var jsonData = pm.response.json()",
-							"console.log(jsonData)",
-							"",
-							"// for (var nigeria in jsonData) {",
-							"//     nigerianUni = jsonData.",
-							"// }",
-							"",
-							"jsonData.forEach((data) => {",
-							"    console.log(\"NigerianUni\", data.country === \"Nigeria\")",
-							"})"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "252b290b-d480-42c3-aa46-c9b587741add",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "http://universities.hipolabs.com/search"
-			},
-			"response": []
 		}
 	]
 }
