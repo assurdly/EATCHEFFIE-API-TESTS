@@ -3076,7 +3076,24 @@
 								},
 								"method": "GET",
 								"header": [],
-								"url": "{{base_url}}/meals/categories"
+								"url": {
+									"raw": "{{base_url}}/meals/categories",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"meals",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								}
 							},
 							"response": [
 								{
@@ -4222,7 +4239,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "GET",
@@ -4361,7 +4378,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "POST",
