@@ -3985,7 +3985,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Password@1\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Password12@@\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4895,6 +4895,87 @@
 				}
 			],
 			"id": "502cd715-3f3a-4c84-9d6e-5595c0bd929c"
+		},
+		{
+			"name": "Logout Copy",
+			"id": "addb3af9-65e2-4334-a57a-fa23969a843e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{accessToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"url": "{{base_url}}/logout"
+			},
+			"response": [
+				{
+					"id": "b359e30b-71d0-4700-9171-02fdb5a335a2",
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": "{{base_url}}/logout"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "100"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "99"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "60"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"42-MMFs7VtV/OaalCKoVcokK2+rSSs\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 16 Apr 2024 12:21:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Logout successful.\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Get Health",
