@@ -2611,6 +2611,13 @@
 								"id": "d3cf2643-000d-4cd7-b7df-8552b8d375f8",
 								"exec": [
 									"const jsonData = pm.response.json();",
+									"const accessToken = jsonData.data.accessToken",
+									"const refreshToken = jsonData.data.refreshToken",
+									"const req = JSON.parse(request.data);",
+									"",
+									"",
+									"pm.environment.set(\"accessToken\", accessToken)",
+									"pm.environment.set(\"refreshToken\", refreshToken)",
 									"",
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
