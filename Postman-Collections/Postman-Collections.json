@@ -2611,13 +2611,6 @@
 								"id": "d3cf2643-000d-4cd7-b7df-8552b8d375f8",
 								"exec": [
 									"const jsonData = pm.response.json();",
-									"const accessToken = jsonData.data.accessToken",
-									"const refreshToken = jsonData.data.refreshToken",
-									"const req = JSON.parse(request.data);",
-									"",
-									"",
-									"pm.environment.set(\"accessToken\", accessToken)",
-									"pm.environment.set(\"refreshToken\", refreshToken)",
 									"",
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -2652,7 +2645,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"priscaline@assurdly.com\",//{{signedUpUserEmail}}\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password@1\"//Password12@@\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3959,14 +3952,14 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "PATCH",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Password1@\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Password@1\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4126,7 +4119,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "DELETE",
