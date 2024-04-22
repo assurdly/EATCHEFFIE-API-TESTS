@@ -3952,6 +3952,141 @@
 			"name": "User",
 			"item": [
 				{
+					"name": "New Folder",
+					"item": [],
+					"id": "21775ae7-0882-465e-814c-66cf3ed8d4ec"
+				},
+				{
+					"name": "New Folder",
+					"item": [
+						{
+							"name": "Update Profile",
+							"id": "5708a7dd-7354-4a34-8c19-b5c227febb39",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/user/profile"
+							},
+							"response": [
+								{
+									"id": "b729c215-b900-42a8-b4f0-30e2228b5067",
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/user/profile"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-Grc6FMlHFL7JTIsAdEPGuSUmlSU\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 02 Apr 2024 10:29:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Your profile has been updated successfully.\"\n}"
+								}
+							]
+						}
+					],
+					"id": "2ef5ebcb-a9d3-4bbe-90b9-c0c3f088a545"
+				},
+				{
+					"name": "Delete Account",
+					"item": [
+						{
+							"name": "Delete Account",
+							"id": "ac8d7481-dfcd-4b2f-ad07-aa3359bbf470",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "{{base_url}}/user/me"
+							},
+							"response": []
+						}
+					],
+					"id": "b0417738-fa57-412c-9d6c-ffa54143f93a"
+				},
+				{
 					"name": "Change Password",
 					"id": "21127826-c431-4d00-8d85-e79a5a44eb36",
 					"protocolProfileBehavior": {
@@ -3976,124 +4111,6 @@
 							}
 						},
 						"url": "{{base_url}}/user/settings/password"
-					},
-					"response": []
-				},
-				{
-					"name": "Update Profile",
-					"id": "5708a7dd-7354-4a34-8c19-b5c227febb39",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
-						},
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/user/profile"
-					},
-					"response": [
-						{
-							"id": "b729c215-b900-42a8-b4f0-30e2228b5067",
-							"name": "success",
-							"originalRequest": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/user/profile"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "98"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "13"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "91"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"5b-Grc6FMlHFL7JTIsAdEPGuSUmlSU\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 02 Apr 2024 10:29:12 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Your profile has been updated successfully.\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete Account",
-					"id": "ac8d7481-dfcd-4b2f-ad07-aa3359bbf470",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": "{{base_url}}/user/me"
 					},
 					"response": []
 				}
