@@ -4006,6 +4006,27 @@
 					"item": [
 						{
 							"name": "Update Profile",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "27dad8c0-79d4-4f4a-9543-711580a7a5fe",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "5708a7dd-7354-4a34-8c19-b5c227febb39",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4111,6 +4132,27 @@
 					"item": [
 						{
 							"name": "Delete Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24c26845-755b-4df3-bc4f-87e07784310d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "ac8d7481-dfcd-4b2f-ad07-aa3359bbf470",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4142,6 +4184,27 @@
 					"item": [
 						{
 							"name": "Fetch Addresses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5e559d9d-9bab-4b79-9936-31ad924da4b4",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "5c4dcc06-2f2a-4021-ab18-c8d47a4183c5",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4260,6 +4323,27 @@
 					"item": [
 						{
 							"name": "Add address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8415b98e-628f-4520-9a40-561cf13a2f00",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "27c0a9dc-7004-48ce-9e69-0136411ed537",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
