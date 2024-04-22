@@ -3272,6 +3272,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -3285,9 +3291,8 @@
 									],
 									"variable": [
 										{
-											"id": "2c503cbf-d07d-451a-9e49-4ad6c16d2f30",
 											"key": "id",
-											"value": ""
+											"value": "{{mealsId}}"
 										}
 									]
 								}
