@@ -3976,6 +3976,34 @@
 								"url": "{{base_url}}/user/settings/password"
 							},
 							"response": []
+						},
+						{
+							"name": "Change Password Copy",
+							"id": "67992ace-7dc8-4b92-82db-3bca680c9bbc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"oldPassword\": \"Password1@\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/user/settings/password"
+							},
+							"response": []
 						}
 					],
 					"id": "21775ae7-0882-465e-814c-66cf3ed8d4ec"
