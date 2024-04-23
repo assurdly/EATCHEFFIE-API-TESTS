@@ -4124,6 +4124,33 @@
 					"item": [
 						{
 							"name": "Change Password - Valid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1d43036b-6c50-442b-bebc-a68566f370ed",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Verify that status retunrs 'success'\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that status retunrs 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message retunrs'You password has been changed successfully.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"You password has been changed successfully.\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "21127826-c431-4d00-8d85-e79a5a44eb36",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
