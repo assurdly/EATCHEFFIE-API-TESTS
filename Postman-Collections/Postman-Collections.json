@@ -5504,7 +5504,7 @@
 											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
 											"});\r",
-											"pm.test(\"Verify that data returns 'Address saved successfully.'\", function () {\r",
+											"pm.test(\"Verify that data returns 'addressLine should not be empty'\", function () {\r",
 											"    pm.expect(pm.response.json().data.addressLine).to.include(\"addressLine should not be empty\");\r",
 											"});"
 										],
@@ -5556,7 +5556,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Address - No Addressline Copy",
+							"name": "Update Address - No latitude",
 							"event": [
 								{
 									"listen": "test",
@@ -5574,8 +5574,8 @@
 											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
 											"});\r",
-											"pm.test(\"Verify that data returns 'Address saved successfully.'\", function () {\r",
-											"    pm.expect(pm.response.json().data.addressLine).to.include(\"addressLine should not be empty\");\r",
+											"pm.test(\"Verify that data returns 'latitude should not be empty'\", function () {\r",
+											"    pm.expect(pm.response.json().data.latitude).to.include(\"latitude should not be empty\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -5598,7 +5598,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"\",\n    \"longitude\": \"3.3536909962760433\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5626,7 +5626,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Address - No Addressline Copy 2",
+							"name": "Update Address - No longitude",
 							"event": [
 								{
 									"listen": "test",
@@ -5644,8 +5644,8 @@
 											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
 											"});\r",
-											"pm.test(\"Verify that data returns 'Address saved successfully.'\", function () {\r",
-											"    pm.expect(pm.response.json().data.addressLine).to.include(\"addressLine should not be empty\");\r",
+											"pm.test(\"Verify that data returns 'longitude should not be empty'\", function () {\r",
+											"    pm.expect(pm.response.json().data.longitude).to.include(\"longitude should not be empty\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -5668,7 +5668,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
