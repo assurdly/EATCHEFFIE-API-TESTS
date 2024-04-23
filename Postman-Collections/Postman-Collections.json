@@ -5779,7 +5779,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Address - No Aut",
+							"name": "Update Address - No Auth",
 							"event": [
 								{
 									"listen": "test",
@@ -5846,7 +5846,7 @@
 					"name": "Delete Address",
 					"item": [
 						{
-							"name": "Delete Address",
+							"name": "Delete Address - Valid",
 							"event": [
 								{
 									"listen": "test",
@@ -5856,11 +5856,17 @@
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
-											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Created\");\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
-											"pm.test(\"Status is success\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"pm.test(\"Verify that status returns 'success'\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Address deleted successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Address deleted successfully\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -5876,8 +5882,164 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/address/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "f984f89b-fed0-4971-a459-fde7a32f804b",
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Address - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "432ea89e-1888-4356-9f07-fb238569001a",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ba68d80f-5111-4f1b-97b4-c063c87dd2b9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/address/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "f984f89b-fed0-4971-a459-fde7a32f804b",
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Address - Already deleted",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "432ea89e-1888-4356-9f07-fb238569001a",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "b47afcef-42fd-4613-9a4d-2d42fdf33004",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/address/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "f984f89b-fed0-4971-a459-fde7a32f804b",
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Address - Already deleted Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "432ea89e-1888-4356-9f07-fb238569001a",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c798ca80-a996-4b0e-99ee-c1a1c9bbc156",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
 								},
 								"method": "DELETE",
 								"header": [],
