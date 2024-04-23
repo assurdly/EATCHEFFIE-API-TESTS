@@ -4362,285 +4362,6 @@
 			"name": "Address",
 			"item": [
 				{
-					"name": "Fetch Addresses",
-					"item": [
-						{
-							"name": "Fetch Addresses",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "5e559d9d-9bab-4b79-9936-31ad924da4b4",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is OK\", function () {\r",
-											"    pm.response.to.have.status(200); \r",
-											"});\r",
-											"pm.test(\"Verify that status returns '\", function () {\r",
-											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
-											"});\r",
-											"pm.test(\"Verify that success returns 'true'\", function () {\r",
-											"    pm.expect(pm.response.json().success).to.be.true;\r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Addresses fetched successfully'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Addresses fetched successfully\");\r",
-											"});\r",
-											"pm.test(\"Verify that meta returns records\", function () {\r",
-											"    pm.expect(pm.response.json().meta).to.be.an(\"object\").and.not.be.empty;\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "5c4dcc06-2f2a-4021-ab18-c8d47a4183c5",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/address/:type",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"address",
-										":type"
-									],
-									"variable": [
-										{
-											"id": "d38cf487-7bb9-4e54-8884-2759a0098cba",
-											"key": "type",
-											"value": "delivery"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "57c4d011-4f65-430c-afe6-2efa4d6888ef",
-									"name": "success",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{base_url}}/address/:type",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"address",
-												":type"
-											],
-											"variable": [
-												{
-													"key": "type",
-													"value": "delivery"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "X-Powered-By",
-											"value": "Express"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "100"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "99"
-										},
-										{
-											"key": "X-RateLimit-Reset",
-											"value": "60"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "370"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"172-IX7UJ+cUizSKIJO3mJq7/aUnknU\""
-										},
-										{
-											"key": "Date",
-											"value": "Tue, 02 Apr 2024 12:40:38 GMT"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Addresses fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-04-02T11:40:07.816Z\",\n            \"updatedAt\": \"2024-04-02T11:40:07.816Z\",\n            \"longitude\": 3.3536909962760433,\n            \"latitude\": 6.505861209185118,\n            \"addressLine\": \"29 Akerele Street Surulere Lagos.\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
-								}
-							]
-						},
-						{
-							"name": "Fetch Addresses - No Auth",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "5e559d9d-9bab-4b79-9936-31ad924da4b4",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is Unauthorized\", function () {\r",
-											"    pm.response.to.have.status(\"Unauthorized\"); \r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "9756096d-cbea-453c-bffd-360d633aa513",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/address/:type",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"address",
-										":type"
-									],
-									"variable": [
-										{
-											"id": "d38cf487-7bb9-4e54-8884-2759a0098cba",
-											"key": "type",
-											"value": "delivery"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "4e03fa6c-c006-4454-bdbf-ce6e925157cf",
-									"name": "success",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{base_url}}/address/:type",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"address",
-												":type"
-											],
-											"variable": [
-												{
-													"key": "type",
-													"value": "delivery"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "X-Powered-By",
-											"value": "Express"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "100"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "99"
-										},
-										{
-											"key": "X-RateLimit-Reset",
-											"value": "60"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "370"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"172-IX7UJ+cUizSKIJO3mJq7/aUnknU\""
-										},
-										{
-											"key": "Date",
-											"value": "Tue, 02 Apr 2024 12:40:38 GMT"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Addresses fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-04-02T11:40:07.816Z\",\n            \"updatedAt\": \"2024-04-02T11:40:07.816Z\",\n            \"longitude\": 3.3536909962760433,\n            \"latitude\": 6.505861209185118,\n            \"addressLine\": \"29 Akerele Street Surulere Lagos.\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
-								}
-							]
-						}
-					],
-					"id": "50efcdd4-6700-435a-b97f-8abba992a1de"
-				},
-				{
 					"name": "Add address",
 					"item": [
 						{
@@ -5418,10 +5139,289 @@
 					"id": "b5ff93ed-ae9e-4932-82d3-1b8a7b9ed0dd"
 				},
 				{
+					"name": "Fetch Addresses",
+					"item": [
+						{
+							"name": "Fetch Addresses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5e559d9d-9bab-4b79-9936-31ad924da4b4",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status(200); \r",
+											"});\r",
+											"pm.test(\"Verify that status returns '\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Addresses fetched successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Addresses fetched successfully\");\r",
+											"});\r",
+											"pm.test(\"Verify that meta returns records\", function () {\r",
+											"    pm.expect(pm.response.json().meta).to.be.an(\"object\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "5c4dcc06-2f2a-4021-ab18-c8d47a4183c5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/address/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":type"
+									],
+									"variable": [
+										{
+											"id": "d38cf487-7bb9-4e54-8884-2759a0098cba",
+											"key": "type",
+											"value": "delivery"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "57c4d011-4f65-430c-afe6-2efa4d6888ef",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/address/:type",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"address",
+												":type"
+											],
+											"variable": [
+												{
+													"key": "type",
+													"value": "delivery"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "370"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"172-IX7UJ+cUizSKIJO3mJq7/aUnknU\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 02 Apr 2024 12:40:38 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Addresses fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-04-02T11:40:07.816Z\",\n            \"updatedAt\": \"2024-04-02T11:40:07.816Z\",\n            \"longitude\": 3.3536909962760433,\n            \"latitude\": 6.505861209185118,\n            \"addressLine\": \"29 Akerele Street Surulere Lagos.\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Addresses - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5e559d9d-9bab-4b79-9936-31ad924da4b4",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is Unauthorized\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "9756096d-cbea-453c-bffd-360d633aa513",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/address/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":type"
+									],
+									"variable": [
+										{
+											"id": "d38cf487-7bb9-4e54-8884-2759a0098cba",
+											"key": "type",
+											"value": "delivery"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "4e03fa6c-c006-4454-bdbf-ce6e925157cf",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/address/:type",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"address",
+												":type"
+											],
+											"variable": [
+												{
+													"key": "type",
+													"value": "delivery"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "370"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"172-IX7UJ+cUizSKIJO3mJq7/aUnknU\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 02 Apr 2024 12:40:38 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Addresses fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-04-02T11:40:07.816Z\",\n            \"updatedAt\": \"2024-04-02T11:40:07.816Z\",\n            \"longitude\": 3.3536909962760433,\n            \"latitude\": 6.505861209185118,\n            \"addressLine\": \"29 Akerele Street Surulere Lagos.\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
+						}
+					],
+					"id": "50efcdd4-6700-435a-b97f-8abba992a1de"
+				},
+				{
 					"name": "Update Address",
 					"item": [
 						{
-							"name": "Update Address",
+							"name": "Update Address - Valid",
 							"event": [
 								{
 									"listen": "test",
