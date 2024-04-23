@@ -3551,9 +3551,7 @@
 											"    pm.response.to.have.status('OK');",
 											"});",
 											"",
-											"pm.test(\"Status code response is OK\", function () {",
-											"    pm.response.to.have.status('OK');",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
