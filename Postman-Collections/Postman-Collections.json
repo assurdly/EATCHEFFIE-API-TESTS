@@ -4123,7 +4123,7 @@
 					"name": "Change Password",
 					"item": [
 						{
-							"name": "Change Password",
+							"name": "Change Password - Valid",
 							"id": "21127826-c431-4d00-8d85-e79a5a44eb36",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4179,7 +4179,7 @@
 							"response": []
 						},
 						{
-							"name": "Change Password - Mismatch Copy",
+							"name": "Change Password - Complexity rule",
 							"id": "8b12d44c-5e07-4ab2-9d36-8cbaf53055f7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
