@@ -4811,21 +4811,18 @@
 										"id": "8415b98e-628f-4520-9a40-561cf13a2f00",
 										"exec": [
 											"\r",
-											"pm.test(\"Status code is 201\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Status code response is 'Created'\", function () {\r",
-											"    pm.response.to.have.status(\"Created\"); \r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\"); \r",
 											"});\r",
-											"pm.test(\"Verify that status returns 'success'\", function () {\r",
-											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
 											"});\r",
-											"pm.test(\"Verify that success returns 'true'\", function () {\r",
-											"    pm.expect(pm.response.json().success).to.be.true;\r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Address saved successfully.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Address saved successfully.\");\r",
+											"pm.test(\"Verify that data returns 'Address saved successfully.'\", function () {\r",
+											"    pm.expect(pm.response.json().data.addressLine).to.include(\"addressLine should not be empty\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -4848,7 +4845,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere Lagos.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"raw": "{\n    \"addressLine\": \"\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4876,6 +4873,162 @@
 							"response": [
 								{
 									"id": "c096f317-436f-4d2f-98c0-7a8ea3dcfa80",
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere Lagos.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/address/:type",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"address",
+												":type"
+											],
+											"variable": [
+												{
+													"key": "type",
+													"value": "delivery"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "59"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4b-pI8OyNNf8KxFR8o2Ogtngf6M5PA\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 02 Apr 2024 12:40:07 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Address saved successfully.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Add address - No Addressline Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8415b98e-628f-4520-9a40-561cf13a2f00",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\"); \r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'Address saved successfully.'\", function () {\r",
+											"    pm.expect(pm.response.json().data.addressLine).to.include(\"addressLine should not be empty\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "44139d72-3eea-4fdc-9f93-18b4223ea868",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressLine\": \"\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/address/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":type"
+									],
+									"variable": [
+										{
+											"id": "bc564ac3-0820-4e14-a521-79ec1936bea6",
+											"key": "type",
+											"value": "delivery"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "49a813c9-e995-4db5-9478-527f010fa940",
 									"name": "success",
 									"originalRequest": {
 										"method": "POST",
