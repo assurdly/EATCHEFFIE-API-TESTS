@@ -5486,6 +5486,71 @@
 							"response": []
 						},
 						{
+							"name": "Update Address - Valid Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "42c2fff8-a026-4fa3-952f-34e2e7a78b6f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/address/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "51f799cc-0b06-401b-99d7-c3885e1b5d44",
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Update Address - No Addressline",
 							"event": [
 								{
