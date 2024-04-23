@@ -5486,21 +5486,26 @@
 							"response": []
 						},
 						{
-							"name": "Update Address - Valid Copy",
+							"name": "Update Address - No Addressline",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
-											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Created\");\r",
+											"\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\"); \r",
 											"});\r",
-											"pm.test(\"Status is success\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'Address saved successfully.'\", function () {\r",
+											"    pm.expect(pm.response.json().data.addressLine).to.include(\"addressLine should not be empty\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -5516,14 +5521,215 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "PATCH",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"raw": "{\n    \"addressLine\": \"\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/address/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "51f799cc-0b06-401b-99d7-c3885e1b5d44",
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Address - No Addressline Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\"); \r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'Address saved successfully.'\", function () {\r",
+											"    pm.expect(pm.response.json().data.addressLine).to.include(\"addressLine should not be empty\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "f88bd6d0-6395-465f-bd1f-4895caada719",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/address/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "51f799cc-0b06-401b-99d7-c3885e1b5d44",
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Address - No Addressline Copy 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\"); \r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'Address saved successfully.'\", function () {\r",
+											"    pm.expect(pm.response.json().data.addressLine).to.include(\"addressLine should not be empty\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "5d130f83-7c7e-4360-b3f5-08028bc4742d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/address/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "51f799cc-0b06-401b-99d7-c3885e1b5d44",
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Address - No Aut",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "77240f36-a039-437f-8bd8-901b03b65763",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
