@@ -6696,6 +6696,108 @@
 			"id": "502cd715-3f3a-4c84-9d6e-5595c0bd929c"
 		},
 		{
+			"name": "Get health",
+			"item": [
+				{
+					"name": "Get Health",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "16ee1263-c342-4717-aa9c-1823f67757f6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has Ok\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Status is success\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "f11430bc-49a6-4354-ae55-690e8f7cb00d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/health"
+					},
+					"response": [
+						{
+							"id": "b7476ac8-ccd9-4d95-bfa1-13693d4d6a8e",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/health"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-XprgGvZkFA/vPaai3vScknyGKFU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2024 21:14:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"OK\",\n    \"timestamp\": \"2024-02-24T21:14:25.865Z\"\n}"
+						}
+					]
+				}
+			],
+			"id": "01bb099e-fa0d-4ec8-811a-7ada414228c4"
+		},
+		{
 			"name": "Logout",
 			"item": [
 				{
@@ -6907,6 +7009,213 @@
 			"id": "2f825cbd-912d-4bc9-bd5b-f2f330e9de96"
 		},
 		{
+			"name": "Login copy",
+			"item": [
+				{
+					"name": "Login WIth Email or Phone Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3cf2643-000d-4cd7-b7df-8552b8d375f8",
+								"exec": [
+									"const jsonData = pm.response.json();",
+									"",
+									"const accesstoken = jsonData.data.accessToken",
+									"const refreshtoken = jsonData.data.refreshToken;",
+									"",
+									"pm.environment.set(\"accessToken\", accesstoken)",
+									"pm.environment.set(\"refreshToken\", refreshtoken)",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response body property\", function () {",
+									"    pm.expect(jsonData).to.be.an('object');",
+									"    pm.expect(jsonData.status).to.be.a('string');",
+									"    pm.expect(jsonData.message).to.be.a('string');",
+									"    pm.expect(jsonData.data).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Status is success\", function () {",
+									"    pm.expect(jsonData.status).to.eql('success');",
+									"});",
+									"",
+									"pm.test(\"Message is Successfully logged in\", function () {",
+									"    pm.expect(jsonData.message).to.include('Login successful');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "2fc23510-c203-4521-a963-5c07d91c0866",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/login"
+					},
+					"response": [
+						{
+							"id": "27d4e1ea-ba2f-490e-88a8-2ccfdff31b2a",
+							"name": "invalid_credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"osunkiyesitayo@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/login"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Mar 2024 23:30:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Invalid credentials\"\n}"
+						},
+						{
+							"id": "3e7095f6-192f-4351-bb82-d6e2603fbbbf",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/login"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "382"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17e-xgGjo8h3mS1eGk+eoWkAFMETDx0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Mar 2024 23:31:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.f2suCR3b-cuc6ObAAV_0NkLHjng8fKuxqCQbxSeEpGY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.qKp0zjyO9pFmfsar4hMISzDU8lyhWuqc4peUPOqNgvk\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "f0a4ee7b-9d68-4276-95bb-2837f6eb6163"
+		},
+		{
 			"name": "Delete Account",
 			"item": [
 				{
@@ -6992,313 +7301,6 @@
 				}
 			],
 			"id": "b0417738-fa57-412c-9d6c-ffa54143f93a"
-		},
-		{
-			"name": "Login copy",
-			"item": [],
-			"id": "f0a4ee7b-9d68-4276-95bb-2837f6eb6163"
-		},
-		{
-			"name": "Get health",
-			"item": [],
-			"id": "01bb099e-fa0d-4ec8-811a-7ada414228c4"
-		},
-		{
-			"name": "Login WIth Email or Phone Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "d3cf2643-000d-4cd7-b7df-8552b8d375f8",
-						"exec": [
-							"const jsonData = pm.response.json();",
-							"",
-							"const accesstoken = jsonData.data.accessToken",
-							"const refreshtoken = jsonData.data.refreshToken;",
-							"",
-							"pm.environment.set(\"accessToken\", accesstoken)",
-							"pm.environment.set(\"refreshToken\", refreshtoken)",
-							"",
-							"pm.test(\"Status code is 201\", function () {",
-							"    pm.response.to.have.status(201);",
-							"});",
-							"",
-							"pm.test(\"Response body property\", function () {",
-							"    pm.expect(jsonData).to.be.an('object');",
-							"    pm.expect(jsonData.status).to.be.a('string');",
-							"    pm.expect(jsonData.message).to.be.a('string');",
-							"    pm.expect(jsonData.data).to.be.an('object');",
-							"});",
-							"",
-							"pm.test(\"Status is success\", function () {",
-							"    pm.expect(jsonData.status).to.eql('success');",
-							"});",
-							"",
-							"pm.test(\"Message is Successfully logged in\", function () {",
-							"    pm.expect(jsonData.message).to.include('Login successful');",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "2fc23510-c203-4521-a963-5c07d91c0866",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1#\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{base_url}}/login"
-			},
-			"response": [
-				{
-					"id": "27d4e1ea-ba2f-490e-88a8-2ccfdff31b2a",
-					"name": "invalid_credentials",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"osunkiyesitayo@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/login"
-					},
-					"status": "Unauthorized",
-					"code": 401,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "100"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "99"
-						},
-						{
-							"key": "X-RateLimit-Reset",
-							"value": "60"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "33"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 19 Mar 2024 23:30:04 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"responseTime": null,
-					"body": "{\n    \"message\": \"Invalid credentials\"\n}"
-				},
-				{
-					"id": "3e7095f6-192f-4351-bb82-d6e2603fbbbf",
-					"name": "success",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/login"
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "100"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "99"
-						},
-						{
-							"key": "X-RateLimit-Reset",
-							"value": "60"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "382"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"17e-xgGjo8h3mS1eGk+eoWkAFMETDx0\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 19 Mar 2024 23:31:16 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"responseTime": null,
-					"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.f2suCR3b-cuc6ObAAV_0NkLHjng8fKuxqCQbxSeEpGY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.qKp0zjyO9pFmfsar4hMISzDU8lyhWuqc4peUPOqNgvk\"\n    }\n}"
-				}
-			]
-		},
-		{
-			"name": "Get Health",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "16ee1263-c342-4717-aa9c-1823f67757f6",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"pm.test(\"Status code name has Ok\", function () {\r",
-							"    pm.response.to.have.status(\"OK\");\r",
-							"});\r",
-							"pm.test(\"Status is success\", function () {\r",
-							"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "f11430bc-49a6-4354-ae55-690e8f7cb00d",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "{{base_url}}/health"
-			},
-			"response": [
-				{
-					"id": "b7476ac8-ccd9-4d95-bfa1-13693d4d6a8e",
-					"name": "OK",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": "{{base_url}}/health"
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "100"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "99"
-						},
-						{
-							"key": "X-RateLimit-Reset",
-							"value": "60"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "54"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"36-XprgGvZkFA/vPaai3vScknyGKFU\""
-						},
-						{
-							"key": "Date",
-							"value": "Sat, 24 Feb 2024 21:14:25 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"responseTime": null,
-					"body": "{\n    \"status\": \"OK\",\n    \"timestamp\": \"2024-02-24T21:14:25.865Z\"\n}"
-				}
-			]
 		}
 	]
 }
