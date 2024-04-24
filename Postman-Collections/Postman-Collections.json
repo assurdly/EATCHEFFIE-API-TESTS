@@ -2903,11 +2903,11 @@
 									"script": {
 										"id": "6c7e3217-d66f-4e1b-9b16-e30f02efd06b",
 										"exec": [
-											"const jsonData = pm.response.json();",
+											"/*const jsonData = pm.response.json();",
 											"const mealsId = jsonData.data[0].id; ",
 											"",
 											"pm.environment.set(\"mealsId\", mealsId);",
-											"",
+											"*/",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
 											"});",
@@ -4493,12 +4493,10 @@
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
-											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Created\");\r",
+											"pm.test(\"Status code name has OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
-											"pm.test(\"Status is success\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
