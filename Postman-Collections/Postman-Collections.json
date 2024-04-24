@@ -3178,7 +3178,7 @@
 									],
 									"query": [
 										{
-											"key": "category",
+											"key": "",
 											"value": "",
 											"type": "text",
 											"disabled": true
@@ -3258,17 +3258,12 @@
 									"script": {
 										"id": "a83fdc39-515b-4846-988d-aeb9813361f9",
 										"exec": [
-											"pm.test(\"Status code is 400\", function () {",
-											"    pm.response.to.have.status(400);",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
 											"});",
-											"pm.test(\"Status code response is Bad Request\", function () {",
-											"    pm.response.to.have.status('Bad Request');",
-											"});",
-											"pm.test(\"Verify that message returns Validation failed (numeric string is expected)\", function () {",
-											"    pm.expect(pm.response.json().message).to.include(\"Validation failed (numeric string is expected)\");",
-											"});",
-											"pm.test(\"Verify that error returns 'Bad Request'\", function () {",
-											"    pm.expect(pm.response.json().error).to.include(\"Bad Request\");",
+											"",
+											"pm.test(\"Status code response is Ok\", function () {",
+											"    pm.response.to.have.status('OK');",
 											"});"
 										],
 										"type": "text/javascript",
@@ -3291,108 +3286,6 @@
 							"response": [
 								{
 									"id": "3ce5c61c-c5cb-4b80-bca2-10f96b068766",
-									"name": "success",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}/meals/categories"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "X-Powered-By",
-											"value": "Express"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "100"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "99"
-										},
-										{
-											"key": "X-RateLimit-Reset",
-											"value": "60"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "1340"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"53c-wEFHP1DfXjPoEuF3293te8LxAJQ\""
-										},
-										{
-											"key": "Date",
-											"value": "Wed, 20 Mar 2024 00:55:15 GMT"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Categories fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"African\",\n            \"slug\": \"african\"\n        },\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Italian\",\n            \"slug\": \"italian\"\n        },\n        {\n            \"id\": 3,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Chinese\",\n            \"slug\": \"chinese\"\n        },\n        {\n            \"id\": 4,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Indian\",\n            \"slug\": \"indian\"\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Thai\",\n            \"slug\": \"thai\"\n        },\n        {\n            \"id\": 6,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"American\",\n            \"slug\": \"american\"\n        },\n        {\n            \"id\": 7,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegan\",\n            \"slug\": \"vegan\"\n        },\n        {\n            \"id\": 8,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegetarian\",\n            \"slug\": \"vegetarian\"\n        }\n    ]\n}"
-								}
-							]
-						},
-						{
-							"name": "Fetch Categories - No CategoryId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "a83fdc39-515b-4846-988d-aeb9813361f9",
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {",
-											"    pm.response.to.have.status(400);",
-											"});",
-											"pm.test(\"Status code response is Bad Request\", function () {",
-											"    pm.response.to.have.status('Bad Request');",
-											"});",
-											"pm.test(\"Verify that message returns Validation failed (numeric string is expected)\", function () {",
-											"    pm.expect(pm.response.json().message).to.include(\"Validation failed (numeric string is expected)\");",
-											"});",
-											"pm.test(\"Verify that error returns 'Bad Request'\", function () {",
-											"    pm.expect(pm.response.json().error).to.include(\"Bad Request\");",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "d2e5b342-bf0e-44f8-8394-576b03e4e836",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}/meals/categories"
-							},
-							"response": [
-								{
-									"id": "a5292e19-1809-42b7-a88d-5ce7b8dd0070",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
