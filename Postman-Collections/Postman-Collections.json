@@ -2361,6 +2361,25 @@
 				},
 				{
 					"name": "Login With Google",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bdfbfa5d-894c-41c6-8198-07e84e694501",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is Ok\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "4c13d157-1b20-40bb-b3b5-bd69d9c56c9a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -2436,6 +2455,25 @@
 				},
 				{
 					"name": "Login With Apple",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "60fe790e-5318-4918-b28b-351f4f7f4547",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is Ok\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "f59e62b4-9189-4903-be68-37f70c609b60",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
