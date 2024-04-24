@@ -2660,7 +2660,7 @@
 					]
 				},
 				{
-					"name": "Login WIth Email or Phone",
+					"name": "Login WIth Phone",
 					"event": [
 						{
 							"listen": "test",
@@ -2684,6 +2684,10 @@
 									"    pm.expect(jsonData.status).to.be.a('string');",
 									"    pm.expect(jsonData.message).to.be.a('string');",
 									"    pm.expect(jsonData.data).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Status is success\", function () {",
+									"    pm.expect(jsonData.status).to.eql('success');",
 									"});",
 									"",
 									"pm.test(\"Status is success\", function () {",
