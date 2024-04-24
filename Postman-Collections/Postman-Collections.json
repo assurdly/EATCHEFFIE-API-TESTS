@@ -4669,11 +4669,18 @@
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
-											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Created\");\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
 											"pm.test(\"Status is success\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"    pm.expect(pm.response.json().status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"success is true\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"message returns 'Account deleted successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Account deleted successfully\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -4699,7 +4706,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete Account - No Auth",
+							"name": "Delete Account Copy",
 							"event": [
 								{
 									"listen": "test",
@@ -4709,11 +4716,55 @@
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
-											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"Created\");\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
 											"pm.test(\"Status is success\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"    pm.expect(pm.response.json().status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"success is true\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"message returns 'Account deleted successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Account deleted successfully\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "a88a496b-c3cb-4715-a185-74531259f955",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "{{base_url}}/user/me"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Account - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24c26845-755b-4df3-bc4f-87e07784310d",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -4727,10 +4778,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "DELETE",
 								"header": [],
