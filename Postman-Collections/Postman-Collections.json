@@ -6683,7 +6683,7 @@
 			"name": "Notification",
 			"item": [
 				{
-					"name": "Save Push Notification Token",
+					"name": "Save Push Notification Token - Valid",
 					"event": [
 						{
 							"listen": "test",
@@ -6693,11 +6693,17 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Status code name has string\", function () {\r",
-									"    pm.response.to.have.status(\"Created\");\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
 									"});\r",
 									"pm.test(\"Status is success\", function () {\r",
-									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"});\r",
+									"pm.test(\"success is true\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.true;\r",
+									"});\r",
+									"pm.test(\"message returns 'Push notification token saved successfully'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Push notification token saved successfully\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -6710,6 +6716,98 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{accessToken}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"cETknbR3JD0wXbBXwZJV7j:APA91bHN7JrpNI3pmjD5yBu-a0LTB1etD22eD9x5dwu0hNjDkKySHhFQc0ITL9NSCFMeLBLlzeHdU8RW-RNvbL-bu60cnNXaecanQP4UsN6-7rbf5LVZfw9SORtBElk4icZLTJVaKVv3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/notifications/token"
+					},
+					"response": []
+				},
+				{
+					"name": "Save Push Notification Token - Valid Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "87c43c46-f31d-498e-91cf-bd44ec4c18d4",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "2d071f44-8604-4ee7-adb8-1442cc6285ee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"cETknbR3JD0wXbBXwZJV7j:APA91bHN7JrpNI3pmjD5yBu-a0LTB1etD22eD9x5dwu0hNjDkKySHhFQc0ITL9NSCFMeLBLlzeHdU8RW-RNvbL-bu60cnNXaecanQP4UsN6-7rbf5LVZfw9SORtBElk4icZLTJVaKVv3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/notifications/token"
+					},
+					"response": []
+				},
+				{
+					"name": "Save Push Notification Token - Valid Copy 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "87c43c46-f31d-498e-91cf-bd44ec4c18d4",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "631c28b8-eff8-447d-a549-d26247ecb0c6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
