@@ -6781,18 +6781,24 @@
 					"response": []
 				},
 				{
-					"name": "Save Push Notification Token - Valid Copy 2",
+					"name": "Save Push Notification Token - No Token",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "87c43c46-f31d-498e-91cf-bd44ec4c18d4",
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
-									"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
-									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"message is Validation Error.\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+									"});\r",
+									"pm.test(\"data is token should not be empty\", function () {\r",
+									"    pm.expect(pm.response.json().data.token).to.include(\"token should not be empty\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -6806,13 +6812,16 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": {
+								"token": "{{accessToken}}"
+							}
 						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"cETknbR3JD0wXbBXwZJV7j:APA91bHN7JrpNI3pmjD5yBu-a0LTB1etD22eD9x5dwu0hNjDkKySHhFQc0ITL9NSCFMeLBLlzeHdU8RW-RNvbL-bu60cnNXaecanQP4UsN6-7rbf5LVZfw9SORtBElk4icZLTJVaKVv3\"\n}",
+							"raw": "{\n    \"token\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
