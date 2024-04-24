@@ -1323,7 +1323,7 @@
 													"    pm.response.to.have.status(401);",
 													"});",
 													"",
-													"pm.test(\"Status code response is Unauthorized\", function () {",
+													"pm.test(\"Status code response is 'Unauthorized'\", function () {",
 													"    pm.response.to.have.status('Unauthorized');",
 													"});",
 													"",
