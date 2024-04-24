@@ -515,7 +515,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"phone\": \"{{generatedPhoneNumber}}@mailinator.com\"\n}",
+													"raw": "{\n    \"phone\": \"{{generatedPhoneNumber}}\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -931,7 +931,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"phone\": \"{{generatedPhoneNumber}}@mailinator.com\"\n}",
+													"raw": "{\n    \"phone\": \"{{generatedPhoneNumber}}\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
