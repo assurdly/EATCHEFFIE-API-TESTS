@@ -6712,8 +6712,8 @@
 									"pm.test(\"Status code name has Ok\", function () {\r",
 									"    pm.response.to.have.status(\"OK\");\r",
 									"});\r",
-									"pm.test(\"Status is success\", function () {\r",
-									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"pm.test(\"Status is OK\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.include(\"OK\");\r",
 									"});"
 								],
 								"type": "text/javascript",
