@@ -4697,6 +4697,46 @@
 								"url": "{{base_url}}/user/me"
 							},
 							"response": []
+						},
+						{
+							"name": "Delete Account - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24c26845-755b-4df3-bc4f-87e07784310d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ad97bb38-f9d0-4943-9f62-2892a9860881",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "{{base_url}}/user/me"
+							},
+							"response": []
 						}
 					],
 					"id": "b0417738-fa57-412c-9d6c-ffa54143f93a"
