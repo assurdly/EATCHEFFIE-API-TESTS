@@ -2549,6 +2549,25 @@
 				},
 				{
 					"name": "Complete Login With Oauth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "db56e863-37a2-4754-bf66-fa3f04a5d492",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is Ok\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "165c686a-8ff4-46a9-a6c5-5bdbfe4b5f4f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
