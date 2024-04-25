@@ -4597,6 +4597,124 @@
 									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Your profile has been updated successfully.\"\n}"
 								}
 							]
+						},
+						{
+							"name": "Update Profile Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "27dad8c0-79d4-4f4a-9543-711580a7a5fe",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "b2781c5b-33af-41fe-b403-0cca279db1ce",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/user/profile"
+							},
+							"response": [
+								{
+									"id": "0fba9e8a-6008-44f5-83e3-c69e54c294a9",
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/user/profile"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-Grc6FMlHFL7JTIsAdEPGuSUmlSU\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 02 Apr 2024 10:29:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Your profile has been updated successfully.\"\n}"
+								}
+							]
 						}
 					],
 					"id": "2ef5ebcb-a9d3-4bbe-90b9-c0c3f088a545"
