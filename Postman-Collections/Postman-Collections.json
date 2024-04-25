@@ -3493,13 +3493,26 @@
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
 											"});",
-											"",
-											"",
-											"pm.test(\"Status code response is OK\", function () {",
-											"    pm.response.to.have.status('OK');",
+											"pm.test(\"Status code name has OK\", function () {",
+											"    pm.response.to.have.status(\"OK\");",
+											"});",
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
 											"});",
 											"",
-											""
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().status).to.eql('success');",
+											"});",
+											"",
+											"pm.test(\"Verify that success returns 'true'\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"pm.test(\"Verify that message returns 'Vendors fetched successfully'\", function () {",
+											"    pm.expect(pm.response.json().message).to.eql(\"Vendors fetched successfully\");",
+											"});",
+											"pm.test(\"Verify that data returns address details'\", function () {",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -3511,6 +3524,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -3548,6 +3567,181 @@
 							"response": [
 								{
 									"id": "33d9fbbc-b4ca-4e38-975b-f750225a4fb9",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/vendors?filter[category]=thai",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"vendors"
+											],
+											"query": [
+												{
+													"key": "filter[q]",
+													"value": "luigi",
+													"disabled": true
+												},
+												{
+													"key": "filter[category]",
+													"value": "thai"
+												},
+												{
+													"key": "filter[rating][gte]",
+													"value": "3",
+													"disabled": true
+												},
+												{
+													"key": "filter[rating][lte]",
+													"value": "5",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "92"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "55"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1015"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3f7-2FPnFjwI8pC68D+LghyKkD1ijRY\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 24 Mar 2024 21:51:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Vendors fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-24T17:59:06.339Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.339Z\",\n            \"name\": \"Spicy Seoul\",\n            \"description\": \"Authentic Korean cuisine bursting with flavor. Try our bibimbap, bulgogi, or kimchi jjigae.\",\n            \"address\": \"456 Elm St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-24T17:59:06.389Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.389Z\",\n            \"name\": \"Smokey Q BBQ\",\n            \"description\": \"Slow-cooked and smoked meats that will tantalize your taste buds. We offer pulled pork, brisket, ribs, and more, all slathered in our signature BBQ sauce.\",\n            \"address\": \"1213 Pine St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 2,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Vendors Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4b69f098-790e-4652-973b-fe1831394263",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Status code name has OK\", function () {",
+											"    pm.response.to.have.status(\"OK\");",
+											"});",
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"",
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().status).to.eql('success');",
+											"});",
+											"",
+											"pm.test(\"Verify that success returns 'true'\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"pm.test(\"Verify that message returns 'Vendors fetched successfully'\", function () {",
+											"    pm.expect(pm.response.json().message).to.eql(\"Vendors fetched successfully\");",
+											"});",
+											"pm.test(\"Verify that data returns address details'\", function () {",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "4c382e53-b843-414e-ad2c-fd8d036a8a18",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/vendors",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendors"
+									],
+									"query": [
+										{
+											"key": "filter[q]",
+											"value": "luigi",
+											"disabled": true
+										},
+										{
+											"key": "filter[category]",
+											"value": "thai",
+											"disabled": true
+										},
+										{
+											"key": "filter[rating][gte]",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "filter[rating][lte]",
+											"value": "5",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "295611d4-8e24-4d98-8b26-2e5dcf44ac19",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
@@ -3975,7 +4169,7 @@
 							]
 						},
 						{
-							"name": "Fetch Vendors -By Rating Copy",
+							"name": "Fetch Vendors -By Category",
 							"event": [
 								{
 									"listen": "test",
@@ -4019,7 +4213,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/vendors?filter[rating][gte]=0",
+									"raw": "{{base_url}}/vendors?filter[category]=american",
 									"host": [
 										"{{base_url}}"
 									],
@@ -4034,12 +4228,12 @@
 										},
 										{
 											"key": "filter[category]",
-											"value": "[6]",
-											"disabled": true
+											"value": "american"
 										},
 										{
 											"key": "filter[rating][gte]",
-											"value": "0"
+											"value": "0",
+											"disabled": true
 										},
 										{
 											"key": "filter[rating][lte]",
