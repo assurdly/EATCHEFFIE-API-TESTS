@@ -6595,6 +6595,20 @@
 											"});",
 											"pm.test(\"Status is success\", function () {",
 											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"",
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().status).to.eql('success');",
+											"});",
+											"",
+											"pm.test(\"Verify that success returns 'true'\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"pm.test(\"Verify that message returns 'Successfully fetched delivery areas'\", function () {",
+											"    pm.expect(pm.response.json().message).to.eql(\"Successfully fetched delivery areas\");",
+											"});",
+											"pm.test(\"Verify that data returns address details'\", function () {",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;",
 											"});"
 										],
 										"type": "text/javascript",
@@ -6682,7 +6696,7 @@
 							]
 						},
 						{
-							"name": "Fetch Delivery Areas Copy",
+							"name": "Fetch Delivery - No Auth",
 							"event": [
 								{
 									"listen": "test",
@@ -6697,6 +6711,20 @@
 											"});",
 											"pm.test(\"Status is success\", function () {",
 											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"",
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().status).to.eql('success');",
+											"});",
+											"",
+											"pm.test(\"Verify that success returns 'true'\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"pm.test(\"Verify that message returns 'Successfully fetched delivery areas'\", function () {",
+											"    pm.expect(pm.response.json().message).to.eql(\"Successfully fetched delivery areas\");",
+											"});",
+											"pm.test(\"Verify that data returns address details'\", function () {",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;",
 											"});"
 										],
 										"type": "text/javascript",
@@ -6710,10 +6738,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "GET",
 								"header": [],
@@ -6800,11 +6825,22 @@
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
-											"pm.test(\"Status code name has Ok\", function () {\r",
+											"pm.test(\"Status code name has OK\", function () {\r",
 											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
 											"pm.test(\"Status is success\", function () {\r",
-											"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Successfully fetched config'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Successfully fetched config\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -6817,6 +6853,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [],
 								"url": "{{base_url}}/config"
@@ -6824,6 +6866,113 @@
 							"response": [
 								{
 									"id": "2301efc6-4091-430e-b645-79b76b29ce54",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "{{base_url}}/config"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "337"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"151-R268ltHmOGanuSQOyti+CmC+brA\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Apr 2024 13:37:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully fetched config\",\n    \"data\": {\n        \"firebaseApiKey\": \"AIzaSyA-QhRaezxTMX0d15CSnqA6RKbwFEw6xp4\",\n        \"firebaseAuthDomain\": \"eat-cheffie-kd.firebaseapp.com\",\n        \"firebaseProjectId\": \"eat-cheffie-kd\",\n        \"firebaseMessagingSenderId\": \"421375344055\",\n        \"firebaseAppId\": \"1:421375344055:web:bfb8e469c125e400f5fc32\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Config -No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8bf56abd-1c1b-48a5-9b62-c93c7c479f87",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Successfully fetched config'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Successfully fetched config\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "6a2849dd-2391-4b72-8153-e852579c3c9d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/config"
+							},
+							"response": [
+								{
+									"id": "f9c67038-32e0-4417-bdee-8ae4c179b56a",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
