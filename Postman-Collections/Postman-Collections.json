@@ -7099,7 +7099,7 @@
 					"response": []
 				},
 				{
-					"name": "Save Push Notification Token - Valid Copy",
+					"name": "Save Push Notification Token - No Auth",
 					"event": [
 						{
 							"listen": "test",
@@ -7227,6 +7227,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{accessToken}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"url": "{{base_url}}/health"
@@ -7234,6 +7240,105 @@
 					"response": [
 						{
 							"id": "b7476ac8-ccd9-4d95-bfa1-13693d4d6a8e",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/health"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-XprgGvZkFA/vPaai3vScknyGKFU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2024 21:14:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"OK\",\n    \"timestamp\": \"2024-02-24T21:14:25.865Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Health - No Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "16ee1263-c342-4717-aa9c-1823f67757f6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has Ok\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Status is OK\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.include(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "3818e530-fb08-49a0-a487-42bd9d14380f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/health"
+					},
+					"response": [
+						{
+							"id": "eaaa5fb3-d166-4d9a-835d-8251c2604216",
 							"name": "OK",
 							"originalRequest": {
 								"method": "GET",
