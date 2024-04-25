@@ -7182,7 +7182,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1#\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    // \"phone\": \"{{signedUpUserPhoneNumber}}\"//Can be used in place of email \n    \"password\": \"Password1#\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
