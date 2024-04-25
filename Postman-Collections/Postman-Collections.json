@@ -3658,7 +3658,7 @@
 							]
 						},
 						{
-							"name": "Fetch Vendors Copy",
+							"name": "Fetch Vendors - No Auth",
 							"event": [
 								{
 									"listen": "test",
@@ -3700,10 +3700,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "GET",
 								"header": [],
