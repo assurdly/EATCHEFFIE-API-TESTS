@@ -4599,7 +4599,7 @@
 							]
 						},
 						{
-							"name": "Update Profile Copy",
+							"name": "Update Profile - No Gender",
 							"event": [
 								{
 									"listen": "test",
