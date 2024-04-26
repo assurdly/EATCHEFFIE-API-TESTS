@@ -8066,54 +8066,66 @@
 			"id": "01bb099e-fa0d-4ec8-811a-7ada414228c4"
 		},
 		{
-			"name": "Cart And Orders Copy",
+			"name": "Cart And Orders",
 			"item": [
 				{
 					"name": "Update Cart",
-					"id": "9ad8b578-4a18-421d-bc67-8eff857b6b4a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"mealId\": \"1f34d6d0-1126-49ce-ba81-eac0f3c0502a\",\n    \"priceId\": \"454ec134-2b42-4ee6-9207-2b2ce7ffd2cf\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/cart/meals"
-					},
-					"response": []
+					"item": [
+						{
+							"name": "Update Cart",
+							"id": "9ad8b578-4a18-421d-bc67-8eff857b6b4a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mealId\": \"1f34d6d0-1126-49ce-ba81-eac0f3c0502a\",\n    \"priceId\": \"454ec134-2b42-4ee6-9207-2b2ce7ffd2cf\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cart/meals"
+							},
+							"response": []
+						}
+					],
+					"id": "42b043c3-f053-405a-a20c-d1afc33745f7"
 				},
 				{
 					"name": "Fetch Cart",
-					"id": "03bf0262-c6d0-4295-8d8e-67f74c6fb142",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "{{base_url}}/cart/me"
-					},
-					"response": []
+					"item": [
+						{
+							"name": "Fetch Cart",
+							"id": "03bf0262-c6d0-4295-8d8e-67f74c6fb142",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/cart/me"
+							},
+							"response": []
+						}
+					],
+					"id": "e3bdce1a-19c1-41a5-9848-42b2a73feda2"
 				},
 				{
 					"name": "Checkout {WIP}",
