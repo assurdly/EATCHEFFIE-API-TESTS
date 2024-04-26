@@ -8306,7 +8306,7 @@
 											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
 											"});\r",
 											"pm.test(\"Verify that data returns 'priceId should not be empty'\", function () {\r",
-											"    pm.expect(pm.response.json().data.quantity).to.eql(\"quantity should not be empty\");\r",
+											"    pm.expect(pm.response.json().data.deliveryDate).to.eql(\"deliveryDate should not be empty\");\r",
 											"});\r",
 											""
 										],
@@ -8330,6 +8330,49 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
+									"raw": "{\n    \"mealId\": \"{{mealsId}}\",\n    \"priceId\": \"{{priceId}}\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cart/meals"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Cart - No quantity Copy 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8dabd0a-ca0b-494b-ad29-dc295dc657a9",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status('Unauthorized');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "86d1fe64-6a54-4e98-ab87-bb61f4719b31",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
 									"raw": "{\n    \"mealId\": \"{{mealsId}}\",\n    \"priceId\": \"{{priceId}}\",\n    \"quantity\": \"\",\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
 									"options": {
 										"raw": {
@@ -8348,7 +8391,38 @@
 					"name": "Fetch Cart",
 					"item": [
 						{
-							"name": "Fetch Cart",
+							"name": "Fetch Cart - Valid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "557fc511-c61a-43c5-8b07-c9fab814c5b0",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"pm.test(\"Verify that status returns '\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Successfully fetched cart.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Successfully fetched cart.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns meal details\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "03bf0262-c6d0-4295-8d8e-67f74c6fb142",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -8357,7 +8431,57 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/cart/me"
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Cart - Valid Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "557fc511-c61a-43c5-8b07-c9fab814c5b0",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"pm.test(\"Verify that status returns '\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Successfully fetched cart.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Successfully fetched cart.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns meal details\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "015dd39a-2c23-4058-8343-d944581616a5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "GET",
