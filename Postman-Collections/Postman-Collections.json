@@ -947,7 +947,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"otp\": \"{{onboardingOtpPhone}}\"\n}",
+											"raw": "{\n    \"otp\": \"{{onboardingOtpEmail}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
