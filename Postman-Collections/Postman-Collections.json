@@ -688,7 +688,7 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{onboardingToken}}"
+												"token": "{{onboardingTokenEmail}}"
 											}
 										},
 										"method": "PATCH",
@@ -820,7 +820,7 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{onboardingToken}}"
+												"token": "{{onboardingTokenEmail}}"
 											}
 										},
 										"method": "PATCH",
@@ -951,7 +951,7 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{onboardingToken}}"
+												"token": "{{onboardingTokenEmail}}"
 											}
 										},
 										"method": "PATCH",
@@ -1220,7 +1220,7 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{onboardingToken}}"
+												"token": "{{onboardingTokenEmail}}"
 											}
 										},
 										"method": "PATCH",
@@ -1348,7 +1348,7 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{onboardingToken}}"
+												"token": "{{onboardingTokenEmail}}"
 											}
 										},
 										"method": "PATCH",
@@ -1475,7 +1475,7 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{onboardingToken}}"
+												"token": "{{onboardingTokenEmail}}"
 											}
 										},
 										"method": "PATCH",
@@ -1610,7 +1610,7 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{onboardingToken}}"
+												"token": "{{onboardingTokenEmail}}"
 											}
 										},
 										"method": "PATCH",
@@ -1864,7 +1864,7 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{onboardingToken}}"
+												"token": "{{onboardingTokenEmail}}"
 											}
 										},
 										"method": "PATCH",
