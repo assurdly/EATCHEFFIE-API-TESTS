@@ -8481,6 +8481,28 @@
 				},
 				{
 					"name": "Checkout {WIP}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "39e90512-a07d-4682-9f80-e220b28c7437",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is OK\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});\r",
+									"pm.test(\"Verify that status returns '\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "c3952c1b-548f-40a2-a1d8-776176ca9e77",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
