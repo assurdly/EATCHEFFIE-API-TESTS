@@ -2312,7 +2312,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    \"password\": \"Password12@@\"\n}",
+							"raw": "/*{\n    \"email\": \"{{signedUpUserEmail}}\",\n    \"password\": \"Password12@@\"\n}*/\n{\n    \"email\": \"priscaline@assurdly.com\",\n    \"password\": \"Password@1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
