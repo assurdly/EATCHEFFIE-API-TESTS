@@ -2279,6 +2279,10 @@
 									"    pm.response.to.have.status(201);",
 									"});",
 									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
 									"pm.test(\"Response body property\", function () {",
 									"    pm.expect(jsonData).to.be.an('object');",
 									"    pm.expect(jsonData.status).to.be.a('string');",
@@ -2312,7 +2316,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "/*{\n    \"email\": \"{{signedUpUserEmail}}\",\n    \"password\": \"Password12@@\"\n}*/\n{\n    \"email\": \"priscaline@assurdly.com\",\n    \"password\": \"Password@1\"\n}",
+							"raw": "/*{\n    \"email\": \"{{signedUpUserEmail}}\",\n    \"password\": \"Password12@@\"\n}*/\n{\n    \"email\": \"Ford@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
