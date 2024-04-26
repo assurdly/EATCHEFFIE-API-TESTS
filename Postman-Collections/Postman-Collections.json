@@ -5568,7 +5568,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"Unit 1 Anderson Road Woodford Green United Kingdom\",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
+									"raw": "{\n    \"addressLine\": \"101 Maple St, Anytown, CA\",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8539,7 +8539,31 @@
 					"name": "Fetch Delivery Rate",
 					"item": [
 						{
-							"name": "Fetch Delivery Rate",
+							"name": "Fetch Delivery Rate - Valid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7636bc4d-bf58-407c-88c4-26085409a2f6",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Status is success\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+											"});\r",
+											"pm.test(\"success is true\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "93d8a3d1-e003-4e53-ba08-8dfb6819459a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -8548,14 +8572,14 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendorId\": \"1ecf875b-b788-44ff-becb-230e6a90db82\",\n    \"addressId\": \"1a9158f8-4eb1-4247-a91e-b37bf59655fe\"\n}",
+									"raw": "{\n    \"vendorId\": \"{{vendorId}}\",\n    \"addressId\": \"{{addressId}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8639,7 +8663,7 @@
 						},
 						{
 							"name": "Fetch Delivery Rate Copy",
-							"id": "e6e3f1cc-56ce-4d60-807d-a1d6595d49ed",
+							"id": "c5102d22-9ba7-4ef3-a09c-1fcbce65c438",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -8655,6 +8679,122 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"vendorId\": \"1ecf875b-b788-44ff-becb-230e6a90db82\",\n    \"addressId\": \"1a9158f8-4eb1-4247-a91e-b37bf59655fe\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/delivery/rates"
+							},
+							"response": [
+								{
+									"id": "bd248cd0-ad29-4dd5-9a09-bc8c72941fc1",
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"vendorId\": \"1ecf875b-b788-44ff-becb-230e6a90db82\",\n    \"addressId\": \"afd5890e-8411-4ea5-a8d0-93f7c877ab23\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/delivery/rates"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "224"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e0-GIHWGnaytb3dHfpiFkcwokBIqWE\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Apr 2024 21:25:26 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully fetched delivery rates\",\n    \"data\": {\n        \"id\": \"c538b086-6414-48d6-ade2-3a1737f0c4ce\",\n        \"createdAt\": \"2024-04-25T20:22:24.171Z\",\n        \"updatedAt\": \"2024-04-25T20:22:24.171Z\",\n        \"rate\": 10\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Delivery Rate - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f0dfb2a7-3c68-48df-a61f-1773830fc0c6",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "e6e3f1cc-56ce-4d60-807d-a1d6595d49ed",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"vendorId\": \"{{vendorId}}\",\n    \"addressId\": \"{{addressId}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
