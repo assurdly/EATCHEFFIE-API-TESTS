@@ -3574,6 +3574,11 @@
 									"script": {
 										"id": "4b69f098-790e-4652-973b-fe1831394263",
 										"exec": [
+											"const jsonData = pm.response.json();",
+											"const vendorId = jsonData.data[0].id; ",
+											"",
+											"pm.environment.set(\"vendorId\", vendorId);",
+											"",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
 											"});",
@@ -8543,6 +8548,105 @@
 							"response": [
 								{
 									"id": "4159e0e1-1b6b-4807-bdb7-a51a153b2cfa",
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"vendorId\": \"1ecf875b-b788-44ff-becb-230e6a90db82\",\n    \"addressId\": \"afd5890e-8411-4ea5-a8d0-93f7c877ab23\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/delivery/rates"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "224"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e0-GIHWGnaytb3dHfpiFkcwokBIqWE\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Apr 2024 21:25:26 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully fetched delivery rates\",\n    \"data\": {\n        \"id\": \"c538b086-6414-48d6-ade2-3a1737f0c4ce\",\n        \"createdAt\": \"2024-04-25T20:22:24.171Z\",\n        \"updatedAt\": \"2024-04-25T20:22:24.171Z\",\n        \"rate\": 10\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Delivery Rate Copy",
+							"id": "e6e3f1cc-56ce-4d60-807d-a1d6595d49ed",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"vendorId\": \"1ecf875b-b788-44ff-becb-230e6a90db82\",\n    \"addressId\": \"1a9158f8-4eb1-4247-a91e-b37bf59655fe\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/delivery/rates"
+							},
+							"response": [
+								{
+									"id": "b6ea4f1f-974d-4081-b8fa-223d737a7da3",
 									"name": "success",
 									"originalRequest": {
 										"method": "POST",
