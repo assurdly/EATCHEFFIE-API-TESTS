@@ -5523,7 +5523,7 @@
 					"name": "Add address",
 					"item": [
 						{
-							"name": "-Add address - Valid",
+							"name": "Add address - Valid",
 							"event": [
 								{
 									"listen": "test",
@@ -5568,7 +5568,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere Lagos.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"raw": "{\n    \"addressLine\": \"Unit 1 Anderson Road Woodford Green United Kingdom\",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
