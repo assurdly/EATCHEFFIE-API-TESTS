@@ -2508,7 +2508,7 @@
 					]
 				},
 				{
-					"name": "Login WIth Phone",
+					"name": "Login WIth Email",
 					"event": [
 						{
 							"listen": "test",
@@ -2522,6 +2522,10 @@
 									"",
 									"pm.environment.set(\"accessToken\", accesstoken)",
 									"pm.environment.set(\"refreshToken\", refreshtoken)",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
 									"",
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -2560,7 +2564,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    // \"email\": \"{{signedUpUserEmail}}\",\n    \"phone\": \"{{signedUpUserPhoneNumber}}\",//Can be used in place of email \n    \"password\": \"Password12@@\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    \"password\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
