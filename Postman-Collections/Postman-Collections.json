@@ -8533,13 +8533,13 @@
 			"id": "3f0725cd-c11e-4923-82ca-4333764fd85a"
 		},
 		{
-			"name": "Delivery Rates and Areas Copy",
+			"name": "Delivery Rates and Areas",
 			"item": [
 				{
 					"name": "Fetch Delivery Rate",
 					"item": [
 						{
-							"name": "Fetch Delivery Rate - Valid",
+							"name": "-Fetch Delivery Rate - Valid",
 							"event": [
 								{
 									"listen": "test",
@@ -8662,7 +8662,33 @@
 							]
 						},
 						{
-							"name": "Fetch Delivery Rate Copy",
+							"name": "Fetch Delivery Rate - No vendorId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7bf442ec-1c23-413e-b3db-7c930b7e5221",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\"); \r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'vendorId should not be empty.'\", function () {\r",
+											"    pm.expect(pm.response.json().data.vendorId).to.eql(\"vendorId should not be empty\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "c5102d22-9ba7-4ef3-a09c-1fcbce65c438",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -8671,14 +8697,14 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendorId\": \"1ecf875b-b788-44ff-becb-230e6a90db82\",\n    \"addressId\": \"1a9158f8-4eb1-4247-a91e-b37bf59655fe\"\n}",
+									"raw": "{\n    \"vendorId\": \"\",\n    \"addressId\": \"{{addressId}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8690,6 +8716,131 @@
 							"response": [
 								{
 									"id": "bd248cd0-ad29-4dd5-9a09-bc8c72941fc1",
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"vendorId\": \"1ecf875b-b788-44ff-becb-230e6a90db82\",\n    \"addressId\": \"afd5890e-8411-4ea5-a8d0-93f7c877ab23\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/delivery/rates"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "224"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e0-GIHWGnaytb3dHfpiFkcwokBIqWE\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Apr 2024 21:25:26 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully fetched delivery rates\",\n    \"data\": {\n        \"id\": \"c538b086-6414-48d6-ade2-3a1737f0c4ce\",\n        \"createdAt\": \"2024-04-25T20:22:24.171Z\",\n        \"updatedAt\": \"2024-04-25T20:22:24.171Z\",\n        \"rate\": 10\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Delivery Rate - No addressId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7bf442ec-1c23-413e-b3db-7c930b7e5221",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\"); \r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'addressId should not be empty'\", function () {\r",
+											"    pm.expect(pm.response.json().data.addressId).to.eql(\"addressId should not be empty\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "cfde4a58-124d-49ff-bccb-94610e50a331",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"vendorId\": \"{{vendorId}}\",\n    \"addressId\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/delivery/rates"
+							},
+							"response": [
+								{
+									"id": "373029e5-c999-4c4d-8144-7f5474f03b8e",
 									"name": "success",
 									"originalRequest": {
 										"method": "POST",
