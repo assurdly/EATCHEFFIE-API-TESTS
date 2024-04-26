@@ -8066,6 +8066,87 @@
 			"id": "01bb099e-fa0d-4ec8-811a-7ada414228c4"
 		},
 		{
+			"name": "Cart And Orders Copy",
+			"item": [
+				{
+					"name": "Update Cart",
+					"id": "9ad8b578-4a18-421d-bc67-8eff857b6b4a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mealId\": \"1f34d6d0-1126-49ce-ba81-eac0f3c0502a\",\n    \"priceId\": \"454ec134-2b42-4ee6-9207-2b2ce7ffd2cf\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/cart/meals"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Cart",
+					"id": "03bf0262-c6d0-4295-8d8e-67f74c6fb142",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/cart/me"
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout {WIP}",
+					"id": "c3952c1b-548f-40a2-a1d8-776176ca9e77",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"addressId\": \"1a9158f8-4eb1-4247-a91e-b37bf59655fe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/order"
+					},
+					"response": []
+				}
+			],
+			"id": "3f0725cd-c11e-4923-82ca-4333764fd85a"
+		},
+		{
 			"name": "Logout",
 			"item": [
 				{
