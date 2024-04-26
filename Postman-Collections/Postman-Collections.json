@@ -309,37 +309,65 @@
 													"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Welcome to EatCheffie. Please proceed to verify your email address.\",\n    \"data\": {\n        \"otp\": \"623218\",\n        \"onboardingToken\": \"7b6057a0b76e4b94cf645b3c5756c841479dc487\"\n    }\n}"
 												}
 											]
-										},
+										}
+									],
+									"id": "570d6ed3-602d-453d-82a5-3a989bae4ec6"
+								},
+								{
+									"name": "Phone Number",
+									"item": [
 										{
-											"name": "Signup - Existing User",
+											"name": "Signup - Valid Duplicate",
 											"event": [
 												{
 													"listen": "test",
 													"script": {
 														"id": "91359e1d-a34b-4f5c-9507-a4cb8a7e0fd9",
 														"exec": [
-															"var jsonData = pm.response.json();",
-															"const signedUpUserEmail = pm.environment.get(\"signedUpUserEmail\")",
+															"const jsonData = pm.response.json();",
+															"const onboardingOtpDuplicate = jsonData.data.otp",
+															"const onboardingTokenDuplicate = jsonData.data.onboardingToken",
+															"const req = JSON.parse(request.data);",
 															"",
-															"pm.test(\"Status code is 400\", function () {",
-															"    pm.response.to.have.status(400);",
+															"pm.environment.set(\"onboardingOtpDuplicate\", onboardingOtpDuplicate)",
+															"pm.environment.set(\"onboardingTokenDuplicate\", onboardingTokenDuplicate)",
+															"pm.environment.set(\"signedUpUserPhoneNumberDuplicate\", req.phone)",
+															"",
+															"",
+															"pm.test(\"Status code is 201\", function () {",
+															"    pm.response.to.have.status(201);",
 															"});",
 															"",
-															"pm.test(\"Status code response is Bad Request\", function () {",
-															"    pm.response.to.have.status('Bad Request');",
+															"pm.test(\"Status code response is Created\", function () {",
+															"    pm.response.to.have.status('Created');",
 															"});",
 															"",
 															"",
 															"pm.test(\"Response body property\", function () {",
 															"    pm.expect(jsonData).to.be.an('object');",
+															"    pm.expect(jsonData.status).to.be.a('string');",
 															"    pm.expect(jsonData.message).to.be.a('string');",
 															"    pm.expect(jsonData.data).to.be.a('object');",
 															"});",
 															"",
-															"",
-															"pm.test(\"Message is validation error\", function () {",
-															"    pm.expect(jsonData.message).to.include(`The user with ${signedUpUserEmail} already exist`)",
+															"pm.test(\"Status is success\", function () {",
+															"    pm.expect(jsonData.status).to.eql('success');",
 															"});",
+															"",
+															"pm.test(\"Message is Successfully logged in\", function () {",
+															"    pm.expect(jsonData.message).to.include('Welcome to EatCheffie. Please proceed to verify your phone number') ;",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "bb8199e3-ffa0-498c-9ce7-9ffbff87c69c",
+														"exec": [
 															""
 														],
 														"type": "text/javascript",
@@ -347,7 +375,7 @@
 													}
 												}
 											],
-											"id": "ac36336c-e995-4349-a517-414bef6df9e2",
+											"id": "02d6668f-1b2b-4ea3-ad20-ffd97fb9c3a4",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
 											},
@@ -356,7 +384,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\"\n}",
+													"raw": "{\n    \"phone\": \"{{generatedPhoneNumber}}\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -367,7 +395,7 @@
 											},
 											"response": [
 												{
-													"id": "79a74b28-e07b-4a68-b6fe-7480fd23bd2f",
+													"id": "321622f9-2d0a-4dc3-b002-bccd22463f1d",
 													"name": "success",
 													"originalRequest": {
 														"method": "POST",
@@ -437,13 +465,7 @@
 													"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Welcome to EatCheffie. Please proceed to verify your email address.\",\n    \"data\": {\n        \"otp\": \"623218\",\n        \"onboardingToken\": \"7b6057a0b76e4b94cf645b3c5756c841479dc487\"\n    }\n}"
 												}
 											]
-										}
-									],
-									"id": "570d6ed3-602d-453d-82a5-3a989bae4ec6"
-								},
-								{
-									"name": "Phone Number",
-									"item": [
+										},
 										{
 											"name": "Signup - Valid",
 											"event": [
@@ -9615,156 +9637,6 @@
 				}
 			],
 			"id": "b0417738-fa57-412c-9d6c-ffa54143f93a"
-		},
-		{
-			"name": "Signup - Valid Duplicate",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "91359e1d-a34b-4f5c-9507-a4cb8a7e0fd9",
-						"exec": [
-							"const jsonData = pm.response.json();",
-							"const onboardingOtpDuplicate = jsonData.data.otp",
-							"const onboardingTokenDuplicate = jsonData.data.onboardingToken",
-							"const req = JSON.parse(request.data);",
-							"",
-							"pm.environment.set(\"onboardingOtpDuplicate\", onboardingOtpDuplicate)",
-							"pm.environment.set(\"onboardingTokenDuplicate\", onboardingTokenDuplicate)",
-							"pm.environment.set(\"signedUpUserPhoneNumberDuplicate\", req.phone)",
-							"",
-							"",
-							"pm.test(\"Status code is 201\", function () {",
-							"    pm.response.to.have.status(201);",
-							"});",
-							"",
-							"pm.test(\"Status code response is Created\", function () {",
-							"    pm.response.to.have.status('Created');",
-							"});",
-							"",
-							"",
-							"pm.test(\"Response body property\", function () {",
-							"    pm.expect(jsonData).to.be.an('object');",
-							"    pm.expect(jsonData.status).to.be.a('string');",
-							"    pm.expect(jsonData.message).to.be.a('string');",
-							"    pm.expect(jsonData.data).to.be.a('object');",
-							"});",
-							"",
-							"pm.test(\"Status is success\", function () {",
-							"    pm.expect(jsonData.status).to.eql('success');",
-							"});",
-							"",
-							"pm.test(\"Message is Successfully logged in\", function () {",
-							"    pm.expect(jsonData.message).to.include('Welcome to EatCheffie. Please proceed to verify your phone number') ;",
-							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "bb8199e3-ffa0-498c-9ce7-9ffbff87c69c",
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "02d6668f-1b2b-4ea3-ad20-ffd97fb9c3a4",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"phone\": \"{{generatedPhoneNumber}}\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{base_url}}/onboard/signup"
-			},
-			"response": [
-				{
-					"id": "321622f9-2d0a-4dc3-b002-bccd22463f1d",
-					"name": "success",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"osunkiyesitayo@gmail.com\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/onboard/signup"
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "100"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "99"
-						},
-						{
-							"key": "X-RateLimit-Reset",
-							"value": "60"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "200"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"c8-tyNgRuT8FTGeGO7+Q3Ko+EuxwKE\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 12 Mar 2024 12:51:52 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"responseTime": null,
-					"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Welcome to EatCheffie. Please proceed to verify your email address.\",\n    \"data\": {\n        \"otp\": \"623218\",\n        \"onboardingToken\": \"7b6057a0b76e4b94cf645b3c5756c841479dc487\"\n    }\n}"
-				}
-			]
 		}
 	]
 }
