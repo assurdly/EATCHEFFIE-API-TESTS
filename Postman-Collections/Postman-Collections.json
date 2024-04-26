@@ -8131,6 +8131,31 @@
 						},
 						{
 							"name": "Update Cart - No Mealid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8dabd0a-ca0b-494b-ad29-dc295dc657a9",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status('Bad Request');\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'mealId should not be empty)'\", function () {\r",
+											"    pm.expect(pm.response.json().data.mealId).to.eql(\"mealId should not be empty\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "28721edd-9ec7-4509-b871-a00b035c076e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -8139,14 +8164,173 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"mealId\": \"1f34d6d0-1126-49ce-ba81-eac0f3c0502a\",\n    \"priceId\": \"454ec134-2b42-4ee6-9207-2b2ce7ffd2cf\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
+									"raw": "{\n    \"mealId\": \"\",\n    \"priceId\": \"{{priceId}}\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cart/meals"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Cart - No priceId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8dabd0a-ca0b-494b-ad29-dc295dc657a9",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status('Bad Request');\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'priceId should not be empty'\", function () {\r",
+											"    pm.expect(pm.response.json().data.priceId).to.eql(\"priceId should not be empty\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "84a8fc71-63f6-4d11-94e3-ba9bd9f30a35",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mealId\": \"{{mealsId}}\",\n    \"priceId\": \"\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cart/meals"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Cart - No quantity",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8dabd0a-ca0b-494b-ad29-dc295dc657a9",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status('Bad Request');\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'priceId should not be empty'\", function () {\r",
+											"    pm.expect(pm.response.json().data.quantity).to.eql(\"quantity should not be empty\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "86ce0bcb-3ea1-4f3d-9c4f-c15231338ea6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mealId\": \"{{mealsId}}\",\n    \"priceId\": \"{{priceId}}\",\n    \"quantity\": \"\",\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cart/meals"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Cart - No quantity Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8dabd0a-ca0b-494b-ad29-dc295dc657a9",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status('Bad Request');\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns 'priceId should not be empty'\", function () {\r",
+											"    pm.expect(pm.response.json().data.quantity).to.eql(\"quantity should not be empty\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "f20db713-aea7-4bf2-b66b-d2d188c4f1a9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mealId\": \"{{mealsId}}\",\n    \"priceId\": \"{{priceId}}\",\n    \"quantity\": \"\",\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
