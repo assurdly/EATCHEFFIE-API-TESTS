@@ -4455,8 +4455,8 @@
 											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"BVerify that message returns 'Passwords do not match.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Passwords do not match.\");\r",
+											"pm.test(\"BVerify that message returns 'Invalid old password.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Invalid old password.\");\r",
 											"});"
 										],
 										"type": "text/javascript",
