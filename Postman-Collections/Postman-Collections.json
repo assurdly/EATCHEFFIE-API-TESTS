@@ -5008,7 +5008,9 @@
 											"pm.test(\"Status code name has OK\", function () {\r",
 											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
-											""
+											"pm.test(\"Success returns true\", function () {\r",
+											"    pm.expect(pm.response.json()).to.be.true;\r",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
