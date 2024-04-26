@@ -31,7 +31,7 @@
 															"const req = JSON.parse(request.data);",
 															"",
 															"",
-															"pm.environment.set(\"onboardingOtp\", onboardingOtp)",
+															"pm.environment.set(\"onboardingOtpEmail\", onboardingOtp)",
 															"pm.environment.set(\"onboardingToken\", onboardingToken)",
 															"pm.environment.set(\"signedUpUserEmail\", req.email)",
 															"",
@@ -458,7 +458,7 @@
 															"const req = JSON.parse(request.data);",
 															"",
 															"",
-															"pm.environment.set(\"onboardingOtp\", onboardingOtp)",
+															"pm.environment.set(\"onboardingOtpPhone\", onboardingOtp)",
 															"pm.environment.set(\"onboardingToken\", onboardingToken)",
 															"pm.environment.set(\"signedUpUserPhoneNumber\", req.phone)",
 															"",
@@ -947,7 +947,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"otp\": \"{{onboardingOtp}}\"\n}",
+											"raw": "{\n    \"otp\": \"{{onboardingOtpPhone}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
