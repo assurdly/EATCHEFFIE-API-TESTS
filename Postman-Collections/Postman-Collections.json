@@ -5721,7 +5721,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"raw": "{\n    \"addressLine\": \"\",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
