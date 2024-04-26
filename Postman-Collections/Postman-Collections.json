@@ -895,6 +895,141 @@
 							"name": "Verify OTP",
 							"item": [
 								{
+									"name": "Verify OTP - Valid",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4de8cd1f-b206-4f4f-bbf7-2335c7ba7b9b",
+												"exec": [
+													"const jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Status code response is Ok\", function () {",
+													"    pm.response.to.have.status('OK');",
+													"});",
+													"",
+													"",
+													"pm.test(\"Response body property\", function () {",
+													"    pm.expect(jsonData.status).to.be.a(\"string\");",
+													"    pm.expect(jsonData.message).to.be.a('string');",
+													"});",
+													"",
+													"pm.test(\"Status is success\", function () {",
+													"    pm.expect(jsonData.status).to.eql('success');",
+													"});",
+													"",
+													"pm.test(\"Message is Verified Successfully\", function () {",
+													"    pm.expect(jsonData.message).to.include('verified successfully.') ;",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "d8dda30a-f3f6-4710-a32f-0b7f01862926",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{onboardingToken}}"
+											}
+										},
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"otp\": \"{{onboardingOtp}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/onboard/otp/verify"
+									},
+									"response": [
+										{
+											"id": "ded037f2-66b3-4019-9fc8-de3d2df70ee8",
+											"name": "success",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"otp\": \"843055\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{base_url}}/onboard/otp/verify"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "100"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "98"
+												},
+												{
+													"key": "X-RateLimit-Reset",
+													"value": "41"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "84"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"54-1QwaebmJuK4CbZ6XMh3P1gGLFG8\""
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 12 Mar 2024 13:02:30 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Email address verified successfully.\"\n}"
+										}
+									]
+								},
+								{
 									"name": "Verify OTP - Empty Fields",
 									"event": [
 										{
@@ -1214,141 +1349,6 @@
 									"response": [
 										{
 											"id": "312f8743-b3ce-4726-a853-4032ea318d2f",
-											"name": "success",
-											"originalRequest": {
-												"method": "PATCH",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"otp\": \"843055\"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{base_url}}/onboard/otp/verify"
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "X-Powered-By",
-													"value": "Express"
-												},
-												{
-													"key": "Access-Control-Allow-Origin",
-													"value": "*"
-												},
-												{
-													"key": "X-RateLimit-Limit",
-													"value": "100"
-												},
-												{
-													"key": "X-RateLimit-Remaining",
-													"value": "98"
-												},
-												{
-													"key": "X-RateLimit-Reset",
-													"value": "41"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json; charset=utf-8"
-												},
-												{
-													"key": "Content-Length",
-													"value": "84"
-												},
-												{
-													"key": "ETag",
-													"value": "W/\"54-1QwaebmJuK4CbZ6XMh3P1gGLFG8\""
-												},
-												{
-													"key": "Date",
-													"value": "Tue, 12 Mar 2024 13:02:30 GMT"
-												},
-												{
-													"key": "Connection",
-													"value": "keep-alive"
-												},
-												{
-													"key": "Keep-Alive",
-													"value": "timeout=5"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Email address verified successfully.\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Verify OTP - Valid",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "4de8cd1f-b206-4f4f-bbf7-2335c7ba7b9b",
-												"exec": [
-													"const jsonData = pm.response.json();",
-													"",
-													"pm.test(\"Status code is 200\", function () {",
-													"    pm.response.to.have.status(200);",
-													"});",
-													"",
-													"pm.test(\"Status code response is Ok\", function () {",
-													"    pm.response.to.have.status('OK');",
-													"});",
-													"",
-													"",
-													"pm.test(\"Response body property\", function () {",
-													"    pm.expect(jsonData.status).to.be.a(\"string\");",
-													"    pm.expect(jsonData.message).to.be.a('string');",
-													"});",
-													"",
-													"pm.test(\"Status is success\", function () {",
-													"    pm.expect(jsonData.status).to.eql('success');",
-													"});",
-													"",
-													"pm.test(\"Message is Verified Successfully\", function () {",
-													"    pm.expect(jsonData.message).to.include('verified successfully.') ;",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"id": "d8dda30a-f3f6-4710-a32f-0b7f01862926",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{onboardingToken}}"
-											}
-										},
-										"method": "PATCH",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"otp\": \"{{onboardingOtp}}\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{base_url}}/onboard/otp/verify"
-									},
-									"response": [
-										{
-											"id": "ded037f2-66b3-4019-9fc8-de3d2df70ee8",
 											"name": "success",
 											"originalRequest": {
 												"method": "PATCH",
@@ -2642,6 +2642,211 @@
 						},
 						{
 							"id": "d90ed453-e2a5-4f3d-9155-41c968d89c34",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/login"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "382"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17e-xgGjo8h3mS1eGk+eoWkAFMETDx0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Mar 2024 23:31:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.f2suCR3b-cuc6ObAAV_0NkLHjng8fKuxqCQbxSeEpGY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.qKp0zjyO9pFmfsar4hMISzDU8lyhWuqc4peUPOqNgvk\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login WIth Phone Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3cf2643-000d-4cd7-b7df-8552b8d375f8",
+								"exec": [
+									"const jsonData = pm.response.json();",
+									"",
+									"const accesstoken = jsonData.data.accessToken",
+									"const refreshtoken = jsonData.data.refreshToken;",
+									"",
+									"pm.environment.set(\"accessToken\", accesstoken)",
+									"pm.environment.set(\"refreshToken\", refreshtoken)",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response body property\", function () {",
+									"    pm.expect(jsonData).to.be.an('object');",
+									"    pm.expect(jsonData.status).to.be.a('string');",
+									"    pm.expect(jsonData.message).to.be.a('string');",
+									"    pm.expect(jsonData.data).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Status is success\", function () {",
+									"    pm.expect(jsonData.status).to.eql('success');",
+									"});",
+									"",
+									"pm.test(\"Status is success\", function () {",
+									"    pm.expect(jsonData.status).to.eql('success');",
+									"});",
+									"",
+									"pm.test(\"Message is Successfully logged in\", function () {",
+									"    pm.expect(jsonData.message).to.include('Login successful');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "7455a126-2077-4d97-a68e-c310641093dc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"email\": \"{{signedUpUserEmail}}\",\n    \"phone\": \"{{signedUpUserPhoneNumber}}\",//Can be used in place of email \n    \"password\": \"Password12@@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/login"
+					},
+					"response": [
+						{
+							"id": "71bc6eac-fb0d-4403-adff-7165d907e44c",
+							"name": "invalid_credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"osunkiyesitayo@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/login"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Mar 2024 23:30:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Invalid credentials\"\n}"
+						},
+						{
+							"id": "2fe0590a-79f0-4b8e-91ef-5068d64f09ce",
 							"name": "success",
 							"originalRequest": {
 								"method": "POST",
