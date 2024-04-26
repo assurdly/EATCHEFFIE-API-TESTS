@@ -8518,7 +8518,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"addressId\": \"1a9158f8-4eb1-4247-a91e-b37bf59655fe\"\n}",
+							"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
