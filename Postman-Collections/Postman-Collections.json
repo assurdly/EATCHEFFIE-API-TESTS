@@ -5922,7 +5922,7 @@
 										"id": "5e559d9d-9bab-4b79-9936-31ad924da4b4",
 										"exec": [
 											"const jsonData = pm.response.json();\r",
-											"const addressId = jsonData.data[0].id; \r",
+											"const addressId = jsonData.data[1].id; \r",
 											"\r",
 											"pm.environment.set(\"addressId\", addressId);\r",
 											"\r",
