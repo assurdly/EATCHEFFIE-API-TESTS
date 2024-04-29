@@ -5185,7 +5185,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"101 Maple St, Anytown, CA\",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
+									"raw": "{\n    \"addressLine\": \"Baddow Hall Avenue \",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8097,54 +8097,60 @@
 					"id": "e3bdce1a-19c1-41a5-9848-42b2a73feda2"
 				},
 				{
-					"name": "Checkout {WIP}",
-					"event": [
+					"name": "Checkout",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "39e90512-a07d-4682-9f80-e220b28c7437",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status code response is OK\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
-									"});\r",
-									"pm.test(\"Verify that status returns '\", function () {\r",
-									"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
+							"name": "Checkout {WIP}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "39e90512-a07d-4682-9f80-e220b28c7437",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"pm.test(\"Verify that status returns '\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c3952c1b-548f-40a2-a1d8-776176ca9e77",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/order"
+							},
+							"response": []
 						}
 					],
-					"id": "c3952c1b-548f-40a2-a1d8-776176ca9e77",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{accessToken}}"
-							}
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/order"
-					},
-					"response": []
+					"id": "9d322add-5f87-4826-857d-b87b4cf728db"
 				}
 			],
 			"id": "3f0725cd-c11e-4923-82ca-4333764fd85a"
