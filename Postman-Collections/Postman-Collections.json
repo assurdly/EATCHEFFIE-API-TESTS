@@ -5185,7 +5185,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"Abbotsford Avenue BB2 3LZ \",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
+									"raw": "{\n    \"addressLine\": \"18, burnham road, chelmsford, England \",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5922,7 +5922,7 @@
 										"id": "5e559d9d-9bab-4b79-9936-31ad924da4b4",
 										"exec": [
 											"const jsonData = pm.response.json();\r",
-											"const addressId = jsonData.data[1].id; \r",
+											"const addressId = jsonData.data[3].id; \r",
 											"\r",
 											"pm.environment.set(\"addressId\", addressId);\r",
 											"\r",
