@@ -2516,8 +2516,8 @@
 										"id": "6c7e3217-d66f-4e1b-9b16-e30f02efd06b",
 										"exec": [
 											"const jsonData = pm.response.json();",
-											"const mealsId = jsonData.data[0].id; ",
-											"const priceId = jsonData.data[0].priceOptions[0].id;",
+											"const mealsId = jsonData.data[14].id; ",
+											"const priceId = jsonData.data[14].priceOptions[0].id;",
 											"",
 											"pm.environment.set(\"mealsId\", mealsId);",
 											"pm.environment.set(\"priceId\", priceId);",
@@ -3189,7 +3189,7 @@
 										"id": "4b69f098-790e-4652-973b-fe1831394263",
 										"exec": [
 											"const jsonData = pm.response.json();",
-											"const vendorId = jsonData.data[0].id; ",
+											"const vendorId = jsonData.data[3].id; ",
 											"",
 											"pm.environment.set(\"vendorId\", vendorId);",
 											"",
