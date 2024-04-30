@@ -5126,7 +5126,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Password10@\",\n    \"password\": \"Password1*\",\n    \"confirmPassword\": \"Password1*\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Password12@@\",\n    \"password\": \"Password12@@\",\n    \"confirmPassword\": \"Password12@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
