@@ -3431,6 +3431,78 @@
 						}
 					],
 					"id": "09398d30-da1e-413f-b504-5d95a75e8756"
+				},
+				{
+					"name": "Add to Favorites Copy",
+					"id": "400b15df-7be6-4aa2-a4b5-ed8132b8350d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/meals/:id/like",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"meals",
+								":id",
+								"like"
+							],
+							"variable": [
+								{
+									"id": "19ec3b9b-a3be-4a1e-b072-3880d2488809",
+									"key": "id",
+									"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove From Favorites Copy",
+					"id": "784ab1c8-1af6-4a66-8b7b-a959b6d4cb62",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/meals/:id/unlike",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"meals",
+								":id",
+								"unlike"
+							],
+							"variable": [
+								{
+									"id": "578951ce-ef77-434f-aa7a-726af0ce6807",
+									"key": "id",
+									"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "8abc0d37-6438-4995-98bb-88062a4e8b46"
