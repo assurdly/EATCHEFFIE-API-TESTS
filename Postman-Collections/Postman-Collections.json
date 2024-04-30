@@ -3001,6 +3001,11 @@
 									"script": {
 										"id": "3961199c-da2c-4c42-931e-2e19007b6196",
 										"exec": [
+											"const jsonData = pm.response.json();",
+											"const mealCategoriesId = jsonData.data[0].id; ",
+											"",
+											"pm.environment.set(\"mealCategoriesId\", mealCategoriesId);",
+											"",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
 											"});",
