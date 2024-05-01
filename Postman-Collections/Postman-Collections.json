@@ -11591,6 +11591,121 @@
 			"id": "6df8fe2b-8fa1-46a1-8162-d443252b540e"
 		},
 		{
+			"name": "Logout",
+			"item": [
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e9a2c714-7604-4d88-bd38-d2f01711d497",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status code response is 'Created'\", function () {\r",
+									"    pm.response.to.have.status('Created');\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'success'\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"});\r",
+									"pm.test(\"Verify that success returns 'true'\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'Logout successful.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Logout successful.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "addb3af9-65e2-4334-a57a-fa23969a843e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{accessToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{base_url}}/logout"
+					},
+					"response": [
+						{
+							"id": "b359e30b-71d0-4700-9171-02fdb5a335a2",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": "{{base_url}}/logout"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-MMFs7VtV/OaalCKoVcokK2+rSSs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 12:21:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Logout successful.\"\n}"
+						}
+					]
+				}
+			],
+			"id": "fdb24727-3add-46be-b848-7902263cb0bd"
+		},
+		{
 			"name": "Login copy",
 			"item": [
 				{
@@ -11642,7 +11757,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   // \"email\": \"{{signedUpUserEmail}}\",\n    \"phone\": \"{{signedUpUserPhoneNumber}}\",//Can be used in place of email \n    \"password\": \"Password1#\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n   // \"phone\": \"{{signedUpUserPhoneNumber}}\",//Can be used in place of email \n    \"password\": \"Password1#\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11883,120 +11998,6 @@
 				}
 			],
 			"id": "b0417738-fa57-412c-9d6c-ffa54143f93a"
-		},
-		{
-			"name": "New Folder",
-			"item": [],
-			"id": "fdb24727-3add-46be-b848-7902263cb0bd"
-		},
-		{
-			"name": "Logout - Valid",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "e9a2c714-7604-4d88-bd38-d2f01711d497",
-						"exec": [
-							"pm.test(\"Status code is 201\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
-							"});\r",
-							"pm.test(\"Status code response is 'Created'\", function () {\r",
-							"    pm.response.to.have.status('Created');\r",
-							"});\r",
-							"pm.test(\"Verify that status returns 'success'\", function () {\r",
-							"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
-							"});\r",
-							"pm.test(\"Verify that success returns 'true'\", function () {\r",
-							"    pm.expect(pm.response.json().success).to.be.true;\r",
-							"});\r",
-							"pm.test(\"Verify that status returns 'Logout successful.'\", function () {\r",
-							"    pm.expect(pm.response.json().message).to.include(\"Logout successful.\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "addb3af9-65e2-4334-a57a-fa23969a843e",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "{{accessToken}}"
-					}
-				},
-				"method": "POST",
-				"header": [],
-				"url": "{{base_url}}/logout"
-			},
-			"response": [
-				{
-					"id": "b359e30b-71d0-4700-9171-02fdb5a335a2",
-					"name": "success",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"url": "{{base_url}}/logout"
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "100"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "99"
-						},
-						{
-							"key": "X-RateLimit-Reset",
-							"value": "60"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "66"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"42-MMFs7VtV/OaalCKoVcokK2+rSSs\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 16 Apr 2024 12:21:24 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"responseTime": null,
-					"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Logout successful.\"\n}"
-				}
-			]
 		},
 		{
 			"name": "Signup - Valid Duplicate",
