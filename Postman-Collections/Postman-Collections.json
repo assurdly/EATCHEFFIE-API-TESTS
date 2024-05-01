@@ -3437,6 +3437,34 @@
 					"item": [
 						{
 							"name": "Add to Favorites Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3572ed6f-9b9b-4277-a2d9-3397e9e69d8d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that status returns 'success'\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Meals fetched successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Meals fetched successfully\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns meal details\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "400b15df-7be6-4aa2-a4b5-ed8132b8350d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3445,8 +3473,59 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/meals/:id/like",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"meals",
+										":id",
+										"like"
+									],
+									"variable": [
+										{
+											"id": "19ec3b9b-a3be-4a1e-b072-3880d2488809",
+											"key": "id",
+											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No Auth - Add to Favorites",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "afea0041-b671-4445-b106-0daac27d6ff9",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Status code is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "19898c46-0f81-4428-998e-b9f571a81540",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
 								},
 								"method": "PATCH",
 								"header": [],
@@ -3476,44 +3555,45 @@
 				},
 				{
 					"name": "Remove From Favourites",
-					"item": [],
-					"id": "56804282-ba38-4a1c-8ad1-e3d3fcd610b5"
-				},
-				{
-					"name": "Remove From Favorites Copy",
-					"id": "784ab1c8-1af6-4a66-8b7b-a959b6d4cb62",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
-						},
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/meals/:id/unlike",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"meals",
-								":id",
-								"unlike"
-							],
-							"variable": [
-								{
-									"id": "578951ce-ef77-434f-aa7a-726af0ce6807",
-									"key": "id",
-									"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+					"item": [
+						{
+							"name": "Remove From Favorites Copy",
+							"id": "784ab1c8-1af6-4a66-8b7b-a959b6d4cb62",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/meals/:id/unlike",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"meals",
+										":id",
+										"unlike"
+									],
+									"variable": [
+										{
+											"id": "578951ce-ef77-434f-aa7a-726af0ce6807",
+											"key": "id",
+											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+										}
+									]
 								}
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"id": "56804282-ba38-4a1c-8ad1-e3d3fcd610b5"
 				}
 			],
 			"id": "8abc0d37-6438-4995-98bb-88062a4e8b46"
