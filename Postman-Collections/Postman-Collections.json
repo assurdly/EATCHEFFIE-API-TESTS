@@ -9758,6 +9758,138 @@
 							]
 						},
 						{
+							"name": "No vendorId - Review Order Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "712ffd98-bdd8-46ac-97ff-6eb7c1bcbeaa",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Invalid old password.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Invalid old password.\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "fcf63c5f-3c65-487d-8edb-f22c44a61580",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"vendorId\": \"\",\n    \"orderId\": \"00573868-30ff-4e67-99eb-5dde0562e76a\",\n    \"rating\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/order/review"
+							},
+							"response": [
+								{
+									"id": "62128a40-e344-465e-bca9-ecde2bf7156d",
+									"name": "Review Order",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "customer",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"vendorId\": \"c760c3b6-41ba-4ab7-b42a-e284b6cda96a\",\n    \"orderId\": \"00573868-30ff-4e67-99eb-5dde0562e76a\",\n    \"rating\": 4\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/order/review"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "29"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4b-VQNY1pTm4duKiMX7pv+EKXvXYT0\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 01 May 2024 00:13:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Order reviewed successfully\"\n}ß"
+								}
+							]
+						},
+						{
 							"name": "No orderId - Review Order",
 							"event": [
 								{
