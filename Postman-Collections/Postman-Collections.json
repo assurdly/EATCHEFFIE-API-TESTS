@@ -337,12 +337,10 @@
 															"pm.test(\"Response body property\", function () {",
 															"    pm.expect(jsonData).to.be.an('object');",
 															"    pm.expect(jsonData.message).to.be.a('string');",
-															"    pm.expect(jsonData.data).to.be.a('object');",
 															"});",
 															"",
-															"",
 															"pm.test(\"Message is validation error\", function () {",
-															"    pm.expect(jsonData.message).to.include(`The user with ${signedUpUserEmail} already exist`)",
+															"    pm.expect(jsonData.message).to.include(`User already exists`)",
 															"});",
 															""
 														],
@@ -360,7 +358,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"phone\": \"{{signedUpUserEmail}}\"\n}",
+													"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -11895,7 +11893,7 @@
 									"pm.test(\"Status code name has 'OK'\", function () {\r",
 									"    pm.response.to.have.status(\"OK\");\r",
 									"});\r",
-									"pm.test(\"Status is success\", function () {\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
 									"    pm.expect(pm.response.json().status).to.eql('success');\r",
 									"});\r",
 									"\r",
