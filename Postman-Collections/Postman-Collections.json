@@ -9766,7 +9766,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendorId\": \"c760c3b6-41ba-4ab7-b42a-e284b6cda96a\",\n    \"orderId\": \"00573868-30ff-4e67-99eb-5dde0562e76a\",\n    \"rating\": 4\n}",
+									"raw": "{\n    \"vendorId\": \"{{vendorId}}\",\n    \"orderId\": \"{{orderId}}\",\n    \"rating\": 4\n}",
 									"options": {
 										"raw": {
 											"language": "json"
