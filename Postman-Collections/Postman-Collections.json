@@ -5256,7 +5256,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "GET",
@@ -5268,7 +5268,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=58633c49-60b7-4d8c-b282-1c524231a8b6",
+									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]={{vendorId}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -5279,7 +5279,7 @@
 									"query": [
 										{
 											"key": "filter[vendorId]",
-											"value": "58633c49-60b7-4d8c-b282-1c524231a8b6",
+											"value": "{{vendorId}}",
 											"description": "This is required"
 										}
 									]
