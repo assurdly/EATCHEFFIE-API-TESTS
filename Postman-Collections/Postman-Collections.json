@@ -3614,7 +3614,35 @@
 					"name": "Remove From Favourites",
 					"item": [
 						{
-							"name": "Remove From Favorites Copy",
+							"name": "Valid - Remove From Favorites",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9c42686a-2390-4a0e-b212-8a8cf4cc2e20",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that status returns 'success'\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Meals fetched successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Meals fetched successfully\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns meal details\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "784ab1c8-1af6-4a66-8b7b-a959b6d4cb62",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3651,6 +3679,27 @@
 						},
 						{
 							"name": "Invalid Id - Remove From Favorites",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "23a515df-d2e5-46ed-8674-589b3b1eb3b6",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Invalid old password.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Invalid old password.\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "fae5d05e-16b9-4094-b24e-a6d268de3f2b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3687,16 +3736,31 @@
 						},
 						{
 							"name": "No Auth - Remove From Favorites",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ab371663-e654-4100-97c5-5622160f401e",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Status code is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "2c053283-f821-43e7-87fd-8465d2294710",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{access_token}}"
-									}
+									"type": "noauth"
 								},
 								"method": "PATCH",
 								"header": [],
