@@ -7309,7 +7309,7 @@
 										"id": "5e559d9d-9bab-4b79-9936-31ad924da4b4",
 										"exec": [
 											"const jsonData = pm.response.json();\r",
-											"const addressId = jsonData.data[4].id; \r",
+											"const addressId = jsonData.data[0].id; \r",
 											"\r",
 											"pm.environment.set(\"addressId\", addressId);\r",
 											"\r",
@@ -9487,7 +9487,7 @@
 					"name": "Checkout",
 					"item": [
 						{
-							"name": "Checkout {WIP}",
+							"name": "Checkout - Valid",
 							"event": [
 								{
 									"listen": "test",
