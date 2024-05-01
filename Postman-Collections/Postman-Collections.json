@@ -3453,11 +3453,11 @@
 											"pm.test(\"Verify that success returns 'true'\", function () {\r",
 											"    pm.expect(pm.response.json().success).to.be.true;\r",
 											"});\r",
-											"pm.test(\"Verify that message returns 'Meals fetched successfully'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Meals fetched successfully\");\r",
+											"pm.test(\"Verify that message returns 'Meal added to favorites successfully.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Meal added to favorites successfully.\");\r",
 											"});\r",
 											"pm.test(\"Verify that data returns meal details\", function () {\r",
-											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -3490,9 +3490,8 @@
 									],
 									"variable": [
 										{
-											"id": "19ec3b9b-a3be-4a1e-b072-3880d2488809",
 											"key": "id",
-											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+											"value": "{{mealsId}}"
 										}
 									]
 								}
