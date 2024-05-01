@@ -2534,7 +2534,7 @@
 									"    pm.expect(jsonData.data).to.be.an('object');",
 									"});",
 									"",
-									"pm.test(\"Status is success\", function () {",
+									"pm.test(\"Status is 'success'\", function () {",
 									"    pm.expect(jsonData.status).to.eql('success');",
 									"});",
 									"",
