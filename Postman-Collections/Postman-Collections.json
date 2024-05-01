@@ -3888,7 +3888,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "PATCH",
@@ -3905,9 +3905,8 @@
 									],
 									"variable": [
 										{
-											"id": "578951ce-ef77-434f-aa7a-726af0ce6807",
 											"key": "id",
-											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+											"value": "4d7b-8f5b-b8c784ee814a"
 										}
 									]
 								}
@@ -3956,9 +3955,8 @@
 									],
 									"variable": [
 										{
-											"id": "578951ce-ef77-434f-aa7a-726af0ce6807",
 											"key": "id",
-											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+											"value": "{{mealsId}}"
 										}
 									]
 								}
