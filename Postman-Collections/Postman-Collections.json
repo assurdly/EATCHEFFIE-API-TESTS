@@ -4958,6 +4958,47 @@
 						}
 					],
 					"id": "9991cc72-e215-455e-9379-026ca9ffad7b"
+				},
+				{
+					"name": "Fetch Reviews Copy",
+					"id": "58e34916-5e97-4b3c-8454-8039eeb70b5f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=58633c49-60b7-4d8c-b282-1c524231a8b6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vendors",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "filter[vendorId]",
+									"value": "58633c49-60b7-4d8c-b282-1c524231a8b6",
+									"description": "This is required"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "b14883bb-ec65-4cff-be1a-526df5293106"
@@ -9129,6 +9170,117 @@
 						}
 					],
 					"id": "1ccba010-d984-4f9c-a93b-6aaa08e29cf4"
+				},
+				{
+					"name": "Review Order Copy",
+					"id": "6bf23646-0a71-4e2f-9857-92f58050bea0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vendorId\": \"c760c3b6-41ba-4ab7-b42a-e284b6cda96a\",\n    \"orderId\": \"00573868-30ff-4e67-99eb-5dde0562e76a\",\n    \"rating\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/order/review"
+					},
+					"response": [
+						{
+							"id": "0bec789a-47ae-49ed-8949-6c14bd63bf79",
+							"name": "Review Order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"vendorId\": \"c760c3b6-41ba-4ab7-b42a-e284b6cda96a\",\n    \"orderId\": \"00573868-30ff-4e67-99eb-5dde0562e76a\",\n    \"rating\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/order/review"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "29"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-VQNY1pTm4duKiMX7pv+EKXvXYT0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 May 2024 00:13:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Order reviewed successfully\"\n}ß"
+						}
+					]
 				}
 			],
 			"id": "3f0725cd-c11e-4923-82ca-4333764fd85a"
