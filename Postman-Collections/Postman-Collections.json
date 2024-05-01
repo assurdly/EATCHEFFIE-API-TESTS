@@ -9545,6 +9545,51 @@
 								"url": "{{base_url}}/order"
 							},
 							"response": []
+						},
+						{
+							"name": "Checkout {WIP} Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "39e90512-a07d-4682-9f80-e220b28c7437",
+										"exec": [
+											"// Fixed the typo in response.json()\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status('Unauthorized');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "dd6c6b62-551f-4a52-a305-2645edc0376d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/order"
+							},
+							"response": []
 						}
 					],
 					"id": "9d322add-5f87-4826-857d-b87b4cf728db"
