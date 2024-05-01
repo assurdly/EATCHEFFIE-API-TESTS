@@ -3436,7 +3436,7 @@
 					"name": "Add to Favourites",
 					"item": [
 						{
-							"name": "Add to Favorites Copy",
+							"name": "Valid - Add to Favorites",
 							"event": [
 								{
 									"listen": "test",
@@ -3466,6 +3466,63 @@
 								}
 							],
 							"id": "400b15df-7be6-4aa2-a4b5-ed8132b8350d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/meals/:id/like",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"meals",
+										":id",
+										"like"
+									],
+									"variable": [
+										{
+											"id": "19ec3b9b-a3be-4a1e-b072-3880d2488809",
+											"key": "id",
+											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Id - Add to Favorites",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3572ed6f-9b9b-4277-a2d9-3397e9e69d8d",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Invalid old password.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Invalid old password.\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "f996b524-b5cf-4404-af4a-06c36b4f4a40",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -3559,6 +3616,78 @@
 						{
 							"name": "Remove From Favorites Copy",
 							"id": "784ab1c8-1af6-4a66-8b7b-a959b6d4cb62",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/meals/:id/unlike",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"meals",
+										":id",
+										"unlike"
+									],
+									"variable": [
+										{
+											"id": "578951ce-ef77-434f-aa7a-726af0ce6807",
+											"key": "id",
+											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Id - Remove From Favorites",
+							"id": "fae5d05e-16b9-4094-b24e-a6d268de3f2b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/meals/:id/unlike",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"meals",
+										":id",
+										"unlike"
+									],
+									"variable": [
+										{
+											"id": "578951ce-ef77-434f-aa7a-726af0ce6807",
+											"key": "id",
+											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No Auth - Remove From Favorites",
+							"id": "2c053283-f821-43e7-87fd-8465d2294710",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
