@@ -9657,6 +9657,11 @@
 									"script": {
 										"id": "609d2a54-5f3c-4388-9a56-a271c92d704f",
 										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"const orderId = jsonData.data[0].id; \r",
+											"\r",
+											"pm.environment.set(\"orderId\", orderId);\r",
+											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
