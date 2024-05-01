@@ -738,7 +738,7 @@
 											]
 										},
 										{
-											"name": "Signup - Existing User Copy",
+											"name": "Signup - Existing User",
 											"event": [
 												{
 													"listen": "test",
