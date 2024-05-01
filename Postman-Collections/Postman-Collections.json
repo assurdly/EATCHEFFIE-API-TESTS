@@ -5089,11 +5089,11 @@
 									"script": {
 										"id": "fd080597-fab7-4091-8415-2dad45a07576",
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {",
-											"    pm.response.to.have.status(404);",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"Status code name has Not Found\", function () {",
-											"    pm.response.to.have.status(\"Not Found\");",
+											"pm.test(\"Status code name has 'Bad Request.\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
 											"});"
 										],
 										"type": "text/javascript",
@@ -5125,9 +5125,8 @@
 									],
 									"variable": [
 										{
-											"id": "60da5873-27c7-415c-bd68-bbe42b43c5f7",
 											"key": "id",
-											"value": "58633c49-60b7-4d8c-b282-1c524231a8b6"
+											"value": "58633c49-60b7-4d8c-b2"
 										}
 									]
 								}
@@ -5217,7 +5216,7 @@
 					"id": "9991cc72-e215-455e-9379-026ca9ffad7b"
 				},
 				{
-					"name": "New Folder",
+					"name": "Fetch Reviews",
 					"item": [
 						{
 							"name": "Valid - Fetch Reviews",
