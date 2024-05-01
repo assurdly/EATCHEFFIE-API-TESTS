@@ -2729,7 +2729,7 @@
 					]
 				},
 				{
-					"name": "Login WIth Email Copy",
+					"name": "Login WIth Phone",
 					"event": [
 						{
 							"listen": "test",
@@ -2738,11 +2738,6 @@
 								"exec": [
 									"const jsonData = pm.response.json();",
 									"",
-									"const accesstoken = jsonData.data.accessToken",
-									"const refreshtoken = jsonData.data.refreshToken;",
-									"",
-									"pm.environment.set(\"accessToken\", accesstoken)",
-									"pm.environment.set(\"refreshToken\", refreshtoken)",
 									"",
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -2793,7 +2788,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
+							"raw": "{\n    \"phone\": \"{{signedUpUserPhoneNumber}}\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
