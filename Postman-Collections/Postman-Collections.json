@@ -2556,7 +2556,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
+							"raw": "{\n  //  \"email\": \"{{signedUpUserEmail}}\",\n    \"email\": \"bonabee@yopmail.com\"\n    \"password\": \"Password12@@\"\n}\n\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
