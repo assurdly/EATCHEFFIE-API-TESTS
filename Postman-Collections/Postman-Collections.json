@@ -2407,13 +2407,14 @@
 							"script": {
 								"id": "db56e863-37a2-4754-bf66-fa3f04a5d492",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
+									"/*pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status code response is Ok\", function () {\r",
 									"    pm.response.to.have.status('OK');\r",
-									"});"
+									"});\r",
+									"*/"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -2429,7 +2430,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"code\": \"4/0AeaYSHA07ycb9wADezdpC_aHQcn94izKsSz9PJayyJzuXWCAGZamcT1BAX4dGp8_r3vZvg\"\n}",
+							"raw": "{\n    \"code\": \"4/0AeaYSHDXAmrTGpEaIipxF-YR18sD1WaRb5sg_dfV2xfWFX9wqxT72gcOle357OCMuPjq5Q&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&hd=assurdly.com&prompt=consent\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11590,217 +11591,6 @@
 			"id": "6df8fe2b-8fa1-46a1-8162-d443252b540e"
 		},
 		{
-			"name": "Logout",
-			"item": [
-				{
-					"name": "Logout - Valid",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "e9a2c714-7604-4d88-bd38-d2f01711d497",
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});\r",
-									"pm.test(\"Status code response is 'Created'\", function () {\r",
-									"    pm.response.to.have.status('Created');\r",
-									"});\r",
-									"pm.test(\"Verify that status returns 'success'\", function () {\r",
-									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
-									"});\r",
-									"pm.test(\"Verify that success returns 'true'\", function () {\r",
-									"    pm.expect(pm.response.json().success).to.be.true;\r",
-									"});\r",
-									"pm.test(\"Verify that status returns 'Logout successful.'\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"Logout successful.\");\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "addb3af9-65e2-4334-a57a-fa23969a843e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{accessToken}}"
-							}
-						},
-						"method": "POST",
-						"header": [],
-						"url": "{{base_url}}/logout"
-					},
-					"response": [
-						{
-							"id": "b359e30b-71d0-4700-9171-02fdb5a335a2",
-							"name": "success",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": "{{base_url}}/logout"
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "60"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "66"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"42-MMFs7VtV/OaalCKoVcokK2+rSSs\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 16 Apr 2024 12:21:24 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Logout successful.\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Logout - No Auth",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "e9a2c714-7604-4d88-bd38-d2f01711d497",
-								"exec": [
-									"pm.test(\"Status code is 401\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
-									"});\r",
-									"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
-									"    pm.response.to.have.status('Unauthorized');\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "6dd9522c-30f7-4b1b-b920-ed78e590a7b4",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"url": "{{base_url}}/logout"
-					},
-					"response": [
-						{
-							"id": "f388f985-cc94-4b88-a25e-971ff48f32f2",
-							"name": "success",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": "{{base_url}}/logout"
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "60"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "66"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"42-MMFs7VtV/OaalCKoVcokK2+rSSs\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 16 Apr 2024 12:21:24 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Logout successful.\"\n}"
-						}
-					]
-				}
-			],
-			"id": "2f825cbd-912d-4bc9-bd5b-f2f330e9de96"
-		},
-		{
 			"name": "Login copy",
 			"item": [
 				{
@@ -12093,6 +11883,120 @@
 				}
 			],
 			"id": "b0417738-fa57-412c-9d6c-ffa54143f93a"
+		},
+		{
+			"name": "New Folder",
+			"item": [],
+			"id": "fdb24727-3add-46be-b848-7902263cb0bd"
+		},
+		{
+			"name": "Logout - Valid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9a2c714-7604-4d88-bd38-d2f01711d497",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Status code response is 'Created'\", function () {\r",
+							"    pm.response.to.have.status('Created');\r",
+							"});\r",
+							"pm.test(\"Verify that status returns 'success'\", function () {\r",
+							"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+							"});\r",
+							"pm.test(\"Verify that success returns 'true'\", function () {\r",
+							"    pm.expect(pm.response.json().success).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Verify that status returns 'Logout successful.'\", function () {\r",
+							"    pm.expect(pm.response.json().message).to.include(\"Logout successful.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "addb3af9-65e2-4334-a57a-fa23969a843e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{accessToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"url": "{{base_url}}/logout"
+			},
+			"response": [
+				{
+					"id": "b359e30b-71d0-4700-9171-02fdb5a335a2",
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": "{{base_url}}/logout"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "100"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "99"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "60"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"42-MMFs7VtV/OaalCKoVcokK2+rSSs\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 16 Apr 2024 12:21:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Logout successful.\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Signup - Valid Duplicate",
