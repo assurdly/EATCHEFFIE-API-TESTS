@@ -4964,6 +4964,34 @@
 					"item": [
 						{
 							"name": "Valid - Fetch Reviews",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "34a08bb9-6794-4b24-b7f9-65ee3518fd35",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that status returns 'success'\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Meals fetched successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Meals fetched successfully\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns meal details\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "58e34916-5e97-4b3c-8454-8039eeb70b5f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -5004,8 +5032,85 @@
 							"response": []
 						},
 						{
-							"name": "Fetch Reviews Copy 2",
+							"name": "No Auth - Fetch Reviews",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85d75d89-3e32-4a64-bf87-0090d9a2838f",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Status code is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "d40a5244-ef7c-4da9-9c8c-2e156d0542fb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=58633c49-60b7-4d8c-b282-1c524231a8b6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendors",
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "filter[vendorId]",
+											"value": "58633c49-60b7-4d8c-b282-1c524231a8b6",
+											"description": "This is required"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No VendorId - Fetch Reviews",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "616e5791-81e8-4ca7-88fa-b470a1b79c24",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Invalid old password.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Invalid old password.\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "59660ba2-3cd3-48f7-be91-193cfbbde5f4",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -5045,8 +5150,29 @@
 							"response": []
 						},
 						{
-							"name": "Fetch Reviews Copy 3",
-							"id": "59660ba2-3cd3-48f7-be91-193cfbbde5f4",
+							"name": "Invalid VendorId - Fetch Reviews",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "616e5791-81e8-4ca7-88fa-b470a1b79c24",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Invalid old password.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Invalid old password.\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ef91b3d2-2cbc-4612-a5a3-625bc6ff97a7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -9297,6 +9423,117 @@
 							"response": [
 								{
 									"id": "0bec789a-47ae-49ed-8949-6c14bd63bf79",
+									"name": "Review Order",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "customer",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"vendorId\": \"c760c3b6-41ba-4ab7-b42a-e284b6cda96a\",\n    \"orderId\": \"00573868-30ff-4e67-99eb-5dde0562e76a\",\n    \"rating\": 4\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/order/review"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "29"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4b-VQNY1pTm4duKiMX7pv+EKXvXYT0\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 01 May 2024 00:13:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Order reviewed successfully\"\n}ß"
+								}
+							]
+						},
+						{
+							"name": "Review Order Copy 2",
+							"id": "14b52cdc-9ff6-433e-aa78-2e3ef45ef0e1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"vendorId\": \"c760c3b6-41ba-4ab7-b42a-e284b6cda96a\",\n    \"orderId\": \"00573868-30ff-4e67-99eb-5dde0562e76a\",\n    \"rating\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/order/review"
+							},
+							"response": [
+								{
+									"id": "16838a90-4d71-4202-8580-048d430db85b",
 									"name": "Review Order",
 									"originalRequest": {
 										"method": "POST",
