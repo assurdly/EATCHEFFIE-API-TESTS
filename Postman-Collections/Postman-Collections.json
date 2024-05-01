@@ -3546,9 +3546,8 @@
 									],
 									"variable": [
 										{
-											"id": "19ec3b9b-a3be-4a1e-b072-3880d2488809",
 											"key": "id",
-											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784e"
 										}
 									]
 								}
@@ -3597,9 +3596,8 @@
 									],
 									"variable": [
 										{
-											"id": "19ec3b9b-a3be-4a1e-b072-3880d2488809",
 											"key": "id",
-											"value": "43a9ac61-63f1-4d7b-8f5b-b8c784ee814a"
+											"value": "{{mealsId}}"
 										}
 									]
 								}
@@ -5435,7 +5433,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "GET",
@@ -5447,7 +5445,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=58633c49-60b7-4d8c-b282-1c524231a8b6",
+									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=b282-1c524231a8b6",
 									"host": [
 										"{{base_url}}"
 									],
@@ -5458,7 +5456,7 @@
 									"query": [
 										{
 											"key": "filter[vendorId]",
-											"value": "58633c49-60b7-4d8c-b282-1c524231a8b6",
+											"value": "b282-1c524231a8b6",
 											"description": "This is required"
 										}
 									]
