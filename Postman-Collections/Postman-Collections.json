@@ -335,7 +335,7 @@
 															"",
 															"",
 															"pm.environment.set(\"onboardingOtpPhone\", onboardingOtp)",
-															"pm.environment.set(\"onboardingTokenEmail\", onboardingToken)",
+															"pm.environment.set(\"onboardingTokenPhone\", onboardingToken)",
 															"pm.environment.set(\"signedUpUserPhoneNumber\", req.phone)",
 															"",
 															"",
