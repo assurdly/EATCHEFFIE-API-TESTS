@@ -9930,15 +9930,14 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "POST",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "customer",
-										"type": "text"
+										"value": "customer"
 									}
 								],
 								"body": {
