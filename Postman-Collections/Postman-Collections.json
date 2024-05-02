@@ -2501,10 +2501,16 @@
 					},
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"phone\": \"{{signedUpUserPhoneNumber}}\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
+							"raw": "{\n    \"phone\": \"+447893929400\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
