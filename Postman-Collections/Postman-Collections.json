@@ -1992,6 +1992,14 @@
 									"\r",
 									"pm.test(\"Status code response is Ok\", function () {\r",
 									"    pm.response.to.have.status('OK');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is Ok\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -2734,6 +2742,10 @@
 											"",
 											"pm.environment.set(\"mealsId\", mealsId);",
 											"pm.environment.set(\"priceId\", priceId);",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
 											"",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -3582,6 +3594,7 @@
 											"pm.test(\"Verify that status returns 'success'\", function () {\r",
 											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
 											"});\r",
+											"\r",
 											"pm.test(\"Verify that success returns 'true'\", function () {\r",
 											"    pm.expect(pm.response.json().success).to.be.true;\r",
 											"});\r",
@@ -6491,7 +6504,6 @@
 									"script": {
 										"id": "8415b98e-628f-4520-9a40-561cf13a2f00",
 										"exec": [
-											"\r",
 											"pm.test(\"Status code is 201\", function () {\r",
 											"    pm.response.to.have.status(201);\r",
 											"});\r",
@@ -6547,7 +6559,6 @@
 									],
 									"variable": [
 										{
-											"id": "bc564ac3-0820-4e14-a521-79ec1936bea6",
 											"key": "type",
 											"value": "delivery"
 										}
