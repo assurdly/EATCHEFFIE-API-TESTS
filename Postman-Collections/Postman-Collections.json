@@ -12126,11 +12126,14 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "67f8ef94-fd12-4782-acfb-982db7efa581",
+				"id": "dda94a38-eb7f-4125-9cbd-068137d1c957",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
-					"pm.request.headers.add({ key: 'x-request-source', value: 'customer' });",
+					"pm.request.headers.add({",
+					"    key: 'x-request-source',",
+					"    value: 'customer'",
+					"});",
 					""
 				]
 			}
@@ -12138,7 +12141,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "6a0e39cb-464e-41ad-88bd-a94b0cdef84b",
+				"id": "4ef5656f-4a9c-40d6-8bc8-dbb231ccb1d5",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
