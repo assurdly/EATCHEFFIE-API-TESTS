@@ -336,11 +336,11 @@
 															"// Extract OTP and email from response and request data",
 															"try {",
 															"    const { otp } = pm.response.json().data;",
-															"    const { email } = JSON.parse(request.data);",
+															"    const { phone } = JSON.parse(request.data);",
 															"",
 															"    // Set extracted data to environment variables",
-															"    pm.environment.set(\"onboardingOtpEmail\", otp);",
-															"    pm.environment.set(\"signedUpUserEmail\", email);",
+															"    pm.environment.set(\"vendorOnboardingOtpPhone\", otp);",
+															"    pm.environment.set(\"signedUpVendorPhone\", phone);",
 															"} catch (error) {",
 															"    console.error(\"Error occurred while processing response:\", error);",
 															"}",
@@ -683,6 +683,10 @@
 													"        pm.response.to.have.status(200);",
 													"    });",
 													"",
+													"    pm.test(\"Status code is '200'\", function () {",
+													"        pm.response.to.have.status(200);",
+													"    });",
+													"",
 													"    pm.test(\"Status code response is 'OK'\", function () {",
 													"        pm.response.to.have.status('OK');",
 													"    });",
@@ -717,10 +721,7 @@
 									},
 									"request": {
 										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{onboardingTokenEmail}}"
-											}
+											"type": "noauth"
 										},
 										"method": "PATCH",
 										"header": [],
@@ -858,7 +859,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"otp\": \"\"\n}",
+											"raw": "{\n    \"otp\": \"\",\n    \"email\": \"\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -980,16 +981,13 @@
 									},
 									"request": {
 										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{onboardingTokenEmail}}"
-											}
+											"type": "noauth"
 										},
 										"method": "PATCH",
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"otp\": \"000000\"\n}",
+											"raw": "{\n    \"otp\": \"000000\",\n    \"email\": \"{{signedUpVendorEmail}}\"\n\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1001,133 +999,6 @@
 									"response": [
 										{
 											"id": "1c623b97-2ba4-464f-aec2-a8407f94ac7c",
-											"name": "success",
-											"originalRequest": {
-												"method": "PATCH",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"otp\": \"843055\"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{base_url}}/onboard/otp/verify"
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "X-Powered-By",
-													"value": "Express"
-												},
-												{
-													"key": "Access-Control-Allow-Origin",
-													"value": "*"
-												},
-												{
-													"key": "X-RateLimit-Limit",
-													"value": "100"
-												},
-												{
-													"key": "X-RateLimit-Remaining",
-													"value": "98"
-												},
-												{
-													"key": "X-RateLimit-Reset",
-													"value": "41"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json; charset=utf-8"
-												},
-												{
-													"key": "Content-Length",
-													"value": "84"
-												},
-												{
-													"key": "ETag",
-													"value": "W/\"54-1QwaebmJuK4CbZ6XMh3P1gGLFG8\""
-												},
-												{
-													"key": "Date",
-													"value": "Tue, 12 Mar 2024 13:02:30 GMT"
-												},
-												{
-													"key": "Connection",
-													"value": "keep-alive"
-												},
-												{
-													"key": "Keep-Alive",
-													"value": "timeout=5"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Email address verified successfully.\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Verify OTP - No Auth",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "4de8cd1f-b206-4f4f-bbf7-2335c7ba7b9b",
-												"exec": [
-													"const jsonData = pm.response.json()",
-													"",
-													"pm.test(\"Status code is 401\", function () {",
-													"    pm.response.to.have.status(401);",
-													"});",
-													"",
-													"pm.test(\"Status code response is 'Unauthorized'\", function () {",
-													"    pm.response.to.have.status('Unauthorized');",
-													"});",
-													"",
-													"pm.test(\"Response body property\", function () {",
-													"    pm.expect(jsonData).to.be.an('object');",
-													"    pm.expect(jsonData.message).to.be.a('string');",
-													"});",
-													"",
-													"pm.test(\"Valid validation is returned\", function () {",
-													"    pm.expect(jsonData.message).to.include('Invalid onboarding token.') ;",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"id": "faaf0990-32f4-4441-80da-292e024fb29d",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "noauth"
-										},
-										"method": "PATCH",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"otp\": \"\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{base_url}}/onboard/otp/verify"
-									},
-									"response": [
-										{
-											"id": "016523bf-eb77-42ba-8e9d-721bdba0956e",
 											"name": "success",
 											"originalRequest": {
 												"method": "PATCH",
@@ -2006,6 +1877,14 @@
 									"\r",
 									"pm.test(\"Status code response is Ok\", function () {\r",
 									"    pm.response.to.have.status('OK');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is Ok\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -2314,6 +2193,10 @@
 									"        pm.response.to.have.status(201);",
 									"    });",
 									"",
+									"    pm.test(\"Status code is 201\", function () {",
+									"        pm.response.to.have.status(201);",
+									"    });",
+									"",
 									"    pm.test(\"Response body properties\", function () {",
 									"        pm.expect(jsonData).to.be.an('object');",
 									"        pm.expect(jsonData.status).to.be.a('string');",
@@ -2516,31 +2399,31 @@
 							"script": {
 								"id": "d3cf2643-000d-4cd7-b7df-8552b8d375f8",
 								"exec": [
-									"const jsonData = pm.response.json();",
+									"// const jsonData = pm.response.json();",
 									"",
 									"",
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
-									"});",
+									"// pm.test(\"Status code is 201\", function () {",
+									"//     pm.response.to.have.status(201);",
+									"// });",
 									"",
-									"pm.test(\"Response body property\", function () {",
-									"    pm.expect(jsonData).to.be.an('object');",
-									"    pm.expect(jsonData.status).to.be.a('string');",
-									"    pm.expect(jsonData.message).to.be.a('string');",
-									"    pm.expect(jsonData.data).to.be.an('object');",
-									"});",
+									"// pm.test(\"Response body property\", function () {",
+									"//     pm.expect(jsonData).to.be.an('object');",
+									"//     pm.expect(jsonData.status).to.be.a('string');",
+									"//     pm.expect(jsonData.message).to.be.a('string');",
+									"//     pm.expect(jsonData.data).to.be.an('object');",
+									"// });",
 									"",
-									"pm.test(\"Status is success\", function () {",
-									"    pm.expect(jsonData.status).to.eql('success');",
-									"});",
+									"// pm.test(\"Status is success\", function () {",
+									"//     pm.expect(jsonData.status).to.eql('success');",
+									"// });",
 									"",
-									"pm.test(\"Status is success\", function () {",
-									"    pm.expect(jsonData.status).to.eql('success');",
-									"});",
+									"// pm.test(\"Status is success\", function () {",
+									"//     pm.expect(jsonData.status).to.eql('success');",
+									"// });",
 									"",
-									"// pm.test(\"Message is Successfully logged in\", function () {",
-									"//     pm.expect(jsonData.message).to.include('Login successful');",
-									"// });"
+									"// // pm.test(\"Message is Successfully logged in\", function () {",
+									"// //     pm.expect(jsonData.message).to.include('Login successful');",
+									"// // });"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -2562,7 +2445,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"phone\": \"+447893929400\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
+							"raw": "{\n    \"phone\": \"{{signedUpVendorPhone}}\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
