@@ -1871,21 +1871,21 @@
 							"script": {
 								"id": "bdfbfa5d-894c-41c6-8198-07e84e694501",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"// pm.test(\"Status code is 200\", function () {\r",
+									"//     pm.response.to.have.status(200);\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Status code response is Ok\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
-									"});\r",
+									"// pm.test(\"Status code response is Ok\", function () {\r",
+									"//     pm.response.to.have.status('OK');\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"// pm.test(\"Status code is 200\", function () {\r",
+									"//     pm.response.to.have.status(200);\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Status code response is Ok\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
-									"});"
+									"// pm.test(\"Status code response is Ok\", function () {\r",
+									"//     pm.response.to.have.status('OK');\r",
+									"// });"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -4238,6 +4238,842 @@
 						}
 					],
 					"id": "3a1db70e-d1f6-45f3-bd1e-d18ff0a1f9c7"
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Invite User",
+							"item": [
+								{
+									"name": "Invite User - Valid",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "83736a75-2e89-4dde-a3a9-c76fa892c2e6",
+												"exec": [
+													"try{",
+													"    const {status, success, message, data} = pm.response.json()",
+													"    console.log(data)",
+													"    pm.environment.set(\"vendorInvitedUserToken\", data.resetPasswordToken)",
+													"",
+													"    pm.test(\"Status code is '201'\", function () {",
+													"        pm.response.to.have.status(201);",
+													"    });",
+													"",
+													"    pm.test(\"Status code response is 'Created'\", function () {",
+													"        pm.response.to.have.status('Created');",
+													"    });",
+													"",
+													"    // Response body tests",
+													"    pm.test(\"Response body properties\", () => {",
+													"        pm.expect(success).to.be.true;",
+													"        pm.expect(status).to.eql(\"success\");",
+													"        pm.expect(message).to.be.a('string').and.not.empty;",
+													"    });",
+													"",
+													"    // Status and message tests",
+													"    pm.test(\"Status is success\", function () {",
+													"        pm.expect(status).to.eql('success');",
+													"    });",
+													"",
+													"    pm.test(\"Message is 'Role created successfully'\", function () {",
+													"        pm.expect(message).to.include('User created succesfully. An email has been sent with instructions on how to setup the account.');",
+													"    });",
+													"} catch (error) {",
+													"",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "ee02c388-10b9-4654-abfe-3fb502c0a521",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{vendorAccessToken}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"{{fetchedVendorRoleId}}\",\n    \"email\": \"{{$randomFirstName}}{{$randomNameSuffix}}@mailinator.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/user/invite"
+									},
+									"response": [
+										{
+											"id": "383e80de-a09b-43a1-a281-250f02256713",
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "x-request-source",
+														"value": "vendor"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"roleId\": \"ad2ba7ff-b15b-4b7d-8221-c6a3a96c8def\",\n    \"email\": \"tayoosunkiyesi@gmail.com\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{base_url}}/user/invite"
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "100"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "99"
+												},
+												{
+													"key": "X-RateLimit-Reset",
+													"value": "60"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "320"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"140-x4rVs45Izs/fn16lDCEM5Q9onVc\""
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 04 May 2024 19:50:32 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"User created succesfully. An email has been sent with instructions on how to setup the account.\",\n    \"data\": {\n        \"resetPasswordToken\": \"0e2bf0fa15bc6287ec868ef833be5a8e520d1191\", // This will not be returned in prod\n        \"resetUrl\": \"http://localhost:8180/auth/recover-password?token=0e2bf0fa15bc6287ec868ef833be5a8e520d1191\" // This will not be returned in prod\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "Invite User - Empty fields",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "83736a75-2e89-4dde-a3a9-c76fa892c2e6",
+												"exec": [
+													"try {",
+													"    const { message, data } = pm.response.json()",
+													"    console.log(data)",
+													"",
+													"    pm.test(\"Status code is '400'\", function () {",
+													"        pm.response.to.have.status(400);",
+													"    });",
+													"",
+													"    pm.test(\"Status code response is 'Bad Request'\", function () {",
+													"        pm.response.to.have.status('Bad Request');",
+													"    });",
+													"",
+													"    // Response body tests",
+													"    pm.test(\"Response body properties\", () => {",
+													"        pm.expect(message).to.be.a('string').and.not.empty;",
+													"        pm.expect(data.roleId).to.be.a('string').and.not.empty;",
+													"        pm.expect(data.email).to.be.a('string').and.not.empty;",
+													"    });",
+													"",
+													"    // Status and message tests",
+													"    pm.test(\"Role Id should not be empty\", function () {",
+													"        pm.expect(data.roleId).to.eql('roleId should not be empty');",
+													"    });",
+													"",
+													"    pm.test(\"Email should not be empty\", function () {",
+													"        pm.expect(data.email).to.eql('email should not be empty');",
+													"    });",
+													"    pm.test(\"Message is 'Role created successfully'\", function () {",
+													"        pm.expect(message).to.eql('Validation Error.');",
+													"    });",
+													"} catch (error) {",
+													"    console.error(\"Error from request is:\", error)",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "436b0207-fcbf-4e9f-b7a1-04d0161a2ab3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{vendorAccessToken}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"\",\n    \"email\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/user/invite"
+									},
+									"response": [
+										{
+											"id": "de4bba29-9056-42b5-b6b2-cf6387f3b027",
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "x-request-source",
+														"value": "vendor"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"roleId\": \"ad2ba7ff-b15b-4b7d-8221-c6a3a96c8def\",\n    \"email\": \"tayoosunkiyesi@gmail.com\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{base_url}}/user/invite"
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "100"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "99"
+												},
+												{
+													"key": "X-RateLimit-Reset",
+													"value": "60"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "320"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"140-x4rVs45Izs/fn16lDCEM5Q9onVc\""
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 04 May 2024 19:50:32 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"User created succesfully. An email has been sent with instructions on how to setup the account.\",\n    \"data\": {\n        \"resetPasswordToken\": \"0e2bf0fa15bc6287ec868ef833be5a8e520d1191\", // This will not be returned in prod\n        \"resetUrl\": \"http://localhost:8180/auth/recover-password?token=0e2bf0fa15bc6287ec868ef833be5a8e520d1191\" // This will not be returned in prod\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "Invite User - Invalid Email format",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "83736a75-2e89-4dde-a3a9-c76fa892c2e6",
+												"exec": [
+													"try {",
+													"    const { message, data } = pm.response.json()",
+													"    console.log(data)",
+													"",
+													"    pm.test(\"Status code is '400'\", function () {",
+													"        pm.response.to.have.status(400);",
+													"    });",
+													"",
+													"    pm.test(\"Status code response is 'Bad Request'\", function () {",
+													"        pm.response.to.have.status('Bad Request');",
+													"    });",
+													"",
+													"    // Response body tests",
+													"    pm.test(\"Response body properties\", () => {",
+													"        pm.expect(message).to.be.a('string').and.not.empty;",
+													"        pm.expect(data.email).to.be.a('string').and.not.empty;",
+													"    });",
+													"",
+													"    pm.test(\"Email  must be an email\", function () {",
+													"        pm.expect(data.email).to.eql('email must be an email');",
+													"    });",
+													"    pm.test(\"Message is 'Role created successfully'\", function () {",
+													"        pm.expect(message).to.eql('Validation Error.');",
+													"    });",
+													"} catch (error) {",
+													"    console.error(\"Error from request is:\", error)",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "ec8e54ef-c7d4-4270-b2fa-4acdcfe44821",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{vendorAccessToken}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"{{fetchedVendorRoleId}}\",\n    \"email\": \"{{$randomFirstName}}{{$randomNameSuffix}}mailinator\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/user/invite"
+									},
+									"response": [
+										{
+											"id": "4bcadea6-89f2-4a3c-89d1-a0a2d7bf35b5",
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "x-request-source",
+														"value": "vendor"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"roleId\": \"ad2ba7ff-b15b-4b7d-8221-c6a3a96c8def\",\n    \"email\": \"tayoosunkiyesi@gmail.com\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{base_url}}/user/invite"
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "100"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "99"
+												},
+												{
+													"key": "X-RateLimit-Reset",
+													"value": "60"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "320"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"140-x4rVs45Izs/fn16lDCEM5Q9onVc\""
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 04 May 2024 19:50:32 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"User created succesfully. An email has been sent with instructions on how to setup the account.\",\n    \"data\": {\n        \"resetPasswordToken\": \"0e2bf0fa15bc6287ec868ef833be5a8e520d1191\", // This will not be returned in prod\n        \"resetUrl\": \"http://localhost:8180/auth/recover-password?token=0e2bf0fa15bc6287ec868ef833be5a8e520d1191\" // This will not be returned in prod\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "Invite User - Non-existing Role Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "83736a75-2e89-4dde-a3a9-c76fa892c2e6",
+												"exec": [
+													"try {",
+													"    const { message, data } = pm.response.json()",
+													"    console.log(data)",
+													"",
+													"    pm.test(\"Status code is '400'\", function () {",
+													"        pm.response.to.have.status(400);",
+													"    });",
+													"",
+													"    pm.test(\"Status code response is 'Bad Request'\", function () {",
+													"        pm.response.to.have.status('Bad Request');",
+													"    });",
+													"",
+													"    // Response body tests",
+													"    pm.test(\"Response body properties\", () => {",
+													"        pm.expect(message).to.be.a('string').and.not.empty;",
+													"    });",
+													"",
+													"    pm.test(\"Message is invalid role\", function () {",
+													"        pm.expect(message).to.eql('Invalid role');",
+													"    });",
+													"",
+													"} catch (error) {",
+													"    console.error(\"Error from request is:\", error)",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "bd76f96a-200e-4390-807c-af6ed758b6be",
+												"exec": [
+													"// const randomUUID = {{$guid}}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "b891d76b-1118-405c-9532-a83cea6666cf",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{vendorAccessToken}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"{{$guid}}\",\n    \"email\": \"{{$randomFirstName}}{{$randomNameSuffix}}@mailinator.com\"\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/user/invite"
+									},
+									"response": [
+										{
+											"id": "85e66320-1853-42a4-8f6f-194c41a437b4",
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "x-request-source",
+														"value": "vendor"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"roleId\": \"ad2ba7ff-b15b-4b7d-8221-c6a3a96c8def\",\n    \"email\": \"tayoosunkiyesi@gmail.com\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{base_url}}/user/invite"
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "100"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "99"
+												},
+												{
+													"key": "X-RateLimit-Reset",
+													"value": "60"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "320"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"140-x4rVs45Izs/fn16lDCEM5Q9onVc\""
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 04 May 2024 19:50:32 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"User created succesfully. An email has been sent with instructions on how to setup the account.\",\n    \"data\": {\n        \"resetPasswordToken\": \"0e2bf0fa15bc6287ec868ef833be5a8e520d1191\", // This will not be returned in prod\n        \"resetUrl\": \"http://localhost:8180/auth/recover-password?token=0e2bf0fa15bc6287ec868ef833be5a8e520d1191\" // This will not be returned in prod\n    }\n}"
+										}
+									]
+								}
+							],
+							"id": "1e2f9f85-31df-48e8-93ad-0b662e6767c1"
+						},
+						{
+							"name": "Setup User with Emai;",
+							"item": [
+								{
+									"name": "Setup user with email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "25f0d8d5-6b0a-40a2-ace4-e29d9fc1f252",
+												"exec": [
+													"try{",
+													"    const {status, success, message, data} = pm.response.json()",
+													"",
+													"    pm.test(\"Status code is '201'\", function () {",
+													"        pm.response.to.have.status(201);",
+													"    });",
+													"",
+													"    pm.test(\"Status code response is 'Created'\", function () {",
+													"        pm.response.to.have.status('Created');",
+													"    });",
+													"",
+													"    // Response body tests",
+													"    pm.test(\"Response body properties\", () => {",
+													"        pm.expect(success).to.be.true;",
+													"        pm.expect(status).to.eql(\"success\");",
+													"        pm.expect(message).to.be.a('string').and.not.empty;",
+													"    });",
+													"",
+													"    pm.test(\"Message is 'Successfully setup account'\", function () {",
+													"        pm.expect(message).to.include('Successfully setup account');",
+													"    });",
+													"} catch (error) {",
+													"",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "188e7df0-8f6b-4ab0-a0b2-73b5d1731198",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"{{$randomFirstName}}\",\n    \"lastName\": \"{{$randomLastName}}\",\n    \"password\": \"Password12@@\",\n    \"confirmPassword\": \"Password12@@\",\n    \"token\": \"{{vendorInvitedUserToken}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/user/setup"
+									},
+									"response": [
+										{
+											"id": "90a24fbb-d242-4495-a501-cc710958f85d",
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "x-request-source",
+														"value": "vendor"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"firstName\": \"Temitayo\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"0e2bf0fa15bc6287ec868ef833be5a8e520d1191\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{base_url}}/user/setup"
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "100"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "98"
+												},
+												{
+													"key": "X-RateLimit-Reset",
+													"value": "12"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "118"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"76-BsI8WylV+oGuVd4y6/nv3STv93I\""
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 04 May 2024 19:55:05 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully setup account\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDk3YzUzLTY1ZjgtNDAxOS1hODM0LWI1ZmM2MjhjZjk1YiIsImlhdCI6MTcxNDg1MjY1NywiZXhwIjoxNzE4NDUyNjU3fQ.RuRzVpX9UHU4SYP0o18lVKWqf6jeCjQU7MpTsn1DXuU\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDk3YzUzLTY1ZjgtNDAxOS1hODM0LWI1ZmM2MjhjZjk1YiIsImlhdCI6MTcxNDg1MjY1NywiZXhwIjoxNzE0ODU2MjU3fQ.74tjhaMJbSqx3ygNAqg98VsWMeqd6BUK_JeZNNRKevQ\"\n    }\n}"
+										}
+									]
+								}
+							],
+							"id": "571cc86e-91bf-4db0-8635-454eeaa2275e"
+						},
+						{
+							"name": "Setup User with oauth",
+							"item": [
+								{
+									"name": "Setup user with oauth",
+									"id": "c4265a26-6d6e-4604-92bf-89d7cf40d467",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
+								}
+							],
+							"id": "d92b8566-ebaf-4f74-b083-d68b2a64a184"
+						},
+						{
+							"name": "List Users",
+							"item": [
+								{
+									"name": "List Users",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ba3ab32f-db00-4a38-afab-fcb6d0e7e924",
+												"exec": [
+													"try {",
+													"    const { status, success, message, data } = pm.response.json()",
+													"",
+													"    pm.test(\"Status code is 200\", function () {",
+													"        pm.response.to.have.status(200);",
+													"    });",
+													"",
+													"    pm.test(\"Status code response is Ok\", function () {",
+													"        pm.response.to.have.status('OK');",
+													"    });",
+													"",
+													"    pm.test(\"Response body property\", function () {",
+													"        pm.expect(status).to.be.a(\"string\");",
+													"        pm.expect(message).to.be.a('string');",
+													"        pm.expect(success).to.be.true;",
+													"",
+													"    });",
+													"",
+													"    pm.test(\"Status is success\", function () {",
+													"        pm.expect(status).to.eql('success');",
+													"    });",
+													"",
+													"    pm.test(\"Status is success\", function () {",
+													"        pm.expect(status).to.eql('success');",
+													"    });",
+													"",
+													"    pm.test(\"Message is Verified Successfully\", function () {",
+													"        pm.expect(message).to.include('Fetched users successfully');",
+													"    });",
+													"",
+													"} catch (error) {",
+													"    console.error(\"Error running tests\", error)",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "ab8a5be7-5755-4df5-9cb3-e15e81816cbc",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{vendorAccessToken}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "vendor",
+												"disabled": true
+											}
+										],
+										"url": "{{base_url}}/users"
+									},
+									"response": []
+								}
+							],
+							"id": "d63fc95e-2e5a-4673-9227-39c6ccbdf6ae"
+						}
+					],
+					"id": "f3b0288e-ce12-40b8-b058-d430f7b66e64"
 				}
 			],
 			"id": "1aac72ee-7322-4223-bf80-216136f3f60f"
