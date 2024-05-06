@@ -13443,30 +13443,25 @@
 					]
 				},
 				{
-					"name": "Valid - Verify Forgot Password OTP Copy",
+					"name": "Invalid email - Verify Forgot Password OTP",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "fab9b182-1d5c-4f5a-a8d7-4cf2a4116d20",
 								"exec": [
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
-									"pm.test(\"Status code response is 'OK'\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
 									"});\r",
-									"pm.test(\"Verify that status returns 'success'\", function () {\r",
-									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
 									"});\r",
-									"pm.test(\"Verify that success returns 'true'\", function () {\r",
-									"    pm.expect(pm.response.json().success).to.be.true;\r",
-									"});\r",
-									"pm.test(\"Verify that status returns 'OTP verified successfully'\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"OTP verified successfully\");\r",
-									"});\r",
-									""
+									"pm.test(\"Verify that data returns 'email must be an email'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"email must be an email\");\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -13488,7 +13483,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"Adelle@mailinator.com\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
+							"raw": "{\n    \"email\": \"Adellemailinator.com\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -13500,6 +13495,262 @@
 					"response": [
 						{
 							"id": "94a9d2e7-88af-4df4-930b-7b82897d7487",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    \"otp\": \"416881\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/reset/otp"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "35"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-rYjDrt5dak4d7JUt8im/FnmpGek\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:08:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"OTP verified successfully\",\n    \"data\": {\n        \"otp\": \"c1f56805a712e6863fde01a0694a4e93013c665e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "No email - Verify Forgot Password OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fab9b182-1d5c-4f5a-a8d7-4cf2a4116d20",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'email should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"email should not be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "efef93ee-9242-42f5-9b1a-07e86be1d4b6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset/otp"
+					},
+					"response": [
+						{
+							"id": "b403ed1e-efb1-4bb0-9e5f-0b54d160950c",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    \"otp\": \"416881\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/reset/otp"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "35"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-rYjDrt5dak4d7JUt8im/FnmpGek\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:08:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"OTP verified successfully\",\n    \"data\": {\n        \"otp\": \"c1f56805a712e6863fde01a0694a4e93013c665e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "No email - Verify Forgot Password OTP Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fab9b182-1d5c-4f5a-a8d7-4cf2a4116d20",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'email should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"email should not be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "47433438-225b-4729-9f19-0adcb1304751",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset/otp"
+					},
+					"response": [
+						{
+							"id": "afa0e676-a3b9-4e8b-8cf6-92a972ae5c6d",
 							"name": "success",
 							"originalRequest": {
 								"method": "POST",
