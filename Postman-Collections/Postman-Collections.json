@@ -13837,7 +13837,56 @@
 			"name": "Reset Password",
 			"item": [
 				{
-					"name": "Valid - Reset Password",
+					"name": "Mismatch - Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "77d609c9-c6d3-4437-a3eb-97d1256f04ab",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Passwords do not match'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Passwords do not match\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "55446179-49de-40e3-9dfd-a6eab4f3d812",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password12#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "Mismatch - Reset Password Copy",
 					"event": [
 						{
 							"listen": "test",
@@ -13867,7 +13916,7 @@
 							}
 						}
 					],
-					"id": "55446179-49de-40e3-9dfd-a6eab4f3d812",
+					"id": "bcee411c-318f-431f-aca8-9a4b36250037",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
