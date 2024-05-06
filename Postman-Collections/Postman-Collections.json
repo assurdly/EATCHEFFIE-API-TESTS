@@ -13317,6 +13317,10 @@
 							"script": {
 								"id": "fab9b182-1d5c-4f5a-a8d7-4cf2a4116d20",
 								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const forgotPasswordtoken = jsonData.data.otp; \r",
+									"\r",
+									"pm.environment.set(\"forgotPasswordtoken\", forgotPasswordtoken);\r",
 									"\r",
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -13939,7 +13943,7 @@
 					"response": []
 				},
 				{
-					"name": "Invalid otp - Reset Password Copy",
+					"name": "Complexity- Reset Password",
 					"event": [
 						{
 							"listen": "test",
@@ -13952,8 +13956,8 @@
 									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 									"    pm.response.to.have.status(\"Bad Request\");\r",
 									"});\r",
-									"pm.test(\"Verify that message returns 'Oops! That reset password token is invalid. Please try again.'\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"Oops! That reset password token is invalid. Please try again.\");\r",
+									"pm.test(\"Verify that message returns 'password is not strong enough'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"password is not strong enough\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -13976,7 +13980,56 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"c1f712e6863fde01a0694a4e93013c665e\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password1\",\n    \"confirmPassword\": \"Password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "Complexity- Reset Password Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c036902e-8156-4923-94eb-1e5e2aa4ad43",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'password is not strong enough'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"password is not strong enough\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "5e4c481f-6e7c-475d-8cfe-795a4320ee72",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password1\",\n    \"confirmPassword\": \"Password1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
