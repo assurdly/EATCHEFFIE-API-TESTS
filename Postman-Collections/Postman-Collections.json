@@ -13699,7 +13699,7 @@
 					]
 				},
 				{
-					"name": "No email - Verify Forgot Password OTP Copy",
+					"name": "No otp - Verify Forgot Password OTP",
 					"event": [
 						{
 							"listen": "test",
@@ -13715,8 +13715,8 @@
 									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
 									"});\r",
-									"pm.test(\"Verify that data returns 'email should not be empty'\", function () {\r",
-									"    pm.expect(pm.response.json().data.email).to.include(\"email should not be empty\");\r",
+									"pm.test(\"Verify that data returns 'otp should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.otp).to.include(\"otp should not be empty\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -13739,7 +13739,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
+							"raw": "{\n    \"email\": \"adelle@yopmail.com\",\n    \"otp\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -13830,31 +13830,37 @@
 			"id": "3310fbcb-352b-4312-81a0-64aec19a95b4"
 		},
 		{
-			"name": "Reset Password Copy",
-			"id": "55446179-49de-40e3-9dfd-a6eab4f3d812",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "x-request-source",
-						"value": "customer"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"token\": \"c1f56805a712e6863fde01a0694a4e93013c665e\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{base_url}}/password/reset"
-			},
-			"response": []
+			"name": "Reset Password",
+			"item": [
+				{
+					"name": "Reset Password Copy",
+					"id": "55446179-49de-40e3-9dfd-a6eab4f3d812",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"c1f56805a712e6863fde01a0694a4e93013c665e\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
+				}
+			],
+			"id": "8f89a042-9ba2-4000-8164-8691515f1a1d"
 		},
 		{
 			"name": "Signup - Valid Duplicate",
