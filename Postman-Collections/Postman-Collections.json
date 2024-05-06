@@ -12914,6 +12914,115 @@
 			"id": "b0417738-fa57-412c-9d6c-ffa54143f93a"
 		},
 		{
+			"name": "Forgot Password",
+			"item": [
+				{
+					"name": "Forgot Password",
+					"id": "77558199-cbfc-45f2-af86-b909c6eef53a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"tayoosunkiyesi@gmail.com\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/forgot"
+					},
+					"response": [
+						{
+							"id": "a95ab4db-4dd3-45c1-8bbe-7beaee04670c",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"tayoosunkiyesi@gmail.com\" \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/forgot"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "39"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-ZUPfvJbTi94qgL4i7w96ZTJlqnk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:05:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"An email has been sent with instructions on how to recover your account.\",\n    \"data\": {\n        \"otp\": \"416881\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "86907314-c3c1-4284-a731-441d2cc111ce"
+		},
+		{
 			"name": "Signup - Valid Duplicate",
 			"event": [
 				{
@@ -13060,109 +13169,6 @@
 					"cookie": [],
 					"responseTime": null,
 					"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Welcome to EatCheffie. Please proceed to verify your email address.\",\n    \"data\": {\n        \"otp\": \"623218\",\n        \"onboardingToken\": \"7b6057a0b76e4b94cf645b3c5756c841479dc487\"\n    }\n}"
-				}
-			]
-		},
-		{
-			"name": "Forgot Password Copy",
-			"id": "77558199-cbfc-45f2-af86-b909c6eef53a",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "x-request-source",
-						"value": "customer"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\":\"tayoosunkiyesi@gmail.com\" \n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{base_url}}/password/forgot"
-			},
-			"response": [
-				{
-					"id": "a95ab4db-4dd3-45c1-8bbe-7beaee04670c",
-					"name": "success",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "customer"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\":\"tayoosunkiyesi@gmail.com\" \n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/password/forgot"
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "100"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "98"
-						},
-						{
-							"key": "X-RateLimit-Reset",
-							"value": "39"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "144"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"90-ZUPfvJbTi94qgL4i7w96ZTJlqnk\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 06 May 2024 13:05:12 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"responseTime": null,
-					"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"An email has been sent with instructions on how to recover your account.\",\n    \"data\": {\n        \"otp\": \"416881\"\n    }\n}"
 				}
 			]
 		},
