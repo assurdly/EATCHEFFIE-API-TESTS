@@ -14094,6 +14094,58 @@
 						"url": "{{base_url}}/password/reset"
 					},
 					"response": []
+				},
+				{
+					"name": "No ConfirmPassword- Reset Password Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c036902e-8156-4923-94eb-1e5e2aa4ad43",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'password should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"password should not be empty\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'password should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.password).to.include(\"password should not be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "ed9ea176-bd62-45cc-b3da-4954b7a31d0d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"\",\n    \"confirmPassword\": \"Password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
 				}
 			],
 			"id": "8f89a042-9ba2-4000-8164-8691515f1a1d"
