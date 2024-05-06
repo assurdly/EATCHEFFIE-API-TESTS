@@ -13018,6 +13018,131 @@
 							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"An email has been sent with instructions on how to recover your account.\",\n    \"data\": {\n        \"otp\": \"416881\"\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "Invalid Email - Forgot Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6f41904a-e391-48fc-89f2-082984cadcf2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Invalid email format'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Invalid email format\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "953aece7-0e92-4a54-bf16-1f6c121ccb08",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"tayoosunkiyesigmail.com\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/forgot"
+					},
+					"response": [
+						{
+							"id": "0874be42-00cd-4c52-be86-665808cbfed8",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"tayoosunkiyesi@gmail.com\" \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/forgot"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "39"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-ZUPfvJbTi94qgL4i7w96ZTJlqnk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:05:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"An email has been sent with instructions on how to recover your account.\",\n    \"data\": {\n        \"otp\": \"416881\"\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "86907314-c3c1-4284-a731-441d2cc111ce"
