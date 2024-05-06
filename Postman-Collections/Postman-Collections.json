@@ -13833,8 +13833,65 @@
 			"name": "Reset Password",
 			"item": [
 				{
-					"name": "Reset Password Copy",
+					"name": "Valid - Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "77d609c9-c6d3-4437-a3eb-97d1256f04ab",
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code response is 'OK'\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'success'\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"});\r",
+									"pm.test(\"Verify that success returns 'true'\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'You have successfully reset your password. Please proceed to login again.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"You have successfully reset your password. Please proceed to login again.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "55446179-49de-40e3-9dfd-a6eab4f3d812",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Copy 2",
+					"id": "7678344a-429f-4398-9709-0054f265cd28",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
