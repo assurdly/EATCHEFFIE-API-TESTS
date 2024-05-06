@@ -12918,6 +12918,39 @@
 			"item": [
 				{
 					"name": "Valid - Forgot Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7eea12ff-6d8b-4537-856b-2de9f89edbfa",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const forgotPasswordotp = jsonData.data.otp; \r",
+									"\r",
+									"pm.environment.set(\"forgotPasswordotp\", forgotPasswordotp);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code response is 'OK'\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'success'\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"});\r",
+									"pm.test(\"Verify that success returns 'true'\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'An email has been sent with instructions on how to recover your account.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"An email has been sent with instructions on how to recover your account.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "77558199-cbfc-45f2-af86-b909c6eef53a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -12927,12 +12960,13 @@
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "customer"
+								"value": "customer",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"tayoosunkiyesi@gmail.com\" \n}",
+							"raw": "{\n    \"email\":\"Adelle@mailinator.com\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -13145,7 +13179,7 @@
 					]
 				},
 				{
-					"name": "Invalid Email - Forgot Password Copy",
+					"name": "No Email - Forgot Password",
 					"event": [
 						{
 							"listen": "test",
@@ -13273,40 +13307,15 @@
 			"id": "86907314-c3c1-4284-a731-441d2cc111ce"
 		},
 		{
-			"name": "New Folder",
-			"item": [],
-			"id": "3310fbcb-352b-4312-81a0-64aec19a95b4"
-		},
-		{
-			"name": "Verify Forgot Password OTP Copy",
-			"id": "7c6c8532-acf0-4a6d-a0eb-88bcb6949a5f",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "x-request-source",
-						"value": "customer"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    \"otp\": \"416881\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{base_url}}/password/reset/otp"
-			},
-			"response": [
+			"name": "Verify Forgot Password OTP",
+			"item": [
 				{
-					"id": "f875f64a-d92c-4964-93bc-7613bbc71829",
-					"name": "success",
-					"originalRequest": {
+					"name": "Verify Forgot Password OTP Copy",
+					"id": "7c6c8532-acf0-4a6d-a0eb-88bcb6949a5f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
 						"method": "POST",
 						"header": [
 							{
@@ -13325,60 +13334,86 @@
 						},
 						"url": "{{base_url}}/password/reset/otp"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "100"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "98"
-						},
-						{
-							"key": "X-RateLimit-Reset",
-							"value": "35"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "131"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"83-rYjDrt5dak4d7JUt8im/FnmpGek\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 06 May 2024 13:08:16 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"id": "f875f64a-d92c-4964-93bc-7613bbc71829",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    \"otp\": \"416881\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/reset/otp"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "35"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-rYjDrt5dak4d7JUt8im/FnmpGek\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:08:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"OTP verified successfully\",\n    \"data\": {\n        \"otp\": \"c1f56805a712e6863fde01a0694a4e93013c665e\"\n    }\n}"
 						}
-					],
-					"cookie": [],
-					"responseTime": null,
-					"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"OTP verified successfully\",\n    \"data\": {\n        \"otp\": \"c1f56805a712e6863fde01a0694a4e93013c665e\"\n    }\n}"
+					]
 				}
-			]
+			],
+			"id": "3310fbcb-352b-4312-81a0-64aec19a95b4"
 		},
 		{
 			"name": "Reset Password Copy",
