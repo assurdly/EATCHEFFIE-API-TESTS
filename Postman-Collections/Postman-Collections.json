@@ -12917,7 +12917,7 @@
 			"name": "Forgot Password",
 			"item": [
 				{
-					"name": "Forgot Password",
+					"name": "Invalid Email - Forgot Password",
 					"id": "77558199-cbfc-45f2-af86-b909c6eef53a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
