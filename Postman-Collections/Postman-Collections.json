@@ -12267,7 +12267,7 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"pm.test(\"Status code response is 'OK'\", function () {\r",
-									"    pm.response.to.have.status('Ok');\r",
+									"    pm.response.to.have.status('OK');\r",
 									"});\r",
 									"pm.test(\"Verify that status returns 'success'\", function () {\r",
 									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
@@ -12917,7 +12917,7 @@
 			"name": "Forgot Password",
 			"item": [
 				{
-					"name": "Invalid Email - Forgot Password",
+					"name": "Valid - Forgot Password",
 					"id": "77558199-cbfc-45f2-af86-b909c6eef53a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
