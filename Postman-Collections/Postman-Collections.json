@@ -1916,8 +1916,23 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Requested-With",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"purpose\": \"signup\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{base_url}}/oauth/google"
 					},
 					"response": [
