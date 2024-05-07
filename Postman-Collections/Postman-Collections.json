@@ -1889,21 +1889,12 @@
 							"script": {
 								"id": "bdfbfa5d-894c-41c6-8198-07e84e694501",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"\r",
-									"pm.test(\"Status code response is Ok\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status code response is Ok\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
+									"pm.test(\"Status code response is 'Created'\", function () {\r",
+									"    pm.response.to.have.status('Created');\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -1919,7 +1910,7 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "X-Requested-With",
+								"key": "x-request-source",
 								"value": "customer",
 								"disabled": true
 							}
@@ -2007,12 +1998,12 @@
 							"script": {
 								"id": "60fe790e-5318-4918-b28b-351f4f7f4547",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Status code response is Ok\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
+									"pm.test(\"Status code response is 'Created'\", function () {\r",
+									"    pm.response.to.have.status('Created');\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -2025,8 +2016,17 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"purpose\": \"signup\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{base_url}}/oauth/apple"
 					},
 					"response": [
@@ -2124,14 +2124,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"code\": \"4/0AeaYSHDXAmrTGpEaIipxF-YR18sD1WaRb5sg_dfV2xfWFX9wqxT72gcOle357OCMuPjq5Q&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&hd=assurdly.com&prompt=consent\"\n}",
+							"raw": "{\n    \"code\": \"cb5a8b3b02a2444c4b6a9b9aa2fb39081.0.murq.CLhVWev57_zbTWRiNUhYwg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{base_url}}/oauth/google/complete"
+						"url": "{{base_url}}/oauth/apple/complete"
 					},
 					"response": [
 						{
