@@ -13886,7 +13886,7 @@
 					"response": []
 				},
 				{
-					"name": "Mismatch - Reset Password Copy",
+					"name": "Valid - Reset Password",
 					"event": [
 						{
 							"listen": "test",
