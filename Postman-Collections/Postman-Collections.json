@@ -1889,21 +1889,12 @@
 							"script": {
 								"id": "bdfbfa5d-894c-41c6-8198-07e84e694501",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"\r",
-									"pm.test(\"Status code response is Ok\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status code response is Ok\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
+									"pm.test(\"Status code response is 'Created'\", function () {\r",
+									"    pm.response.to.have.status('Created');\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -1916,8 +1907,23 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"purpose\": \"signup\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{base_url}}/oauth/google"
 					},
 					"response": [
@@ -1992,12 +1998,12 @@
 							"script": {
 								"id": "60fe790e-5318-4918-b28b-351f4f7f4547",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Status code response is Ok\", function () {\r",
-									"    pm.response.to.have.status('OK');\r",
+									"pm.test(\"Status code response is 'Created'\", function () {\r",
+									"    pm.response.to.have.status('Created');\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -2010,8 +2016,17 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"purpose\": \"signup\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{base_url}}/oauth/apple"
 					},
 					"response": [
@@ -2109,14 +2124,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"code\": \"4/0AeaYSHDXAmrTGpEaIipxF-YR18sD1WaRb5sg_dfV2xfWFX9wqxT72gcOle357OCMuPjq5Q&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&hd=assurdly.com&prompt=consent\"\n}",
+							"raw": "{\n    \"code\": \"cb5a8b3b02a2444c4b6a9b9aa2fb39081.0.murq.CLhVWev57_zbTWRiNUhYwg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{base_url}}/oauth/google/complete"
+						"url": "{{base_url}}/oauth/apple/complete"
 					},
 					"response": [
 						{
@@ -3874,6 +3889,360 @@
 							"response": [
 								{
 									"id": "33d9fbbc-b4ca-4e38-975b-f750225a4fb9",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/vendors?filter[category]=thai",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"vendors"
+											],
+											"query": [
+												{
+													"key": "filter[q]",
+													"value": "luigi",
+													"disabled": true
+												},
+												{
+													"key": "filter[category]",
+													"value": "thai"
+												},
+												{
+													"key": "filter[rating][gte]",
+													"value": "3",
+													"disabled": true
+												},
+												{
+													"key": "filter[rating][lte]",
+													"value": "5",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "92"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "55"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1015"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3f7-2FPnFjwI8pC68D+LghyKkD1ijRY\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 24 Mar 2024 21:51:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Vendors fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-24T17:59:06.339Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.339Z\",\n            \"name\": \"Spicy Seoul\",\n            \"description\": \"Authentic Korean cuisine bursting with flavor. Try our bibimbap, bulgogi, or kimchi jjigae.\",\n            \"address\": \"456 Elm St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-24T17:59:06.389Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.389Z\",\n            \"name\": \"Smokey Q BBQ\",\n            \"description\": \"Slow-cooked and smoked meats that will tantalize your taste buds. We offer pulled pork, brisket, ribs, and more, all slathered in our signature BBQ sauce.\",\n            \"address\": \"1213 Pine St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 2,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Vendors by name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4b69f098-790e-4652-973b-fe1831394263",
+										"exec": [
+											"const jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Status code name has OK\", function () {",
+											"    pm.response.to.have.status(\"OK\");",
+											"});",
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"",
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().status).to.eql('success');",
+											"});",
+											"",
+											"pm.test(\"Verify that success returns 'true'\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"pm.test(\"Verify that message returns 'Vendors fetched successfully'\", function () {",
+											"    pm.expect(pm.response.json().message).to.eql(\"Vendors fetched successfully\");",
+											"});",
+											"pm.test(\"Verify that data returns address details'\", function () {",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "db0fa3c3-c3b8-408a-aefe-c59204eb7b03",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/vendors?filter[q]=Spicy Seoul",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendors"
+									],
+									"query": [
+										{
+											"key": "filter[q]",
+											"value": "Spicy Seoul"
+										},
+										{
+											"key": "filter[category]",
+											"value": "thai",
+											"disabled": true
+										},
+										{
+											"key": "filter[rating][gte]",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "filter[rating][lte]",
+											"value": "5",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "e5df7c18-e2b0-4c0f-91e6-b4ddf2ca9ec4",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/vendors?filter[category]=thai",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"vendors"
+											],
+											"query": [
+												{
+													"key": "filter[q]",
+													"value": "luigi",
+													"disabled": true
+												},
+												{
+													"key": "filter[category]",
+													"value": "thai"
+												},
+												{
+													"key": "filter[rating][gte]",
+													"value": "3",
+													"disabled": true
+												},
+												{
+													"key": "filter[rating][lte]",
+													"value": "5",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "92"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "55"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1015"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3f7-2FPnFjwI8pC68D+LghyKkD1ijRY\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 24 Mar 2024 21:51:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Vendors fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-24T17:59:06.339Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.339Z\",\n            \"name\": \"Spicy Seoul\",\n            \"description\": \"Authentic Korean cuisine bursting with flavor. Try our bibimbap, bulgogi, or kimchi jjigae.\",\n            \"address\": \"456 Elm St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-24T17:59:06.389Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.389Z\",\n            \"name\": \"Smokey Q BBQ\",\n            \"description\": \"Slow-cooked and smoked meats that will tantalize your taste buds. We offer pulled pork, brisket, ribs, and more, all slathered in our signature BBQ sauce.\",\n            \"address\": \"1213 Pine St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 2,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Vendors by category",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4b69f098-790e-4652-973b-fe1831394263",
+										"exec": [
+											"const jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Status code name has OK\", function () {",
+											"    pm.response.to.have.status(\"OK\");",
+											"});",
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"",
+											"pm.test(\"Status is success\", function () {",
+											"    pm.expect(pm.response.json().status).to.eql('success');",
+											"});",
+											"",
+											"pm.test(\"Verify that success returns 'true'\", function () {",
+											"    pm.expect(pm.response.json().success).to.be.true;",
+											"});",
+											"pm.test(\"Verify that message returns 'Vendors fetched successfully'\", function () {",
+											"    pm.expect(pm.response.json().message).to.eql(\"Vendors fetched successfully\");",
+											"});",
+											"pm.test(\"Verify that data returns address details'\", function () {",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3e6ad6b4-0d49-4eb9-9132-84d83967b498",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/vendors?filter[category]=indian",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendors"
+									],
+									"query": [
+										{
+											"key": "filter[q]",
+											"value": "Spicy Seoul",
+											"disabled": true
+										},
+										{
+											"key": "filter[category]",
+											"value": "indian"
+										},
+										{
+											"key": "filter[rating][gte]",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "filter[rating][lte]",
+											"value": "5",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "efe5cbab-069c-4a21-b318-f18122865806",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
@@ -11813,6 +12182,92 @@
 			"id": "6df8fe2b-8fa1-46a1-8162-d443252b540e"
 		},
 		{
+			"name": "Become a Vendor",
+			"item": [
+				{
+					"name": "Valid - Become a Vendor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "948c0364-aa53-481d-b64d-f28f74654b8d",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Created'\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"pm.test(\"Status is success\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"});\r",
+									"pm.test(\"success is true\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.true;\r",
+									"});\r",
+									"pm.test(\"message is 'You have become a vendor successfully'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"You have become a vendor successfully\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "848e934b-43b4-4be6-8f6e-f79554e3b8a1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{accessToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{base_url}}/user/promote"
+					},
+					"response": []
+				},
+				{
+					"name": "No Auth - Become a Vendor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "948c0364-aa53-481d-b64d-f28f74654b8d",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "e769647f-de7b-4f03-a532-848ec2fc1e81",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{base_url}}/user/promote"
+					},
+					"response": []
+				}
+			],
+			"id": "aa39e4c0-b0ba-4345-8e17-e791719435d2"
+		},
+		{
 			"name": "Logout",
 			"item": [
 				{
@@ -11823,11 +12278,11 @@
 							"script": {
 								"id": "e9a2c714-7604-4d88-bd38-d2f01711d497",
 								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Status code response is 'Created'\", function () {\r",
-									"    pm.response.to.have.status('Created');\r",
+									"pm.test(\"Status code response is 'OK'\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
 									"});\r",
 									"pm.test(\"Verify that status returns 'success'\", function () {\r",
 									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
@@ -12474,30 +12929,161 @@
 			"id": "b0417738-fa57-412c-9d6c-ffa54143f93a"
 		},
 		{
-			"name": "Become a Vendor",
+			"name": "Forgot Password",
 			"item": [
 				{
-					"name": "Valid - Become a Vendor",
+					"name": "Valid - Forgot Password",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "948c0364-aa53-481d-b64d-f28f74654b8d",
+								"id": "7eea12ff-6d8b-4537-856b-2de9f89edbfa",
 								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
+									"const jsonData = pm.response.json();\r",
+									"const forgotPasswordotp = jsonData.data.otp; \r",
+									"\r",
+									"pm.environment.set(\"forgotPasswordotp\", forgotPasswordotp);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Status code name has 'Created'\", function () {\r",
-									"    pm.response.to.have.status(\"Created\");\r",
+									"pm.test(\"Status code response is 'OK'\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
 									"});\r",
-									"pm.test(\"Status is success\", function () {\r",
+									"pm.test(\"Verify that status returns 'success'\", function () {\r",
 									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
 									"});\r",
-									"pm.test(\"success is true\", function () {\r",
+									"pm.test(\"Verify that success returns 'true'\", function () {\r",
 									"    pm.expect(pm.response.json().success).to.be.true;\r",
 									"});\r",
-									"pm.test(\"message is 'You have become a vendor successfully'\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.eql(\"You have become a vendor successfully\");\r",
+									"pm.test(\"Verify that status returns 'An email has been sent with instructions on how to recover your account.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"An email has been sent with instructions on how to recover your account.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "77558199-cbfc-45f2-af86-b909c6eef53a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"Adelle@mailinator.com\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/forgot"
+					},
+					"response": [
+						{
+							"id": "a95ab4db-4dd3-45c1-8bbe-7beaee04670c",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"tayoosunkiyesi@gmail.com\" \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/forgot"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "39"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-ZUPfvJbTi94qgL4i7w96ZTJlqnk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:05:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"An email has been sent with instructions on how to recover your account.\",\n    \"data\": {\n        \"otp\": \"416881\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Invalid Email - Forgot Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6f41904a-e391-48fc-89f2-082984cadcf2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Invalid email format'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Invalid email format\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -12505,36 +13091,888 @@
 							}
 						}
 					],
-					"id": "848e934b-43b4-4be6-8f6e-f79554e3b8a1",
+					"id": "953aece7-0e92-4a54-bf16-1f6c121ccb08",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{accessToken}}"
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"tayoosunkiyesigmail.com\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
 							}
 						},
+						"url": "{{base_url}}/password/forgot"
+					},
+					"response": [
+						{
+							"id": "0874be42-00cd-4c52-be86-665808cbfed8",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"tayoosunkiyesi@gmail.com\" \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/forgot"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "39"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-ZUPfvJbTi94qgL4i7w96ZTJlqnk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:05:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"An email has been sent with instructions on how to recover your account.\",\n    \"data\": {\n        \"otp\": \"416881\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "No Email - Forgot Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6f41904a-e391-48fc-89f2-082984cadcf2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'email should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"email should not be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "27e9ed62-57c6-42fb-888e-7fb42a4f6ba1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
 						"method": "POST",
-						"header": [],
-						"url": "{{base_url}}/user/promote"
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/forgot"
+					},
+					"response": [
+						{
+							"id": "2577edd4-7fac-4aa6-a021-ab19de1d93ae",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"tayoosunkiyesi@gmail.com\" \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/forgot"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "39"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-ZUPfvJbTi94qgL4i7w96ZTJlqnk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:05:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"An email has been sent with instructions on how to recover your account.\",\n    \"data\": {\n        \"otp\": \"416881\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "86907314-c3c1-4284-a731-441d2cc111ce"
+		},
+		{
+			"name": "Verify Forgot Password OTP",
+			"item": [
+				{
+					"name": "Valid - Verify Forgot Password OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fab9b182-1d5c-4f5a-a8d7-4cf2a4116d20",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const forgotPasswordtoken = jsonData.data.otp; \r",
+									"\r",
+									"pm.environment.set(\"forgotPasswordtoken\", forgotPasswordtoken);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code response is 'OK'\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'success'\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"});\r",
+									"pm.test(\"Verify that success returns 'true'\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'OTP verified successfully'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"OTP verified successfully\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "7c6c8532-acf0-4a6d-a0eb-88bcb6949a5f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"Adelle@mailinator.com\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset/otp"
+					},
+					"response": [
+						{
+							"id": "f875f64a-d92c-4964-93bc-7613bbc71829",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    \"otp\": \"416881\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/reset/otp"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "35"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-rYjDrt5dak4d7JUt8im/FnmpGek\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:08:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"OTP verified successfully\",\n    \"data\": {\n        \"otp\": \"c1f56805a712e6863fde01a0694a4e93013c665e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Invalid email - Verify Forgot Password OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fab9b182-1d5c-4f5a-a8d7-4cf2a4116d20",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'email must be an email'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"email must be an email\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "484eea7c-afbd-490f-b16a-76ca77c30a41",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"Adellemailinator.com\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset/otp"
+					},
+					"response": [
+						{
+							"id": "94a9d2e7-88af-4df4-930b-7b82897d7487",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    \"otp\": \"416881\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/reset/otp"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "35"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-rYjDrt5dak4d7JUt8im/FnmpGek\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:08:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"OTP verified successfully\",\n    \"data\": {\n        \"otp\": \"c1f56805a712e6863fde01a0694a4e93013c665e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "No email - Verify Forgot Password OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fab9b182-1d5c-4f5a-a8d7-4cf2a4116d20",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'email should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"email should not be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "efef93ee-9242-42f5-9b1a-07e86be1d4b6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset/otp"
+					},
+					"response": [
+						{
+							"id": "b403ed1e-efb1-4bb0-9e5f-0b54d160950c",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    \"otp\": \"416881\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/reset/otp"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "35"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-rYjDrt5dak4d7JUt8im/FnmpGek\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:08:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"OTP verified successfully\",\n    \"data\": {\n        \"otp\": \"c1f56805a712e6863fde01a0694a4e93013c665e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "No otp - Verify Forgot Password OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fab9b182-1d5c-4f5a-a8d7-4cf2a4116d20",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'otp should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.otp).to.include(\"otp should not be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "47433438-225b-4729-9f19-0adcb1304751",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"adelle@yopmail.com\",\n    \"otp\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset/otp"
+					},
+					"response": [
+						{
+							"id": "afa0e676-a3b9-4e8b-8cf6-92a972ae5c6d",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    \"otp\": \"416881\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/password/reset/otp"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "35"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-rYjDrt5dak4d7JUt8im/FnmpGek\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 13:08:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"OTP verified successfully\",\n    \"data\": {\n        \"otp\": \"c1f56805a712e6863fde01a0694a4e93013c665e\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "3310fbcb-352b-4312-81a0-64aec19a95b4"
+		},
+		{
+			"name": "Reset Password",
+			"item": [
+				{
+					"name": "Mismatch - Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "77d609c9-c6d3-4437-a3eb-97d1256f04ab",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Passwords do not match'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Passwords do not match\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "55446179-49de-40e3-9dfd-a6eab4f3d812",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password12#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
 					},
 					"response": []
 				},
 				{
-					"name": "No Auth - Become a Vendor",
+					"name": "Valid - Reset Password",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "948c0364-aa53-481d-b64d-f28f74654b8d",
+								"id": "77d609c9-c6d3-4437-a3eb-97d1256f04ab",
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
-									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"pm.test(\"Status code response is 'OK'\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'success'\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+									"});\r",
+									"pm.test(\"Verify that success returns 'true'\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Verify that status returns 'You have successfully reset your password. Please proceed to login again.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"You have successfully reset your password. Please proceed to login again.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "bcee411c-318f-431f-aca8-9a4b36250037",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid otp - Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c036902e-8156-4923-94eb-1e5e2aa4ad43",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'Oops! That reset password token is invalid. Please try again.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Oops! That reset password token is invalid. Please try again.\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -12542,22 +13980,239 @@
 							}
 						}
 					],
-					"id": "e769647f-de7b-4f03-a532-848ec2fc1e81",
+					"id": "7678344a-429f-4398-9709-0054f265cd28",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
-						"header": [],
-						"url": "{{base_url}}/user/promote"
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"c1f712e6863fde01a0694a4e93013c665e\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "Complexity- Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c036902e-8156-4923-94eb-1e5e2aa4ad43",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'password is not strong enough'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"password is not strong enough\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "f0437acd-2fa2-47df-9f54-be4e1ef4eac9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password1\",\n    \"confirmPassword\": \"Password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "No Password- Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c036902e-8156-4923-94eb-1e5e2aa4ad43",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'password should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"password should not be empty\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'password should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.password).to.include(\"password should not be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "5e4c481f-6e7c-475d-8cfe-795a4320ee72",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"\",\n    \"confirmPassword\": \"Password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "No ConfirmPassword- Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c036902e-8156-4923-94eb-1e5e2aa4ad43",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'password should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"password should not be empty\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'password should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.password).to.include(\"password should not be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "01759acd-d6db-4ecf-b7e4-cf4c404fbb77",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"\",\n    \"confirmPassword\": \"Password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "No ConfirmPassword- Reset Password Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c036902e-8156-4923-94eb-1e5e2aa4ad43",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify that message returns 'password should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"password should not be empty\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'password should not be empty'\", function () {\r",
+									"    pm.expect(pm.response.json().data.password).to.include(\"password should not be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "ed9ea176-bd62-45cc-b3da-4954b7a31d0d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"\",\n    \"confirmPassword\": \"Password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/password/reset"
 					},
 					"response": []
 				}
 			],
-			"id": "aa39e4c0-b0ba-4345-8e17-e791719435d2"
+			"id": "8f89a042-9ba2-4000-8164-8691515f1a1d"
 		},
 		{
 			"name": "Signup - Valid Duplicate",
