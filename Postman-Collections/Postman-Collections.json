@@ -3487,7 +3487,7 @@
 							]
 						},
 						{
-							"name": "Fetch Meals - By price lt Copy",
+							"name": "Fetch Meals - By category",
 							"event": [
 								{
 									"listen": "test",
