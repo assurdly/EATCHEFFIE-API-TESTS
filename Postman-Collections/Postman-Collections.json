@@ -3544,7 +3544,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[category]=african",
+									"raw": "{{base_url}}/meals?filter[category]=chinese",
 									"host": [
 										"{{base_url}}"
 									],
@@ -3569,7 +3569,7 @@
 										},
 										{
 											"key": "filter[category]",
-											"value": "african",
+											"value": "chinese",
 											"description": "Get the category slugs from the Fetch Categories endpoint"
 										},
 										{
