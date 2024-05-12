@@ -9385,7 +9385,7 @@
 							]
 						},
 						{
-							"name": "Add address - No latitude",
+							"name": "Add address - No Address id",
 							"event": [
 								{
 									"listen": "test",
@@ -9426,7 +9426,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere Lagos.\",\n    \"latitude\": \"\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"raw": "{\n    \"addressId\": \"\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9444,7 +9444,6 @@
 									],
 									"variable": [
 										{
-											"id": "bc564ac3-0820-4e14-a521-79ec1936bea6",
 											"key": "type",
 											"value": "delivery"
 										}
@@ -9540,13 +9539,14 @@
 							]
 						},
 						{
-							"name": "Add address - No longitude",
+							"name": "Add address - Invalid Address id",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "8415b98e-628f-4520-9a40-561cf13a2f00",
 										"exec": [
+											"// Updated test to verify meta returns a valid ID\r",
 											"\r",
 											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
@@ -9554,12 +9554,13 @@
 											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\"); \r",
 											"});\r",
-											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"pm.test(\"Verify that message returns 'Invalid address ID'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Invalid address ID\");\r",
 											"});\r",
-											"pm.test(\"Verify that data returns 'latitude should not be empty'\", function () {\r",
-											"    pm.expect(pm.response.json().data.longitude).to.include(\"longitude should not be empty\");\r",
-											"});"
+											"pm.test(\"Verify that meta returns a valid ID\", function () {\r",
+											"    pm.expect(pm.response.json()._meta.Message).to.include(\"valid Id\");\r",
+											"});\r",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -9581,7 +9582,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere Lagos.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"\"\n}",
+									"raw": "{\n    \"addressId\": \"YWJmOGEyZmFkN2IyMDAxIDI5NTE2NjU2IDUzOGI0NzE3OTA\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9599,7 +9600,6 @@
 									],
 									"variable": [
 										{
-											"id": "bc564ac3-0820-4e14-a521-79ec1936bea6",
 											"key": "type",
 											"value": "delivery"
 										}
