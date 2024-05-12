@@ -8780,6 +8780,42 @@
 					"item": [
 						{
 							"name": "Search Address - Valid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "248a3c4d-a821-4e3a-aeed-13a6698e1a54",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"const addressId = jsonData.data[0].id; \r",
+											"\r",
+											"pm.environment.set(\"addressId\", addressId);\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Ok'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\"); \r",
+											"});\r",
+											"pm.test(\"Verify that status returns 'success'\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Searched address successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Searched address successfully\");\r",
+											"});\r",
+											"pm.test(\"Verify that returns address list'\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "c9103c8f-d8fb-4e1e-aca0-1fe5a12c5cb7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -8788,14 +8824,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{accessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "customer"
+										"value": "customer",
+										"disabled": true
 									}
 								],
 								"url": {
@@ -8818,6 +8855,146 @@
 							"response": [
 								{
 									"id": "8862c090-d83f-4bcd-b639-44536fbd3b2b",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "customer"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/address/autocomplete?q=10 Manch",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"address",
+												"autocomplete"
+											],
+											"query": [
+												{
+													"key": "q",
+													"value": "10 Manch"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1250"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4e2-B9pFF9rXC6jTdx6RtRuuMsZ3l5E\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 08 May 2024 22:06:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Searched address successfully\",\n    \"data\": [\n        {\n            \"address\": \"10 Westmorland Road, West Bromwich, West Midlands\",\n            \"url\": \"/get/YjFiMmUzOTAyMzQwZmVmIDI4MzEwNTg2IDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"YjFiMmUzOTAyMzQwZmVmIDI4MzEwNTg2IDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westley Court, West Bromwich, West Midlands\",\n            \"url\": \"/get/ZTkxZGEwOWU2OTI4M2Q5IDI4MzEwNjA1IDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"ZTkxZGEwOWU2OTI4M2Q5IDI4MzEwNjA1IDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westminster Road, West Bromwich, West Midlands\",\n            \"url\": \"/get/MjBkMTY1ZTI2ODdjYjRlIDI4MzEzOTExIDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"MjBkMTY1ZTI2ODdjYjRlIDI4MzEzOTExIDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westwood View, West Calder, West Lothian\",\n            \"url\": \"/get/M2E3ZDI2MTEyNmY0MjI2IDIwODQxNDkzIDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"M2E3ZDI2MTEyNmY0MjI2IDIwODQxNDkzIDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westmuir Road, West Calder, West Lothian\",\n            \"url\": \"/get/MzU5MmE3MmJjOTFiY2VhIDIwODQwMjI5IDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"MzU5MmE3MmJjOTFiY2VhIDIwODQwMjI5IDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westerton, Westerton, Chichester, West Sussex\",\n            \"url\": \"/get/NTA5NGExOWJjMDI3OWZhIDgyMDQxNDAgNTM4YjQ3MTc5NmUyNjk4\",\n            \"id\": \"NTA5NGExOWJjMDI3OWZhIDgyMDQxNDAgNTM4YjQ3MTc5NmUyNjk4\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Search Address - Valid Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "248a3c4d-a821-4e3a-aeed-13a6698e1a54",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "f3d93945-7311-435a-a23a-62e9d8969fa0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/address/autocomplete?q=10 man",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"address",
+										"autocomplete"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "10 man"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "c51255b3-aea3-4ead-960d-6c945f1e050c",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
