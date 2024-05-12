@@ -5377,7 +5377,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{mealsId}}"
+											"value": "{{mealId}}"
 										}
 									]
 								}
@@ -5567,9 +5567,7 @@
 										"id": "4b69f098-790e-4652-973b-fe1831394263",
 										"exec": [
 											"const jsonData = pm.response.json();",
-											"const vendorId = jsonData.data[3].id; ",
 											"",
-											"pm.environment.set(\"vendorId\", vendorId);",
 											"",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
