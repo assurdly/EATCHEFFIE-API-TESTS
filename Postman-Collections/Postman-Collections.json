@@ -412,7 +412,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"phone\": \"{{generatedPhoneNumber}}\"\n}",
+													"raw": "{\n    \"phone\": \"+447893929400\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
