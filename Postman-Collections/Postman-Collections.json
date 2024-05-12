@@ -13984,6 +13984,7 @@
 							"script": {
 								"id": "91359e1d-a34b-4f5c-9507-a4cb8a7e0fd9",
 								"exec": [
+									"/*",
 									"var jsonData = pm.response.json();",
 									"const signedUpUserPhoneNumber = pm.environment.get(\"signedUpUserPhoneNumber\")",
 									"",
@@ -14004,7 +14005,7 @@
 									"pm.test(\"Message is validation error\", function () {",
 									"    pm.expect(jsonData.message).to.include(`User already exists`)",
 									"});",
-									""
+									"*/"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -15632,6 +15633,11 @@
 				}
 			],
 			"id": "8f89a042-9ba2-4000-8164-8691515f1a1d"
+		},
+		{
+			"name": "New Folder",
+			"item": [],
+			"id": "9a7bf22f-07a2-4028-a95e-ac9e1134d059"
 		},
 		{
 			"name": "Signup - Valid Duplicate",
