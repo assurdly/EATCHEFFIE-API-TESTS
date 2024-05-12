@@ -14453,7 +14453,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"Adelle@mailinator.com\" \n}",
+							"raw": "{\n    \"email\":\"{{signedUpCustomerEmail}}\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14846,7 +14846,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"Adelle@mailinator.com\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n    \"otp\": \"{{forgotPasswordotp}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -15492,8 +15492,11 @@
 									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 									"    pm.response.to.have.status(\"Bad Request\");\r",
 									"});\r",
-									"pm.test(\"Verify that message returns 'password is not strong enough'\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"password is not strong enough\");\r",
+									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns 'password is not strong enough'\", function () {\r",
+									"    pm.expect(pm.response.json().data.password).to.include(\"password is not strong enough\");\r",
 									"});"
 								],
 								"type": "text/javascript",
