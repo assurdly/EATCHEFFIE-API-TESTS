@@ -8199,7 +8199,7 @@
 											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
 											"pm.test(\"Success returns true\", function () {\r",
-											"    pm.expect(pm.response.json().Success).to.be.true;\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
 											"});\r",
 											"pm.test(\"message returns 'Your profile has been updated successfully.'\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.eql(\"Your profile has been updated successfully.\");\r",
