@@ -10488,7 +10488,7 @@
 					"id": "a42795b3-b2e9-45cf-bba1-797c2ceb8dd2"
 				},
 				{
-					"name": "Search Address Copy",
+					"name": "Search Address - Valid",
 					"id": "c9103c8f-d8fb-4e1e-aca0-1fe5a12c5cb7",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
