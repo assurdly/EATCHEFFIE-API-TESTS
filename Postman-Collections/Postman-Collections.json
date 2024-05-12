@@ -12805,45 +12805,93 @@
 					"id": "50235add-5a25-4bc9-bed1-98593883cda8"
 				},
 				{
-					"name": "Fetch Customer Order By ID Copy",
-					"id": "8d10f15f-8650-459a-b685-11d46165c2bc",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{accessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "customer",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{base_url}}/customer/orders/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"customer",
-								"orders",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
+					"name": "Fetch Customer Order By Id",
+					"item": [
+						{
+							"name": "Fetch Customer Order By ID - Valid",
+							"id": "8d10f15f-8650-459a-b685-11d46165c2bc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/customer/orders/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customer",
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
 								}
-							]
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Customer Order By ID - Valid Copy",
+							"id": "e9844b2f-be41-4542-aa83-480b0e741803",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/customer/orders/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customer",
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "720b0898-0a64-4f3b-ad94-05fa12b790be",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"id": "60b4022c-b7f3-4fa6-9099-cb93be43fcb7"
 				}
 			],
 			"id": "3f0725cd-c11e-4923-82ca-4333764fd85a"
