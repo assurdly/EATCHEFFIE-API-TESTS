@@ -13859,7 +13859,7 @@
 								"id": "91359e1d-a34b-4f5c-9507-a4cb8a7e0fd9",
 								"exec": [
 									"var jsonData = pm.response.json();",
-									"const signedUpUserEmail = pm.environment.get(\"signedUpUserEmail\")",
+									"const signedUpCustomerEmail = pm.environment.get(\"signedUpCustomerEmail\")",
 									"",
 									"pm.test(\"Status code is 400\", function () {",
 									"    pm.response.to.have.status(400);",
@@ -13894,7 +13894,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{signedUpUserEmail}}\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
