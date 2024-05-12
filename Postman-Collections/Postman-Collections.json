@@ -3542,7 +3542,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[price][lt]=15",
+									"raw": "{{base_url}}/meals?filter[category]=african",
 									"host": [
 										"{{base_url}}"
 									],
@@ -3562,13 +3562,13 @@
 										},
 										{
 											"key": "filter[price][lt]",
-											"value": "15"
+											"value": "15",
+											"disabled": true
 										},
 										{
 											"key": "filter[category]",
 											"value": "african",
-											"description": "Get the category slugs from the Fetch Categories endpoint",
-											"disabled": true
+											"description": "Get the category slugs from the Fetch Categories endpoint"
 										},
 										{
 											"key": "filter[vendorId]",
