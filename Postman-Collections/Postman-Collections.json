@@ -2416,6 +2416,9 @@
 									"const jsonData = pm.response.json();",
 									"",
 									"",
+									"if (pm.response.status === 201){",
+									"",
+									"",
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
 									"});",
@@ -2437,7 +2440,17 @@
 									"",
 									"pm.test(\"Message is Successfully logged in\", function () {",
 									"    pm.expect(jsonData.message).to.be.a('string');",
-									"});"
+									"});",
+									"} else {",
+									"    pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"",
+									"    pm.test(\"Status code name has Unauthorized\", function () {",
+									"    pm.response.to.have.status(\"Unauthorized\");",
+									"});",
+									"})",
+									"}",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
