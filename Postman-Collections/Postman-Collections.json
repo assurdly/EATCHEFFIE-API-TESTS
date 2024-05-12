@@ -9863,9 +9863,6 @@
 										"id": "5e559d9d-9bab-4b79-9936-31ad924da4b4",
 										"exec": [
 											"const jsonData = pm.response.json();\r",
-											"const addressId = jsonData.data[0].id; \r",
-											"\r",
-											"pm.environment.set(\"addressId\", addressId);\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -9884,7 +9881,7 @@
 											"    pm.expect(pm.response.json().message).to.include(\"Addresses fetched successfully\");\r",
 											"});\r",
 											"pm.test(\"Verify that meta returns records\", function () {\r",
-											"    pm.expect(pm.response.json().meta).to.be.an(\"object\").and.not.be.empty;\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -9916,7 +9913,6 @@
 									],
 									"variable": [
 										{
-											"id": "d38cf487-7bb9-4e54-8884-2759a0098cba",
 											"key": "type",
 											"value": "delivery"
 										}
