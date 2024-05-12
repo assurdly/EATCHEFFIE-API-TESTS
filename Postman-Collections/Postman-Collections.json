@@ -9240,159 +9240,6 @@
 							]
 						},
 						{
-							"name": "-Add address - No Addressline",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "8415b98e-628f-4520-9a40-561cf13a2f00",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\"); \r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Invalid address. Please provide a valid UK address.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Invalid address. Please provide a valid UK address.\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "f33539fc-05f9-4085-ab9b-2306a3a955f6",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"\",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/address/:type",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"address",
-										":type"
-									],
-									"variable": [
-										{
-											"id": "bc564ac3-0820-4e14-a521-79ec1936bea6",
-											"key": "type",
-											"value": "delivery"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "c096f317-436f-4d2f-98c0-7a8ea3dcfa80",
-									"name": "success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere Lagos.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{base_url}}/address/:type",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"address",
-												":type"
-											],
-											"variable": [
-												{
-													"key": "type",
-													"value": "delivery"
-												}
-											]
-										}
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "X-Powered-By",
-											"value": "Express"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "100"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "99"
-										},
-										{
-											"key": "X-RateLimit-Reset",
-											"value": "59"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "75"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"4b-pI8OyNNf8KxFR8o2Ogtngf6M5PA\""
-										},
-										{
-											"key": "Date",
-											"value": "Tue, 02 Apr 2024 12:40:07 GMT"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Address saved successfully.\"\n}"
-								}
-							]
-						},
-						{
 							"name": "Add address - No Auth",
 							"event": [
 								{
@@ -9425,7 +9272,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere Lagos.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
+									"raw": "{\n    \"addressId\": \"YWJmOGEyZmFkN2IyMDAxIDI5NTE2NjU2IDUzOGI0NzE3OTZlMjY5OA\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9443,7 +9290,6 @@
 									],
 									"variable": [
 										{
-											"id": "bc564ac3-0820-4e14-a521-79ec1936bea6",
 											"key": "type",
 											"value": "delivery"
 										}
