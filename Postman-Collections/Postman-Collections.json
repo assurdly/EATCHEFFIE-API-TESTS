@@ -2436,7 +2436,7 @@
 									"});",
 									"",
 									"pm.test(\"Message is Successfully logged in\", function () {",
-									"    pm.expect(jsonData.message).to.be.a('stringl');",
+									"    pm.expect(jsonData.message).to.be.a('string');",
 									"});"
 								],
 								"type": "text/javascript",
