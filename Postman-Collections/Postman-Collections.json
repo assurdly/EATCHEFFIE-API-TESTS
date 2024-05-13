@@ -11294,6 +11294,65 @@
 							"response": []
 						},
 						{
+							"name": "Update Cart - Valid Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "41475c4f-c6b5-4dc9-993a-ba175599c2d6",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"pm.test(\"Verify that status returns '\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Meal added to cart successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Meal added to cart successfully\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns meal details\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "1c046946-0010-4e5c-955c-5063f198e223",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mealId\": \"{{mealId}}\",\n    \"priceId\": \"{{priceId}}\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cart/meals"
+							},
+							"response": []
+						},
+						{
 							"name": "Update Cart - No Mealid",
 							"event": [
 								{
