@@ -11693,7 +11693,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
+									"raw": "{\n    \"addressId\": \"{{fetchAddressId}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
