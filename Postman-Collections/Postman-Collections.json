@@ -2763,6 +2763,141 @@
 									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Permissions fetched successfully\",\n    \"data\": [\n        {\n            \"id\": \"4bc27b4d-6c54-47d6-8f1b-1a21a97c0101\",\n            \"name\": \"Create users\",\n            \"slug\": \"create-users\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"ae62ebcb-b0a6-427b-81da-e46ee6d0cc3f\",\n            \"name\": \"List users\",\n            \"slug\": \"list-users\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"6d09a213-ea3d-49ea-a829-d9b47b0394af\",\n            \"name\": \"Update users\",\n            \"slug\": \"update-users\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"3a7ea57d-5e72-4266-966d-83d06101b24c\",\n            \"name\": \"Delete users\",\n            \"slug\": \"delete-users\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"0006909b-0cea-4d7a-8dc9-b4d434492ab9\",\n            \"name\": \"Create roles\",\n            \"slug\": \"create-roles\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"8dd24a3d-d812-443b-ae1c-04efd2c692f8\",\n            \"name\": \"List roles\",\n            \"slug\": \"list-roles\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"d2ed9b17-9052-420f-9880-de18f8cb7ca4\",\n            \"name\": \"Update roles\",\n            \"slug\": \"update-roles\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"2bef30ce-c521-4c9b-b42c-afbb4b71bd84\",\n            \"name\": \"Delete roles\",\n            \"slug\": \"delete-roles\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        }\n    ]\n}"
 								}
 							]
+						},
+						{
+							"name": "Fetch Permissions Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2430d164-9bf5-4a92-bbe7-513c70268451",
+										"exec": [
+											"try {",
+											"",
+											"    const { status, success, message, data } = pm.response.json()",
+											"",
+											"    pm.environment.set(\"fetchedVendorPermissionId\", data[0].id)",
+											"",
+											"    pm.test(\"Status code is 200\", function () {",
+											"        pm.response.to.have.status(200);",
+											"    });",
+											"",
+											"    pm.test(\"Status code response is Ok\", function () {",
+											"        pm.response.to.have.status('OK');",
+											"    });",
+											"",
+											"    pm.test(\"Response body property\", function () {",
+											"        pm.expect(status).to.be.a(\"string\");",
+											"        pm.expect(message).to.be.a('string');",
+											"    });",
+											"",
+											"    pm.test(\"Status is success\", function () {",
+											"        pm.expect(status).to.eql('success');",
+											"    });",
+											"",
+											"    pm.test(\"Message is Verified Successfully\", function () {",
+											"        pm.expect(message).to.include('Permissions fetched successfully');",
+											"    });",
+											"",
+											"} catch (error) {",
+											"    console.error(\"Error running tests\", error)",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "2ff078d9-1a30-4daf-a169-05a5d0e20d36",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{vendorAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor",
+										"disabled": true
+									}
+								],
+								"url": "{{base_url}}/roles/permissions"
+							},
+							"response": [
+								{
+									"id": "6f8584b9-2df9-4db4-bffe-bfbee688933c",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "vendor",
+												"type": "text"
+											}
+										],
+										"url": "{{base_url}}/roles/permissions"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4f1-mExNKTuOgA1FzDdCFoH2plLDp70\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 02 May 2024 14:11:26 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Permissions fetched successfully\",\n    \"data\": [\n        {\n            \"id\": \"4bc27b4d-6c54-47d6-8f1b-1a21a97c0101\",\n            \"name\": \"Create users\",\n            \"slug\": \"create-users\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"ae62ebcb-b0a6-427b-81da-e46ee6d0cc3f\",\n            \"name\": \"List users\",\n            \"slug\": \"list-users\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"6d09a213-ea3d-49ea-a829-d9b47b0394af\",\n            \"name\": \"Update users\",\n            \"slug\": \"update-users\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"3a7ea57d-5e72-4266-966d-83d06101b24c\",\n            \"name\": \"Delete users\",\n            \"slug\": \"delete-users\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"0006909b-0cea-4d7a-8dc9-b4d434492ab9\",\n            \"name\": \"Create roles\",\n            \"slug\": \"create-roles\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"8dd24a3d-d812-443b-ae1c-04efd2c692f8\",\n            \"name\": \"List roles\",\n            \"slug\": \"list-roles\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"d2ed9b17-9052-420f-9880-de18f8cb7ca4\",\n            \"name\": \"Update roles\",\n            \"slug\": \"update-roles\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        },\n        {\n            \"id\": \"2bef30ce-c521-4c9b-b42c-afbb4b71bd84\",\n            \"name\": \"Delete roles\",\n            \"slug\": \"delete-roles\",\n            \"description\": null,\n            \"createdAt\": \"2024-05-02T13:00:34.024Z\"\n        }\n    ]\n}"
+								}
+							]
 						}
 					],
 					"id": "e6006a99-5cbc-4483-b67d-b368fde131e5"
@@ -5551,10 +5686,6 @@
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
 											"pm.test(\"Status code name has OK\", function () {\r",
 											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
@@ -5585,7 +5716,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+									"raw": "{\n    \"firstName\": \"{{$randomFirstName}}\",\n    \"lastName\": \"{{$randomLastName}}\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5933,6 +6064,7 @@
 											"pm.test(\"Status code response is OK\", function () {\r",
 											"    pm.response.to.have.status('OK');\r",
 											"});\r",
+											"\r",
 											"pm.test(\"Verify that status returns '\", function () {\r",
 											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
 											"});\r",
@@ -6041,6 +6173,10 @@
 											"pm.test(\"Status code is 401\", function () {\r",
 											"    pm.response.to.have.status(401);\r",
 											"});\r",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											"// Delete later cause of pipleine run\r",
 											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
 											"    pm.response.to.have.status(\"Unauthorized\");\r",
 											"});"
