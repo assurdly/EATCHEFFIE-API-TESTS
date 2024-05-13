@@ -2765,7 +2765,7 @@
 							]
 						},
 						{
-							"name": "Fetch Permissions Copy",
+							"name": "Fetch Permissions - No Auth",
 							"event": [
 								{
 									"listen": "test",
@@ -2774,29 +2774,22 @@
 										"exec": [
 											"try {",
 											"",
-											"    const { status, success, message, data } = pm.response.json()",
+											"    const { message } = pm.response.json()",
 											"",
-											"    pm.environment.set(\"fetchedVendorPermissionId\", data[0].id)",
-											"",
-											"    pm.test(\"Status code is 200\", function () {",
-											"        pm.response.to.have.status(200);",
+											"    pm.test(\"Status code is 401\", function () {",
+											"        pm.response.to.have.status(401);",
 											"    });",
 											"",
-											"    pm.test(\"Status code response is Ok\", function () {",
-											"        pm.response.to.have.status('OK');",
+											"    pm.test(\"Status code response is Unauthorized\", function () {",
+											"        pm.response.to.have.status('Unauthorized');",
 											"    });",
 											"",
 											"    pm.test(\"Response body property\", function () {",
-											"        pm.expect(status).to.be.a(\"string\");",
 											"        pm.expect(message).to.be.a('string');",
 											"    });",
 											"",
-											"    pm.test(\"Status is success\", function () {",
-											"        pm.expect(status).to.eql('success');",
-											"    });",
-											"",
 											"    pm.test(\"Message is Verified Successfully\", function () {",
-											"        pm.expect(message).to.include('Permissions fetched successfully');",
+											"        pm.expect(message).to.include('Session expired. Please login again.');",
 											"    });",
 											"",
 											"} catch (error) {",
@@ -2814,10 +2807,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{vendorAccessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "GET",
 								"header": [
