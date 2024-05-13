@@ -11891,7 +11891,7 @@
 								},
 								"method": "GET",
 								"header": [],
-								"url": "{{base_url}}/customer/orders/me"
+								"url": "{{base_url}}/customer/orders"
 							},
 							"response": []
 						}
