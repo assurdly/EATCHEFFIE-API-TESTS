@@ -9703,6 +9703,10 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
+											"const fetchAddressId = jsonData.data[0].id; \r",
+											"\r",
+											"pm.environment.set(\"fetchAddressId\", fetchAddressId);\r",
+											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
@@ -9720,7 +9724,7 @@
 											"    pm.expect(pm.response.json().message).to.include(\"Addresses fetched successfully\");\r",
 											"});\r",
 											"pm.test(\"Verify that meta returns records\", function () {\r",
-											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
 											"});"
 										],
 										"type": "text/javascript",
