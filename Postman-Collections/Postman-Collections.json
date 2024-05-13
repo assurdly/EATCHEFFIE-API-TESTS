@@ -9120,7 +9120,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"YWJmOGEyZmFkN2IyMDAxIDI5NTE2NjU2IDUzOGI0NzE3OTZlMjY5OA\"\n}",
+									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
