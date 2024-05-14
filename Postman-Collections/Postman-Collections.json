@@ -6259,7 +6259,7 @@
 			"id": "f42f958f-ccd7-4779-bbb0-2a758c42547d"
 		},
 		{
-			"name": "Business Copy",
+			"name": "Business",
 			"item": [
 				{
 					"name": "Update Business Information",
@@ -6268,71 +6268,69 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{vendor_access_token}}"
-							}
-						},
 						"method": "PUT",
 						"header": [
 							{
 								"key": "x-request-source",
 								"value": "vendor"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vendor_access_token}}"
 							}
 						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
+									"type": "text",
 									"key": "businessName",
-									"value": "NexusCooks",
-									"type": "text"
+									"value": "NexusCooks"
 								},
 								{
+									"type": "text",
 									"key": "businessPhone",
-									"value": "077 3138 8966",
-									"type": "text"
+									"value": "077 3138 8966"
 								},
 								{
+									"type": "text",
 									"key": "addressId",
-									"value": "N2U5ZWM2YjU4YTUwY2QwIDI3OTA5NTA3IDUzOGI0NzE3OTZlMjY5OA==",
-									"type": "text"
+									"value": "N2U5ZWM2YjU4YTUwY2QwIDI3OTA5NTA3IDUzOGI0NzE3OTZlMjY5OA=="
 								},
 								{
+									"type": "text",
 									"key": "councilRegistrationDone",
-									"value": "true",
-									"type": "text"
+									"value": "true"
 								},
 								{
+									"type": "text",
 									"key": "businessRegistrationDone",
-									"value": "true",
-									"type": "text"
+									"value": "true"
 								},
 								{
+									"type": "text",
 									"key": "trainingAndCertificationDone",
-									"value": "true",
-									"type": "text"
+									"value": "true"
 								},
 								{
+									"type": "text",
 									"key": "description",
-									"value": "Best meals everywhere",
-									"type": "text"
+									"value": "Best meals everywhere"
 								},
 								{
-									"key": "avatar",
 									"type": "file",
+									"key": "avatar",
 									"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
 								},
 								{
+									"type": "text",
 									"key": "categoryIds[0]",
-									"value": "c10094e2-546f-4a06-94f2-7f226d072a31",
-									"type": "text"
+									"value": "c10094e2-546f-4a06-94f2-7f226d072a31"
 								},
 								{
+									"type": "text",
 									"key": "categoryIds[1]",
-									"value": "492bf1ef-3bef-4c8f-a63a-b599c56053f6",
-									"type": "text"
+									"value": "492bf1ef-3bef-4c8f-a63a-b599c56053f6"
 								}
 							]
 						},
@@ -6556,7 +6554,7 @@
 			"id": "3d6d80d9-46b2-483b-8784-4f27335f0661"
 		},
 		{
-			"name": "Inventory Copy",
+			"name": "Inventory",
 			"item": [
 				{
 					"name": "Add Meal",
@@ -6565,105 +6563,103 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{vendor_access_token}}"
-							}
-						},
 						"method": "POST",
 						"header": [
 							{
 								"key": "x-request-source",
 								"value": "vendor"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vendor_access_token}}"
 							}
 						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
+									"type": "text",
 									"key": "name",
-									"value": "Spicy Burger Mediul",
-									"type": "text"
+									"value": "Spicy Burger Mediul"
 								},
 								{
+									"type": "text",
 									"key": "categoryIds[0]",
-									"value": "68f587d4-eef4-4900-a26b-8f62c1827a99",
-									"type": "text"
+									"value": "68f587d4-eef4-4900-a26b-8f62c1827a99"
 								},
 								{
+									"type": "text",
 									"key": "allergens[0]",
-									"value": "gluten",
-									"type": "text"
+									"value": "gluten"
 								},
 								{
+									"type": "text",
 									"key": "ingredients[0]",
-									"value": "vibes",
-									"type": "text"
+									"value": "vibes"
 								},
 								{
+									"type": "text",
 									"key": "spiceLevel",
-									"value": "3",
-									"type": "text"
+									"value": "3"
 								},
 								{
+									"type": "text",
 									"key": "stock",
-									"value": "30",
-									"type": "text"
+									"value": "30"
 								},
 								{
+									"type": "text",
 									"key": "availability[sun]",
-									"value": "true",
-									"type": "text"
+									"value": "true"
 								},
 								{
+									"type": "text",
 									"key": "availability[mon]",
-									"value": "true",
-									"type": "text"
+									"value": "true"
 								},
 								{
+									"type": "text",
 									"key": "availability[tue]",
-									"value": "true",
-									"type": "text"
+									"value": "true"
 								},
 								{
+									"type": "text",
 									"key": "availability[wed]",
-									"value": "true",
-									"type": "text"
+									"value": "true"
 								},
 								{
+									"type": "text",
 									"key": "availability[thu]",
-									"value": "true",
-									"type": "text"
+									"value": "true"
 								},
 								{
+									"type": "text",
 									"key": "availability[fri]",
-									"value": "false",
-									"type": "text"
+									"value": "false"
 								},
 								{
+									"type": "text",
 									"key": "availability[sat]",
-									"value": "false",
-									"type": "text"
+									"value": "false"
 								},
 								{
+									"type": "text",
 									"key": "customAvailability[startDate]",
-									"value": "2024-05-15T00:00:00",
-									"type": "text"
+									"value": "2024-05-15T00:00:00"
 								},
 								{
+									"type": "text",
 									"key": "customAvailability[endDate]",
-									"value": "2024-05-15T23:00:00",
-									"type": "text"
+									"value": "2024-05-15T23:00:00"
 								},
 								{
+									"type": "text",
 									"key": "customAvailability[available]",
-									"value": "false",
-									"type": "text"
+									"value": "false"
 								},
 								{
-									"key": "images",
 									"type": "file",
+									"key": "images",
 									"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
 								}
 							]
@@ -6762,7 +6758,7 @@
 			"id": "3f978caf-08c3-4c43-a63f-d40f17f4648e"
 		},
 		{
-			"name": "Orders Copy",
+			"name": "Orders",
 			"item": [
 				{
 					"name": "Fetch Orders",
