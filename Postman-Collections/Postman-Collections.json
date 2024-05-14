@@ -6263,123 +6263,103 @@
 			"item": [
 				{
 					"name": "Update Business Information",
-					"id": "801e8b37-c14e-4bef-8008-7814d3207ae3",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "vendor"
+					"item": [
+						{
+							"name": "Update Business Information",
+							"id": "801e8b37-c14e-4bef-8008-7814d3207ae3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
 							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{vendor_access_token}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"type": "text",
-									"key": "businessName",
-									"value": "NexusCooks"
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{vendor_access_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"type": "text",
+											"key": "businessName",
+											"value": "NexusCooks"
+										},
+										{
+											"type": "text",
+											"key": "businessPhone",
+											"value": "077 3138 8966"
+										},
+										{
+											"type": "text",
+											"key": "addressId",
+											"value": "N2U5ZWM2YjU4YTUwY2QwIDI3OTA5NTA3IDUzOGI0NzE3OTZlMjY5OA=="
+										},
+										{
+											"type": "text",
+											"key": "councilRegistrationDone",
+											"value": "true"
+										},
+										{
+											"type": "text",
+											"key": "businessRegistrationDone",
+											"value": "true"
+										},
+										{
+											"type": "text",
+											"key": "trainingAndCertificationDone",
+											"value": "true"
+										},
+										{
+											"type": "text",
+											"key": "description",
+											"value": "Best meals everywhere"
+										},
+										{
+											"type": "file",
+											"key": "avatar",
+											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+										},
+										{
+											"type": "text",
+											"key": "categoryIds[0]",
+											"value": "c10094e2-546f-4a06-94f2-7f226d072a31"
+										},
+										{
+											"type": "text",
+											"key": "categoryIds[1]",
+											"value": "492bf1ef-3bef-4c8f-a63a-b599c56053f6"
+										}
+									]
 								},
-								{
-									"type": "text",
-									"key": "businessPhone",
-									"value": "077 3138 8966"
-								},
-								{
-									"type": "text",
-									"key": "addressId",
-									"value": "N2U5ZWM2YjU4YTUwY2QwIDI3OTA5NTA3IDUzOGI0NzE3OTZlMjY5OA=="
-								},
-								{
-									"type": "text",
-									"key": "councilRegistrationDone",
-									"value": "true"
-								},
-								{
-									"type": "text",
-									"key": "businessRegistrationDone",
-									"value": "true"
-								},
-								{
-									"type": "text",
-									"key": "trainingAndCertificationDone",
-									"value": "true"
-								},
-								{
-									"type": "text",
-									"key": "description",
-									"value": "Best meals everywhere"
-								},
-								{
-									"type": "file",
-									"key": "avatar",
-									"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
-								},
-								{
-									"type": "text",
-									"key": "categoryIds[0]",
-									"value": "c10094e2-546f-4a06-94f2-7f226d072a31"
-								},
-								{
-									"type": "text",
-									"key": "categoryIds[1]",
-									"value": "492bf1ef-3bef-4c8f-a63a-b599c56053f6"
-								}
-							]
-						},
-						"url": "{{base_url}}/vendor/business"
-					},
-					"response": []
+								"url": "{{base_url}}/vendor/business"
+							},
+							"response": []
+						}
+					],
+					"id": "0bf98dc0-543d-4728-905a-9b37961ac9cf"
 				},
 				{
 					"name": "Search Address",
-					"id": "573daa1a-660d-4317-8512-d2922f106519",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "customer"
-							}
-						],
-						"url": {
-							"raw": "{{base_url}}/address/autocomplete?q=10 birm",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"address",
-								"autocomplete"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "10 birm"
-								}
-							]
-						}
-					},
-					"response": [
+					"item": [
 						{
-							"id": "71d9cf2b-c237-405b-8518-7f5e677c83f4",
-							"name": "success",
-							"originalRequest": {
+							"name": "Search Address",
+							"id": "573daa1a-660d-4317-8512-d2922f106519",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{access_token}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -6388,7 +6368,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/address/autocomplete?q=10 Manch",
+									"raw": "{{base_url}}/address/autocomplete?q=10 birm",
 									"host": [
 										"{{base_url}}"
 									],
@@ -6399,93 +6379,114 @@
 									"query": [
 										{
 											"key": "q",
-											"value": "10 Manch"
+											"value": "10 birm"
 										}
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "60"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1250"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"4e2-B9pFF9rXC6jTdx6RtRuuMsZ3l5E\""
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 08 May 2024 22:06:58 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"id": "71d9cf2b-c237-405b-8518-7f5e677c83f4",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "customer"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/address/autocomplete?q=10 Manch",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"address",
+												"autocomplete"
+											],
+											"query": [
+												{
+													"key": "q",
+													"value": "10 Manch"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1250"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4e2-B9pFF9rXC6jTdx6RtRuuMsZ3l5E\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 08 May 2024 22:06:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Searched address successfully\",\n    \"data\": [\n        {\n            \"address\": \"10 Westmorland Road, West Bromwich, West Midlands\",\n            \"url\": \"/get/YjFiMmUzOTAyMzQwZmVmIDI4MzEwNTg2IDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"YjFiMmUzOTAyMzQwZmVmIDI4MzEwNTg2IDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westley Court, West Bromwich, West Midlands\",\n            \"url\": \"/get/ZTkxZGEwOWU2OTI4M2Q5IDI4MzEwNjA1IDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"ZTkxZGEwOWU2OTI4M2Q5IDI4MzEwNjA1IDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westminster Road, West Bromwich, West Midlands\",\n            \"url\": \"/get/MjBkMTY1ZTI2ODdjYjRlIDI4MzEzOTExIDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"MjBkMTY1ZTI2ODdjYjRlIDI4MzEzOTExIDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westwood View, West Calder, West Lothian\",\n            \"url\": \"/get/M2E3ZDI2MTEyNmY0MjI2IDIwODQxNDkzIDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"M2E3ZDI2MTEyNmY0MjI2IDIwODQxNDkzIDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westmuir Road, West Calder, West Lothian\",\n            \"url\": \"/get/MzU5MmE3MmJjOTFiY2VhIDIwODQwMjI5IDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"MzU5MmE3MmJjOTFiY2VhIDIwODQwMjI5IDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westerton, Westerton, Chichester, West Sussex\",\n            \"url\": \"/get/NTA5NGExOWJjMDI3OWZhIDgyMDQxNDAgNTM4YjQ3MTc5NmUyNjk4\",\n            \"id\": \"NTA5NGExOWJjMDI3OWZhIDgyMDQxNDAgNTM4YjQ3MTc5NmUyNjk4\"\n        }\n    ]\n}"
 								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Searched address successfully\",\n    \"data\": [\n        {\n            \"address\": \"10 Westmorland Road, West Bromwich, West Midlands\",\n            \"url\": \"/get/YjFiMmUzOTAyMzQwZmVmIDI4MzEwNTg2IDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"YjFiMmUzOTAyMzQwZmVmIDI4MzEwNTg2IDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westley Court, West Bromwich, West Midlands\",\n            \"url\": \"/get/ZTkxZGEwOWU2OTI4M2Q5IDI4MzEwNjA1IDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"ZTkxZGEwOWU2OTI4M2Q5IDI4MzEwNjA1IDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westminster Road, West Bromwich, West Midlands\",\n            \"url\": \"/get/MjBkMTY1ZTI2ODdjYjRlIDI4MzEzOTExIDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"MjBkMTY1ZTI2ODdjYjRlIDI4MzEzOTExIDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westwood View, West Calder, West Lothian\",\n            \"url\": \"/get/M2E3ZDI2MTEyNmY0MjI2IDIwODQxNDkzIDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"M2E3ZDI2MTEyNmY0MjI2IDIwODQxNDkzIDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westmuir Road, West Calder, West Lothian\",\n            \"url\": \"/get/MzU5MmE3MmJjOTFiY2VhIDIwODQwMjI5IDUzOGI0NzE3OTZlMjY5OA==\",\n            \"id\": \"MzU5MmE3MmJjOTFiY2VhIDIwODQwMjI5IDUzOGI0NzE3OTZlMjY5OA==\"\n        },\n        {\n            \"address\": \"10 Westerton, Westerton, Chichester, West Sussex\",\n            \"url\": \"/get/NTA5NGExOWJjMDI3OWZhIDgyMDQxNDAgNTM4YjQ3MTc5NmUyNjk4\",\n            \"id\": \"NTA5NGExOWJjMDI3OWZhIDgyMDQxNDAgNTM4YjQ3MTc5NmUyNjk4\"\n        }\n    ]\n}"
+							]
 						}
-					]
+					],
+					"id": "be2796ff-8221-4d84-b131-309383c3e577"
 				},
 				{
 					"name": "Fetch Business Details",
-					"id": "29cc5027-926e-47c3-a2dd-6b6d4c9070b2",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{vendor_access_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "vendor"
-							}
-						],
-						"url": "{{base_url}}/vendor/business"
-					},
-					"response": [
+					"item": [
 						{
-							"id": "f0fcab49-5600-43e0-9375-ba7f30464f8f",
-							"name": "success",
-							"originalRequest": {
+							"name": "Fetch Business Details",
+							"id": "29cc5027-926e-47c3-a2dd-6b6d4c9070b2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{vendor_access_token}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -6495,60 +6496,77 @@
 								],
 								"url": "{{base_url}}/vendor/business"
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "98"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "52"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1408"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"580-+vW33yFeIIXOzB3k0u1alrD2bMk\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 13 May 2024 09:57:00 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"id": "f0fcab49-5600-43e0-9375-ba7f30464f8f",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "vendor"
+											}
+										],
+										"url": "{{base_url}}/vendor/business"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "52"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1408"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"580-+vW33yFeIIXOzB3k0u1alrD2bMk\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 13 May 2024 09:57:00 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Business details fetched successfully\",\n    \"data\": {\n        \"id\": \"76f0046c-e6fb-4db6-97d9-a216235058d9\",\n        \"createdAt\": \"2024-05-12T23:04:19.275Z\",\n        \"updatedAt\": \"2024-05-12T23:36:56.066Z\",\n        \"name\": \"NexusCooks\",\n        \"description\": \"Best meals everywhere\",\n        \"rating\": 0,\n        \"ratingCount\": 0,\n        \"avatar\": \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/vendor_avatar.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T095700Z&X-Amz-Expires=3600&X-Amz-Signature=c74f775e8abe3d3a6ac0f97186257c4bd5f82893d14c6788c7c15ee49fa9e346&X-Amz-SignedHeaders=host&x-id=GetObject\",\n        \"banner\": \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/vendor_banner.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T095700Z&X-Amz-Expires=3600&X-Amz-Signature=4c6fc39bbab18be6d1ee55742d8afca4d0f6560408e3802d0fbe6d816f39327f&X-Amz-SignedHeaders=host&x-id=GetObject\",\n        \"addresses\": [\n            {\n                \"id\": \"975935d6-02b0-4390-927e-3d0db5116443\",\n                \"createdAt\": \"2024-05-12T23:20:02.721Z\",\n                \"updatedAt\": \"2024-05-12T23:20:02.721Z\",\n                \"longitude\": -1.67967,\n                \"latitude\": 52.5329,\n                \"addressLine\": \"10 Birmingham Road Coleshill, Birmingham Warwickshire\",\n                \"area\": \"B\",\n                \"zipcode\": \"B46 2EN\"\n            }\n        ]\n    }\n}"
 								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Business details fetched successfully\",\n    \"data\": {\n        \"id\": \"76f0046c-e6fb-4db6-97d9-a216235058d9\",\n        \"createdAt\": \"2024-05-12T23:04:19.275Z\",\n        \"updatedAt\": \"2024-05-12T23:36:56.066Z\",\n        \"name\": \"NexusCooks\",\n        \"description\": \"Best meals everywhere\",\n        \"rating\": 0,\n        \"ratingCount\": 0,\n        \"avatar\": \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/vendor_avatar.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T095700Z&X-Amz-Expires=3600&X-Amz-Signature=c74f775e8abe3d3a6ac0f97186257c4bd5f82893d14c6788c7c15ee49fa9e346&X-Amz-SignedHeaders=host&x-id=GetObject\",\n        \"banner\": \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/vendor_banner.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T095700Z&X-Amz-Expires=3600&X-Amz-Signature=4c6fc39bbab18be6d1ee55742d8afca4d0f6560408e3802d0fbe6d816f39327f&X-Amz-SignedHeaders=host&x-id=GetObject\",\n        \"addresses\": [\n            {\n                \"id\": \"975935d6-02b0-4390-927e-3d0db5116443\",\n                \"createdAt\": \"2024-05-12T23:20:02.721Z\",\n                \"updatedAt\": \"2024-05-12T23:20:02.721Z\",\n                \"longitude\": -1.67967,\n                \"latitude\": 52.5329,\n                \"addressLine\": \"10 Birmingham Road Coleshill, Birmingham Warwickshire\",\n                \"area\": \"B\",\n                \"zipcode\": \"B46 2EN\"\n            }\n        ]\n    }\n}"
+							]
 						}
-					]
+					],
+					"id": "2d8bc5ac-17f3-44d3-971c-6fa6d1fdf0f6"
 				}
 			],
 			"id": "3d6d80d9-46b2-483b-8784-4f27335f0661"
