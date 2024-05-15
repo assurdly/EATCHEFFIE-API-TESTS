@@ -2415,10 +2415,6 @@
 								"exec": [
 									"const jsonData = pm.response.json();",
 									"",
-									"",
-									"if (pm.response.status === 201){",
-									"",
-									"",
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
 									"});",
@@ -2434,23 +2430,9 @@
 									"    pm.expect(jsonData.status).to.eql('success');",
 									"});",
 									"",
-									"pm.test(\"Status is success\", function () {",
-									"    pm.expect(jsonData.status).to.eql('success');",
-									"});",
-									"",
 									"pm.test(\"Message is Successfully logged in\", function () {",
 									"    pm.expect(jsonData.message).to.be.a('string');",
-									"});",
-									"} else {",
-									"    pm.test(\"Status code is 401\", function () {",
-									"    pm.response.to.have.status(401);",
-									"",
-									"    pm.test(\"Status code name has Unauthorized\", function () {",
-									"    pm.response.to.have.status(\"Unauthorized\");",
-									"});",
-									"})",
-									"}",
-									""
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -4983,13 +4965,12 @@
 											"pm.test(\"Status code response is 'Bad Request'\", function () {",
 											"    pm.response.to.have.status('Bad Request');",
 											"});",
-											"pm.test(\"Verify that error returns 'Bad Request'\", function () {",
-											"    pm.expect(pm.response.json().error).to.eql(\"Bad Request\");",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");",
 											"});",
-											"pm.test(\"Verify that message returns 'Validation failed (numeric string is expected)'\", function () {",
-											"    pm.expect(pm.response.json().message).to.include(\"Validation failed (numeric string is expected)\");",
-											"});",
-											""
+											"pm.test(\"Verify that 'id must be a UUID'\", function () {",
+											"    pm.expect(pm.response.json().data.id).to.be.a(\"string\");",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -5020,7 +5001,6 @@
 									],
 									"variable": [
 										{
-											"id": "2c503cbf-d07d-451a-9e49-4ad6c16d2f30",
 											"key": "id",
 											"value": ""
 										}
@@ -5174,8 +5154,11 @@
 											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"Verify that message returns 'Invalid old password.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Invalid old password.\");\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that 'id must be a UUID'\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.be.a(\"string\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -5409,8 +5392,11 @@
 											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"Verify that message returns 'Invalid old password.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Invalid old password.\");\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that 'id must be a UUID'\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.be.a(\"string\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -5515,8 +5501,11 @@
 											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"Verify that message returns 'Meal ID is required'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Mesl ID is required\");\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that 'id must be a UUID'\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.be.a(\"string\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -7176,8 +7165,11 @@
 											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"Verify that message returns 'Vendor ID is required'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Vendor ID is required\");\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that 'id must be a UUID'\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.be.a(\"string\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -7294,8 +7286,11 @@
 											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"Verify that message returns 'Invalid vendor Id'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Invalid vendor Id\");\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that 'id must be a UUID'\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.be.a(\"string\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -7558,8 +7553,11 @@
 											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"Verify that message returns 'Invalid vednor Id'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Invalid vednor Id\");\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that 'id must be a UUID'\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.be.a(\"string\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -7676,8 +7674,11 @@
 											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"Verify that message returns 'Vendor ID is required'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Vendor ID is required\");\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that 'id must be a UUID'\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.be.a(\"string\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -8847,7 +8848,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/address/autocomplete?q=10 man",
+									"raw": "{{base_url}}/address/autocomplete?q=Aberdeen",
 									"host": [
 										"{{base_url}}"
 									],
@@ -8858,7 +8859,7 @@
 									"query": [
 										{
 											"key": "q",
-											"value": "10 man"
+											"value": "Aberdeen"
 										}
 									]
 								}
@@ -9138,7 +9139,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"YWJmOGEyZmFkN2IyMDAxIDI5NTE2NjU2IDUzOGI0NzE3OTZlMjY5OA\"\n}",
+									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9721,6 +9722,10 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
+											"const fetchAddressId = jsonData.data[0].id; \r",
+											"\r",
+											"pm.environment.set(\"fetchAddressId\", fetchAddressId);\r",
+											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
@@ -9738,7 +9743,7 @@
 											"    pm.expect(pm.response.json().message).to.include(\"Addresses fetched successfully\");\r",
 											"});\r",
 											"pm.test(\"Verify that meta returns records\", function () {\r",
-											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -9988,426 +9993,6 @@
 					"id": "50efcdd4-6700-435a-b97f-8abba992a1de"
 				},
 				{
-					"name": "Update Address",
-					"item": [
-						{
-							"name": "Update Address - Valid",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Status code name has string\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
-											"});\r",
-											"pm.test(\"Status is success\", function () {\r",
-											"    pm.expect(pm.response.json().status).to.eql('success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify that success returns 'true'\", function () {\r",
-											"    pm.expect(pm.response.json().success).to.be.true;\r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Address updates successfully'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Address updates successfully\");\r",
-											"});\r",
-											"pm.test(\"Verify that data returns address details'\", function () {\r",
-											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "6bc2ba5c-5a6f-4ea7-8ff4-d8e45caa2ecf",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"141, broomfield road, chelmsford, England\",\n    \"latitude\": \"51.509865\",\n    \"longitude\": \"-0.118092\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/address/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"address",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{addressId}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Address - No Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\"); \r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Validation failed (numeric string is expected)'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Validation failed (numeric string is expected)\");\r",
-											"});\r",
-											"pm.test(\"Verify that error returns 'Bad Request'\", function () {\r",
-											"    pm.expect(pm.response.json().error).to.eql(\"Bad Request\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "42c2fff8-a026-4fa3-952f-34e2e7a78b6f",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"29 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/address/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"address",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": ""
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Address - No Addressline",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\"); \r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
-											"});\r",
-											"pm.test(\"Verify that data returns 'addressLine should not be empty'\", function () {\r",
-											"    pm.expect(pm.response.json().data.addressLine).to.include(\"addressLine should not be empty\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "6f2112eb-6857-4d6f-982a-bf2f8623e0d1",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/address/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"address",
-										":id"
-									],
-									"variable": [
-										{
-											"id": "51f799cc-0b06-401b-99d7-c3885e1b5d44",
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Address - No latitude",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\"); \r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
-											"});\r",
-											"pm.test(\"Verify that data returns 'latitude should not be empty'\", function () {\r",
-											"    pm.expect(pm.response.json().data.latitude).to.include(\"latitude should not be empty\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "f88bd6d0-6395-465f-bd1f-4895caada719",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"\",\n    \"longitude\": \"3.3536909962760433\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/address/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"address",
-										":id"
-									],
-									"variable": [
-										{
-											"id": "51f799cc-0b06-401b-99d7-c3885e1b5d44",
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Address - No longitude",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\"); \r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
-											"});\r",
-											"pm.test(\"Verify that data returns 'longitude should not be empty'\", function () {\r",
-											"    pm.expect(pm.response.json().data.longitude).to.include(\"longitude should not be empty\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "5d130f83-7c7e-4360-b3f5-08028bc4742d",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/address/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"address",
-										":id"
-									],
-									"variable": [
-										{
-											"id": "51f799cc-0b06-401b-99d7-c3885e1b5d44",
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Address - No Auth",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "d82757f1-8547-4468-9962-9c4515cae82d",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
-											"    pm.response.to.have.status(\"Unauthorized\"); \r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "77240f36-a039-437f-8bd8-901b03b65763",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"addressLine\": \"2 Akerele Street Surulere.\",\n    \"latitude\": \"6.505861209185118\",\n    \"longitude\": \"3.3536909962760433\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/address/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"address",
-										":id"
-									],
-									"variable": [
-										{
-											"id": "51f799cc-0b06-401b-99d7-c3885e1b5d44",
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"id": "c844d3be-a9e1-42bc-adb1-bd0888f7489d"
-				},
-				{
 					"name": "Delete Address",
 					"item": [
 						{
@@ -10464,7 +10049,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{addressId}}"
+											"value": "{{fetchAddressId}}"
 										}
 									]
 								}
@@ -11707,7 +11292,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
+									"raw": "{\n    \"addressId\": \"{{fetchAddressId}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11831,8 +11416,10 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"const orderId = jsonData.data[0].id; \r",
+											"const vendor_Id = jsonData.data[0].meals[0].meal.vendor.id; \r",
 											"\r",
 											"pm.environment.set(\"orderId\", orderId);\r",
+											"pm.environment.set(\"vendor_Id\", vendor_Id);\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -11871,7 +11458,7 @@
 								},
 								"method": "GET",
 								"header": [],
-								"url": "{{base_url}}/customer/orders/me"
+								"url": "{{base_url}}/customer/orders"
 							},
 							"response": []
 						},
@@ -11905,7 +11492,7 @@
 								},
 								"method": "GET",
 								"header": [],
-								"url": "{{base_url}}/customer/orders/me"
+								"url": "{{base_url}}/customer/orders"
 							},
 							"response": []
 						}
@@ -12820,6 +12407,37 @@
 					"item": [
 						{
 							"name": "Fetch Customer Order By ID - Valid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b112d4aa-e2ee-48ab-b79e-75d0f61cede7",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"pm.test(\"Verify that status returns '\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Orders fetched successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Orders fetched successfully\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns user's orders\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "8d10f15f-8650-459a-b685-11d46165c2bc",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -12852,7 +12470,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "{{orderId}}"
 										}
 									]
 								}
@@ -12985,7 +12603,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendorId\": \"{{vendorId}}\",\n    \"addressId\": \"{{addressId}}\"\n}",
+									"raw": "{\n    \"vendorId\": \"{{vendorId}}\",\n    \"addressId\": \"{{fetchAddressId}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
