@@ -4965,13 +4965,12 @@
 											"pm.test(\"Status code response is 'Bad Request'\", function () {",
 											"    pm.response.to.have.status('Bad Request');",
 											"});",
-											"pm.test(\"Verify that error returns 'Bad Request'\", function () {",
-											"    pm.expect(pm.response.json().error).to.eql(\"Bad Request\");",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");",
 											"});",
-											"pm.test(\"Verify that message returns 'Validation failed (numeric string is expected)'\", function () {",
-											"    pm.expect(pm.response.json().message).to.include(\"Validation failed (numeric string is expected)\");",
-											"});",
-											""
+											"pm.test(\"Verify that 'id must be a UUID'\", function () {",
+											"    pm.expect(pm.response.json().data.id).to.be.a(\"string\");",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -5002,7 +5001,6 @@
 									],
 									"variable": [
 										{
-											"id": "2c503cbf-d07d-451a-9e49-4ad6c16d2f30",
 											"key": "id",
 											"value": ""
 										}
