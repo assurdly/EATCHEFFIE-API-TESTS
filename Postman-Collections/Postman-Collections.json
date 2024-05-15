@@ -6643,7 +6643,7 @@
 					"name": "Update Business Information",
 					"item": [
 						{
-							"name": "Update Business Information",
+							"name": "Invalid category ID - Update Business Information",
 							"id": "801e8b37-c14e-4bef-8008-7814d3207ae3",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -6652,12 +6652,8 @@
 								"method": "PUT",
 								"header": [
 									{
-										"key": "x-request-source",
-										"value": "vendor"
-									},
-									{
 										"key": "Authorization",
-										"value": "Bearer {{vendor_access_token}}"
+										"value": "Bearer {{vendorAccessToken}}"
 									}
 								],
 								"body": {
@@ -6666,7 +6662,7 @@
 										{
 											"type": "text",
 											"key": "businessName",
-											"value": "NexusCooks"
+											"value": "The Cook House"
 										},
 										{
 											"type": "text",
