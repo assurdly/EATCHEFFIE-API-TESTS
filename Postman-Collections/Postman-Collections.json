@@ -11525,7 +11525,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendorId\": \"{{vendorId}}\",\n    \"orderId\": \"{{orderId}}\",\n    \"rating\": 4\n}",
+									"raw": "{\n    \"vendorId\": \"{{vendor_Id}}\",\n    \"orderId\": \"{{orderId}}\",\n    \"rating\": 4\n}",
 									"options": {
 										"raw": {
 											"language": "json"
