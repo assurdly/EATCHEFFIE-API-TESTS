@@ -2086,7 +2086,7 @@
 					]
 				},
 				{
-					"name": "Login With Apple",
+					"name": "Login With Apple Copy",
 					"event": [
 						{
 							"listen": "test",
@@ -2106,7 +2106,7 @@
 							}
 						}
 					],
-					"id": "b2aeb7ba-dcdd-4425-aa09-beec902e50a1",
+					"id": "69958085-3560-4d43-817a-86bb0ea42fd9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2117,7 +2117,7 @@
 					},
 					"response": [
 						{
-							"id": "7458837b-48e9-40f8-bb7f-80cf08293122",
+							"id": "4585145b-428c-4172-9717-af97fb54febe",
 							"name": "success",
 							"originalRequest": {
 								"method": "GET",
@@ -2180,7 +2180,7 @@
 					]
 				},
 				{
-					"name": "Complete Login With Oauth",
+					"name": "Complete Login With Oauth - Google",
 					"event": [
 						{
 							"listen": "test",
@@ -2222,6 +2222,119 @@
 					"response": [
 						{
 							"id": "1d18ff9b-50e9-44bf-af2e-8c63965ec1f4",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"code\": \"4/0AeaYSHA07ycb9wADezdpC_aHQcn94izKsSz9PJayyJzuXWCAGZamcT1BAX4dGp8_r3vZvg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/oauth/google/complete"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "382"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17e-ksn+LPQ/iHs45LErXbmWwQ9QYpY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Mar 2024 23:24:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNzEwODkwNjczLCJleHAiOjE3MTA4OTQyNzN9.5kryJGTx5Gcl0NuIYMzTriwUPfmjM3dOztG_kfyoucg\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNzEwODkwNjczLCJleHAiOjE3MTA4OTQyNzN9._a8uGzihmHxFYlrCNo-sHFBsGKc7mIFbsf8AWFMuZ9I\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Complete Login With Oauth - Apple",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "db56e863-37a2-4754-bf66-fa3f04a5d492",
+								"exec": [
+									"/*pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is Ok\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});\r",
+									"*/"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "6e64d06a-1c53-4d53-8b25-1a176a67cb7b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"4/0AeaYSHDXAmrTGpEaIipxF-YR18sD1WaRb5sg_dfV2xfWFX9wqxT72gcOle357OCMuPjq5Q&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&hd=assurdly.com&prompt=consent\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/oauth/google/complete"
+					},
+					"response": [
+						{
+							"id": "a0e2d2ff-0419-4cb8-aa2e-c097220ca9f5",
 							"name": "success",
 							"originalRequest": {
 								"method": "POST",
