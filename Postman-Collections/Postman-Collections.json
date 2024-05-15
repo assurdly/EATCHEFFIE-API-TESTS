@@ -11377,6 +11377,117 @@
 							]
 						},
 						{
+							"name": "Valid - Review Order Copy",
+							"id": "7d5be47d-9ecf-4e1e-82ce-a8d1d9cc9d46",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"vendorId\": \"{{vendor_Id}}\",\n    \"orderId\": \"{{orderId}}\",\n    \"rating\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/order/review"
+							},
+							"response": [
+								{
+									"id": "12e28a85-bf03-4f14-80da-365f1ef4fd39",
+									"name": "Review Order",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "customer",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"vendorId\": \"c760c3b6-41ba-4ab7-b42a-e284b6cda96a\",\n    \"orderId\": \"00573868-30ff-4e67-99eb-5dde0562e76a\",\n    \"rating\": 4\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/order/review"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "29"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4b-VQNY1pTm4duKiMX7pv+EKXvXYT0\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 01 May 2024 00:13:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Order reviewed successfully\"\n}ß"
+								}
+							]
+						},
+						{
 							"name": "No Auth - Review Order",
 							"event": [
 								{
