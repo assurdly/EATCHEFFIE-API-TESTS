@@ -1980,6 +1980,117 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "bdfbfa5d-894c-41c6-8198-07e84e694501",
+								"exec": [
+									"// pm.test(\"Status code is 200\", function () {\r",
+									"//     pm.response.to.have.status(200);\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"Status code response is Ok\", function () {\r",
+									"//     pm.response.to.have.status('OK');\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"Status code is 200\", function () {\r",
+									"//     pm.response.to.have.status(200);\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"Status code response is Ok\", function () {\r",
+									"//     pm.response.to.have.status('OK');\r",
+									"// });"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "cb19d46c-c8ef-4742-8b7b-16a84bdf17c8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"purpose\": \"signup\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/oauth/google"
+					},
+					"response": [
+						{
+							"id": "8a2ed053-897b-4e28-ab91-5ad4276aef4f",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/auth/google/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "304"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"130-G33fXfk3UzEfIqbb/XEi1mh+0GQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Mar 2024 23:48:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": \"https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8180%2Fapi%2Fv1%2Fauth%2Fgoogle%2Fredirect&response_type=code&client_id=310296340026-jduc4ni5tig1pag6mkp9clttev9knt4a.apps.googleusercontent.com&scope=email%20profile\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login With Apple",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
 								"id": "60fe790e-5318-4918-b28b-351f4f7f4547",
 								"exec": [
 									"// pm.test(\"Status code is 200\", function () {\r",
