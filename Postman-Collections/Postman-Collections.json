@@ -11416,8 +11416,10 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"const orderId = jsonData.data[0].id; \r",
+											"const vendor_Id = jsonData.data[0].meals[0].meal.vendor.id; \r",
 											"\r",
 											"pm.environment.set(\"orderId\", orderId);\r",
+											"pm.environment.set(\"vendor_Id\", vendor_Id);\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
