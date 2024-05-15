@@ -6787,6 +6787,79 @@
 								"url": "{{base_url}}/vendor/business"
 							},
 							"response": []
+						},
+						{
+							"name": "Empty Fields - Update Business Information Copy 2",
+							"id": "2585b66c-2071-40eb-b937-4017ee2ad1b4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{vendorAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"type": "text",
+											"key": "businessName",
+											"value": "The Cook House"
+										},
+										{
+											"type": "text",
+											"key": "businessPhone",
+											"value": "077 3138 8966"
+										},
+										{
+											"type": "text",
+											"key": "addressId",
+											"value": "N2U5ZWM2YjU4YTUwY2QwIDI3OTA5NTA3IDUzOGI0NzE3OTZlMjY5OA=="
+										},
+										{
+											"type": "text",
+											"key": "councilRegistrationDone",
+											"value": "true"
+										},
+										{
+											"type": "text",
+											"key": "businessRegistrationDone",
+											"value": "true"
+										},
+										{
+											"type": "text",
+											"key": "trainingAndCertificationDone",
+											"value": "true"
+										},
+										{
+											"type": "text",
+											"key": "description",
+											"value": "Best meals everywhere"
+										},
+										{
+											"type": "file",
+											"key": "avatar",
+											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+										},
+										{
+											"type": "text",
+											"key": "categoryIds[0]",
+											"value": "c10094e2-546f-4a06-94f2-7f226d072a31"
+										},
+										{
+											"type": "text",
+											"key": "categoryIds[1]",
+											"value": "492bf1ef-3bef-4c8f-a63a-b599c56053f6"
+										}
+									]
+								},
+								"url": "{{base_url}}/vendor/business"
+							},
+							"response": []
 						}
 					],
 					"id": "0bf98dc0-543d-4728-905a-9b37961ac9cf"
