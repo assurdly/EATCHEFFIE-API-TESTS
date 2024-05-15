@@ -6789,7 +6789,7 @@
 							"response": []
 						},
 						{
-							"name": "Empty Fields - Update Business Information Copy 2",
+							"name": "Valid - Update Business Information Copy 2",
 							"id": "2585b66c-2071-40eb-b937-4017ee2ad1b4",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
