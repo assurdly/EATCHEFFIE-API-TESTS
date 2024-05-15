@@ -11221,7 +11221,43 @@
 								},
 								"method": "GET",
 								"header": [],
-								"url": "{{base_url}}/customer/orders"
+								"url": {
+									"raw": "{{base_url}}/customer/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customer",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "filter[status]",
+											"value": "processing",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "pending",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "completed",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "enroute",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "cancelled",
+											"disabled": true
+										}
+									]
+								}
 							},
 							"response": []
 						},
