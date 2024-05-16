@@ -6851,7 +6851,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]={{vendorId}}",
+									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
 									"host": [
 										"{{base_url}}"
 									],
@@ -6862,7 +6862,7 @@
 									"query": [
 										{
 											"key": "filter[vendorId]",
-											"value": "{{vendorId}}",
+											"value": "0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
 											"description": "This is required"
 										}
 									]
