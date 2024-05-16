@@ -10619,7 +10619,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"mealId\": \"{{mealId}}\",\n    \"priceId\": \"{{priceId}}\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
+									"raw": "{\n    \"mealId\": \"{{mealId}}\",\n    \"priceId\": \"{{priceId}}\",\n    \"quantity\": 3,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11358,7 +11358,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendorId\": \"{{vendor_Id}}\",\n    \"orderId\": \"{{orderId}}\",\n    \"rating\": 4\n}",
+									"raw": "{\n    \"vendorOrderId\": \"e0b3b91d-e0b1-4788-8261-fc95c6b8f6e6\",\n     \"rating\": 3,\n    \"remarks\": \"Good\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
