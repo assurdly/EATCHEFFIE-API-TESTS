@@ -11112,6 +11112,209 @@
 					"id": "1ccba010-d984-4f9c-a93b-6aaa08e29cf4"
 				},
 				{
+					"name": "Fetch Customer Order By Id",
+					"item": [
+						{
+							"name": "Fetch Customer Order By ID - Valid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b112d4aa-e2ee-48ab-b79e-75d0f61cede7",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"pm.test(\"Verify that status returns '\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Orders fetched successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Orders fetched successfully\");\r",
+											"});\r",
+											"pm.test(\"Verify that data returns user's orders\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "8d10f15f-8650-459a-b685-11d46165c2bc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/customer/orders/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customer",
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{orderId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Customer Order By ID - No Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9a86621c-661d-487e-b2b3-0cb0337bc78c",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\"); \r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify that error returns 'id must be a UUID'\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "e9844b2f-be41-4542-aa83-480b0e741803",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/customer/orders/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customer",
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Customer Order By ID - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9a86621c-661d-487e-b2b3-0cb0337bc78c",
+										"exec": [
+											"// Fixed the typo in response.json()\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status('Unauthorized');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "1107d171-889c-4ace-9eaf-ca0ff7d4e2b2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/customer/orders/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customer",
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{orderId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "60b4022c-b7f3-4fa6-9099-cb93be43fcb7"
+				},
+				{
 					"name": "Review Order",
 					"item": [
 						{
@@ -11788,209 +11991,6 @@
 					"id": "50235add-5a25-4bc9-bed1-98593883cda8"
 				},
 				{
-					"name": "Fetch Customer Order By Id",
-					"item": [
-						{
-							"name": "Fetch Customer Order By ID - Valid",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "b112d4aa-e2ee-48ab-b79e-75d0f61cede7",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Status code response is OK\", function () {\r",
-											"    pm.response.to.have.status('OK');\r",
-											"});\r",
-											"pm.test(\"Verify that status returns '\", function () {\r",
-											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
-											"});\r",
-											"pm.test(\"Verify that success returns 'true'\", function () {\r",
-											"    pm.expect(pm.response.json().success).to.be.true;\r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Orders fetched successfully'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Orders fetched successfully\");\r",
-											"});\r",
-											"pm.test(\"Verify that data returns user's orders\", function () {\r",
-											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "8d10f15f-8650-459a-b685-11d46165c2bc",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-request-source",
-										"value": "customer",
-										"disabled": true
-									}
-								],
-								"url": {
-									"raw": "{{base_url}}/customer/orders/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"customer",
-										"orders",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{orderId}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Fetch Customer Order By ID - No Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9a86621c-661d-487e-b2b3-0cb0337bc78c",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\"); \r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
-											"});\r",
-											"pm.test(\"Verify that error returns 'id must be a UUID'\", function () {\r",
-											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "e9844b2f-be41-4542-aa83-480b0e741803",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-request-source",
-										"value": "customer",
-										"disabled": true
-									}
-								],
-								"url": {
-									"raw": "{{base_url}}/customer/orders/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"customer",
-										"orders",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": ""
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Fetch Customer Order By ID - No Auth",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9a86621c-661d-487e-b2b3-0cb0337bc78c",
-										"exec": [
-											"// Fixed the typo in response.json()\r",
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
-											"    pm.response.to.have.status('Unauthorized');\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "1107d171-889c-4ace-9eaf-ca0ff7d4e2b2",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-request-source",
-										"value": "customer",
-										"disabled": true
-									}
-								],
-								"url": {
-									"raw": "{{base_url}}/customer/orders/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"customer",
-										"orders",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{orderId}}"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"id": "60b4022c-b7f3-4fa6-9099-cb93be43fcb7"
-				},
-				{
 					"name": "Fetch Reviews",
 					"item": [
 						{
@@ -12021,6 +12021,72 @@
 								}
 							],
 							"id": "58e34916-5e97-4b3c-8454-8039eeb70b5f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "customer",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendors",
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "filter[vendorId]",
+											"value": "0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
+											"description": "This is required"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Valid - Fetch Reviews Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "34a08bb9-6794-4b24-b7f9-65ee3518fd35",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that status returns 'success'\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Reviews fetched successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Reviews fetched successfully\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "bebd8278-9e33-4212-82a5-35c661f1f96c",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
