@@ -12378,26 +12378,20 @@
 							"response": []
 						},
 						{
-							"name": "Fetch Customer Order By ID - No Id Copy",
+							"name": "Fetch Customer Order By ID - No Auth",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "9a86621c-661d-487e-b2b3-0cb0337bc78c",
 										"exec": [
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
+											"// Fixed the typo in response.json()\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\"); \r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
-											"});\r",
-											"pm.test(\"Verify that error returns 'id must be a UUID'\", function () {\r",
-											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
+											"pm.test(\"Status code response is 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status('Unauthorized');\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -12411,10 +12405,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "GET",
 								"header": [
@@ -12436,9 +12427,8 @@
 									],
 									"variable": [
 										{
-											"id": "c1dc461e-8c35-49fa-9f9c-8c21b9a8e30c",
 											"key": "id",
-											"value": ""
+											"value": "{{orderId}}"
 										}
 									]
 								}
