@@ -11116,6 +11116,34 @@
 					"item": [
 						{
 							"name": "Valid - Review Order",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d1d6dbd7-3645-4b0c-ac3a-90dca9ae536f",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"pm.test(\"Status code response is 'Created'\", function () {\r",
+											"    pm.response.to.have.status('Created');\r",
+											"});\r",
+											"pm.test(\"Verify that status returns '\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that success returns 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Order reviewed successfully'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Order reviewed successfully\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "6bf23646-0a71-4e2f-9857-92f58050bea0",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -11263,7 +11291,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendorId\": \"c760c3b6-41ba-4ab7-b42a-e284b6cda96a\",\n    \"orderId\": \"00573868-30ff-4e67-99eb-5dde0562e76a\",\n    \"rating\": 4\n}",
+									"raw": "{\n    \"vendorOrderId\": \"e0b3b91d-e0b1-4788-8261-fc95c6b8f6e6\",\n     \"rating\": 3,\n    \"remarks\": \"Good\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
