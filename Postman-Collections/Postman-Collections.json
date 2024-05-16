@@ -11515,7 +11515,7 @@
 							]
 						},
 						{
-							"name": "Invalid vendorId - Review Order",
+							"name": "Invalid vendorOrderId - Review Order",
 							"event": [
 								{
 									"listen": "test",
@@ -11690,12 +11690,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendorId\": \"c760c3b6-41ba-4ab7-b42a-e284b6cda96a\",\n    \"orderId\": \"\",\n    \"rating\": 4\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									"raw": ""
 								},
 								"url": "{{base_url}}/order/review"
 							},
