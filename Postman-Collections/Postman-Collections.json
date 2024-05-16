@@ -3537,7 +3537,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[category]=chinese",
+									"raw": "{{base_url}}/meals?filter[category]=vegan",
 									"host": [
 										"{{base_url}}"
 									],
@@ -3562,7 +3562,7 @@
 										},
 										{
 											"key": "filter[category]",
-											"value": "chinese",
+											"value": "vegan",
 											"description": "Get the category slugs from the Fetch Categories endpoint"
 										},
 										{
@@ -11997,72 +11997,6 @@
 											"value": "0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
 											"description": "This is required",
 											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Valid - Fetch Reviews Copy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "34a08bb9-6794-4b24-b7f9-65ee3518fd35",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify that status returns 'success'\", function () {\r",
-											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
-											"});\r",
-											"pm.test(\"Verify that success returns 'true'\", function () {\r",
-											"    pm.expect(pm.response.json().success).to.be.true;\r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Reviews fetched successfully'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Reviews fetched successfully\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "bebd8278-9e33-4212-82a5-35c661f1f96c",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-request-source",
-										"value": "customer",
-										"disabled": true
-									}
-								],
-								"url": {
-									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"vendors",
-										"reviews"
-									],
-									"query": [
-										{
-											"key": "filter[vendorId]",
-											"value": "0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
-											"description": "This is required"
 										}
 									]
 								}
