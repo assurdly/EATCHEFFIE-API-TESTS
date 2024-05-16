@@ -10410,65 +10410,6 @@
 							"response": []
 						},
 						{
-							"name": "Update Cart - Valid Copy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "41475c4f-c6b5-4dc9-993a-ba175599c2d6",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is OK\", function () {\r",
-											"    pm.response.to.have.status('OK');\r",
-											"});\r",
-											"pm.test(\"Verify that status returns '\", function () {\r",
-											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
-											"});\r",
-											"pm.test(\"Verify that success returns 'true'\", function () {\r",
-											"    pm.expect(pm.response.json().success).to.be.true;\r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Meal added to cart successfully'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Meal added to cart successfully\");\r",
-											"});\r",
-											"pm.test(\"Verify that data returns meal details\", function () {\r",
-											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "90c1f638-ac91-4350-8414-8dd9999f5e38",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"mealId\": \"6f8a8c1f-524b-4039-9d19-5ff04237e86b\",\n    \"priceId\": \"416d76a8-eb0b-4e75-9799-c0cdda253ad2\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/cart/meals"
-							},
-							"response": []
-						},
-						{
 							"name": "Update Cart - No Mealid",
 							"event": [
 								{
@@ -10992,10 +10933,10 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"const orderId = jsonData.data[0].id; \r",
-											"const vendor_Id = jsonData.data[0].meals[0].meal.vendor.id; \r",
+											"//const vendorOrderId = jsonData.data[0].vendorOrders[0].id; \r",
 											"\r",
 											"pm.environment.set(\"orderId\", orderId);\r",
-											"pm.environment.set(\"vendor_Id\", vendor_Id);\r",
+											"//pm.environment.set(\"vendorOrderId\", vendorOrderId);\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -11303,79 +11244,6 @@
 									],
 									"variable": [
 										{
-											"key": "id",
-											"value": "{{orderId}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "{{base_url}}/customer/orders/:id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "b112d4aa-e2ee-48ab-b79e-75d0f61cede7",
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Status code response is OK\", function () {\r",
-											"    pm.response.to.have.status('OK');\r",
-											"});\r",
-											"pm.test(\"Verify that status returns '\", function () {\r",
-											"    pm.expect(pm.response.json().status).to.eql(\"success\");\r",
-											"});\r",
-											"pm.test(\"Verify that success returns 'true'\", function () {\r",
-											"    pm.expect(pm.response.json().success).to.be.true;\r",
-											"});\r",
-											"pm.test(\"Verify that message returns 'Orders fetched successfully'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Orders fetched successfully\");\r",
-											"});\r",
-											"pm.test(\"Verify that data returns user's orders\", function () {\r",
-											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "fe4a895a-4020-42d5-a45f-4e336796144f",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-request-source",
-										"value": "customer",
-										"disabled": true
-									}
-								],
-								"url": {
-									"raw": "{{base_url}}/customer/orders/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"customer",
-										"orders",
-										":id"
-									],
-									"variable": [
-										{
-											"id": "22abc4f1-2536-43fc-a45b-265d161d19c8",
 											"key": "id",
 											"value": "{{orderId}}"
 										}
