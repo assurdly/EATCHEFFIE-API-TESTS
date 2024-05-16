@@ -7492,61 +7492,6 @@
 					"name": "Change Password",
 					"item": [
 						{
-							"name": "Change Password - Valid",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "1d43036b-6c50-442b-bebc-a68566f370ed",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Status code name has 'OK'\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
-											"});\r",
-											"pm.test(\"Verify that status retunrs 'success'\", function () {\r",
-											"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
-											"});\r",
-											"pm.test(\"Verify that status retunrs 'true'\", function () {\r",
-											"    pm.expect(pm.response.json().success).to.be.true;\r",
-											"});\r",
-											"pm.test(\"Verify that message retunrs'You password has been changed successfully.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Your password has been changed successfully.\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "21127826-c431-4d00-8d85-e79a5a44eb36",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Password12@@\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/user/settings/password"
-							},
-							"response": []
-						},
-						{
 							"name": "Change Password - No Auth",
 							"event": [
 								{
@@ -7934,6 +7879,61 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"oldPassword\": \"Password1#\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/user/settings/password"
+							},
+							"response": []
+						},
+						{
+							"name": "Change Password - Valid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1d43036b-6c50-442b-bebc-a68566f370ed",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Verify that status retunrs 'success'\", function () {\r",
+											"    pm.expect(pm.response.json().status).to.include(\"success\");\r",
+											"});\r",
+											"pm.test(\"Verify that status retunrs 'true'\", function () {\r",
+											"    pm.expect(pm.response.json().success).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Verify that message retunrs'You password has been changed successfully.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Your password has been changed successfully.\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "21127826-c431-4d00-8d85-e79a5a44eb36",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{accessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"oldPassword\": \"Password1#\",\n    \"password\": \"Password12@@\",\n    \"confirmPassword\": \"Password12@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -13663,7 +13663,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n   // \"phone\": \"{{signedUpUserPhoneNumber}}\",//Can be used in place of email \n    \"password\": \"Password1#\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n   // \"phone\": \"{{signedUpUserPhoneNumber}}\",//Can be used in place of email \n    \"password\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
