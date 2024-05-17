@@ -14465,59 +14465,6 @@
 				}
 			],
 			"id": "8f89a042-9ba2-4000-8164-8691515f1a1d"
-		},
-		{
-			"name": "Delete Account",
-			"item": [
-				{
-					"name": "Delete Account",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "24c26845-755b-4df3-bc4f-87e07784310d",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Status code name has 'OK'\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"pm.test(\"Status is 'success'\", function () {\r",
-									"    pm.expect(pm.response.json().status).to.eql('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"success is true\", function () {\r",
-									"    pm.expect(pm.response.json().success).to.be.true;\r",
-									"});\r",
-									"pm.test(\"message returns 'Account deleted successfully'\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"Account deleted successfully\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "ac8d7481-dfcd-4b2f-ad07-aa3359bbf470",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{accessToken}}"
-							}
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": "{{base_url}}/user/me"
-					},
-					"response": []
-				}
-			],
-			"id": "b0417738-fa57-412c-9d6c-ffa54143f93a"
 		}
 	],
 	"event": [
