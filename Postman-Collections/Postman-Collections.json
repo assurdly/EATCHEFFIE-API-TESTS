@@ -14062,9 +14062,10 @@
 									"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 									"    pm.response.to.have.status(\"Bad Request\");\r",
 									"});\r",
-									"pm.test(\"Verify that Email must be an email'\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"Email must be an email\");\r",
-									"});"
+									"pm.test(\"Verify that email must be an emaill'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"email must be an email\");\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
