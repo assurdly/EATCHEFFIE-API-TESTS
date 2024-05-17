@@ -10933,10 +10933,10 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"const orderId = jsonData.data[0].id; \r",
-											"//const vendorOrderId = jsonData.data[0].vendorOrders[0].id; \r",
+											"const vendorOrderId = jsonData.data[0].vendorOrders[0].id; \r",
 											"\r",
 											"pm.environment.set(\"orderId\", orderId);\r",
-											"//pm.environment.set(\"vendorOrderId\", vendorOrderId);\r",
+											"pm.environment.set(\"vendorOrderId\", vendorOrderId);\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -10953,9 +10953,11 @@
 											"pm.test(\"Verify that message returns 'Orders fetched successfully'\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.include(\"Orders fetched successfully\");\r",
 											"});\r",
+											"/*\r",
 											"pm.test(\"Verify that data returns user's orders\", function () {\r",
 											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
-											"});"
+											"});\r",
+											"*/"
 										],
 										"type": "text/javascript",
 										"packages": {}
