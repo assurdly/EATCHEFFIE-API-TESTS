@@ -13049,8 +13049,8 @@
 								"id": "432ea89e-1888-4356-9f07-fb238569001a",
 								"exec": [
 									"\r",
-									"pm.test(\"Status code is 404\", function () {\r",
-									"    pm.response.to.have.status(404);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status code response is 'Not Found'\", function () {\r",
@@ -13089,9 +13089,8 @@
 							],
 							"variable": [
 								{
-									"id": "f984f89b-fed0-4971-a459-fde7a32f804b",
 									"key": "id",
-									"value": "1"
+									"value": "{{fetchAddressId}}"
 								}
 							]
 						}
@@ -13114,11 +13113,11 @@
 									"pm.test(\"Status code response is 'Bad Request'\", function () {\r",
 									"    pm.response.to.have.status(\"Bad Request\"); \r",
 									"});\r",
-									"pm.test(\"Verify that message returns 'Validation failed (numeric string is expected)'\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.eql(\"Validation failed (numeric string is expected)\");\r",
+									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
 									"});\r",
-									"pm.test(\"Verify that error returns 'Bad Request'\", function () {\r",
-									"    pm.expect(pm.response.json().error).to.eql(\"Bad Request\");\r",
+									"pm.test(\"Verify that error returns 'id must be a UUID'\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.eql(\"id must be a UUID\");\r",
 									"});"
 								],
 								"type": "text/javascript",
