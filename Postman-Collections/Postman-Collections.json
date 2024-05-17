@@ -7548,8 +7548,8 @@
 											"pm.test(\"Status code name has 'Bad Request'\", function () {\r",
 											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"BVerify that message returns 'Invalid old password.'\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Invalid old password.\");\r",
+											"pm.test(\"BVerify that message returns 'Passwords do not match.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Passwords do not match.\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -7878,7 +7878,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Password1#\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Password112@@\",\n    \"password\": \"Password112@@\",\n    \"confirmPassword\": \"Password112@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7933,7 +7933,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Password112@@\",\n    \"password\": \"Password12@\",\n    \"confirmPassword\": \"Password12@\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Password12@@\",\n    \"password\": \"Password12@\",\n    \"confirmPassword\": \"Password12@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
