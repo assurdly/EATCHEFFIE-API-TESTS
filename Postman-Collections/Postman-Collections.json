@@ -7933,7 +7933,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Password1#\",\n    \"password\": \"Password12@@\",\n    \"confirmPassword\": \"Password12@@\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Password112@@\",\n    \"password\": \"Password12@\",\n    \"confirmPassword\": \"Password12@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11310,7 +11310,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendorOrderId\": \"4e3ec1b4-ef2f-4f33-9c86-9e264d5d66e2\",\n     \"rating\": 3,\n    \"remarks\": \"Delicious\"\n}",
+									"raw": "{\n    \"vendorOrderId\": \"{{vendorOrderId}}\",\n     \"rating\": 3,\n    \"remarks\": \"Delicious\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11943,7 +11943,7 @@
 									"script": {
 										"id": "34a08bb9-6794-4b24-b7f9-65ee3518fd35",
 										"exec": [
-											"/*pm.test(\"Status code is 200\", function () {\r",
+											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
@@ -11956,7 +11956,7 @@
 											"pm.test(\"Verify that message returns 'Reviews fetched successfully'\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.include(\"Reviews fetched successfully\");\r",
 											"});\r",
-											"*/"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -11983,7 +11983,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/vendors/reviews",
+									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11995,8 +11995,7 @@
 										{
 											"key": "filter[vendorId]",
 											"value": "0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
-											"description": "This is required",
-											"disabled": true
+											"description": "This is required"
 										}
 									]
 								}
@@ -13663,7 +13662,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n   // \"phone\": \"{{signedUpUserPhoneNumber}}\",//Can be used in place of email \n    \"password\": \"Password12@@\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n   // \"phone\": \"{{signedUpUserPhoneNumber}}\",//Can be used in place of email \n    \"password\": \"Password12@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
