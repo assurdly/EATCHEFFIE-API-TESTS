@@ -5586,7 +5586,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/vendors?filter[category]=african",
+									"raw": "{{base_url}}/vendors?filter[category]=chinese",
 									"host": [
 										"{{base_url}}"
 									],
@@ -5601,7 +5601,7 @@
 										},
 										{
 											"key": "filter[category]",
-											"value": "african"
+											"value": "chinese"
 										},
 										{
 											"key": "filter[rating][gte]",
@@ -7490,7 +7490,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Password112@@\",\n    \"password\": \"Password112@@\",\n    \"confirmPassword\": \"Password112@@\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Password12@@\",\n    \"password\": \"Password12@@\",\n    \"confirmPassword\": \"Password12@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -12661,8 +12661,8 @@
 								"id": "432ea89e-1888-4356-9f07-fb238569001a",
 								"exec": [
 									"\r",
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status code response is 'Not Found'\", function () {\r",
