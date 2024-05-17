@@ -9168,9 +9168,10 @@
 											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
 											"});\r",
-											"pm.test(\"Verify that data returns 'latitude should not be empty'\", function () {\r",
-											"    pm.expect(pm.response.json().data.latitude).to.include(\"latitude should not be empty\");\r",
-											"});"
+											"pm.test(\"Verify that data returns 'addressId should not be empty'\", function () {\r",
+											"    pm.expect(pm.response.json().data.addressId).to.include(\"addressId should not be empty\");\r",
+											"});\r",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
