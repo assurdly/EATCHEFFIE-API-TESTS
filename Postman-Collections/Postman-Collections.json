@@ -3277,6 +3277,39 @@
 						},
 						{
 							"name": "Valid - Update Business Information Copy 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d548fafe-a998-4e37-903a-03d4e2d4f45b",
+										"exec": [
+											"try {",
+											"",
+											"    const { status, message, errors } = pm.response.json()",
+											"",
+											"    pm.test(\"Status code is 200\", function () {",
+											"        pm.response.to.have.status(200);",
+											"    });",
+											"",
+											"    pm.test(\"Status code is 200\", function () {",
+											"        pm.response.to.have.status(200);",
+											"    });",
+											"",
+											"    pm.test(\"Errors are successfully retunred\", function () {",
+											"        pm.expect(message).to.eql('Business updated successfully');",
+											"    });",
+											"",
+											"",
+											"",
+											"} catch (error) {",
+											"    console.error(\"Error caught in running tests:\", error)",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "2585b66c-2071-40eb-b937-4017ee2ad1b4",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3286,7 +3319,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer {{vendorAccessToken}}"
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzNzhjNzdlLTYxYTgtNDI3YS05OGM3LWUxMzg1MTA4Y2Y3YSIsImlhdCI6MTcxNjE0NzMzNSwiZXhwIjoxNzE2MTUwOTM1fQ.2-Ph3S7vMqEX1-4Q1FSVgl1QI27qD7GLLVq0MXD3h-U"
 									}
 								],
 								"body": {
@@ -3335,12 +3368,12 @@
 										{
 											"type": "text",
 											"key": "categoryIds[0]",
-											"value": "c10094e2-546f-4a06-94f2-7f226d072a31"
+											"value": "3452c465-c401-430d-b9d7-67ddb715ff44"
 										},
 										{
 											"type": "text",
 											"key": "categoryIds[1]",
-											"value": "492bf1ef-3bef-4c8f-a63a-b599c56053f6"
+											"value": "b2cf98b6-f730-460a-866b-69d637f3050b"
 										}
 									]
 								},
