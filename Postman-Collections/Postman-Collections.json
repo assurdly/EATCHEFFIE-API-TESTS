@@ -7287,6 +7287,32 @@
 			"item": [
 				{
 					"name": "Add Meal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0b318751-8e78-44fb-b7e4-cfb9fa66e0d7",
+								"exec": [
+									"try {",
+									"",
+									"    const { status, message, errors } = pm.response.json()",
+									"",
+									"    pm.test(\"Status code is 201\", function () {",
+									"        pm.response.to.have.status(201);",
+									"    });",
+									"",
+									"    pm.test(\"Errors are successfully retunred\", function () {",
+									"        pm.expect(message).to.eql('Meal created successfully');",
+									"    });",
+									"} catch (error) {",
+									"    console.error(\"Error caught in running tests:\", error)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "8d8d2fe9-16f8-4459-818a-3635d8e0f370",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -7322,7 +7348,7 @@
 								{
 									"type": "text",
 									"key": "categoryIds[0]",
-									"value": "68f587d4-eef4-4900-a26b-8f62c1827a99"
+									"value": "{{fetchedCategory1}}"
 								},
 								{
 									"type": "text",
@@ -7407,6 +7433,39 @@
 				},
 				{
 					"name": "Fetch Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "705e8dcd-10b8-46b9-b508-9ef41324d574",
+								"exec": [
+									"try {",
+									"",
+									"    const { status, data } = pm.response.json()",
+									"",
+									"    pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
+									"",
+									"    pm.test(\"Response body property\", function () {",
+									"        pm.expect(data).to.be.an('array');",
+									"        pm.expect(status).to.be.a('string');",
+									"    });",
+									"",
+									"} catch (error) {",
+									"    console.error('Error from test says:', error)",
+									"}",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "72c7fa14-68fd-4cf5-9c12-0bfdaad836dc",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -7422,7 +7481,8 @@
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/meals/categories"
@@ -7499,6 +7559,34 @@
 			"item": [
 				{
 					"name": "Fetch Orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "39d5aee7-4bd7-4ddb-be6f-7df5d5c544c1",
+								"exec": [
+									"try {",
+									"",
+									"    const { status, data } = pm.response.json()",
+									"",
+									"    pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
+									"",
+									"    pm.test(\"Response body property\", function () {",
+									"        pm.expect(data).to.be.an('array');",
+									"        pm.expect(status).to.be.a('string');",
+									"    });",
+									"",
+									"} catch (error) {",
+									"    console.error('Error from test says:', error)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "942b7698-e36b-4825-a404-89e4464a53a6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -7507,14 +7595,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{vendorAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/vendor/orders"
@@ -7598,14 +7687,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{vendorAccessToken}}"
 							}
 						},
 						"method": "PUT",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -7629,7 +7719,6 @@
 							],
 							"variable": [
 								{
-									"id": "44513800-8174-4dfd-8947-f3e98a623aa6",
 									"key": "id",
 									"value": "",
 									"description": "The vendor order ID being updated"
