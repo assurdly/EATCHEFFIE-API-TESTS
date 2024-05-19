@@ -3397,18 +3397,19 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{access_token}}"
+										"token": "{{vendorAccessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "customer"
+										"value": "customer",
+										"disabled": true
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/address/autocomplete?q=10 birm",
+									"raw": "{{base_url}}/address/autocomplete",
 									"host": [
 										"{{base_url}}"
 									],
@@ -3419,7 +3420,8 @@
 									"query": [
 										{
 											"key": "q",
-											"value": "10 birm"
+											"value": "10 birm",
+											"disabled": true
 										}
 									]
 								}
@@ -3516,6 +3518,39 @@
 					"item": [
 						{
 							"name": "Fetch Business Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0c2916e2-3670-49e1-bdd5-3b8a34d6dc15",
+										"exec": [
+											"try {",
+											"",
+											"    const { status, data } = pm.response.json()",
+											"",
+											"    pm.test(\"Status code is 200\", function () {",
+											"        pm.response.to.have.status(200);",
+											"    });",
+											"",
+											"    pm.test(\"Response body property\", function () {",
+											"        pm.expect(data).to.be.an('object');",
+											"        pm.expect(status).to.be.a('string');",
+											"    });",
+											"",
+											"} catch (error) {",
+											"    console.error('Error from test says:', error)",
+											"}",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "29cc5027-926e-47c3-a2dd-6b6d4c9070b2",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3524,14 +3559,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{vendor_access_token}}"
+										"token": "{{vendorAccessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "vendor"
+										"value": "vendor",
+										"disabled": true
 									}
 								],
 								"url": "{{base_url}}/vendor/business"
@@ -7256,15 +7292,23 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendorAccessToken}}"
+							}
+						},
 						"method": "POST",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{vendor_access_token}}"
+								"value": "Bearer {{vendor_access_token}}",
+								"disabled": true
 							}
 						],
 						"body": {
