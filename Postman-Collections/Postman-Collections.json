@@ -3862,7 +3862,31 @@
 							"response": []
 						},
 						{
-							"name": "Invalid category ID - Update Business Information Copy",
+							"name": "Invalid category ID - Update Business Information",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0cfea416-80de-4d03-a959-36edced6c0ac",
+										"exec": [
+											"try {",
+											"    const { message } = pm.response.json()",
+											"",
+											"    pm.test(\"Status code is 400\", function () {",
+											"        pm.response.to.have.status(400);",
+											"    });",
+											"    pm.test('Test for appropriate error message', () => {",
+											"        pm.expect(message).to.include('Please provide a valid category.')",
+											"    })",
+											"} catch (errors) {",
+											"    console.error('These are the errors from test', errors)",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "a3786543-e767-4c22-bf1e-910ff99788ec",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3921,12 +3945,7 @@
 										{
 											"type": "text",
 											"key": "categoryIds[0]",
-											"value": "{{fetchedCategory1}}"
-										},
-										{
-											"type": "text",
-											"key": "categoryIds[1]",
-											"value": "{{fetchedCategory2}}"
+											"value": "3452c465-c401-430d-b9d7-67ddb715ff43"
 										}
 									]
 								},
