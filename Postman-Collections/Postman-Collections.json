@@ -3006,7 +3006,7 @@
 							]
 						},
 						{
-							"name": "Login - Invalid Creadentials",
+							"name": "Login - Invalid Email Format",
 							"event": [
 								{
 									"listen": "test",
@@ -3023,13 +3023,213 @@
 											"    pm.test(\"Response body properties\", function () {",
 											"        pm.expect(data).to.be.an('object');",
 											"        pm.expect(data.email).to.be.a('string');",
-											"        pm.expect(data.phone).to.be.a('string');",
-											"        pm.expect(data.password).to.be.a('string');",
 											"        pm.expect(message).to.be.a('string');",
 											"    });",
 											"",
 											"    pm.test(\"Message is 'Login successful'\", function () {",
 											"        pm.expect(message).to.include('Validation Error.');",
+											"    });",
+											"} catch (error) {",
+											"    console.error(\"Error occurred while processing response:\", error);",
+											"}",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3017f930-0cd7-4f59-8909-f4d35658efe6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"Aishamailinator.com\",\n    \"password\": \"Password12@@\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/login"
+							},
+							"response": [
+								{
+									"id": "522d96cf-ba6e-47dd-ad89-5eae9e098468",
+									"name": "invalid_credentials",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"osunkiyesitayo@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/login"
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "33"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 19 Mar 2024 23:30:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"message\": \"Invalid credentials\"\n}"
+								},
+								{
+									"id": "fc273fd0-9499-41fb-832a-1597110769cc",
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/login"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "382"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"17e-xgGjo8h3mS1eGk+eoWkAFMETDx0\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 19 Mar 2024 23:31:16 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.f2suCR3b-cuc6ObAAV_0NkLHjng8fKuxqCQbxSeEpGY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.qKp0zjyO9pFmfsar4hMISzDU8lyhWuqc4peUPOqNgvk\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Login - Invalid Creadentials",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d3cf2643-000d-4cd7-b7df-8552b8d375f8",
+										"exec": [
+											"try {",
+											"    const { data, message } = pm.response.json();",
+											"",
+											"    pm.test(\"Status code is 401\", function () {",
+											"        pm.response.to.have.status(401);",
+											"    });",
+											"",
+											"    pm.test(\"Response body properties\", function () {",
+											"        pm.expect(message).to.be.a('string');",
+											"    });",
+											"",
+											"    pm.test(\"Message is 'Login successful'\", function () {",
+											"        pm.expect(message).to.include('Invalid credentials');",
 											"    });",
 											"} catch (error) {",
 											"    console.error(\"Error occurred while processing response:\", error);",
@@ -3059,7 +3259,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"\",\n    \"password\": \"\"\n}",
+									"raw": "{\n    \"email\": \"Aisha@mailinator.com\",\n    \"password\": \"Pass\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3427,7 +3627,7 @@
 					"id": "897ae268-7279-4b45-b946-3401a774c5f4"
 				},
 				{
-					"name": "Fetch Categories Copy",
+					"name": "Fetch Categories - Automation Purposes",
 					"event": [
 						{
 							"listen": "test",
