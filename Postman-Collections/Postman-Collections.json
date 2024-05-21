@@ -2597,12 +2597,8 @@
 											"    pm.environment.set(\"vendorAccessToken\",  data.accessToken);",
 											"    pm.environment.set(\"vendorRefreshToken\", data.refreshToken);",
 											"",
-											"    pm.test(\"Status code is 201\", function () {",
-											"        pm.response.to.have.status(201);",
-											"    });",
-											"",
-											"    pm.test(\"Status code is 201\", function () {",
-											"        pm.response.to.have.status(201);",
+											"    pm.test(\"Status code is 200\", function () {",
+											"        pm.response.to.have.status(200);",
 											"    });",
 											"",
 											"    pm.test(\"Response body properties\", function () {",
@@ -3789,7 +3785,7 @@
 					"name": "Update Business Information",
 					"item": [
 						{
-							"name": "Invalid category ID - Valid",
+							"name": "Valid - Update Business Information",
 							"id": "801e8b37-c14e-4bef-8008-7814d3207ae3",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
