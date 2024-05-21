@@ -3838,7 +3838,7 @@
 										{
 											"type": "text",
 											"key": "description",
-											"value": "Best meals everywhere"
+											"value": "This is the food store of your dreams"
 										},
 										{
 											"type": "file",
@@ -3848,12 +3848,12 @@
 										{
 											"type": "text",
 											"key": "categoryIds[0]",
-											"value": "c10094e2-546f-4a06-94f2-7f226d072a31"
+											"value": "{{fetchedCategory1}}"
 										},
 										{
 											"type": "text",
 											"key": "categoryIds[1]",
-											"value": "492bf1ef-3bef-4c8f-a63a-b599c56053f6"
+											"value": "{{fetchedCategory2}}"
 										}
 									]
 								},
