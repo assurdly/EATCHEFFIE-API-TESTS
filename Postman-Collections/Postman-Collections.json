@@ -3804,7 +3804,7 @@
 										{
 											"type": "text",
 											"key": "businessName",
-											"value": "The Cook House"
+											"value": "The Azeez Kitchen Fab"
 										},
 										{
 											"type": "text",
@@ -3839,7 +3839,7 @@
 										{
 											"type": "file",
 											"key": "avatar",
-											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+											"src": "sujGito2S/35aafae62a179278337ea396cdb11432.jpg"
 										},
 										{
 											"type": "text",
@@ -3850,6 +3850,27 @@
 											"type": "text",
 											"key": "categoryIds[1]",
 											"value": "{{fetchedCategory2}}"
+										},
+										{
+											"key": "banner",
+											"type": "file",
+											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+										},
+										{
+											"key": "councilRegisterationDocument",
+											"type": "file",
+											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a",
+											"disabled": true
+										},
+										{
+											"key": "hygieneRatingCertificate",
+											"type": "file",
+											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+										},
+										{
+											"key": "certificationDocument",
+											"type": "file",
+											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
 										}
 									]
 								},
