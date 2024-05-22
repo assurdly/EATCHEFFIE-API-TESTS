@@ -6983,7 +6983,7 @@
 									"response": []
 								},
 								{
-									"name": "List Users Copy",
+									"name": "List Users - No Auth",
 									"event": [
 										{
 											"listen": "test",
@@ -6993,31 +6993,20 @@
 													"try {",
 													"    const { status, success, message, data } = pm.response.json()",
 													"",
-													"    pm.test(\"Status code is 200\", function () {",
-													"        pm.response.to.have.status(200);",
+													"    pm.test(\"Status code is 401\", function () {",
+													"        pm.response.to.have.status(401);",
 													"    });",
 													"",
-													"    pm.test(\"Status code response is Ok\", function () {",
-													"        pm.response.to.have.status('OK');",
+													"    pm.test(\"Status code response is Unauthorized\", function () {",
+													"        pm.response.to.have.status('Unauthorized');",
 													"    });",
 													"",
 													"    pm.test(\"Response body property\", function () {",
-													"        pm.expect(status).to.be.a(\"string\");",
 													"        pm.expect(message).to.be.a('string');",
-													"        pm.expect(success).to.be.true;",
-													"",
-													"    });",
-													"",
-													"    pm.test(\"Status is success\", function () {",
-													"        pm.expect(status).to.eql('success');",
-													"    });",
-													"",
-													"    pm.test(\"Status is success\", function () {",
-													"        pm.expect(status).to.eql('success');",
 													"    });",
 													"",
 													"    pm.test(\"Message is Verified Successfully\", function () {",
-													"        pm.expect(message).to.include('Fetched users successfully');",
+													"        pm.expect(message).to.include('Session expired. Please login again.');",
 													"    });",
 													"",
 													"} catch (error) {",
@@ -7035,10 +7024,7 @@
 									},
 									"request": {
 										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{vendorAccessToken}}"
-											}
+											"type": "noauth"
 										},
 										"method": "GET",
 										"header": [
