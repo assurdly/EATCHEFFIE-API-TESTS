@@ -1240,6 +1240,11 @@
 												"exec": [
 													"const jsonData = pm.response.json();",
 													"",
+													"const accesstoken = jsonData.data.accessToken",
+													"const refreshtoken = jsonData.data.refreshToken;",
+													"",
+													"pm.environment.set(\"accessToken\", accesstoken)",
+													"pm.environment.set(\"refreshToken\", refreshtoken)",
 													"",
 													"pm.test(\"Status code is 200\", function () {",
 													"    pm.response.to.have.status(200);",
