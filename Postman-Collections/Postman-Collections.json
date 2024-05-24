@@ -8699,7 +8699,7 @@
 					]
 				},
 				{
-					"name": "Fetch Meals Copy",
+					"name": "Fetch Meals",
 					"id": "ac37b8f1-59ae-43bb-9f90-272bb23749e6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
