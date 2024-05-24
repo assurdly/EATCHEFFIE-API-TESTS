@@ -6085,7 +6085,7 @@
 											"    pm.expect(jsonData.status).to.eql('success');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Verify Customer updated successfully\", function () {\r",
+											"pm.test(\"Verify Customer updated successfully.\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.equal(\"Customer updated successfully\");\r",
 											"});\r",
 											""
