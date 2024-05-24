@@ -49,6 +49,18 @@
 										"type": "text/javascript",
 										"packages": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0201c521-d964-46ae-a56d-05e2fddb8cdb",
+										"exec": [
+											"pm.environment.set('base_url', 'https://api.eatcheffie.com/v1')\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
 							],
 							"id": "c63fe606-e163-4ff6-a7dd-e0f80b6b029b",
