@@ -57,7 +57,7 @@
 															"    });",
 															"",
 															"    // Status and message tests",
-															"    pm.test(\"Status is success\", function () {",
+															"    pm.test(\"Status is 'success'\", function () {",
 															"        pm.expect(status).to.eql('success');",
 															"    });",
 															"",
