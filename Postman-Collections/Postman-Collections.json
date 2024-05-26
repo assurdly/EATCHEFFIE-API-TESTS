@@ -327,7 +327,7 @@
 									"    pm.expect(jsonData.success).to.eql(true);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Message is 'Your profile has been updated successfully.'\", function () {\r",
+									"pm.test(\"Varify that 'Your profile has been updated successfully.'\", function () {\r",
 									"    pm.expect(jsonData.message).to.include('Your profile has been updated successfully.');\r",
 									"});\r",
 									""
