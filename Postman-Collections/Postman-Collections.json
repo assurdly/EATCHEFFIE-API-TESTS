@@ -7605,7 +7605,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2002-03-12\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
