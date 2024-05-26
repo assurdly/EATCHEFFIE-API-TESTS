@@ -5476,7 +5476,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
+									"raw": "{\n    \"status\": \"inactive\" // \"active\" | \"inactive\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
