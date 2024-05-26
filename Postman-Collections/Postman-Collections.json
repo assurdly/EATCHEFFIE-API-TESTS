@@ -293,7 +293,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"oldPassword\": \"Randompassword1#\",\n    \"password\": \"Randompassword1@\",\n    \"confirmPassword\": \"Randompassword1@\"\n}",
+							"raw": "{\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1#\",\n    \"confirmPassword\": \"Randompassword1#\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
