@@ -1240,6 +1240,11 @@
 												"exec": [
 													"const jsonData = pm.response.json();",
 													"",
+													"const accesstoken = jsonData.data.accessToken",
+													"const refreshtoken = jsonData.data.refreshToken;",
+													"",
+													"pm.environment.set(\"accessToken\", accesstoken)",
+													"pm.environment.set(\"refreshToken\", refreshtoken)",
 													"",
 													"pm.test(\"Status code is 200\", function () {",
 													"    pm.response.to.have.status(200);",
@@ -1499,12 +1504,12 @@
 							"script": {
 								"id": "bdfbfa5d-894c-41c6-8198-07e84e694501",
 								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Status code response is 'Created'\", function () {\r",
-									"    pm.response.to.have.status('Created');\r",
+									"pm.test(\"Status code response is 'OK'\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -1608,12 +1613,12 @@
 							"script": {
 								"id": "60fe790e-5318-4918-b28b-351f4f7f4547",
 								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Status code response is 'Created'\", function () {\r",
-									"    pm.response.to.have.status('Created');\r",
+									"pm.test(\"Status code response is 'OK'\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -1866,7 +1871,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"vera@yopmail.com\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
+							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2270,10 +2275,6 @@
 											"pm.environment.set(\"mealId\", mealId);\r",
 											"pm.environment.set(\"priceId\", priceId);\r",
 											"pm.environment.set(\"vendorId\", vendorId);\r",
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
