@@ -3537,7 +3537,7 @@
 													"    pm.response.to.have.status(\"Bad Request\");\r",
 													"});\r",
 													"pm.test(\"Verify that message is a string'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.eql(\"string\");\r",
+													"    pm.expect(pm.response.json().message).to.be.a(\"string\");\r",
 													"});"
 												],
 												"type": "text/javascript",
@@ -3566,7 +3566,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Temitayo\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"0e2bf0fa15bc6287ec868ef833be5a8e520d1191\"\n}",
+											"raw": "{\n    \"firstName\": \"\",\n    \"lastName\": \"\",\n    \"password\": \"\",\n    \"confirmPassword\": \"\",\n    \"token\": \"\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
