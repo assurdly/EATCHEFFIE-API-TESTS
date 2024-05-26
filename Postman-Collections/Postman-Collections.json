@@ -293,7 +293,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"oldPassword\": \"randompassword\",\n    \"password\": \"Randompassword1#\",\n    \"confirmPassword\": \"Randompassword1#\"\n}",
+							"raw": "{\n    \"oldPassword\": \"Randompassword1#\",\n    \"password\": \"Randompassword1@\",\n    \"confirmPassword\": \"Randompassword1@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -876,7 +876,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"name\": \"MD\",\n    \"description\": \"Role for Manager\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId1}}\", \"{{permissionId2}}\"]// array of permission ids from the list permissions endpoint\n}",
+											"raw": "{\n    \"name\": \"{{$randomJobTitle}}\",\n    \"description\": \"Role for Jobtitle\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId1}}\", \"{{permissionId2}}\"]// array of permission ids from the list permissions endpoint\n}",
 											"options": {
 												"raw": {
 													"language": "json"
