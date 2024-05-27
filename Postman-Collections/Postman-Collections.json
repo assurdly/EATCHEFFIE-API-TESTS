@@ -9428,7 +9428,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete Customer Copy",
+							"name": "No Id - Delete Customer",
 							"event": [
 								{
 									"listen": "test",
@@ -9436,28 +9436,18 @@
 										"id": "b7337c85-cb39-4e88-b63b-833140d741de",
 										"exec": [
 											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
-											"pm.test(\"Status code name has 'OK'\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
+											"pm.test(\"Status code name has 'Bad Request.\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
 											"});\r",
-											"pm.test(\"Response body property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.status).to.be.a('string');\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"pm.test(\"Verify message Validation Error.\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
 											"});\r",
-											"\r",
-											"pm.test(\"Status is 'success'\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify Customer deleted successfully\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Customer deleted successfully\");\r",
-											"});\r",
-											"\r",
-											""
+											"pm.test(\"Verify fields can not be empty\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
+											"       });"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -9489,9 +9479,69 @@
 									],
 									"variable": [
 										{
-											"id": "cd4ba577-41be-48a3-b334-4638839579b9",
 											"key": "id",
-											"value": "{{adminCustomer}}"
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No Id - Delete Customer Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b7337c85-cb39-4e88-b63b-833140d741de",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad Request.\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify message Validation Error.\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify fields can not be empty\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
+											"       });"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "6599329c-c76e-4202-aba6-d7b8f4fb2ec9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/customers/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "ca8e9405-39bc-474a-91a8-7044566d07ee",
+											"key": "id",
+											"value": ""
 										}
 									]
 								}
