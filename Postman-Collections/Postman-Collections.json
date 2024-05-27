@@ -9359,11 +9359,52 @@
 					"item": [
 						{
 							"name": "Delete Customer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b7337c85-cb39-4e88-b63b-833140d741de",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customer deleted successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Customer deleted successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "da4859e9-044d-4f6d-861f-1a366f679f15",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
 								"method": "DELETE",
 								"header": [],
 								"url": {
@@ -9378,9 +9419,79 @@
 									],
 									"variable": [
 										{
-											"id": "2369872e-fe38-40f9-9863-35637f14fa90",
 											"key": "id",
-											"value": ""
+											"value": "{{adminCustomer}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Customer Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b7337c85-cb39-4e88-b63b-833140d741de",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customer deleted successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Customer deleted successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "9a4371aa-d310-40b2-a7e2-3749b4001b3d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/customers/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "cd4ba577-41be-48a3-b334-4638839579b9",
+											"key": "id",
+											"value": "{{adminCustomer}}"
 										}
 									]
 								}
