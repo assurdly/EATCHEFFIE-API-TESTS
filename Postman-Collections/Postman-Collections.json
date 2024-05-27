@@ -296,7 +296,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1#\",\n    \"confirmPassword\": \"Randompassword1#\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Randompassword1#\",\n    \"password\": \"Randompassword1@\",\n    \"confirmPassword\": \"Randompassword1@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3353,7 +3353,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"description\": \"Role for Job title\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId3}}\"] // array of permission ids from the list permissions endpoint\n}",
+											"raw": "{\n    \"description\": \"Role for Job title\",\n    \"status\": \"inactive\", // active or inactive\n    \"permissions\": [\"{{permissionId3}}\"] // array of permission ids from the list permissions endpoint\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4659,7 +4659,7 @@
 									]
 								},
 								{
-									"name": "No Id - Delete Role Copy",
+									"name": "Delete Role",
 									"event": [
 										{
 											"listen": "test",
