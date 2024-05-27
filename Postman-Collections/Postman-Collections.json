@@ -9428,7 +9428,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete Customer Copy",
+							"name": "Already deleted - Delete Customer",
 							"event": [
 								{
 									"listen": "test",
@@ -9437,24 +9437,14 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
 											"});\r",
-											"pm.test(\"Status code name has 'OK'\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
+											"pm.test(\"Status code name has 'Not Found'\", function () {\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
 											"});\r",
-											"pm.test(\"Response body property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.status).to.be.a('string');\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status is 'success'\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify Customer deleted successfully\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Customer deleted successfully\");\r",
+											"pm.test(\"Verify Customer not found\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Customer not found\");\r",
 											"});\r",
 											"\r",
 											""
@@ -9489,7 +9479,6 @@
 									],
 									"variable": [
 										{
-											"id": "5d7a1e87-0bc6-4c73-bf6a-da0bf0f833a0",
 											"key": "id",
 											"value": "{{adminCustomer}}"
 										}
@@ -9615,6 +9604,36 @@
 				}
 			],
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
+		},
+		{
+			"name": "Audit Trail",
+			"item": [
+				{
+					"name": "Get Audit Trail Copy",
+					"id": "fcae0ab7-2eea-4e78-ae15-f6c1274693c5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/audit-trail"
+					},
+					"response": []
+				}
+			],
+			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
 		},
 		{
 			"name": "Forgot password",
