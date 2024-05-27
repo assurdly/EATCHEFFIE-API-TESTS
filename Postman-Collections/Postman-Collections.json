@@ -375,7 +375,7 @@
 					"id": "e20329ab-a3b9-4229-a498-93ab79ebbd31"
 				},
 				{
-					"name": "Change Password Copy",
+					"name": "Password complexity - Change Password",
 					"event": [
 						{
 							"listen": "test",
