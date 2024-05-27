@@ -498,7 +498,7 @@
 							"response": []
 						},
 						{
-							"name": "Valid duplicate - Change Password Copy",
+							"name": "No Auth - Change Password",
 							"event": [
 								{
 									"listen": "test",
@@ -507,21 +507,11 @@
 										"exec": [
 											"var jsonData = pm.response.json();\r",
 											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
-											"pm.test(\"Response body property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.status).to.be.a('string');\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status is 'success'\", function () {\r",
-											"    pm.expect(jsonData.success).to.eql(true);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Message is 'Your password has been changed successfully.'\", function () {\r",
-											"    pm.expect(jsonData.message).to.include('Your password has been changed successfully.');\r",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
 											"});\r",
 											""
 										],
@@ -536,10 +526,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{adminAccessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "PATCH",
 								"header": [
@@ -634,6 +621,252 @@
 							"response": [
 								{
 									"id": "e148edd3-aa2f-4f94-a18d-5cc1d9d7465e",
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/user/profile"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-Grc6FMlHFL7JTIsAdEPGuSUmlSU\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 02 Apr 2024 10:29:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Your profile has been updated successfully.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "No Auth - Update Profile",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cb7cfe70-ac03-4d42-9946-e7e50d771572",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "8f4e55e4-3b9e-4583-9052-de29a0593e35",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "admin",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/user/profile"
+							},
+							"response": [
+								{
+									"id": "ce2663a0-9d79-494a-a3ec-a290bca63439",
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/user/profile"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-Grc6FMlHFL7JTIsAdEPGuSUmlSU\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 02 Apr 2024 10:29:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Your profile has been updated successfully.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "No Auth - Update Profile Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cb7cfe70-ac03-4d42-9946-e7e50d771572",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3472c2d6-abe0-40b5-8946-f07a5ed9949e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "admin",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/user/profile"
+							},
+							"response": [
+								{
+									"id": "528e671e-f477-4644-8d74-b0eeaaa2983b",
 									"name": "success",
 									"originalRequest": {
 										"method": "PATCH",
