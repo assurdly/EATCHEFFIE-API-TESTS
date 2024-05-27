@@ -6439,8 +6439,43 @@
 							"name": "Deactivate User",
 							"item": [
 								{
-									"name": "Deactivate User Copy",
+									"name": "Deactivate User",
 									"id": "23a4328a-25f1-466f-96fb-71347b4e1646",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "admin"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/users/:id/deactivate",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												":id",
+												"deactivate"
+											],
+											"variable": [
+												{
+													"id": "e8dfe8f8-0fea-44ca-9382-21c0b4e64fd4",
+													"key": "id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Deactivate User Copy",
+									"id": "a2e4d0d8-8787-45ec-9e8e-4382c27c1202",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -6480,7 +6515,43 @@
 							"name": "Activate User",
 							"item": [
 								{
-									"name": "Activate User Copy",
+									"name": "Activate User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "8d1124b0-7c9c-4aa5-bee3-7f083593c28c",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'OK'\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"pm.test(\"Response body property\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.status).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status is 'success'\", function () {\r",
+													"    pm.expect(jsonData.status).to.eql('success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify Fetched users successfully\", function () {\r",
+													"    pm.expect(jsonData.message).to.include('Fetched users successfully');\r",
+													"});\r",
+													"pm.test(\"Verify that data is a string\", function () {\r",
+													"    pm.expect(jsonData.data).to.be.an('object').and.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "0acb3341-dbb8-4600-bbba-817ea4f99b12",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -6489,16 +6560,11 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{admin_access_token}}"
+												"token": "{{adminAccessToken}}"
 											}
 										},
 										"method": "PATCH",
-										"header": [
-											{
-												"key": "x-request-source",
-												"value": "ec"
-											}
-										],
+										"header": [],
 										"url": {
 											"raw": "{{base_url}}/users/:id/activate",
 											"host": [
@@ -6511,9 +6577,8 @@
 											],
 											"variable": [
 												{
-													"id": "d3efc09c-e80b-4db8-9bf6-6f608480a92c",
 													"key": "id",
-													"value": ""
+													"value": "{{userId}}"
 												}
 											]
 										}
