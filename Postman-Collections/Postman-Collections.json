@@ -6440,18 +6440,55 @@
 							"item": [
 								{
 									"name": "Deactivate User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "429ae0bb-4611-4c69-8d26-69233552625f",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'OK'\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"pm.test(\"Response body property\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.status).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status is 'success'\", function () {\r",
+													"    pm.expect(jsonData.status).to.eql('success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify User updated successfully\", function () {\r",
+													"    pm.expect(jsonData.message).to.include('User updated successfully');\r",
+													"});\r",
+													"pm.test(\"Verify that data is a string\", function () {\r",
+													"    pm.expect(jsonData.data).to.be.an('object').and.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "23a4328a-25f1-466f-96fb-71347b4e1646",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
 									"request": {
-										"method": "PATCH",
-										"header": [
-											{
-												"key": "x-request-source",
-												"value": "admin"
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
 											}
-										],
+										},
+										"method": "PATCH",
+										"header": [],
 										"url": {
 											"raw": "{{base_url}}/users/:id/deactivate",
 											"host": [
@@ -6464,9 +6501,8 @@
 											],
 											"variable": [
 												{
-													"id": "e8dfe8f8-0fea-44ca-9382-21c0b4e64fd4",
 													"key": "id",
-													"value": ""
+													"value": "{{userId}}"
 												}
 											]
 										}
@@ -6629,8 +6665,8 @@
 													"    pm.expect(jsonData.status).to.eql('success');\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Verify Fetched users successfully\", function () {\r",
-													"    pm.expect(jsonData.message).to.include('Fetched users successfully');\r",
+													"pm.test(\"Verify User updated successfully\", function () {\r",
+													"    pm.expect(jsonData.message).to.include('User updated successfully');\r",
 													"});\r",
 													"pm.test(\"Verify that data is a string\", function () {\r",
 													"    pm.expect(jsonData.data).to.be.an('object').and.not.be.empty;\r",
