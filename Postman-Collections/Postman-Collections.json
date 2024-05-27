@@ -241,68 +241,139 @@
 			"item": [
 				{
 					"name": "Change Password",
-					"event": [
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "b5c7495d-f882-4535-9b99-9a62b759c1a0",
-								"exec": [
-									"var jsonData = pm.response.json();\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Response body property\", function () {\r",
-									"    pm.expect(jsonData).to.be.an('object');\r",
-									"    pm.expect(jsonData.status).to.be.a('string');\r",
-									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status is 'success'\", function () {\r",
-									"    pm.expect(jsonData.success).to.eql(true);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Message is 'Your password has been changed successfully.'\", function () {\r",
-									"    pm.expect(jsonData.message).to.include('Your password has been changed successfully.');\r",
-									"});\r",
-									""
+							"name": "Change Password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b5c7495d-f882-4535-9b99-9a62b759c1a0",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.success).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is 'Your password has been changed successfully.'\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Your password has been changed successfully.');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "6ba07711-43ea-4daf-99ac-d1f3a3e13f71",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "admin",
+										"disabled": true
+									}
 								],
-								"type": "text/javascript",
-								"packages": {}
-							}
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1#\",\n    \"confirmPassword\": \"Randompassword1#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/user/settings/password"
+							},
+							"response": []
+						},
+						{
+							"name": "Change Password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b5c7495d-f882-4535-9b99-9a62b759c1a0",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.success).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is 'Your password has been changed successfully.'\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Your password has been changed successfully.');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "f88f19be-e9fd-4a04-a48d-65f00c204da8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "admin",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1#\",\n    \"confirmPassword\": \"Randompassword1#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/user/settings/password"
+							},
+							"response": []
 						}
 					],
-					"id": "6ba07711-43ea-4daf-99ac-d1f3a3e13f71",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "admin",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1#\",\n    \"confirmPassword\": \"Randompassword1#\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/user/settings/password"
-					},
-					"response": []
+					"id": "e20329ab-a3b9-4229-a498-93ab79ebbd31"
 				},
 				{
 					"name": "Update Profile",
