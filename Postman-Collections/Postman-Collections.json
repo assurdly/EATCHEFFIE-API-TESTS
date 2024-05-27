@@ -9353,6 +9353,42 @@
 						}
 					],
 					"id": "d4187fe9-e730-49de-98cf-dc479181dde7"
+				},
+				{
+					"name": "Delete customer",
+					"item": [
+						{
+							"name": "Delete Customer",
+							"id": "da4859e9-044d-4f6d-861f-1a366f679f15",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/customers/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "2369872e-fe38-40f9-9863-35637f14fa90",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "0bcc4920-3a5c-45fc-a7f6-30a4ba746e55"
 				}
 			],
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
