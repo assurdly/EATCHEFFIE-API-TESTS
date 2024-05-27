@@ -813,22 +813,38 @@
 									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Your profile has been updated successfully.\"\n}"
 								}
 							]
-						},
+						}
+					],
+					"id": "d318cc1c-c1c1-44a0-afff-43bf46650ae1"
+				},
+				{
+					"name": "Get Logged In User",
+					"item": [
 						{
-							"name": "No Auth - Update Profile Copy",
+							"name": "Get Logged In User",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
-										"id": "cb7cfe70-ac03-4d42-9946-e7e50d771572",
+										"id": "332ad88b-471e-4503-9ae5-3f8c313b17c3",
 										"exec": [
 											"var jsonData = pm.response.json();\r",
 											"\r",
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
-											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
-											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.success).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is 'Fetched logged in user successfully'\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Fetched logged in user successfully');\r",
 											"});\r",
 											""
 										],
@@ -837,15 +853,18 @@
 									}
 								}
 							],
-							"id": "3472c2d6-abe0-40b5-8946-f07a5ed9949e",
+							"id": "67bb788e-5e8c-4d5c-b5a5-d662476b770b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
 								},
-								"method": "PATCH",
+								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -853,34 +872,16 @@
 										"disabled": true
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/user/profile"
+								"url": "{{base_url}}/user/me"
 							},
 							"response": [
 								{
-									"id": "528e671e-f477-4644-8d74-b0eeaaa2983b",
+									"id": "39c69fe2-97e9-4c43-88f3-3cb2facca01a",
 									"name": "success",
 									"originalRequest": {
-										"method": "PATCH",
+										"method": "GET",
 										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{base_url}}/user/profile"
+										"url": "{{base_url}}/user/me"
 									},
 									"status": "OK",
 									"code": 200,
@@ -904,7 +905,7 @@
 										},
 										{
 											"key": "X-RateLimit-Reset",
-											"value": "13"
+											"value": "46"
 										},
 										{
 											"key": "Content-Type",
@@ -912,15 +913,15 @@
 										},
 										{
 											"key": "Content-Length",
-											"value": "91"
+											"value": "402"
 										},
 										{
 											"key": "ETag",
-											"value": "W/\"5b-Grc6FMlHFL7JTIsAdEPGuSUmlSU\""
+											"value": "W/\"192-//HmW+wBVSwRqRb6TwTeq0ONGqA\""
 										},
 										{
 											"key": "Date",
-											"value": "Tue, 02 Apr 2024 10:29:12 GMT"
+											"value": "Tue, 23 Apr 2024 14:10:23 GMT"
 										},
 										{
 											"key": "Connection",
@@ -933,130 +934,117 @@
 									],
 									"cookie": [],
 									"responseTime": null,
-									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Your profile has been updated successfully.\"\n}"
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched logged in user successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"createdAt\": \"2024-04-02T11:35:22.545Z\",\n        \"updatedAt\": \"2024-04-02T11:36:11.603Z\",\n        \"deliveryAddresses\": [],\n        \"dob\": \"2024-03-12T00:00:00.000Z\",\n        \"email\": \"tayoosunkiyesi@gmail.com\",\n        \"emailVerified\": true,\n        \"gender\": null,\n        \"firstName\": \"Temitayo\",\n        \"lastName\": \"Osunkiyesi\",\n        \"phone\": null,\n        \"lastLogin\": null,\n        \"phoneVerified\": false\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "No Auth - Get Logged In User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "332ad88b-471e-4503-9ae5-3f8c313b17c3",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "71a4af12-db81-4d30-854e-7de397aa9492",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "admin",
+										"disabled": true
+									}
+								],
+								"url": "{{base_url}}/user/me"
+							},
+							"response": [
+								{
+									"id": "e476ccb9-e6b7-4bdb-ac33-fb2ca29ac34c",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "{{base_url}}/user/me"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "46"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "402"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"192-//HmW+wBVSwRqRb6TwTeq0ONGqA\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 14:10:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched logged in user successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"createdAt\": \"2024-04-02T11:35:22.545Z\",\n        \"updatedAt\": \"2024-04-02T11:36:11.603Z\",\n        \"deliveryAddresses\": [],\n        \"dob\": \"2024-03-12T00:00:00.000Z\",\n        \"email\": \"tayoosunkiyesi@gmail.com\",\n        \"emailVerified\": true,\n        \"gender\": null,\n        \"firstName\": \"Temitayo\",\n        \"lastName\": \"Osunkiyesi\",\n        \"phone\": null,\n        \"lastLogin\": null,\n        \"phoneVerified\": false\n    }\n}"
 								}
 							]
 						}
 					],
-					"id": "d318cc1c-c1c1-44a0-afff-43bf46650ae1"
-				},
-				{
-					"name": "Get Logged In User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "332ad88b-471e-4503-9ae5-3f8c313b17c3",
-								"exec": [
-									"var jsonData = pm.response.json();\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Response body property\", function () {\r",
-									"    pm.expect(jsonData).to.be.an('object');\r",
-									"    pm.expect(jsonData.status).to.be.a('string');\r",
-									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status is 'success'\", function () {\r",
-									"    pm.expect(jsonData.success).to.eql(true);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Message is 'Fetched logged in user successfully'\", function () {\r",
-									"    pm.expect(jsonData.message).to.include('Fetched logged in user successfully');\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "67bb788e-5e8c-4d5c-b5a5-d662476b770b",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "admin",
-								"disabled": true
-							}
-						],
-						"url": "{{base_url}}/user/me"
-					},
-					"response": [
-						{
-							"id": "39c69fe2-97e9-4c43-88f3-3cb2facca01a",
-							"name": "success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}/user/me"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "98"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "46"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "402"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"192-//HmW+wBVSwRqRb6TwTeq0ONGqA\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 23 Apr 2024 14:10:23 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched logged in user successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"createdAt\": \"2024-04-02T11:35:22.545Z\",\n        \"updatedAt\": \"2024-04-02T11:36:11.603Z\",\n        \"deliveryAddresses\": [],\n        \"dob\": \"2024-03-12T00:00:00.000Z\",\n        \"email\": \"tayoosunkiyesi@gmail.com\",\n        \"emailVerified\": true,\n        \"gender\": null,\n        \"firstName\": \"Temitayo\",\n        \"lastName\": \"Osunkiyesi\",\n        \"phone\": null,\n        \"lastLogin\": null,\n        \"phoneVerified\": false\n    }\n}"
-						}
-					]
+					"id": "4dc3fb81-074c-4bd3-a39f-cc0963de1dab"
 				}
 			],
 			"id": "2ee4155c-8ea6-47f4-99fb-c5812539a218"
