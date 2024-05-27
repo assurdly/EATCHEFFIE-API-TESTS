@@ -3760,26 +3760,19 @@
 									]
 								},
 								{
-									"name": "No Id - Update Role Copy",
+									"name": "No Auth - Update Role",
 									"event": [
 										{
 											"listen": "test",
 											"script": {
 												"id": "143d907c-aa4f-40d5-b117-ce99bc91273c",
 												"exec": [
-													"const jsonData = pm.response.json();\r",
-													"pm.test(\"Status code is 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
+													"const jsonData = pm.response.json();pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
 													"});\r",
-													"pm.test(\"Status code name has 'Bad Request.\", function () {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});\r",
-													"pm.test(\"Verify message Validation Error.\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
-													"});\r",
-													"pm.test(\"Verify fields can not be empty\", function () {\r",
-													"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
-													"       });"
+													"pm.test(\"Status code name has Unauthorized\", function () {\r",
+													"    pm.response.to.have.status(\"Unauthorized\");\r",
+													"});"
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -3792,10 +3785,7 @@
 									},
 									"request": {
 										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{adminAccessToken}}"
-											}
+											"type": "noauth"
 										},
 										"method": "PUT",
 										"header": [
@@ -3825,9 +3815,8 @@
 											],
 											"variable": [
 												{
-													"id": "b5e8605d-0dd0-469a-b4f1-9e4d4919e682",
 													"key": "id",
-													"value": ""
+													"value": "{{roleId}}"
 												}
 											]
 										}
@@ -4113,208 +4102,6 @@
 										},
 										{
 											"id": "4b62a7a5-86a9-4d0f-a63e-546bad1ac701",
-											"name": "conflict",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "x-request-source",
-														"value": "vendor",
-														"type": "text"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"HR\",\n    \"description\": \"Role for HR personnel\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"4bc27b4d-6c54-47d6-8f1b-1a21a97c0101\"] // array of permission ids from the list permissions endpoint\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{base_url}}/roles"
-											},
-											"status": "Bad Request",
-											"code": 400,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "X-Powered-By",
-													"value": "Express"
-												},
-												{
-													"key": "Access-Control-Allow-Origin",
-													"value": "*"
-												},
-												{
-													"key": "X-RateLimit-Limit",
-													"value": "100"
-												},
-												{
-													"key": "X-RateLimit-Remaining",
-													"value": "97"
-												},
-												{
-													"key": "X-RateLimit-Reset",
-													"value": "14"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json; charset=utf-8"
-												},
-												{
-													"key": "Content-Length",
-													"value": "50"
-												},
-												{
-													"key": "ETag",
-													"value": "W/\"32-eJ6wCbul7RTZda3Q2z3T9Aj8ZUw\""
-												},
-												{
-													"key": "Date",
-													"value": "Thu, 02 May 2024 14:33:48 GMT"
-												},
-												{
-													"key": "Connection",
-													"value": "keep-alive"
-												},
-												{
-													"key": "Keep-Alive",
-													"value": "timeout=5"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n    \"message\": \"Role with name \\\"HR\\\" already exists\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Update Role Copy 2",
-									"id": "831a5bb4-559c-46ae-bbd0-8cfc904d2c86",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "x-request-source",
-												"value": "ec"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"description\": \"Role for HR personnel\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"4bc27b4d-6c54-47d6-8f1b-1a21a97c0101\"] // array of permission ids from the list permissions endpoint\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{base_url}}/roles/:id",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"roles",
-												":id"
-											],
-											"variable": [
-												{
-													"id": "e2adc0bb-b61e-4d01-94ab-e1f3fb77a778",
-													"key": "id",
-													"value": ""
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"id": "4ad4c603-66d5-4fea-a86a-1f416dbebed9",
-											"name": "success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "x-request-source",
-														"value": "vendor",
-														"type": "text"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"HR\",\n    \"description\": \"Role for HR personnel\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"4bc27b4d-6c54-47d6-8f1b-1a21a97c0101\"] // array of permission ids from the list permissions endpoint\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{base_url}}/roles"
-											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "X-Powered-By",
-													"value": "Express"
-												},
-												{
-													"key": "Access-Control-Allow-Origin",
-													"value": "*"
-												},
-												{
-													"key": "X-RateLimit-Limit",
-													"value": "100"
-												},
-												{
-													"key": "X-RateLimit-Remaining",
-													"value": "97"
-												},
-												{
-													"key": "X-RateLimit-Reset",
-													"value": "38"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json; charset=utf-8"
-												},
-												{
-													"key": "Content-Length",
-													"value": "73"
-												},
-												{
-													"key": "ETag",
-													"value": "W/\"49-7v9Cp5hIPdqePyVagwqlAgJLZPA\""
-												},
-												{
-													"key": "Date",
-													"value": "Thu, 02 May 2024 14:13:17 GMT"
-												},
-												{
-													"key": "Connection",
-													"value": "keep-alive"
-												},
-												{
-													"key": "Keep-Alive",
-													"value": "timeout=5"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Role created successfully\"\n}"
-										},
-										{
-											"id": "db2cae05-c153-4381-a1e5-788a6453b976",
 											"name": "conflict",
 											"originalRequest": {
 												"method": "POST",
