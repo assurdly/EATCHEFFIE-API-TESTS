@@ -6151,6 +6151,10 @@
 												"exec": [
 													"const jsonData = pm.response.json();\r",
 													"\r",
+													"const userId = jsonData.data[0].id\r",
+													"\r",
+													"pm.environment.set(\"userId\", userId)\r",
+													"\r",
 													"pm.test(\"Status code is 200\", function () {\r",
 													"    pm.response.to.have.status(200);\r",
 													"});\r",
@@ -6249,7 +6253,7 @@
 							"name": "Get User By ID",
 							"item": [
 								{
-									"name": "Get User By ID Copy",
+									"name": "Get User By ID",
 									"id": "dc78cfcc-9143-4692-8bb9-16ce2e3c3fc9",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
