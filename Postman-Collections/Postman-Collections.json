@@ -1071,10 +1071,12 @@
 													"const permissionId1 = jsonData.data[0].id\r",
 													"const permissionId2 = jsonData.data[1].id\r",
 													"const permissionId3 = jsonData.data[2].id\r",
+													"const permissionId4 = jsonData.data[3].id\r",
 													"\r",
 													"pm.environment.set(\"permissionId1\", permissionId1)\r",
 													"pm.environment.set(\"permissionId2\", permissionId2)\r",
 													"pm.environment.set(\"permissionId3\", permissionId3)\r",
+													"pm.environment.set(\"permissionId4\", permissionId4)\r",
 													"\r",
 													"pm.test(\"Status code is 200\", function () {\r",
 													"    pm.response.to.have.status(200);\r",
@@ -1587,7 +1589,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"name\": \"{{$randomJobTitle}}\",\n    \"description\": \"Role for Jobtitle\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId1}}\", \"{{permissionId2}}\"]// array of permission ids from the list permissions endpoint\n}",
+											"raw": "{\n    \"name\": \"{{$randomJobTitle}}\",\n    \"description\": \"Role for Jobtitle\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId4}}\"]// array of permission ids from the list permissions endpoint\n}",
 											"options": {
 												"raw": {
 													"language": "json"
