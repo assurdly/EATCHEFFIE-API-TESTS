@@ -4908,8 +4908,8 @@
 													"    pm.expect(jsonData.status).to.eql('success');\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Role updated successfully\", function () {\r",
-													"    pm.expect(jsonData.message).to.include(\"Role updated successfully\");\r",
+													"pm.test(\"Role deleted successfully, function () {\r",
+													"    pm.expect(jsonData.message).to.include(\"Role deleted successfully\");\r",
 													"});"
 												],
 												"type": "text/javascript",
@@ -4957,7 +4957,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "{{roleId}}"
+													"value": "{{roleId1}}"
 												}
 											]
 										}
