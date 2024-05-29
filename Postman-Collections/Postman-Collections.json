@@ -2833,10 +2833,12 @@
 													"const roleId = jsonData.data[0].id\r",
 													"const roleId1 = jsonData.data[1].id\r",
 													"const roleName = jsonData.data[0].name\r",
+													"const roleDate = jsonData.data[0].createdAt\r",
 													"\r",
 													"pm.environment.set(\"roleId\", roleId)\r",
 													"pm.environment.set(\"roleId1\", roleId1)\r",
 													"pm.environment.set(\"roleName\", roleName)\r",
+													"pm.environment.set(\"roleDate\", roleDate)\r",
 													"\r",
 													"\r",
 													"pm.test(\"Status code is 200\", function () {\r",
@@ -3149,7 +3151,7 @@
 									]
 								},
 								{
-									"name": "Role Name - List Roles",
+									"name": "By Role Name - List Roles",
 									"event": [
 										{
 											"listen": "test",
@@ -3308,7 +3310,7 @@
 									]
 								},
 								{
-									"name": "Role Name - List Roles Copy",
+									"name": "By Date - List Roles",
 									"event": [
 										{
 											"listen": "test",
@@ -3366,7 +3368,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{base_url}}/roles?filter[q]={{roleName}}",
+											"raw": "{{base_url}}/roles?filter[createdAt][gt]={{roleDate}}",
 											"host": [
 												"{{base_url}}"
 											],
@@ -3381,12 +3383,12 @@
 												},
 												{
 													"key": "filter[q]",
-													"value": "{{roleName}}"
+													"value": "{{roleName}}",
+													"disabled": true
 												},
 												{
 													"key": "filter[createdAt][gt]",
-													"value": "",
-													"disabled": true
+													"value": "{{roleDate}}"
 												},
 												{
 													"key": "filter[createdAt][lt]",
