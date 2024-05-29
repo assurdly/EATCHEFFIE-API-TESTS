@@ -10087,6 +10087,12 @@
 							"script": {
 								"id": "88e6f340-e5e1-4bdf-901d-510f9454a5d1",
 								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"const adminResetPasswordOTP = jsonData.data.otp\r",
+									"\r",
+									"pm.environment.set(\"adminResetPasswordOTP\", adminResetPasswordOTP)\r",
+									"\r",
 									"\r",
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -10102,8 +10108,8 @@
 									"    pm.expect(jsonData.status).to.eql('success');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Verify that A code has been sent to your email to complete your request.\", function () {\r",
-									"    pm.expect(jsonData.message).to.include('A code has been sent to your email to complete your request.');\r",
+									"pm.test(\"Verify that An email has been sent with instructions on how to recover your account.\", function () {\r",
+									"    pm.expect(jsonData.message).to.include('An email has been sent with instructions on how to recover your account.');\r",
 									"});\r",
 									"pm.test(\"Verify that data is a string\", function () {\r",
 									"    pm.expect(jsonData.data).to.be.an('object').and.not.be.empty;\r",
