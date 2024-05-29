@@ -78,7 +78,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"super@admin.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Randompassword1#\"\n}",
+									"raw": "{\n    \"email\": \"super@admin.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"randompassword\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
