@@ -2634,7 +2634,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"{{signedUpVendorEmail}}\",\n    \"password\": \"Password12@@\"\n}",
+									"raw": "{\n    \"email\": \"badvendor@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3782,7 +3782,13 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "PUT",
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{vendorAccessToken}}"
+									}
+								},
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "Authorization",
@@ -7545,7 +7551,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"firstName\": \"{{$randomFirstName}}\",\n    \"lastName\": \"{{$randomLastName}}\",\n    \"gender\": \"male\",\n    \"dob\": \"2024-03-12\"\n}",
+									"raw": "{\n    \"firstName\": \"{{$randomFirstName}}\",\n    \"lastName\": \"{{$randomLastName}}\",\n    \"gender\": \"male\",\n    \"dob\": \"2004-03-12\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8156,89 +8162,143 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"type": "text",
 									"key": "name",
-									"value": "Spicy Burger Mediul"
+									"value": "Good Food",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "categoryIds[0]",
-									"value": "{{fetchedCategory1}}"
+									"value": "{{fetchedCategory1}}",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "allergens[0]",
-									"value": "gluten"
+									"value": "gluten",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "ingredients[0]",
-									"value": "vibes"
+									"value": "vibes",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "spiceLevel",
-									"value": "3"
+									"value": "3",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "stock",
-									"value": "30"
+									"value": "30",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "availability[sun]",
-									"value": "true"
+									"value": "true",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "availability[mon]",
-									"value": "true"
+									"value": "true",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "availability[tue]",
-									"value": "true"
+									"value": "true",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "availability[wed]",
-									"value": "true"
+									"value": "true",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "availability[thu]",
-									"value": "true"
+									"value": "true",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "availability[fri]",
-									"value": "false"
+									"value": "false",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "availability[sat]",
-									"value": "false"
+									"value": "false",
+									"type": "text"
 								},
 								{
-									"type": "text",
 									"key": "customAvailability[startDate]",
-									"value": "2024-05-15T00:00:00"
+									"value": "2024-05-23T00:00:00",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"type": "text",
 									"key": "customAvailability[endDate]",
-									"value": "2024-05-15T23:00:00"
-								},
-								{
+									"value": "2024-05-25T23:00:00",
 									"type": "text",
-									"key": "customAvailability[available]",
-									"value": "false"
+									"disabled": true
 								},
 								{
-									"type": "file",
+									"key": "customAvailability[available]",
+									"value": "false",
+									"type": "text",
+									"disabled": true
+								},
+								{
 									"key": "images",
+									"type": "file",
 									"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+								},
+								{
+									"key": "priceOptions[0][size]",
+									"value": "litres",
+									"type": "text"
+								},
+								{
+									"key": "priceOptions[0][servings]",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "priceOptions[0][amount]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "priceOptions[0][price]",
+									"value": "50.9034",
+									"type": "text"
+								},
+								{
+									"key": "published",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "vibes",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "dietaryClassification[0]",
+									"value": "vibes",
+									"type": "text"
+								},
+								{
+									"key": "additives[0]",
+									"value": "vibes",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "The best bad food",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "babalawo",
+									"type": "text"
 								}
 							]
 						},
