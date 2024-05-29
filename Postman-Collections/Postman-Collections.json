@@ -10108,9 +10108,6 @@
 									"    pm.expect(jsonData.status).to.eql('success');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Verify that An email has been sent with instructions on how to recover your account.\", function () {\r",
-									"    pm.expect(jsonData.message).to.include('An email has been sent with instructions on how to recover your account.');\r",
-									"});\r",
 									"pm.test(\"Verify that data is a string\", function () {\r",
 									"    pm.expect(jsonData.data).to.be.an('object').and.not.be.empty;\r",
 									"});"
@@ -10612,6 +10609,36 @@
 			"item": [
 				{
 					"name": "Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d5b05a82-1168-4db4-8c1f-805c1683925e",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that You have successfully reset your password. Please proceed to login again.\", function () {\r",
+									"    pm.expect(jsonData.message).to.include('You have successfully reset your password. Please proceed to login again.');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "43c9bd0b-4c5c-4341-857a-b46f52378b25",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -10627,7 +10654,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"c1f56805a712e6863fde01a0694a4e93013c665e\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+							"raw": "{\n    \"token\": \"{{adminResetPasswordOTP}}\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
