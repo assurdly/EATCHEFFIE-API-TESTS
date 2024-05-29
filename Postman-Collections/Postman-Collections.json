@@ -2831,8 +2831,11 @@
 													"const jsonData = pm.response.json();\r",
 													"\r",
 													"const roleId = jsonData.data[0].id\r",
+													"const roleId1 = jsonData.data[1].id\r",
 													"\r",
 													"pm.environment.set(\"roleId\", roleId)\r",
+													"pm.environment.set(\"roleId1\", roleId1)\r",
+													"\r",
 													"\r",
 													"\r",
 													"pm.test(\"Status code is 200\", function () {\r",
@@ -2883,11 +2886,209 @@
 												"disabled": true
 											}
 										],
-										"url": "{{base_url}}/roles"
+										"url": {
+											"raw": "{{base_url}}/roles",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"roles"
+											],
+											"query": [
+												{
+													"key": "filter[permissions]",
+													"value": null,
+													"disabled": true
+												},
+												{
+													"key": "filter[q]",
+													"value": "vibes",
+													"disabled": true
+												},
+												{
+													"key": "filter[createdAt][gt]",
+													"value": null,
+													"disabled": true
+												},
+												{
+													"key": "filter[createdAt][lt]",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
 									},
 									"response": [
 										{
 											"id": "a8c937e7-c902-4cf3-9038-f2b38beeab83",
+											"name": "success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "x-request-source",
+														"value": "vendor",
+														"type": "text"
+													}
+												],
+												"url": "{{base_url}}/roles"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "100"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "98"
+												},
+												{
+													"key": "X-RateLimit-Reset",
+													"value": "53"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "321"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"141-v3Zi24L5gRS6S6L2cVcpZMkocN8\""
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 02 May 2024 13:46:04 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully fetched roles\",\n    \"data\": [\n        {\n            \"id\": \"a4c3b8c5-8ebb-4580-aaa4-e499a1035084\",\n            \"name\": \"Admin\",\n            \"slug\": \"admin\",\n            \"description\": null,\n            \"status\": \"active\",\n            \"createdAt\": \"2024-05-02T11:58:46.211Z\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "By Permission - List Roles",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "09f1d5fb-3610-4dba-9429-758e70bd876b",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"const roleId = jsonData.data[0].id\r",
+													"const roleId1 = jsonData.data[1].id\r",
+													"\r",
+													"pm.environment.set(\"roleId\", roleId)\r",
+													"pm.environment.set(\"roleId1\", roleId1)\r",
+													"\r",
+													"\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'OK'\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"pm.test(\"Response body property\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.status).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.data).to.be.an('array');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status is 'success'\", function () {\r",
+													"    pm.expect(jsonData.status).to.eql('success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify Successfully fetched roles\", function () {\r",
+													"    pm.expect(jsonData.message).to.include('Successfully fetched roles');\r",
+													"});\r",
+													"pm.test(\"Verify that data is a string\", function () {\r",
+													"    pm.expect(jsonData.data).to.be.an('array').and.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "518aaef4-8b83-4115-ae21-3bac4a237ea1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "admin",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/roles",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"roles"
+											],
+											"query": [
+												{
+													"key": "filter[permissions]",
+													"value": null,
+													"disabled": true
+												},
+												{
+													"key": "filter[q]",
+													"value": "vibes",
+													"disabled": true
+												},
+												{
+													"key": "filter[createdAt][gt]",
+													"value": null,
+													"disabled": true
+												},
+												{
+													"key": "filter[createdAt][lt]",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "ad993639-d1aa-466f-85dc-3aaf56f637d8",
 											"name": "success",
 											"originalRequest": {
 												"method": "GET",
