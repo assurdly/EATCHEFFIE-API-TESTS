@@ -4908,7 +4908,7 @@
 													"    pm.expect(jsonData.status).to.eql('success');\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Role deleted successfully, function () {\r",
+													"pm.test(\"Role deleted successfully\", function () {\r",
 													"    pm.expect(jsonData.message).to.include(\"Role deleted successfully\");\r",
 													"});"
 												],
@@ -6503,7 +6503,7 @@
 													"});",
 													"",
 													"pm.test(\"Verify Fetched users successfully\", function () {",
-													"    pm.expect(jsonData.message).to.include('Fetched users successfully');",
+													"    pm.expect(jsonData.message).to.include('Fetched user successfully');",
 													"});",
 													"pm.test(\"Verify that data is a string\", function () {",
 													"    pm.expect(jsonData.data).to.be.an('object').and.not.be.empty;",
