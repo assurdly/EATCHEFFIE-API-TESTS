@@ -2998,14 +2998,6 @@
 												"exec": [
 													"const jsonData = pm.response.json();\r",
 													"\r",
-													"const roleId = jsonData.data[0].id\r",
-													"const roleId1 = jsonData.data[1].id\r",
-													"\r",
-													"pm.environment.set(\"roleId\", roleId)\r",
-													"pm.environment.set(\"roleId1\", roleId1)\r",
-													"\r",
-													"\r",
-													"\r",
 													"pm.test(\"Status code is 200\", function () {\r",
 													"    pm.response.to.have.status(200);\r",
 													"});\r",
@@ -3055,7 +3047,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{base_url}}/roles",
+											"raw": "{{base_url}}/roles?filter[permissions]=a6deb555-247d-414d-a13b-feeda1ed863e",
 											"host": [
 												"{{base_url}}"
 											],
@@ -3065,8 +3057,7 @@
 											"query": [
 												{
 													"key": "filter[permissions]",
-													"value": null,
-													"disabled": true
+													"value": "a6deb555-247d-414d-a13b-feeda1ed863e"
 												},
 												{
 													"key": "filter[q]",
@@ -3075,12 +3066,12 @@
 												},
 												{
 													"key": "filter[createdAt][gt]",
-													"value": null,
+													"value": "",
 													"disabled": true
 												},
 												{
 													"key": "filter[createdAt][lt]",
-													"value": null,
+													"value": "",
 													"disabled": true
 												}
 											]
