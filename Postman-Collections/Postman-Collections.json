@@ -731,10 +731,7 @@
 									},
 									"request": {
 										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{onboardingTokenEmail}}"
-											}
+											"type": "noauth"
 										},
 										"method": "PATCH",
 										"header": [
