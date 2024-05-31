@@ -5656,7 +5656,6 @@
 													"",
 													"pm.environment.set(\"adminResetPasswordToken\", adminResetPasswordToken)",
 													"",
-													"",
 													"pm.test(\"Status code is 201\", function () {",
 													"    pm.response.to.have.status(201);",
 													"});",
@@ -6267,7 +6266,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Temitayo\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
+											"raw": "{\n    \"firstName\": \"Temitato\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
