@@ -9207,7 +9207,26 @@
 										"disabled": true
 									}
 								],
-								"url": "{{base_url}}/admin/customers"
+								"url": {
+									"raw": "{{base_url}}/admin/customers?pageNumber=1&pageSize=5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "pageNumber",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "5"
+										}
+									]
+								}
 							},
 							"response": []
 						},
@@ -10007,6 +10026,72 @@
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
 		},
 		{
+			"name": "Audit Trail",
+			"item": [
+				{
+					"name": "Get Audit Trail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a2509df-b4be-4cd9-9164-0402bde93397",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"const adminCustomer = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Customers fetched successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "fcae0ab7-2eea-4e78-ae15-f6c1274693c5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/audit-trail"
+					},
+					"response": []
+				}
+			],
+			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
+		},
+		{
 			"name": "Delete customer",
 			"item": [
 				{
@@ -10250,72 +10335,6 @@
 						}
 					},
 					"response": []
-				}
-			],
-			"id": "0bcc4920-3a5c-45fc-a7f6-30a4ba746e55"
-		},
-		{
-			"name": "Audit Trail",
-			"item": [
-				{
-					"name": "Get Audit Trail",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4a2509df-b4be-4cd9-9164-0402bde93397",
-								"exec": [
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"const adminCustomer = jsonData.data[0].id\r",
-									"\r",
-									"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
-									"\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Status code name has 'OK'\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"pm.test(\"Response body property\", function () {\r",
-									"    pm.expect(jsonData).to.be.an('object');\r",
-									"    pm.expect(jsonData.status).to.be.a('string');\r",
-									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status is 'success'\", function () {\r",
-									"    pm.expect(jsonData.status).to.eql('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Customers fetched successfully\");\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "fcae0ab7-2eea-4e78-ae15-f6c1274693c5",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "{{base_url}}/audit-trail"
-					},
-					"response": []
 				},
 				{
 					"name": "Logout",
@@ -10405,7 +10424,7 @@
 					]
 				}
 			],
-			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
+			"id": "0bcc4920-3a5c-45fc-a7f6-30a4ba746e55"
 		},
 		{
 			"name": "Forgot password",
