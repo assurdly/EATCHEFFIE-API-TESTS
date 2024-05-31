@@ -9999,347 +9999,260 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Logout Copy",
-							"id": "90831df7-a9a7-4505-bb50-cc3f9f69172f",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-request-source",
-										"value": "customer",
-										"type": "text"
-									}
-								],
-								"url": "{{base_url}}/logout"
-							},
-							"response": [
-								{
-									"id": "6a1d6130-7290-4644-b3e5-30189f36c047",
-									"name": "success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"url": "{{base_url}}/logout"
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "X-Powered-By",
-											"value": "Express"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "100"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "99"
-										},
-										{
-											"key": "X-RateLimit-Reset",
-											"value": "60"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "66"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"42-MMFs7VtV/OaalCKoVcokK2+rSSs\""
-										},
-										{
-											"key": "Date",
-											"value": "Tue, 16 Apr 2024 12:21:24 GMT"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Logout successful.\"\n}"
-								}
-							]
 						}
 					],
 					"id": "d4187fe9-e730-49de-98cf-dc479181dde7"
-				},
-				{
-					"name": "Delete customer",
-					"item": [
-						{
-							"name": "Delete Customer",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "b7337c85-cb39-4e88-b63b-833140d741de",
-										"exec": [
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Status code name has 'OK'\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
-											"});\r",
-											"pm.test(\"Response body property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.status).to.be.a('string');\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status is 'success'\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify Customer deleted successfully\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Customer deleted successfully\");\r",
-											"});\r",
-											"\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "da4859e9-044d-4f6d-861f-1a366f679f15",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{adminAccessToken}}"
-									}
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/admin/customers/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"admin",
-										"customers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{adminCustomer}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Already deleted - Delete Customer",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "b7337c85-cb39-4e88-b63b-833140d741de",
-										"exec": [
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});\r",
-											"pm.test(\"Status code name has 'Not Found'\", function () {\r",
-											"    pm.response.to.have.status(\"Not Found\");\r",
-											"});\r",
-											"pm.test(\"Verify Customer not found\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Customer not found\");\r",
-											"});\r",
-											"\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "807af082-844f-460f-9bdc-0a00966b8ceb",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{adminAccessToken}}"
-									}
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/admin/customers/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"admin",
-										"customers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{adminCustomer}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "No Id - Delete Customer",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "b7337c85-cb39-4e88-b63b-833140d741de",
-										"exec": [
-											"const jsonData = pm.response.json();\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Status code name has 'Bad Request.\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\");\r",
-											"});\r",
-											"pm.test(\"Verify message Validation Error.\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
-											"});\r",
-											"pm.test(\"Verify fields can not be empty\", function () {\r",
-											"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
-											"       });"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "9a4371aa-d310-40b2-a7e2-3749b4001b3d",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{adminAccessToken}}"
-									}
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/admin/customers/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"admin",
-										"customers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": ""
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "No Auth - Delete Customer",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "b7337c85-cb39-4e88-b63b-833140d741de",
-										"exec": [
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"pm.test(\"Status code name has Unauthorized\", function () {\r",
-											"    pm.response.to.have.status(\"Unauthorized\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "6599329c-c76e-4202-aba6-d7b8f4fb2ec9",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/admin/customers/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"admin",
-										"customers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{adminCustomer}}"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"id": "0bcc4920-3a5c-45fc-a7f6-30a4ba746e55"
 				}
 			],
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
+		},
+		{
+			"name": "Delete customer",
+			"item": [
+				{
+					"name": "Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b7337c85-cb39-4e88-b63b-833140d741de",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Customer deleted successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Customer deleted successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "da4859e9-044d-4f6d-861f-1a366f679f15",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{adminCustomer}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Already deleted - Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b7337c85-cb39-4e88-b63b-833140d741de",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Not Found'\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"pm.test(\"Verify Customer not found\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Customer not found\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "807af082-844f-460f-9bdc-0a00966b8ceb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{adminCustomer}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "No Id - Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b7337c85-cb39-4e88-b63b-833140d741de",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Bad Request.\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"pm.test(\"Verify message Validation Error.\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+									"});\r",
+									"pm.test(\"Verify fields can not be empty\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
+									"       });"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "9a4371aa-d310-40b2-a7e2-3749b4001b3d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "No Auth - Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b7337c85-cb39-4e88-b63b-833140d741de",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"pm.test(\"Status code name has Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "6599329c-c76e-4202-aba6-d7b8f4fb2ec9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{adminCustomer}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "0bcc4920-3a5c-45fc-a7f6-30a4ba746e55"
 		},
 		{
 			"name": "Audit Trail",
@@ -10403,6 +10316,93 @@
 						"url": "{{base_url}}/audit-trail"
 					},
 					"response": []
+				},
+				{
+					"name": "Logout",
+					"id": "90831df7-a9a7-4505-bb50-cc3f9f69172f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/logout"
+					},
+					"response": [
+						{
+							"id": "6a1d6130-7290-4644-b3e5-30189f36c047",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": "{{base_url}}/logout"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-MMFs7VtV/OaalCKoVcokK2+rSSs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Apr 2024 12:21:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Logout successful.\"\n}"
+						}
+					]
 				}
 			],
 			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
