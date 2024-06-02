@@ -10026,6 +10026,172 @@
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
 		},
 		{
+			"name": "Promos Copy",
+			"item": [
+				{
+					"name": "Create Promo",
+					"id": "59a0924d-67af-4af5-9629-5a83e6ee364c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Vibes\",\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"type\": \"promo_code\", // promo_code | user_activity\n    \"maxUseCount\": 100,\n    \"discountType\": \"percentage\", // percentage | flat \n    \"discount\": 5,\n    \"startDate\": \"2024-05-31\",\n    \"endDate\": \"2024-05-31\",\n    \"promoCode\": \"1234SWING\" // For promo_code type promos\n    // \"activityType\": \"transaction\", // For user_activity promo type. For example if you want it to kick in for users with 10 transactions you will set this to transaction and activityCount to 10\n    // \"activityCount\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/admin/promo"
+					},
+					"response": []
+				},
+				{
+					"name": "List Promos",
+					"id": "a0237d29-07ba-424f-83ef-0c768d70470a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/promo",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"promo"
+							],
+							"query": [
+								{
+									"key": "filter[type]",
+									"value": "promo_code",
+									"disabled": true
+								},
+								{
+									"key": "filter[status]",
+									"value": "active",
+									"disabled": true
+								},
+								{
+									"key": "filter[createdAt][gt]",
+									"value": "2024-05-31",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Promo By ID",
+					"id": "606fb040-3194-4a44-895b-128481a38cd7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/promo/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"promo",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "0119a232-986c-4efe-a28e-656a9c1ed4ba",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Promo",
+					"id": "6d9ffed6-7b65-425b-9011-1b71c660b889",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/promo/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"promo",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "373bc7ff-ba53-4b0f-996a-3a84ae75368e",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Promo",
+					"id": "151d37bd-20e5-489b-ba9e-835b59bf1490",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"maxUseCount\": 100,\n    \"discount\": 5,\n    \"startDate\": \"2024-05-31\",\n    \"endDate\": \"2024-05-31\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/promo/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"promo",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "3805e472-5244-415b-afd9-78c0af4b11c9",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "a217070f-88ed-4c58-b0c2-167ca5344264"
+		},
+		{
 			"name": "Audit Trail",
 			"item": [
 				{
