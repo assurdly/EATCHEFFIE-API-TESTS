@@ -78,7 +78,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"super@admin.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"randompassword\"\n}",
+									"raw": "{\n    \"email\": \"super@admin.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Randompassword1@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -296,7 +296,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"randompassword\",\n    \"password\": \"Randompassword1@\",\n    \"confirmPassword\": \"Randompassword1@\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1@@\",\n    \"confirmPassword\": \"Randompassword1@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -486,7 +486,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"randompassword\",\n    \"confirmPassword\": \"randompassword\"\n}",
+									"raw": "{\n    \"oldPassword\": \"Randompassword1@@\",\n    \"password\": \"Randompassword1@\",\n    \"confirmPassword\": \"Randompassword1@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11409,7 +11409,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"{{adminResetPasswordOTP}}\",\n    \"password\": \"randompassword\",\n    \"confirmPassword\": \"randompassword\"\n}",
+							"raw": "{\n    \"token\": \"{{adminResetPasswordOTP}}\",\n    \"password\": \"Randompassword1@\",\n    \"confirmPassword\": \"Randompassword1@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
