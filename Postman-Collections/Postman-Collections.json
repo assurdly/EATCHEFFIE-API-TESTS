@@ -10052,11 +10052,57 @@
 				},
 				{
 					"name": "List Promos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "99ebcce2-e0b7-4bb8-aae7-4304032e6ed0",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"const userId = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"userId\", userId)\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched users successfully\", function () {\r",
+									"    pm.expect(jsonData.message).to.include('Fetched users successfully');\r",
+									"});\r",
+									"pm.test(\"Verify that data is a string\", function () {\r",
+									"    pm.expect(jsonData.data).to.be.an('array').and.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "a0237d29-07ba-424f-83ef-0c768d70470a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -10120,42 +10166,18 @@
 					"response": []
 				},
 				{
-					"name": "Delete Promo",
-					"id": "6d9ffed6-7b65-425b-9011-1b71c660b889",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/admin/promo/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"promo",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "373bc7ff-ba53-4b0f-996a-3a84ae75368e",
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Update Promo",
 					"id": "151d37bd-20e5-489b-ba9e-835b59bf1490",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -10179,7 +10201,41 @@
 							],
 							"variable": [
 								{
-									"id": "3805e472-5244-415b-afd9-78c0af4b11c9",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Promo",
+					"id": "6d9ffed6-7b65-425b-9011-1b71c660b889",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/promo/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"promo",
+								":id"
+							],
+							"variable": [
+								{
 									"key": "id",
 									"value": ""
 								}
