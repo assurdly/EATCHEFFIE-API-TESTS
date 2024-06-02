@@ -1367,7 +1367,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"name\": \"{{$randomJobTitle}}\",\n    \"description\": \"Role for Jobtitle\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId1}}\", \"{{permissionId2}}\"]// array of permission ids from the list permissions endpoint\n}",
+											"raw": "{\n    \"name\": \"Admin\",\n    \"description\": \"Role for Jobtitle\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId1}}\", \"{{permissionId2}}\"]// array of permission ids from the list permissions endpoint\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1589,7 +1589,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"name\": \"{{$randomJobTitle}}\",\n    \"description\": \"Role for Jobtitle\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId4}}\"]// array of permission ids from the list permissions endpoint\n}",
+											"raw": "{\n    \"name\": \"Admin\",\n    \"description\": \"Role for Jobtitle\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId4}}\"]// array of permission ids from the list permissions endpoint\n}",
 											"options": {
 												"raw": {
 													"language": "json"
