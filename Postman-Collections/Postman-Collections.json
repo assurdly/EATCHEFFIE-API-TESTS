@@ -10748,14 +10748,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"url": "{{base_url}}/admin/builder/banner"
