@@ -9197,6 +9197,36 @@
 				}
 			],
 			"id": "2d9802fe-a560-42ce-bc73-021ccbff360b"
+		},
+		{
+			"name": "Audit Trail",
+			"item": [
+				{
+					"name": "Get Audit Trail",
+					"id": "31e9e39a-2ffe-4e55-88f4-7da082fcd0a1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendor_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor"
+							}
+						],
+						"url": "{{base_url}}/audit-trail"
+					},
+					"response": []
+				}
+			],
+			"id": "ea3433f7-bd03-4740-90b6-deef2c8767e8"
 		}
 	],
 	"event": [
