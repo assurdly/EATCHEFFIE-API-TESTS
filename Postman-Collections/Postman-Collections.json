@@ -9866,7 +9866,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Vibes\",\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"type\": \"promo_code\", // promo_code | user_activity\n    \"maxUseCount\": 100,\n    \"discountType\": \"percentage\", // percentage | flat \n    \"discount\": 5,\n    \"startDate\": \"2024-05-31\",\n    \"endDate\": \"2024-06-31\",\n    \"promoCode\": \"1234SWING\" // For promo_code type promos\n    // \"activityType\": \"transaction\", // For user_activity promo type. For example if you want it to kick in for users with 10 transactions you will set this to transaction and activityCount to 10\n    // \"activityCount\": 5\n}",
+							"raw": "{\n    \"name\": \"Vibes\",\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"type\": \"user_activity\", // promo_code | user_activity\n    \"maxUseCount\": 100,\n    \"discountType\": \"percentage\", // percentage | flat \n    \"discount\": 5,\n    \"startDate\": \"2024-06-04\",\n    \"endDate\": \"2024-06-31\",\n   // \"promoCode\": \"1235SWING\" // For promo_code type promos\n    \"activityType\": \"transaction\", // For user_activity promo type. For example if you want it to kick in for users with 10 transactions you will set this to transaction and activityCount to 10\n     \"activityCount\": 5\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10078,6 +10078,1257 @@
 				}
 			],
 			"id": "a217070f-88ed-4c58-b0c2-167ca5344264"
+		},
+		{
+			"name": "Builder",
+			"item": [
+				{
+					"name": "Create Banner",
+					"id": "4df5ba16-c7c7-4393-a787-f22dc8a1aa13",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Banner name",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+								}
+							]
+						},
+						"url": "{{base_url}}/admin/builder/banner"
+					},
+					"response": [
+						{
+							"id": "b6fa1715-bca9-4418-818a-7af159126bb7",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Banner name",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+										}
+									]
+								},
+								"url": "{{base_url}}/admin/builder/banner"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "45"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-gJMXqgyP/40zynr+VNZkJRp6Yzo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:43:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Banner created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Campaign",
+					"id": "7b3d627c-ef3f-43f2-9f3b-2ceedf4f3623",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Banner name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Banner description",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+								}
+							]
+						},
+						"url": "{{base_url}}/admin/campaign/banner"
+					},
+					"response": [
+						{
+							"id": "33f032fd-c17d-454c-8ece-57b820bf4195",
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Banner name",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+										}
+									]
+								},
+								"url": "{{base_url}}/admin/builder/banner"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "45"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-gJMXqgyP/40zynr+VNZkJRp6Yzo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:43:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Campaign created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Banners",
+					"id": "2e673653-b3d5-4561-a33a-f398ad154300",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/builder/banner"
+					},
+					"response": [
+						{
+							"id": "deebce06-4c33-44ed-a439-0ba61cfbf976",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/builder/banner"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "59"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "354"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"162-s/3+OTvy8iwIcJ22v43i6J7nhBk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:45:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banners fetched successfully\",\n    \"data\": [\n        {\n            \"title\": \"Banner name\",\n            \"description\": null,\n            \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n            \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n            \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n            \"images\": [\n                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/875a1a42ea9330fcd40a9ebb49e027b0f0d95b3d55b43bddd0baa33d1740960edeaba403b9ba20dcf0968e09c276ac97e364b525b0b317fca277ed4ee796c615.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240602%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240602T194955Z&X-Amz-Expires=3600&X-Amz-Signature=0232ca26e1a2fdc14b30d1513f0a809d74175f3b97f21fdc88d37e83a40d4951&X-Amz-SignedHeaders=host&x-id=GetObject\"\n            ],\n            \"status\": \"active\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Campaigns",
+					"id": "f9d56bf2-74b4-4b9c-99a6-8b6eca479bfe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/builder/campaign"
+					},
+					"response": [
+						{
+							"id": "389b2ae6-4edc-44b1-9893-071f6c4d16c2",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/builder/banner"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "59"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "354"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"162-s/3+OTvy8iwIcJ22v43i6J7nhBk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:45:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"campaigns fetched successfully\",\n    \"data\": [\n        {\n            \"title\": \"Banner name\",\n            \"description\": null,\n            \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n            \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n            \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n            \"status\": \"active\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Banner By ID",
+					"id": "52f79e6b-c0e0-4780-9391-076e8c17738b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/builder/banner/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"builder",
+								"banner",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "35c3b5ef-6a21-4704-aa13-b4b9d1a907cf",
+									"key": "id",
+									"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "8489394c-a4b9-4ca1-ada5-d09656311fee",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/banner/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"banner",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "265"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner fetched successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Campaign By ID",
+					"id": "533c12c2-96c1-424b-96b8-d526bf71f236",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/builder/campaign/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"builder",
+								"campaign",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "b05e3b86-b8b4-4096-b370-a1fe5e17f3c5",
+									"key": "id",
+									"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "41fdece9-89b9-4670-b9cf-0f65e63c85e7",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/banner/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"banner",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "265"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner fetched successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Campaign",
+					"id": "76a38b8a-5869-4dc0-8366-2a56c500b717",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Banner",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Description",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/builder/campaign/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"builder",
+								"campaign",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "da454641-472f-4d1e-a70d-578a618d47cd",
+									"key": "id",
+									"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "4dd9d396-f1e4-4468-8b8f-ffc2b8f9ca3c",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/banner/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"banner",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "265"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"campaign updated successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Campaign",
+					"id": "4361d173-7b08-4fc2-91ea-ba187376fcaf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/builder/campaign/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"builder",
+								"campaign",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "9186e6c7-687b-41a9-b52b-b09a964a1ed1",
+									"key": "id",
+									"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "f7b328ce-95c4-49fc-91e9-12225b0f50b7",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/banner/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"banner",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "265"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"campaign deleted successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Banner",
+					"id": "bfaf005f-9e14-41ef-836e-06c4371018f8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/builder/campaign/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"builder",
+								"campaign",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "85b4eca7-69f5-42d6-81fd-4a73cf73dabd",
+									"key": "id",
+									"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "21fe83a8-bda8-48d7-aa40-1b7a8908d82c",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/banner/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"banner",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "265"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner deleted successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Banner",
+					"id": "22fa2b99-ba8e-411c-8800-511f13120a93",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Banner",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Description",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/builder/banner/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"builder",
+								"banner",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "df947eda-b726-43de-8c8e-fe2845edbea8",
+									"key": "id",
+									"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "5bb35306-426c-41e9-8aa3-cf2c648319bb",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/banner/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"banner",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "265"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner updated successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "7a2d9a26-55d6-468e-ab9d-1ff893ca0f5c"
 		},
 		{
 			"name": "Audit Trail",
