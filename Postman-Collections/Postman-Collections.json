@@ -2634,7 +2634,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"badvendor@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
+									"raw": "{\n    \"email\": \"{{signedUpVendorEmail}}\",\n    \"password\": \"Password12@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
