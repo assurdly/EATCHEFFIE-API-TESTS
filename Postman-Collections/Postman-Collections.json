@@ -10363,31 +10363,20 @@
 				},
 				{
 					"name": "Fetch Banners",
-					"id": "2e673653-b3d5-4561-a33a-f398ad154300",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "ec"
-							}
-						],
-						"url": "{{base_url}}/admin/builder/banner"
-					},
-					"response": [
+					"item": [
 						{
-							"id": "deebce06-4c33-44ed-a439-0ba61cfbf976",
-							"name": "success",
-							"originalRequest": {
+							"name": "Fetch Banners",
+							"id": "2e673653-b3d5-4561-a33a-f398ad154300",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -10397,88 +10386,94 @@
 								],
 								"url": "{{base_url}}/admin/builder/banner"
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "59"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "354"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"162-s/3+OTvy8iwIcJ22v43i6J7nhBk\""
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 02 Jun 2024 19:45:31 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"id": "deebce06-4c33-44ed-a439-0ba61cfbf976",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": "{{base_url}}/admin/builder/banner"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "59"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "354"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"162-s/3+OTvy8iwIcJ22v43i6J7nhBk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:45:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banners fetched successfully\",\n    \"data\": [\n        {\n            \"title\": \"Banner name\",\n            \"description\": null,\n            \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n            \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n            \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n            \"images\": [\n                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/875a1a42ea9330fcd40a9ebb49e027b0f0d95b3d55b43bddd0baa33d1740960edeaba403b9ba20dcf0968e09c276ac97e364b525b0b317fca277ed4ee796c615.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240602%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240602T194955Z&X-Amz-Expires=3600&X-Amz-Signature=0232ca26e1a2fdc14b30d1513f0a809d74175f3b97f21fdc88d37e83a40d4951&X-Amz-SignedHeaders=host&x-id=GetObject\"\n            ],\n            \"status\": \"active\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
 								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banners fetched successfully\",\n    \"data\": [\n        {\n            \"title\": \"Banner name\",\n            \"description\": null,\n            \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n            \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n            \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n            \"images\": [\n                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/875a1a42ea9330fcd40a9ebb49e027b0f0d95b3d55b43bddd0baa33d1740960edeaba403b9ba20dcf0968e09c276ac97e364b525b0b317fca277ed4ee796c615.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240602%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240602T194955Z&X-Amz-Expires=3600&X-Amz-Signature=0232ca26e1a2fdc14b30d1513f0a809d74175f3b97f21fdc88d37e83a40d4951&X-Amz-SignedHeaders=host&x-id=GetObject\"\n            ],\n            \"status\": \"active\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+							]
 						}
-					]
+					],
+					"id": "1403edee-1467-476a-b7ac-eb1907221cd0"
 				},
 				{
 					"name": "Fetch Campaigns",
-					"id": "f9d56bf2-74b4-4b9c-99a6-8b6eca479bfe",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "ec"
-							}
-						],
-						"url": "{{base_url}}/admin/builder/campaign"
-					},
-					"response": [
+					"item": [
 						{
-							"id": "389b2ae6-4edc-44b1-9893-071f6c4d16c2",
-							"name": "success",
-							"originalRequest": {
+							"name": "Fetch Campaigns",
+							"id": "f9d56bf2-74b4-4b9c-99a6-8b6eca479bfe",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -10486,62 +10481,79 @@
 										"value": "ec"
 									}
 								],
-								"url": "{{base_url}}/admin/builder/banner"
+								"url": "{{base_url}}/admin/builder/campaign"
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "59"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "354"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"162-s/3+OTvy8iwIcJ22v43i6J7nhBk\""
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 02 Jun 2024 19:45:31 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"id": "389b2ae6-4edc-44b1-9893-071f6c4d16c2",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": "{{base_url}}/admin/builder/banner"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "59"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "354"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"162-s/3+OTvy8iwIcJ22v43i6J7nhBk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:45:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"campaigns fetched successfully\",\n    \"data\": [\n        {\n            \"title\": \"Banner name\",\n            \"description\": null,\n            \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n            \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n            \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n            \"status\": \"active\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
 								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"campaigns fetched successfully\",\n    \"data\": [\n        {\n            \"title\": \"Banner name\",\n            \"description\": null,\n            \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n            \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n            \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n            \"status\": \"active\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 1,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+							]
 						}
-					]
+					],
+					"id": "ca29e3e8-d7b0-44d6-8b3e-8f862552df0f"
 				},
 				{
 					"name": "Fetch Banner By ID",
