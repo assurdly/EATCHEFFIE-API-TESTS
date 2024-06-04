@@ -8986,7 +8986,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/customers?pageNumber=1&pageSize=5",
+									"raw": "{{base_url}}/admin/customers?limit=6&page=1",
 									"host": [
 										"{{base_url}}"
 									],
@@ -8996,12 +8996,12 @@
 									],
 									"query": [
 										{
-											"key": "pageNumber",
-											"value": "1"
+											"key": "limit",
+											"value": "6"
 										},
 										{
-											"key": "pageSize",
-											"value": "5"
+											"key": "page",
+											"value": "1"
 										}
 									]
 								}
