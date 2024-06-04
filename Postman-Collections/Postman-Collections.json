@@ -2668,7 +2668,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{base_url}}/roles",
+											"raw": "{{base_url}}/roles?limit=5&page=1",
 											"host": [
 												"{{base_url}}"
 											],
@@ -2678,7 +2678,7 @@
 											"query": [
 												{
 													"key": "filter[permissions]",
-													"value": null,
+													"value": "",
 													"disabled": true
 												},
 												{
@@ -2688,13 +2688,21 @@
 												},
 												{
 													"key": "filter[createdAt][gt]",
-													"value": null,
+													"value": "",
 													"disabled": true
 												},
 												{
 													"key": "filter[createdAt][lt]",
-													"value": null,
+													"value": "",
 													"disabled": true
+												},
+												{
+													"key": "limit",
+													"value": "5"
+												},
+												{
+													"key": "page",
+													"value": "1"
 												}
 											]
 										}
