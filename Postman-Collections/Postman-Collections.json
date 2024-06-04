@@ -7497,7 +7497,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/vendors?filter[q]=The Cook House",
+									"raw": "{{base_url}}/admin/vendors?filter[q]=Zizuzz Eatery",
 									"host": [
 										"{{base_url}}"
 									],
@@ -7508,7 +7508,7 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "The Cook House"
+											"value": "Zizuzz Eatery"
 										},
 										{
 											"key": "filter[status]",
