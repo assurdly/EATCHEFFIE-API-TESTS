@@ -10178,53 +10178,54 @@
 					"id": "26c580f1-bec0-4699-8766-a4a86d3bf98b"
 				},
 				{
-					"name": "New Folder",
-					"item": [],
-					"id": "0ca65485-a034-43de-a227-0d30a6bd7e84"
-				},
-				{
 					"name": "Update Promo",
-					"id": "151d37bd-20e5-489b-ba9e-835b59bf1490",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"maxUseCount\": 100,\n    \"discount\": 5,\n    \"startDate\": \"2024-05-31\",\n    \"endDate\": \"2024-05-31\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"item": [
+						{
+							"name": "Update Promo",
+							"id": "151d37bd-20e5-489b-ba9e-835b59bf1490",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"maxUseCount\": 100,\n    \"discount\": 5,\n    \"startDate\": \"2024-05-31\",\n    \"endDate\": \"2024-05-31\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/promo/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"promo",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/admin/promo/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"promo",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								}
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"id": "0ca65485-a034-43de-a227-0d30a6bd7e84"
 				},
 				{
 					"name": "Delete Promo",
