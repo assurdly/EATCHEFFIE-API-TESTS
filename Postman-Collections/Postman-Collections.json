@@ -10261,7 +10261,7 @@
 							]
 						},
 						{
-							"name": "Create Banner Copy",
+							"name": "Empty fields - Create Banner",
 							"event": [
 								{
 									"listen": "test",
@@ -10270,35 +10270,22 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"//const adminResetPasswordToken = jsonData.data.resetPasswordToken\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify fields should not be empty\", function () {\r",
+											"    pm.expect(pm.response.json().data.title).to.eql(\"title should not be empty\");\r",
+											"        pm.expect(pm.response.json().data.status).to.eql(\"status should not be empty\");\r",
 											"\r",
-											"//pm.environment.set(\"adminResetPasswordToken\", adminResetPasswordToken)\r",
+											"  \r",
 											"\r",
-											"pm.test(\"Status code is 201\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
-											"});\r",
-											"pm.test(\"Status code name has 'Created'\", function () {\r",
-											"    pm.response.to.have.status(\"Created\");\r",
-											"});\r",
-											"pm.test(\"Response body property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.status).to.be.a('string');\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"    pm.expect(jsonData.data).to.be.an('object');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status is 'success'\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify that User created successfully. An email has been sent with instructions on how to setup the account.\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"User created succesfully. An email has been sent with instructions on how to setup the account.\");\r",
-											"});\r",
-											"pm.test(\"Verify resetPasswordToken and resetUrl is a string\", function () {\r",
-											"    pm.expect(pm.response.json().data.resetPasswordToken).to.be.a(\"string\");\r",
-											"    pm.expect(pm.response.json().data.resetUrl).to.be.a(\"string\");\r",
-											"});\r",
-											""
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -10330,17 +10317,20 @@
 										{
 											"key": "title",
 											"value": "Banner name",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "status",
 											"value": "active",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "images",
 											"type": "file",
-											"value": null
+											"value": null,
+											"disabled": true
 										}
 									]
 								},
@@ -10685,6 +10675,186 @@
 							"response": [
 								{
 									"id": "33f032fd-c17d-454c-8ece-57b820bf4195",
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "title",
+													"value": "Banner name",
+													"type": "text"
+												},
+												{
+													"key": "status",
+													"value": "active",
+													"type": "text"
+												},
+												{
+													"key": "images",
+													"type": "file",
+													"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+												}
+											]
+										},
+										"url": "{{base_url}}/admin/builder/banner"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "45"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4b-gJMXqgyP/40zynr+VNZkJRp6Yzo\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:43:43 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Campaign created successfully\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Create Campaign Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2c96ef97-0dae-4340-a11b-b9446e9471de",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"//const adminResetPasswordToken = jsonData.data.resetPasswordToken\r",
+											"\r",
+											"//pm.environment.set(\"adminResetPasswordToken\", adminResetPasswordToken)\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Created'\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('object');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that User created successfully. An email has been sent with instructions on how to setup the account.\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"User created succesfully. An email has been sent with instructions on how to setup the account.\");\r",
+											"});\r",
+											"pm.test(\"Verify resetPasswordToken and resetUrl is a string\", function () {\r",
+											"    pm.expect(pm.response.json().data.resetPasswordToken).to.be.a(\"string\");\r",
+											"    pm.expect(pm.response.json().data.resetUrl).to.be.a(\"string\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "98a1d974-40a6-4f4c-96c1-ba81f6cfa2ff",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Banner name",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Banner description",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"value": null
+										}
+									]
+								},
+								"url": "{{base_url}}/admin/builder/campaign"
+							},
+							"response": [
+								{
+									"id": "60f81b2e-0902-41a4-8f9f-92da6fdacf9f",
 									"name": "success",
 									"originalRequest": {
 										"method": "POST",
