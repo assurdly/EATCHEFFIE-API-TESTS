@@ -10016,49 +10016,24 @@
 								}
 							},
 							"response": []
-						}
-					],
-					"id": "b7e0b55d-d18b-4e1d-b38e-a4fccb9bf1c5"
-				},
-				{
-					"name": "List Promos Copy",
-					"item": [
+						},
 						{
-							"name": "List Promos",
+							"name": "No Auth - List Promos",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "99ebcce2-e0b7-4bb8-aae7-4304032e6ed0",
 										"exec": [
-											"const jsonData = pm.response.json();\r",
+											"var jsonData = pm.response.json();\r",
 											"\r",
-											"const userId = jsonData.data[0].id\r",
-											"\r",
-											"pm.environment.set(\"userId\", userId)\r",
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
-											"pm.test(\"Status code name has 'OK'\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
 											"});\r",
-											"pm.test(\"Response body property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.status).to.be.a('string');\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status is 'success'\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify Fetched users successfully\", function () {\r",
-											"    pm.expect(jsonData.message).to.include('Fetched users successfully');\r",
-											"});\r",
-											"pm.test(\"Verify that data is a string\", function () {\r",
-											"    pm.expect(jsonData.data).to.be.an('array').and.not.be.empty;\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -10071,10 +10046,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{adminAccessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "GET",
 								"header": [],
@@ -10109,42 +10081,106 @@
 							"response": []
 						}
 					],
-					"id": "26c580f1-bec0-4699-8766-a4a86d3bf98b"
+					"id": "b7e0b55d-d18b-4e1d-b38e-a4fccb9bf1c5"
 				},
 				{
 					"name": "Get Promo By ID",
-					"id": "606fb040-3194-4a44-895b-128481a38cd7",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/admin/promo/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"promo",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
+					"item": [
+						{
+							"name": "Get Promo By ID",
+							"id": "606fb040-3194-4a44-895b-128481a38cd7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/promo/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"promo",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
 								}
-							]
+							},
+							"response": []
+						},
+						{
+							"name": "No Auth - Get Promo By ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a619c396-e1ca-4da9-ace1-5e76425ba6ba",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "a3472797-3ded-4fe8-aba1-ef42a00d0904",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/promo/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"promo",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"id": "26c580f1-bec0-4699-8766-a4a86d3bf98b"
+				},
+				{
+					"name": "New Folder",
+					"item": [],
+					"id": "0ca65485-a034-43de-a227-0d30a6bd7e84"
 				},
 				{
 					"name": "Update Promo",
