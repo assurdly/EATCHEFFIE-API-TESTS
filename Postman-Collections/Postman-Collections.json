@@ -10762,7 +10762,7 @@
 							]
 						},
 						{
-							"name": "Create Campaign Copy",
+							"name": "Empty fields - Create Campaign",
 							"event": [
 								{
 									"listen": "test",
