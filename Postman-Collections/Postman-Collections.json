@@ -11667,7 +11667,7 @@
 							]
 						},
 						{
-							"name": "Fetch Banner By ID Copy",
+							"name": "Invalid Id - Fetch Banner By ID",
 							"event": [
 								{
 									"listen": "test",
@@ -12095,6 +12095,160 @@
 									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner fetched successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
 								}
 							]
+						},
+						{
+							"name": "Invalid Id - Fetch Campaign By ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8f3d3047-01f6-46d6-856f-9042828d08e7",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify id must be a UUID\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
+											"       \r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "272d155d-6eff-4ea0-99a9-72f3f810aa09",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/campaign/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"campaign",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "56321484-480f-4756-b9b1-796ee05"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "3d3f365e-1106-4673-9af9-9e1c485e5c50",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/builder/banner/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"builder",
+												"banner",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner fetched successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+								}
+							]
 						}
 					],
 					"id": "ed045f4a-4d6d-40c1-8274-51822eea1533"
@@ -12165,6 +12319,180 @@
 							"response": [
 								{
 									"id": "5bb35306-426c-41e9-8aa3-cf2c648319bb",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/builder/banner/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"builder",
+												"banner",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner updated successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Invalid Id - Update Banner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "26a56b62-b0fb-47f2-8e4c-a7840cc19f30",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify id must be a UUID\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
+											"       \r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "e8d100e9-1b43-4ae6-8bd3-a180c8ab5ea8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Banner",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Description",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/builder/banner/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"banner",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "56321484-480f-4756-b9b1-796ee05c9"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "c327de95-6d41-400a-8999-081f1db3b6b8",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
@@ -12348,6 +12676,184 @@
 							"response": [
 								{
 									"id": "4dd9d396-f1e4-4468-8b8f-ffc2b8f9ca3c",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/builder/banner/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"builder",
+												"banner",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"campaign updated successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Campaign Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "922056dd-f7f0-4e5f-9d10-08cae9a2a6e2",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.success).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is 'Fetched logged in user successfully'\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Fetched logged in user successfully');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "1009f971-ab98-4108-a7ec-17cbc5b6906b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Banner",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Description",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/builder/campaign/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"campaign",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "56691ed1-3817-486b-aa02-4bf86aeb2ea2",
+											"key": "id",
+											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "d6712705-39c9-4f3b-af51-0ea59cad2be7",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
