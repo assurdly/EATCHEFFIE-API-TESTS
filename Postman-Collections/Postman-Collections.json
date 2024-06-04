@@ -8685,7 +8685,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
+									"raw": "{\n    \"status\": \"inactive\" // \"active\" | \"inactive\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8705,7 +8705,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "ff04b8e0-2352-4f75-8ad9-1390294fbece"
+											"value": "{{adminVendor}}"
 										}
 									]
 								}
