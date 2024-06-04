@@ -7579,7 +7579,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/vendors?filter[status]=active",
+									"raw": "{{base_url}}/admin/vendors?filter[status]=inactive",
 									"host": [
 										"{{base_url}}"
 									],
@@ -7595,7 +7595,7 @@
 										},
 										{
 											"key": "filter[status]",
-											"value": "active",
+											"value": "inactive",
 											"description": "pending, active, inactive"
 										}
 									]
