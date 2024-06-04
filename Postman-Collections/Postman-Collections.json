@@ -10261,6 +10261,181 @@
 							]
 						},
 						{
+							"name": "Create Banner Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "11708558-6fe3-48ad-95e0-4507ca9f7719",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"//const adminResetPasswordToken = jsonData.data.resetPasswordToken\r",
+											"\r",
+											"//pm.environment.set(\"adminResetPasswordToken\", adminResetPasswordToken)\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Created'\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('object');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that User created successfully. An email has been sent with instructions on how to setup the account.\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"User created succesfully. An email has been sent with instructions on how to setup the account.\");\r",
+											"});\r",
+											"pm.test(\"Verify resetPasswordToken and resetUrl is a string\", function () {\r",
+											"    pm.expect(pm.response.json().data.resetPasswordToken).to.be.a(\"string\");\r",
+											"    pm.expect(pm.response.json().data.resetUrl).to.be.a(\"string\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "a2968806-46e6-4d68-a8a6-fb8163c3b040",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Banner name",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"value": null
+										}
+									]
+								},
+								"url": "{{base_url}}/admin/builder/banner"
+							},
+							"response": [
+								{
+									"id": "49cab42c-2ab9-45c3-a78f-aa396c7bc76b",
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "title",
+													"value": "Banner name",
+													"type": "text"
+												},
+												{
+													"key": "status",
+													"value": "active",
+													"type": "text"
+												},
+												{
+													"key": "images",
+													"type": "file",
+													"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+												}
+											]
+										},
+										"url": "{{base_url}}/admin/builder/banner"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "45"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4b-gJMXqgyP/40zynr+VNZkJRp6Yzo\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:43:43 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Banner created successfully\"\n}"
+								}
+							]
+						},
+						{
 							"name": "No Auth - Create Banner",
 							"event": [
 								{
