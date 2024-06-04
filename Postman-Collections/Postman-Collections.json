@@ -2668,7 +2668,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{base_url}}/roles?limit=5&page=1",
+											"raw": "{{base_url}}/roles",
 											"host": [
 												"{{base_url}}"
 											],
@@ -2698,11 +2698,13 @@
 												},
 												{
 													"key": "limit",
-													"value": "5"
+													"value": "5",
+													"disabled": true
 												},
 												{
 													"key": "page",
-													"value": "1"
+													"value": "1",
+													"disabled": true
 												}
 											]
 										}
