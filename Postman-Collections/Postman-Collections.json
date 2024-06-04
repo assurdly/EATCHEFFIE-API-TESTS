@@ -10344,7 +10344,7 @@
 										{
 											"key": "images",
 											"type": "file",
-											"src": "IVjZcWaF8/final-image.jpg"
+											"src": "KrrX9Lv7a/Screenshot (14).png"
 										}
 									]
 								},
@@ -10791,12 +10791,12 @@
 											"    pm.expect(jsonData.status).to.eql('success');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Verify that User created successfully. An email has been sent with instructions on how to setup the account.\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"User created succesfully. An email has been sent with instructions on how to setup the account.\");\r",
+											"pm.test(\"Verify Campaign created successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Campaign created successfully\");\r",
 											"});\r",
-											"pm.test(\"Verify resetPasswordToken and resetUrl is a string\", function () {\r",
-											"    pm.expect(pm.response.json().data.resetPasswordToken).to.be.a(\"string\");\r",
-											"    pm.expect(pm.response.json().data.resetUrl).to.be.a(\"string\");\r",
+											"pm.test(\"Verify data returns banner information\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.a(\"object\").and.not.be.empty;\r",
+											"   \r",
 											"});\r",
 											""
 										],
@@ -10845,7 +10845,7 @@
 										{
 											"key": "images",
 											"type": "file",
-											"value": null
+											"src": "ek0qO6Acb/Screenshot (14).png"
 										}
 									]
 								},
