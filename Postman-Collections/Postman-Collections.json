@@ -10281,10 +10281,6 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"//const adminResetPasswordToken = jsonData.data.resetPasswordToken\r",
-											"\r",
-											"//pm.environment.set(\"adminResetPasswordToken\", adminResetPasswordToken)\r",
-											"\r",
 											"pm.test(\"Status code is 201\", function () {\r",
 											"    pm.response.to.have.status(201);\r",
 											"});\r",
@@ -10302,13 +10298,10 @@
 											"    pm.expect(jsonData.status).to.eql('success');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Verify that User created successfully. An email has been sent with instructions on how to setup the account.\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"User created succesfully. An email has been sent with instructions on how to setup the account.\");\r",
+											"pm.test(\"Verify that Banner Success Message.\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Banner created successfully\");\r",
 											"});\r",
-											"pm.test(\"Verify resetPasswordToken and resetUrl is a string\", function () {\r",
-											"    pm.expect(pm.response.json().data.resetPasswordToken).to.be.a(\"string\");\r",
-											"    pm.expect(pm.response.json().data.resetUrl).to.be.a(\"string\");\r",
-											"});\r",
+											"\r",
 											""
 										],
 										"type": "text/javascript",
@@ -10351,7 +10344,7 @@
 										{
 											"key": "images",
 											"type": "file",
-											"value": null
+											"src": "IVjZcWaF8/final-image.jpg"
 										}
 									]
 								},
