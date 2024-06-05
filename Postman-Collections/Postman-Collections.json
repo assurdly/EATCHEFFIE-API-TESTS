@@ -11288,6 +11288,46 @@
 					"item": [
 						{
 							"name": "Fetch Banners",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bee4a6e0-0149-4ca8-b1bc-6856b22b1559",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const bannerId = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"bannerId\", bannerId)\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that banners fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"banners fetched successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "2e673653-b3d5-4561-a33a-f398ad154300",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -11502,24 +11542,33 @@
 									"script": {
 										"id": "6ff3ab7b-5a8a-4d5f-bf6e-8c4bcee9c038",
 										"exec": [
-											"var jsonData = pm.response.json();\r",
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const campaignId = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"campaignId\", campaignId)\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
 											"});\r",
 											"pm.test(\"Response body property\", function () {\r",
 											"    pm.expect(jsonData).to.be.an('object');\r",
 											"    pm.expect(jsonData.status).to.be.a('string');\r",
 											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Status is 'success'\", function () {\r",
-											"    pm.expect(jsonData.success).to.eql(true);\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Message is 'Fetched logged in user successfully'\", function () {\r",
-											"    pm.expect(jsonData.message).to.include('Fetched logged in user successfully');\r",
+											"pm.test(\"Verify that banners fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"banners fetched successfully\");\r",
 											"});\r",
+											"\r",
 											""
 										],
 										"type": "text/javascript",
