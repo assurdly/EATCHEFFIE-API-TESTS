@@ -12718,6 +12718,43 @@
 					"item": [
 						{
 							"name": "Update Banner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f05929ba-05a0-4618-9060-8b79dc7c7bf6",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('object');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that campaign fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"campaign fetched successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "22fa2b99-ba8e-411c-8800-511f13120a93",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -12726,14 +12763,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "PUT",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"body": {
@@ -12746,13 +12784,13 @@
 										},
 										{
 											"key": "description",
-											"value": "Description",
+											"value": "Vendor",
 											"type": "text"
 										},
 										{
 											"key": "images",
 											"type": "file",
-											"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+											"src": "wZf1bVrCV/Screenshot (14).png"
 										}
 									]
 								},
@@ -12769,9 +12807,8 @@
 									],
 									"variable": [
 										{
-											"id": "df947eda-b726-43de-8c8e-fe2845edbea8",
 											"key": "id",
-											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+											"value": "{{bannerId}}"
 										}
 									]
 								}
