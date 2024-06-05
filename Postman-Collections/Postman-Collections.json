@@ -11784,6 +11784,43 @@
 					"item": [
 						{
 							"name": "Fetch Banner By ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2210db21-26fb-419c-a1a6-f5079febd155",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('object');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that banner fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"banner fetched successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "52f79e6b-c0e0-4780-9391-076e8c17738b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -11817,7 +11854,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+											"value": "{{bannerId}}"
 										}
 									]
 								}
@@ -12214,6 +12251,43 @@
 					"item": [
 						{
 							"name": "Fetch Campaign By ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "952927ce-a664-4f21-b421-bbb189c08392",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('object');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that campaign fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"campaign fetched successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "533c12c2-96c1-424b-96b8-d526bf71f236",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -12222,14 +12296,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"url": {
@@ -12245,9 +12320,8 @@
 									],
 									"variable": [
 										{
-											"id": "b05e3b86-b8b4-4096-b370-a1fe5e17f3c5",
 											"key": "id",
-											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+											"value": "{{campaignId}}"
 										}
 									]
 								}
@@ -12493,7 +12567,7 @@
 							]
 						},
 						{
-							"name": "Invalid Id - Fetch Campaign By ID Copy",
+							"name": "No Auth - Fetch Campaign By ID",
 							"event": [
 								{
 									"listen": "test",
