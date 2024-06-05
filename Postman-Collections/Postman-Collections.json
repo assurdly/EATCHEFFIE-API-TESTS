@@ -14227,6 +14227,37 @@
 					"item": [
 						{
 							"name": "Delete Banner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7653ff7d-7499-4d14-91f2-924dc0924031",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.success).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is 'Banner deleted successfully'\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Banner deleted successfully');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "bfaf005f-9e14-41ef-836e-06c4371018f8",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -14235,32 +14266,32 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "DELETE",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/builder/campaign/:id",
+									"raw": "{{base_url}}/admin/builder/banner/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"admin",
 										"builder",
-										"campaign",
+										"banner",
 										":id"
 									],
 									"variable": [
 										{
-											"id": "85b4eca7-69f5-42d6-81fd-4a73cf73dabd",
 											"key": "id",
-											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+											"value": "{{bannerId}}"
 										}
 									]
 								}
@@ -14401,14 +14432,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/builder/campaign/:id",
+									"raw": "{{base_url}}/admin/builder/banner/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"admin",
 										"builder",
-										"campaign",
+										"banner",
 										":id"
 									],
 									"variable": [
@@ -14545,14 +14576,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/builder/campaign/:id",
+									"raw": "{{base_url}}/admin/builder/banner/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"admin",
 										"builder",
-										"campaign",
+										"banner",
 										":id"
 									],
 									"variable": [
