@@ -13766,6 +13766,37 @@
 					"item": [
 						{
 							"name": "Delete Campaign",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bb692144-e4ad-412f-b77a-c18f19a61d0f",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.success).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is 'Campaign deleted successfully'\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Campaign deleted successfully');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "4361d173-7b08-4fc2-91ea-ba187376fcaf",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -13774,14 +13805,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "DELETE",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"url": {
@@ -13797,9 +13829,8 @@
 									],
 									"variable": [
 										{
-											"id": "9186e6c7-687b-41a9-b52b-b09a964a1ed1",
 											"key": "id",
-											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+											"value": "{{campaignId}}"
 										}
 									]
 								}
