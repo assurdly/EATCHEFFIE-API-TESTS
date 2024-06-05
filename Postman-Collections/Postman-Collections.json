@@ -4283,7 +4283,7 @@
 					"id": "2d8bc5ac-17f3-44d3-971c-6fa6d1fdf0f6"
 				},
 				{
-					"name": "Add Bank Details Copy",
+					"name": "Add Bank Details",
 					"id": "2c1600dd-72c2-4ec0-9464-1c0f8d7f26c0",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -4307,7 +4307,7 @@
 					"response": []
 				},
 				{
-					"name": "Update Business Bank Account Copy",
+					"name": "Update Business Bank Account",
 					"id": "0058e211-8403-4c9d-947f-25d71021985b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
