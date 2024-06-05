@@ -9213,14 +9213,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{vendorAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/audit-trail"
@@ -9330,6 +9331,28 @@
 						},
 						{
 							"name": "Fetch Settings - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cf8120a3-041a-44c2-aff6-61965001d791",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {",
+											"    pm.response.to.have.status(\"Unauthorized\");",
+											"});",
+											"// Delete later cause of pipleine run",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {",
+											"    pm.response.to.have.status(\"Unauthorized\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "ba043bce-8c81-4801-b14e-9356bcf85a77",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9458,6 +9481,135 @@
 							"response": [
 								{
 									"id": "a5b2b351-fb29-4391-b7fe-193125cbee77",
+									"name": "success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"orderLimit\": 20,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/settings"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "55"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "336"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"150-zz2858pOEP5wy0ZzhHTPahXeAe8\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 11:34:56 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Settings updated successfully\",\n    \"data\": {\n        \"id\": \"b8c79fed-f135-4307-9900-6ca73e8c6163\",\n        \"createdAt\": \"2024-06-05T07:39:47.691Z\",\n        \"updatedAt\": \"2024-06-05T10:34:56.908Z\",\n        \"value\": {\n            \"sessionTimeout\": 10,\n            \"invalidPasswordAttempts\": 5,\n            \"sessionInactivity\": 5,\n            \"orderLimit\": 20,\n            \"openTime\": 900,\n            \"closeTime\": 2200\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Settings - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2fe73dd3-6340-4ab7-884e-0020774f9855",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {",
+											"    pm.response.to.have.status(\"Unauthorized\");",
+											"});",
+											"// Delete later cause of pipleine run",
+											"pm.test(\"Status code name has 'Unauthorized'\", function () {",
+											"    pm.response.to.have.status(\"Unauthorized\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "1bb2ef49-16ef-4aa9-9502-d46df0edfa68",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"orderLimit\": 20,\n    \"openTime\": \"2024-05-27T07:00:00\",\n    \"closeTime\": \"2024-05-27T19:00:00\",\n    \"fees\": [\n        {\n            \"areaId\": \"63216e5f-abed-4690-a0e6-4732bc3dd275\",\n            \"rate\": 30\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/settings"
+							},
+							"response": [
+								{
+									"id": "9884b436-8c43-44b9-b47a-648ee079c74a",
 									"name": "success",
 									"originalRequest": {
 										"method": "PUT",
