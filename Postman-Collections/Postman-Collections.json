@@ -3878,7 +3878,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"description\": \"Admin\",\n    \"status\": \"inactive\", // active or inactive\n    \"permissions\": [\"{{permissionId3}}\", \"{{permissionId2}}\"] // array of permission ids from the list permissions endpoint\n}",
+											"raw": "{\n    \"description\": \"Administer\",\n    \"status\": \"inactive\", // active or inactive\n    \"permissions\": [\"{{permissionId3}}\", \"{{permissionId2}}\"] // array of permission ids from the list permissions endpoint\n}",
 											"options": {
 												"raw": {
 													"language": "json"
