@@ -9342,7 +9342,8 @@
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -9441,6 +9442,9 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": "{{base_url}}/delivery/areas"
