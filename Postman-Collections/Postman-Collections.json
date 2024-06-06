@@ -8218,14 +8218,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{vendorAccessToken}}"
 							}
 						},
 						"method": "POST",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"body": {
