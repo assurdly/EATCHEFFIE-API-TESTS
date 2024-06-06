@@ -229,6 +229,225 @@
 									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.f2suCR3b-cuc6ObAAV_0NkLHjng8fKuxqCQbxSeEpGY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.qKp0zjyO9pFmfsar4hMISzDU8lyhWuqc4peUPOqNgvk\"\n    }\n}"
 								}
 							]
+						},
+						{
+							"name": "Login Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "55f10c8c-c242-4435-978d-173bc7c7f6a1",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminAccessToken = jsonData.data.accessToken\r",
+											"const adminRefreshToken = jsonData.data.refreshToken;\r",
+											"\r",
+											"pm.environment.set(\"adminAccessToken\", adminAccessToken)\r",
+											"pm.environment.set(\"adminRefreshToken\", adminRefreshToken)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('object');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is Successfully logged in\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Login successful');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0201c521-d964-46ae-a56d-05e2fddb8cdb",
+										"exec": [
+											"pm.environment.set('base_url', 'https://api.eatcheffie.com/v1')\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "7353079d-99da-4906-be37-ea8fadff7d57",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "admin",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"super@admin.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Randompassword1@\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/login"
+							},
+							"response": [
+								{
+									"id": "2121bef7-d7d9-40f8-b44d-657e6cb6dcc7",
+									"name": "invalid_credentials",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"osunkiyesitayo@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/login"
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "33"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 19 Mar 2024 23:30:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"message\": \"Invalid credentials\"\n}"
+								},
+								{
+									"id": "0b06ad4e-55bf-47c1-8724-d92a1525091a",
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"tayoosunkiyesi@gmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/login"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "382"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"17e-xgGjo8h3mS1eGk+eoWkAFMETDx0\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 19 Mar 2024 23:31:16 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.f2suCR3b-cuc6ObAAV_0NkLHjng8fKuxqCQbxSeEpGY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.qKp0zjyO9pFmfsar4hMISzDU8lyhWuqc4peUPOqNgvk\"\n    }\n}"
+								}
+							]
 						}
 					],
 					"id": "839826e2-eeae-4d33-bd16-c08d7ef9bfdb"
