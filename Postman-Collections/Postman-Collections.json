@@ -2524,7 +2524,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[q]=pizza",
+									"raw": "{{base_url}}/meals?filter[q]=BBQ Chicken Pizza",
 									"host": [
 										"{{base_url}}"
 									],
@@ -2534,7 +2534,7 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "pizza"
+											"value": "BBQ Chicken Pizza"
 										},
 										{
 											"key": "filter[price][gt]",
