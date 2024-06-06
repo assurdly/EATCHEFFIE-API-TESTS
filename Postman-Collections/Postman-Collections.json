@@ -2634,7 +2634,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"{{signedUpVendorEmail}}\",\n    \"password\": \"Password12@@\"\n}",
+									"raw": "{\n    \"email\": \"Weldon@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3914,7 +3914,7 @@
 							"response": []
 						},
 						{
-							"name": "Valid - Update Business Information Copy 2",
+							"name": "Update Business Information - No Auth",
 							"event": [
 								{
 									"listen": "test",
@@ -3923,24 +3923,26 @@
 										"exec": [
 											"try {",
 											"",
-											"    const { status, message, errors } = pm.response.json()",
+											"    const { message } = pm.response.json()",
 											"",
-											"    pm.test(\"Status code is 200\", function () {",
-											"        pm.response.to.have.status(200);",
+											"    pm.test(\"Status code is 401\", function () {",
+											"        pm.response.to.have.status(401);",
 											"    });",
 											"",
-											"    pm.test(\"Status code is 200\", function () {",
-											"        pm.response.to.have.status(200);",
+											"    pm.test(\"Status code response is Unauthorized\", function () {",
+											"        pm.response.to.have.status('Unauthorized');",
 											"    });",
 											"",
-											"    pm.test(\"Errors are successfully retunred\", function () {",
-											"        pm.expect(message).to.eql('Business updated successfully');",
+											"    pm.test(\"Response body property\", function () {",
+											"        pm.expect(message).to.be.a('string');",
 											"    });",
 											"",
-											"",
+											"    pm.test(\"Message is Verified Successfully\", function () {",
+											"        pm.expect(message).to.include('Session expired. Please login again.');",
+											"    });",
 											"",
 											"} catch (error) {",
-											"    console.error(\"Error caught in running tests:\", error)",
+											"    console.error(\"Error running tests\", error)",
 											"}"
 										],
 										"type": "text/javascript",
@@ -3953,6 +3955,9 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "PATCH",
 								"header": [
 									{
