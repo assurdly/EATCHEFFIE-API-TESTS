@@ -9095,10 +9095,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{vendorAccessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "GET",
 								"header": [
