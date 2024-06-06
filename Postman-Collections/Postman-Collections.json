@@ -16049,11 +16049,6 @@
 								"exec": [
 									"const jsonData = pm.response.json();\r",
 									"\r",
-									"const adminCustomer = jsonData.data[0].id\r",
-									"\r",
-									"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
-									"\r",
-									"\r",
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
