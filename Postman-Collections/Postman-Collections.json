@@ -16451,6 +16451,15 @@
 						},
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reason\": \"Vibes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{base_url}}/admin/customers/:id",
 							"host": [
