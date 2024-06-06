@@ -1819,7 +1819,7 @@
 					]
 				},
 				{
-					"name": "Login WIth Email",
+					"name": "Login With Email",
 					"event": [
 						{
 							"listen": "test",
@@ -2021,7 +2021,7 @@
 					]
 				},
 				{
-					"name": "Login WIth Phone",
+					"name": "Login With Phone",
 					"event": [
 						{
 							"listen": "test",
@@ -5916,7 +5916,7 @@
 											"pm.test(\"Verify that message returns 'Fetched vendor successfully'\", function () {",
 											"    pm.expect(pm.response.json().message).to.eql(\"Fetched vendor successfully\");",
 											"});",
-											"pm.test(\"Verify that data returns address details'\", function () {",
+											"pm.test(\"Verify that data returns address 'details''\", function () {",
 											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;",
 											"});"
 										],
@@ -6468,7 +6468,7 @@
 											"    pm.expect(pm.response.json().message).to.include(\"Vendor added to favorites successfully.\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Verify that data returns address details'\", function () {\r",
+											"pm.test(\"Verify that data returns address 'details''\", function () {\r",
 											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
 											"});"
 										],
@@ -10466,7 +10466,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
+									"raw": "{\n    \"addressId\": \"{{addressId}}\",\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10518,7 +10518,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"\"\n}",
+									"raw": "{\n    \"addressId\": \"\",\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
 									"options": {
 										"raw": {
 											"language": "json"
