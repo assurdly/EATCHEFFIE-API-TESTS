@@ -10580,7 +10580,7 @@
 										{
 											"key": "images",
 											"type": "file",
-											"src": "KrrX9Lv7a/Screenshot (14).png"
+											"src": "d73jcv9bF/Screenshot (14).png"
 										}
 									]
 								},
@@ -11081,7 +11081,7 @@
 										{
 											"key": "images",
 											"type": "file",
-											"src": "ek0qO6Acb/Screenshot (14).png"
+											"src": "Vbeo5wE1V/Screenshot (14).png"
 										}
 									]
 								},
@@ -13320,7 +13320,12 @@
 										{
 											"key": "images",
 											"type": "file",
-											"src": "wZf1bVrCV/Screenshot (14).png"
+											"src": "rUrfNs9pI/Screenshot (14).png"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
 										}
 									]
 								},
@@ -14208,7 +14213,12 @@
 										{
 											"key": "images",
 											"type": "file",
-											"src": "gWvde42pm/Screenshot (14).png"
+											"src": "4rN-1F_cC/Screenshot (14).png"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
 										}
 									]
 								},
@@ -14226,7 +14236,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+											"value": "{{campaignId}}"
 										}
 									]
 								}
