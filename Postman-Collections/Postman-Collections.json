@@ -8941,188 +8941,277 @@
 			"item": [
 				{
 					"name": "Fetch Orders",
-					"event": [
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "39d5aee7-4bd7-4ddb-be6f-7df5d5c544c1",
-								"exec": [
-									"try {",
-									"",
-									"    const { status, data } = pm.response.json()",
-									"",
-									"    pm.test(\"Status code is 200\", function () {",
-									"        pm.response.to.have.status(200);",
-									"    });",
-									"",
-									"    pm.test(\"Response body property\", function () {",
-									"        pm.expect(data).to.be.an('array');",
-									"        pm.expect(status).to.be.a('string');",
-									"    });",
-									"",
-									"} catch (error) {",
-									"    console.error('Error from test says:', error)",
-									"}"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "942b7698-e36b-4825-a404-89e4464a53a6",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{vendorAccessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "vendor",
-								"disabled": true
-							}
-						],
-						"url": "{{base_url}}/vendor/orders"
-					},
-					"response": [
-						{
-							"id": "a2c81c76-81c4-4861-b864-63bb67006217",
-							"name": "success",
-							"originalRequest": {
+							"name": "Fetch Orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "39d5aee7-4bd7-4ddb-be6f-7df5d5c544c1",
+										"exec": [
+											"try {",
+											"",
+											"    const { status, data } = pm.response.json()",
+											"",
+											"    pm.test(\"Status code is 200\", function () {",
+											"        pm.response.to.have.status(200);",
+											"    });",
+											"",
+											"    pm.test(\"Response body property\", function () {",
+											"        pm.expect(data).to.be.an('array');",
+											"        pm.expect(status).to.be.a('string');",
+											"    });",
+											"",
+											"} catch (error) {",
+											"    console.error('Error from test says:', error)",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "942b7698-e36b-4825-a404-89e4464a53a6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{vendorAccessToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "vendor"
+										"value": "vendor",
+										"disabled": true
 									}
 								],
 								"url": "{{base_url}}/vendor/orders"
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
+									"id": "a2c81c76-81c4-4861-b864-63bb67006217",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "vendor"
+											}
+										],
+										"url": "{{base_url}}/vendor/orders"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "6801"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a91-AdZcaC0QMXE9zwRmU0truF714cY\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 13 May 2024 11:02:34 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Orders fetched successfully\",\n    \"data\": [\n        {\n            \"id\": \"bdcf5d21-8bf9-4a6a-ae92-91e3aa642731\",\n            \"createdAt\": \"2024-05-08T23:39:29.876Z\",\n            \"updatedAt\": \"2024-05-08T23:39:29.876Z\",\n            \"vendorId\": \"8ba6d82e-133d-46da-bdc2-47dbb8af275d\",\n            \"orderMeals\": [\n                {\n                    \"id\": \"939fa535-9683-4a16-b169-c687d41f6192\",\n                    \"createdAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"cartMeal\": {\n                        \"id\": \"fd65985a-2f92-4abd-b5ff-413a9ba72e16\",\n                        \"createdAt\": \"2024-05-08T22:30:06.934Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-08T23:30:06.882Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 5,\n                        \"meal\": {\n                            \"id\": \"7b2a2cf5-42a4-4d32-aff6-49089c4bf7c3\",\n                            \"createdAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"name\": \"Margherita Pizza\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Pizza Dough\",\n                                    \"Tomato Sauce\",\n                                    \"Mozzarella Cheese\",\n                                    \"Fresh Basil\"\n                                ],\n                                \"additives\": [\n                                    \"Fresh Basil\",\n                                    \"Garlic Butter Crust\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.8,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                },\n                {\n                    \"id\": \"d240802b-f701-425a-afa1-e07fa7ae6297\",\n                    \"createdAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"cartMeal\": {\n                        \"id\": \"550b5b16-6c71-41b0-942e-884e804d6249\",\n                        \"createdAt\": \"2024-05-08T23:09:50.631Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-09T00:09:50.578Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 1,\n                        \"meal\": {\n                            \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                            \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"name\": \"Ham and Cheese Crepe\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Crepe\",\n                                    \"Ham\",\n                                    \"Swiss Cheese\"\n                                ],\n                                \"additives\": [\n                                    \"Mushrooms\",\n                                    \"Spinach\",\n                                    \"Bechamel Sauce\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.1,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": \"e80364ed-2ba5-4c03-b173-0858ed15658d\",\n            \"createdAt\": \"2024-05-08T23:39:29.944Z\",\n            \"updatedAt\": \"2024-05-08T23:39:29.944Z\",\n            \"vendorId\": \"0cf2a75e-7d17-46e2-a52b-da83e31890f7\",\n            \"orderMeals\": [\n                {\n                    \"id\": \"ca81d6ee-5cf8-4da3-92b6-6e4f4f965c70\",\n                    \"createdAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"cartMeal\": {\n                        \"id\": \"fd65985a-2f92-4abd-b5ff-413a9ba72e16\",\n                        \"createdAt\": \"2024-05-08T22:30:06.934Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-08T23:30:06.882Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 5,\n                        \"meal\": {\n                            \"id\": \"7b2a2cf5-42a4-4d32-aff6-49089c4bf7c3\",\n                            \"createdAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"name\": \"Margherita Pizza\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Pizza Dough\",\n                                    \"Tomato Sauce\",\n                                    \"Mozzarella Cheese\",\n                                    \"Fresh Basil\"\n                                ],\n                                \"additives\": [\n                                    \"Fresh Basil\",\n                                    \"Garlic Butter Crust\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.8,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                },\n                {\n                    \"id\": \"17028007-5f87-4a0e-855b-9cc303a91e3b\",\n                    \"createdAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"cartMeal\": {\n                        \"id\": \"550b5b16-6c71-41b0-942e-884e804d6249\",\n                        \"createdAt\": \"2024-05-08T23:09:50.631Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-09T00:09:50.578Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 1,\n                        \"meal\": {\n                            \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                            \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"name\": \"Ham and Cheese Crepe\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Crepe\",\n                                    \"Ham\",\n                                    \"Swiss Cheese\"\n                                ],\n                                \"additives\": [\n                                    \"Mushrooms\",\n                                    \"Spinach\",\n                                    \"Bechamel Sauce\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.1,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": \"1a66117a-5c19-41d8-b710-4ac58e72ce87\",\n            \"createdAt\": \"2024-05-08T23:42:14.784Z\",\n            \"updatedAt\": \"2024-05-08T23:42:14.784Z\",\n            \"vendorId\": \"0cf2a75e-7d17-46e2-a52b-da83e31890f7\",\n            \"orderMeals\": [\n                {\n                    \"id\": \"62ab08b1-5933-4495-8479-7a8cfc673a47\",\n                    \"createdAt\": \"2024-05-08T23:42:14.789Z\",\n                    \"updatedAt\": \"2024-05-08T23:42:14.789Z\",\n                    \"cartMeal\": {\n                        \"id\": \"48e2f68a-db6e-4e24-8efe-ca0cb8410250\",\n                        \"createdAt\": \"2024-05-08T23:41:46.164Z\",\n                        \"updatedAt\": \"2024-05-08T23:42:14.782Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-09T00:41:46.096Z\",\n                        \"orderId\": \"7f4df58c-9671-4bca-bceb-b7719e5ce8fc\",\n                        \"quantity\": 1,\n                        \"meal\": {\n                            \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                            \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"name\": \"Ham and Cheese Crepe\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Crepe\",\n                                    \"Ham\",\n                                    \"Swiss Cheese\"\n                                ],\n                                \"additives\": [\n                                    \"Mushrooms\",\n                                    \"Spinach\",\n                                    \"Bechamel Sauce\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.1,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 3,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Orders - No Auth",
+							"event": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "60"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "6801"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"1a91-AdZcaC0QMXE9zwRmU0truF714cY\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 13 May 2024 11:02:34 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"listen": "test",
+									"script": {
+										"id": "39d5aee7-4bd7-4ddb-be6f-7df5d5c544c1",
+										"exec": [
+											"try {",
+											"",
+											"    const { status, data } = pm.response.json()",
+											"",
+											"    pm.test(\"Status code is 200\", function () {",
+											"        pm.response.to.have.status(200);",
+											"    });",
+											"",
+											"    pm.test(\"Response body property\", function () {",
+											"        pm.expect(data).to.be.an('array');",
+											"        pm.expect(status).to.be.a('string');",
+											"    });",
+											"",
+											"} catch (error) {",
+											"    console.error('Error from test says:', error)",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
 							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Orders fetched successfully\",\n    \"data\": [\n        {\n            \"id\": \"bdcf5d21-8bf9-4a6a-ae92-91e3aa642731\",\n            \"createdAt\": \"2024-05-08T23:39:29.876Z\",\n            \"updatedAt\": \"2024-05-08T23:39:29.876Z\",\n            \"vendorId\": \"8ba6d82e-133d-46da-bdc2-47dbb8af275d\",\n            \"orderMeals\": [\n                {\n                    \"id\": \"939fa535-9683-4a16-b169-c687d41f6192\",\n                    \"createdAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"cartMeal\": {\n                        \"id\": \"fd65985a-2f92-4abd-b5ff-413a9ba72e16\",\n                        \"createdAt\": \"2024-05-08T22:30:06.934Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-08T23:30:06.882Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 5,\n                        \"meal\": {\n                            \"id\": \"7b2a2cf5-42a4-4d32-aff6-49089c4bf7c3\",\n                            \"createdAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"name\": \"Margherita Pizza\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Pizza Dough\",\n                                    \"Tomato Sauce\",\n                                    \"Mozzarella Cheese\",\n                                    \"Fresh Basil\"\n                                ],\n                                \"additives\": [\n                                    \"Fresh Basil\",\n                                    \"Garlic Butter Crust\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.8,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                },\n                {\n                    \"id\": \"d240802b-f701-425a-afa1-e07fa7ae6297\",\n                    \"createdAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"cartMeal\": {\n                        \"id\": \"550b5b16-6c71-41b0-942e-884e804d6249\",\n                        \"createdAt\": \"2024-05-08T23:09:50.631Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-09T00:09:50.578Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 1,\n                        \"meal\": {\n                            \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                            \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"name\": \"Ham and Cheese Crepe\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Crepe\",\n                                    \"Ham\",\n                                    \"Swiss Cheese\"\n                                ],\n                                \"additives\": [\n                                    \"Mushrooms\",\n                                    \"Spinach\",\n                                    \"Bechamel Sauce\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.1,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": \"e80364ed-2ba5-4c03-b173-0858ed15658d\",\n            \"createdAt\": \"2024-05-08T23:39:29.944Z\",\n            \"updatedAt\": \"2024-05-08T23:39:29.944Z\",\n            \"vendorId\": \"0cf2a75e-7d17-46e2-a52b-da83e31890f7\",\n            \"orderMeals\": [\n                {\n                    \"id\": \"ca81d6ee-5cf8-4da3-92b6-6e4f4f965c70\",\n                    \"createdAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"cartMeal\": {\n                        \"id\": \"fd65985a-2f92-4abd-b5ff-413a9ba72e16\",\n                        \"createdAt\": \"2024-05-08T22:30:06.934Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-08T23:30:06.882Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 5,\n                        \"meal\": {\n                            \"id\": \"7b2a2cf5-42a4-4d32-aff6-49089c4bf7c3\",\n                            \"createdAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"name\": \"Margherita Pizza\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Pizza Dough\",\n                                    \"Tomato Sauce\",\n                                    \"Mozzarella Cheese\",\n                                    \"Fresh Basil\"\n                                ],\n                                \"additives\": [\n                                    \"Fresh Basil\",\n                                    \"Garlic Butter Crust\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.8,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                },\n                {\n                    \"id\": \"17028007-5f87-4a0e-855b-9cc303a91e3b\",\n                    \"createdAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"cartMeal\": {\n                        \"id\": \"550b5b16-6c71-41b0-942e-884e804d6249\",\n                        \"createdAt\": \"2024-05-08T23:09:50.631Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-09T00:09:50.578Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 1,\n                        \"meal\": {\n                            \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                            \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"name\": \"Ham and Cheese Crepe\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Crepe\",\n                                    \"Ham\",\n                                    \"Swiss Cheese\"\n                                ],\n                                \"additives\": [\n                                    \"Mushrooms\",\n                                    \"Spinach\",\n                                    \"Bechamel Sauce\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.1,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": \"1a66117a-5c19-41d8-b710-4ac58e72ce87\",\n            \"createdAt\": \"2024-05-08T23:42:14.784Z\",\n            \"updatedAt\": \"2024-05-08T23:42:14.784Z\",\n            \"vendorId\": \"0cf2a75e-7d17-46e2-a52b-da83e31890f7\",\n            \"orderMeals\": [\n                {\n                    \"id\": \"62ab08b1-5933-4495-8479-7a8cfc673a47\",\n                    \"createdAt\": \"2024-05-08T23:42:14.789Z\",\n                    \"updatedAt\": \"2024-05-08T23:42:14.789Z\",\n                    \"cartMeal\": {\n                        \"id\": \"48e2f68a-db6e-4e24-8efe-ca0cb8410250\",\n                        \"createdAt\": \"2024-05-08T23:41:46.164Z\",\n                        \"updatedAt\": \"2024-05-08T23:42:14.782Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-09T00:41:46.096Z\",\n                        \"orderId\": \"7f4df58c-9671-4bca-bceb-b7719e5ce8fc\",\n                        \"quantity\": 1,\n                        \"meal\": {\n                            \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                            \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"name\": \"Ham and Cheese Crepe\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Crepe\",\n                                    \"Ham\",\n                                    \"Swiss Cheese\"\n                                ],\n                                \"additives\": [\n                                    \"Mushrooms\",\n                                    \"Spinach\",\n                                    \"Bechamel Sauce\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.1,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 3,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Update Order",
-					"id": "dd287979-1b0e-484f-ac5d-b1b4cac265e3",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{vendorAccessToken}}"
-							}
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "vendor",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"status\": \"processing\",\n    \"cancelReason\": \"\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/vendor/orders/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"vendor",
-								"orders",
-								":id"
-							],
-							"variable": [
+							"id": "99296b1b-b4c3-4944-954e-12b228b4fba0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{vendorAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor",
+										"disabled": true
+									}
+								],
+								"url": "{{base_url}}/vendor/orders"
+							},
+							"response": [
 								{
-									"key": "id",
-									"value": "",
-									"description": "The vendor order ID being updated"
+									"id": "7c0062cc-d572-4f8b-86d6-96d68779f243",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "vendor"
+											}
+										],
+										"url": "{{base_url}}/vendor/orders"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "6801"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a91-AdZcaC0QMXE9zwRmU0truF714cY\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 13 May 2024 11:02:34 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Orders fetched successfully\",\n    \"data\": [\n        {\n            \"id\": \"bdcf5d21-8bf9-4a6a-ae92-91e3aa642731\",\n            \"createdAt\": \"2024-05-08T23:39:29.876Z\",\n            \"updatedAt\": \"2024-05-08T23:39:29.876Z\",\n            \"vendorId\": \"8ba6d82e-133d-46da-bdc2-47dbb8af275d\",\n            \"orderMeals\": [\n                {\n                    \"id\": \"939fa535-9683-4a16-b169-c687d41f6192\",\n                    \"createdAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"cartMeal\": {\n                        \"id\": \"fd65985a-2f92-4abd-b5ff-413a9ba72e16\",\n                        \"createdAt\": \"2024-05-08T22:30:06.934Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-08T23:30:06.882Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 5,\n                        \"meal\": {\n                            \"id\": \"7b2a2cf5-42a4-4d32-aff6-49089c4bf7c3\",\n                            \"createdAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"name\": \"Margherita Pizza\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Pizza Dough\",\n                                    \"Tomato Sauce\",\n                                    \"Mozzarella Cheese\",\n                                    \"Fresh Basil\"\n                                ],\n                                \"additives\": [\n                                    \"Fresh Basil\",\n                                    \"Garlic Butter Crust\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.8,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                },\n                {\n                    \"id\": \"d240802b-f701-425a-afa1-e07fa7ae6297\",\n                    \"createdAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.940Z\",\n                    \"cartMeal\": {\n                        \"id\": \"550b5b16-6c71-41b0-942e-884e804d6249\",\n                        \"createdAt\": \"2024-05-08T23:09:50.631Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-09T00:09:50.578Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 1,\n                        \"meal\": {\n                            \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                            \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"name\": \"Ham and Cheese Crepe\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Crepe\",\n                                    \"Ham\",\n                                    \"Swiss Cheese\"\n                                ],\n                                \"additives\": [\n                                    \"Mushrooms\",\n                                    \"Spinach\",\n                                    \"Bechamel Sauce\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.1,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": \"e80364ed-2ba5-4c03-b173-0858ed15658d\",\n            \"createdAt\": \"2024-05-08T23:39:29.944Z\",\n            \"updatedAt\": \"2024-05-08T23:39:29.944Z\",\n            \"vendorId\": \"0cf2a75e-7d17-46e2-a52b-da83e31890f7\",\n            \"orderMeals\": [\n                {\n                    \"id\": \"ca81d6ee-5cf8-4da3-92b6-6e4f4f965c70\",\n                    \"createdAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"cartMeal\": {\n                        \"id\": \"fd65985a-2f92-4abd-b5ff-413a9ba72e16\",\n                        \"createdAt\": \"2024-05-08T22:30:06.934Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-08T23:30:06.882Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 5,\n                        \"meal\": {\n                            \"id\": \"7b2a2cf5-42a4-4d32-aff6-49089c4bf7c3\",\n                            \"createdAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:53.533Z\",\n                            \"name\": \"Margherita Pizza\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Pizza Dough\",\n                                    \"Tomato Sauce\",\n                                    \"Mozzarella Cheese\",\n                                    \"Fresh Basil\"\n                                ],\n                                \"additives\": [\n                                    \"Fresh Basil\",\n                                    \"Garlic Butter Crust\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.8,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                },\n                {\n                    \"id\": \"17028007-5f87-4a0e-855b-9cc303a91e3b\",\n                    \"createdAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.947Z\",\n                    \"cartMeal\": {\n                        \"id\": \"550b5b16-6c71-41b0-942e-884e804d6249\",\n                        \"createdAt\": \"2024-05-08T23:09:50.631Z\",\n                        \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-09T00:09:50.578Z\",\n                        \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                        \"quantity\": 1,\n                        \"meal\": {\n                            \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                            \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"name\": \"Ham and Cheese Crepe\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Crepe\",\n                                    \"Ham\",\n                                    \"Swiss Cheese\"\n                                ],\n                                \"additives\": [\n                                    \"Mushrooms\",\n                                    \"Spinach\",\n                                    \"Bechamel Sauce\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.1,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": \"1a66117a-5c19-41d8-b710-4ac58e72ce87\",\n            \"createdAt\": \"2024-05-08T23:42:14.784Z\",\n            \"updatedAt\": \"2024-05-08T23:42:14.784Z\",\n            \"vendorId\": \"0cf2a75e-7d17-46e2-a52b-da83e31890f7\",\n            \"orderMeals\": [\n                {\n                    \"id\": \"62ab08b1-5933-4495-8479-7a8cfc673a47\",\n                    \"createdAt\": \"2024-05-08T23:42:14.789Z\",\n                    \"updatedAt\": \"2024-05-08T23:42:14.789Z\",\n                    \"cartMeal\": {\n                        \"id\": \"48e2f68a-db6e-4e24-8efe-ca0cb8410250\",\n                        \"createdAt\": \"2024-05-08T23:41:46.164Z\",\n                        \"updatedAt\": \"2024-05-08T23:42:14.782Z\",\n                        \"cartId\": null,\n                        \"deliveryDate\": \"2024-05-09T00:41:46.096Z\",\n                        \"orderId\": \"7f4df58c-9671-4bca-bceb-b7719e5ce8fc\",\n                        \"quantity\": 1,\n                        \"meal\": {\n                            \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                            \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                            \"name\": \"Ham and Cheese Crepe\",\n                            \"daysAvailable\": {\n                                \"sun\": true,\n                                \"mon\": true,\n                                \"tue\": true,\n                                \"thu\": true,\n                                \"fri\": true,\n                                \"sat\": true\n                            },\n                            \"attributes\": {\n                                \"ingredients\": [\n                                    \"Crepe\",\n                                    \"Ham\",\n                                    \"Swiss Cheese\"\n                                ],\n                                \"additives\": [\n                                    \"Mushrooms\",\n                                    \"Spinach\",\n                                    \"Bechamel Sauce\"\n                                ],\n                                \"spiceLevel\": {\n                                    \"default\": 1,\n                                    \"available\": [\n                                        1,\n                                        2\n                                    ]\n                                }\n                            },\n                            \"rating\": 4.1,\n                            \"images\": [\n                                \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                            ]\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 3,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
 								}
 							]
 						}
-					},
-					"response": [
+					],
+					"id": "20322ec0-a1dc-47d6-b717-fcf264299b45"
+				},
+				{
+					"name": "Update Order",
+					"item": [
 						{
-							"id": "05d17cb6-6b13-4341-992d-d7b030128718",
-							"name": "enum",
-							"originalRequest": {
+							"name": "Update Order",
+							"id": "dd287979-1b0e-484f-ac5d-b1b4cac265e3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{vendorAccessToken}}"
+									}
+								},
 								"method": "PUT",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "vendor"
+										"value": "vendor",
+										"disabled": true
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"ded\",\n    \"cancelReason\": \"\"\n}",
+									"raw": "{\n    \"status\": \"processing\",\n    \"cancelReason\": \"\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9142,65 +9231,108 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "",
+											"description": "The vendor order ID being updated"
 										}
 									]
 								}
 							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "97"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "50"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "157"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"9d-G1YsnsnIgDeqVapj5MV7jrmxWbQ\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 13 May 2024 11:37:17 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"id": "05d17cb6-6b13-4341-992d-d7b030128718",
+									"name": "enum",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "vendor"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": \"ded\",\n    \"cancelReason\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/vendor/orders/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"vendor",
+												"orders",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "97"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "50"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "157"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"9d-G1YsnsnIgDeqVapj5MV7jrmxWbQ\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 13 May 2024 11:37:17 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"message\": \"Validation Error.\",\n    \"data\": {\n        \"status\": \"status must be one of the following values: pending, processing, enroute, delivered, completed, cancelled\"\n    }\n}"
 								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"Validation Error.\",\n    \"data\": {\n        \"status\": \"status must be one of the following values: pending, processing, enroute, delivered, completed, cancelled\"\n    }\n}"
+							]
 						}
-					]
+					],
+					"id": "5ac75f24-d4fb-4d5a-ac46-6f918f4c0b66"
 				}
 			],
 			"id": "e4456701-42d8-49b2-b4b3-230bac513b66"
@@ -9333,7 +9465,7 @@
 					]
 				},
 				{
-					"name": "Get Stats Copy",
+					"name": "Get Stats - No Auth",
 					"event": [
 						{
 							"listen": "test",
@@ -9341,24 +9473,16 @@
 								"id": "bfd225f4-0c2f-478b-9311-9b4ab772f181",
 								"exec": [
 									"try {",
-									"    const { data, status } = pm.response.json()",
-									"",
-									"    pm.test(\"Verify that audit data is not empty\", () => {",
-									"        pm.expect(data).to.not.be.empty",
-									"    })",
-									"",
+									"    const { message } = pm.response.json()",
 									"    pm.test(\"Status is 'success'\", function () {",
-									"        pm.expect(status).to.eql('success');",
+									"        pm.expect(message).to.eql('Session expired. Please login again.');",
+									"    });",
+									"        pm.test(\"Status code is 401\", function () {",
+									"        pm.response.to.have.status(401);",
 									"    });",
 									"",
-									"        pm.test(\"Status code is 200\", function () {",
-									"        pm.response.to.have.status(200);",
-									"    });",
-									"",
-									"",
-									"    console.log(data)",
 									"} catch (error) {",
-									"",
+									"    console.error(\"Error form test:\", error)",
 									"}"
 								],
 								"type": "text/javascript",
@@ -9372,10 +9496,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{vendorAccessToken}}"
-							}
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [
