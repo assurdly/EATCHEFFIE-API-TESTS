@@ -5987,162 +5987,7 @@
 							"name": "Setup user with email",
 							"item": [
 								{
-									"name": "Setup user with email",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "39255046-bf3f-45c9-a3e5-044080649369",
-												"exec": [
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"const adminSetupUserAccessToken = jsonData.data.accessToken\r",
-													"const adminSetupUserRefreshToken = jsonData.data.refreshToken\r",
-													"\r",
-													"pm.environment.set(\"adminSetupUserAccessToken\", adminSetupUserAccessToken)\r",
-													"pm.environment.set(\"adminSetupUserRefreshToken\", adminSetupUserRefreshToken)\r",
-													"\r",
-													"pm.test(\"Status code is 201\", function () {\r",
-													"    pm.response.to.have.status(201);\r",
-													"});\r",
-													"pm.test(\"Status code name has 'Created'\", function () {\r",
-													"    pm.response.to.have.status(\"Created\");\r",
-													"});\r",
-													"pm.test(\"Response body property\", function () {\r",
-													"    pm.expect(jsonData).to.be.an('object');\r",
-													"    pm.expect(jsonData.status).to.be.a('string');\r",
-													"    pm.expect(jsonData.message).to.be.a('string');\r",
-													"    pm.expect(jsonData.data).to.be.an('object');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Status is 'success'\", function () {\r",
-													"    pm.expect(jsonData.status).to.eql('success');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify Successfully setup account\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.include('Successfully setup account');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify that data is a string\", function () {\r",
-													"    pm.expect(jsonData.data.accessToken).to.be.an('string').and.not.be.empty;\r",
-													"    pm.expect(jsonData.data.refreshToken).to.be.an('string').and.not.be.empty;\r",
-													"});"
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"id": "6646c4e1-6d1a-4f93-a702-8b46aa09f3c9",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{adminAccessToken}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "x-request-source",
-												"value": "admin",
-												"disabled": true
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Temitato\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{base_url}}/user/setup"
-									},
-									"response": [
-										{
-											"id": "d27b27dd-dc86-4f22-a614-8f6c525d2d20",
-											"name": "success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "x-request-source",
-														"value": "vendor"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"firstName\": \"Temitayo\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"0e2bf0fa15bc6287ec868ef833be5a8e520d1191\"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{base_url}}/user/setup"
-											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "X-Powered-By",
-													"value": "Express"
-												},
-												{
-													"key": "Access-Control-Allow-Origin",
-													"value": "*"
-												},
-												{
-													"key": "X-RateLimit-Limit",
-													"value": "100"
-												},
-												{
-													"key": "X-RateLimit-Remaining",
-													"value": "98"
-												},
-												{
-													"key": "X-RateLimit-Reset",
-													"value": "12"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json; charset=utf-8"
-												},
-												{
-													"key": "Content-Length",
-													"value": "118"
-												},
-												{
-													"key": "ETag",
-													"value": "W/\"76-BsI8WylV+oGuVd4y6/nv3STv93I\""
-												},
-												{
-													"key": "Date",
-													"value": "Sat, 04 May 2024 19:55:05 GMT"
-												},
-												{
-													"key": "Connection",
-													"value": "keep-alive"
-												},
-												{
-													"key": "Keep-Alive",
-													"value": "timeout=5"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully setup account\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDk3YzUzLTY1ZjgtNDAxOS1hODM0LWI1ZmM2MjhjZjk1YiIsImlhdCI6MTcxNDg1MjY1NywiZXhwIjoxNzE4NDUyNjU3fQ.RuRzVpX9UHU4SYP0o18lVKWqf6jeCjQU7MpTsn1DXuU\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDk3YzUzLTY1ZjgtNDAxOS1hODM0LWI1ZmM2MjhjZjk1YiIsImlhdCI6MTcxNDg1MjY1NywiZXhwIjoxNzE0ODU2MjU3fQ.74tjhaMJbSqx3ygNAqg98VsWMeqd6BUK_JeZNNRKevQ\"\n    }\n}"
-										}
-									]
-								},
-								{
-									"name": "Empty fields - Setup user with email",
+									"name": "Mismatched password - Setup user with email",
 									"event": [
 										{
 											"listen": "test",
@@ -6155,8 +6000,8 @@
 													"pm.test(\"Status code name has 'Bad request'\", function () {\r",
 													"    pm.response.to.have.status(\"Bad Request\");\r",
 													"});\r",
-													"pm.test(\"Verify that message is a string'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.be.a(\"string\");\r",
+													"pm.test(\"Verify that 'Passwords do not match'\", function () {\r",
+													"    pm.expect(pm.response.json().message).to.eql(\"Passwords do not match\");\r",
 													"});"
 												],
 												"type": "text/javascript",
@@ -6164,7 +6009,7 @@
 											}
 										}
 									],
-									"id": "72f0a17a-edba-4022-bdc2-69d14bf3306c",
+									"id": "f287560f-911d-487f-b600-c27790a475ea",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -6185,7 +6030,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"\",\n    \"lastName\": \"\",\n    \"password\": \"\",\n    \"confirmPassword\": \"\",\n    \"token\": \"\"\n}",
+											"raw": "{\n    \"firstName\": \"Temitayo\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1#\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6196,7 +6041,7 @@
 									},
 									"response": [
 										{
-											"id": "40aa5e30-e63a-45fe-bb21-7f28f8689cb3",
+											"id": "5a80e202-e09d-486c-9b21-8a25c2557d91",
 											"name": "success",
 											"originalRequest": {
 												"method": "POST",
@@ -6404,7 +6249,7 @@
 									]
 								},
 								{
-									"name": "Mismatched password - Setup user with email",
+									"name": "Empty fields - Setup user with email",
 									"event": [
 										{
 											"listen": "test",
@@ -6417,8 +6262,8 @@
 													"pm.test(\"Status code name has 'Bad request'\", function () {\r",
 													"    pm.response.to.have.status(\"Bad Request\");\r",
 													"});\r",
-													"pm.test(\"Verify that 'Passwords do not match'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.eql(\"Passwords do not match\");\r",
+													"pm.test(\"Verify that message is a string'\", function () {\r",
+													"    pm.expect(pm.response.json().message).to.be.a(\"string\");\r",
 													"});"
 												],
 												"type": "text/javascript",
@@ -6426,7 +6271,7 @@
 											}
 										}
 									],
-									"id": "f287560f-911d-487f-b600-c27790a475ea",
+									"id": "72f0a17a-edba-4022-bdc2-69d14bf3306c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -6447,7 +6292,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Temitayo\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
+											"raw": "{\n    \"firstName\": \"\",\n    \"lastName\": \"\",\n    \"password\": \"\",\n    \"confirmPassword\": \"\",\n    \"token\": \"\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6458,7 +6303,7 @@
 									},
 									"response": [
 										{
-											"id": "5a80e202-e09d-486c-9b21-8a25c2557d91",
+											"id": "40aa5e30-e63a-45fe-bb21-7f28f8689cb3",
 											"name": "success",
 											"originalRequest": {
 												"method": "POST",
@@ -6535,18 +6380,45 @@
 									]
 								},
 								{
-									"name": "No Auth - Setup user with email",
+									"name": "Setup user with email",
 									"event": [
 										{
 											"listen": "test",
 											"script": {
-												"id": "00ac6c06-d0d9-476e-9b41-13ac8ce60e93",
+												"id": "39255046-bf3f-45c9-a3e5-044080649369",
 												"exec": [
-													"pm.test(\"Status code is 401\", function () {\r",
-													"    pm.response.to.have.status(401);\r",
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"const adminSetupUserAccessToken = jsonData.data.accessToken\r",
+													"const adminSetupUserRefreshToken = jsonData.data.refreshToken\r",
+													"\r",
+													"pm.environment.set(\"adminSetupUserAccessToken\", adminSetupUserAccessToken)\r",
+													"pm.environment.set(\"adminSetupUserRefreshToken\", adminSetupUserRefreshToken)\r",
+													"\r",
+													"pm.test(\"Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
 													"});\r",
-													"pm.test(\"Status code name has Unauthorized\", function () {\r",
-													"    pm.response.to.have.status(\"Unauthorized\");\r",
+													"pm.test(\"Status code name has 'Created'\", function () {\r",
+													"    pm.response.to.have.status(\"Created\");\r",
+													"});\r",
+													"pm.test(\"Response body property\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.status).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.data).to.be.an('object');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status is 'success'\", function () {\r",
+													"    pm.expect(jsonData.status).to.eql('success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify Successfully setup account\", function () {\r",
+													"    pm.expect(pm.response.json().message).to.include('Successfully setup account');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify that data is a string\", function () {\r",
+													"    pm.expect(jsonData.data.accessToken).to.be.an('string').and.not.be.empty;\r",
+													"    pm.expect(jsonData.data.refreshToken).to.be.an('string').and.not.be.empty;\r",
 													"});"
 												],
 												"type": "text/javascript",
@@ -6554,11 +6426,17 @@
 											}
 										}
 									],
-									"id": "e3b68166-d8a7-420e-aa6e-7b4e45d23b77",
+									"id": "6646c4e1-6d1a-4f93-a702-8b46aa09f3c9",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
+											}
+										},
 										"method": "POST",
 										"header": [
 											{
@@ -6569,7 +6447,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Temitayo\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
+											"raw": "{\n    \"firstName\": \"Temitato\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6580,7 +6458,7 @@
 									},
 									"response": [
 										{
-											"id": "12a01c0d-49e1-4f55-9a88-46714f56c629",
+											"id": "d27b27dd-dc86-4f22-a614-8f6c525d2d20",
 											"name": "success",
 											"originalRequest": {
 												"method": "POST",
