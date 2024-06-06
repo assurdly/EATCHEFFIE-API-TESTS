@@ -16174,9 +16174,11 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Customers fetched successfully\");\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Audit trail fetched successfully\");\r",
 									"});\r",
-									"\r",
+									"pm.test(\"Verify audit trail is returned\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript",
