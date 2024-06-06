@@ -8233,7 +8233,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Spicy Burger Mediul",
+									"value": "Good Food {{$randomWord}}",
 									"type": "text"
 								},
 								{
@@ -8243,7 +8243,7 @@
 								},
 								{
 									"key": "categoryIds[0]",
-									"value": "68f587d4-eef4-4900-a26b-8f62c1827a99",
+									"value": "{{fetchedCategory1}}",
 									"type": "text"
 								},
 								{
