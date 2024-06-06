@@ -10421,7 +10421,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"{{fetchAddressId}}\"\n // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\"\n}",
+									"raw": "{\n    \"addressId\": \"{{fetchAddressId}}\"\n // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
 									"options": {
 										"raw": {
 											"language": "json"
