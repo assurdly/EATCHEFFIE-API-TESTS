@@ -9307,7 +9307,96 @@
 			"item": [
 				{
 					"name": "Get Audit Trail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6091b825-4e23-41a0-ac48-7c695e1a0085",
+								"exec": [
+									"try {",
+									"    const { data, status } = pm.response.json()",
+									"",
+									"    pm.test(\"Verify that audit data is not empty\", () => {",
+									"        pm.expect(data).to.not.be.empty",
+									"    })",
+									"",
+									"    pm.test(\"Status is 'success'\", function () {",
+									"        pm.expect(status).to.eql('success');",
+									"    });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
+									"",
+									"",
+									"    console.log(data)",
+									"} catch (error) {",
+									"",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "31e9e39a-2ffe-4e55-88f4-7da082fcd0a1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendorAccessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor",
+								"disabled": true
+							}
+						],
+						"url": "{{base_url}}/audit-trail"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Audit Trail - No Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6091b825-4e23-41a0-ac48-7c695e1a0085",
+								"exec": [
+									"try {",
+									"    const { data, status } = pm.response.json()",
+									"",
+									"    pm.test(\"Verify that audit data is not empty\", () => {",
+									"        pm.expect(data).to.not.be.empty",
+									"    })",
+									"",
+									"    pm.test(\"Status is 'success'\", function () {",
+									"        pm.expect(status).to.eql('success');",
+									"    });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
+									"",
+									"",
+									"    console.log(data)",
+									"} catch (error) {",
+									"",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "de07fe21-1b17-4276-b77a-dc3225f332bf",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
