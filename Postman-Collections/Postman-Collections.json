@@ -11566,7 +11566,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Verify that banners fetched successfully\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"banners fetched successfully\");\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"campaigns fetched successfully\");\r",
 											"});\r",
 											"\r",
 											""
@@ -12965,6 +12965,11 @@
 											"key": "images",
 											"type": "file",
 											"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
 										}
 									]
 								},
