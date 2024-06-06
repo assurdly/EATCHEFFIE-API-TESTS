@@ -1868,7 +1868,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"tara@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10466,7 +10466,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"{{addressId}}\",\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
+									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
