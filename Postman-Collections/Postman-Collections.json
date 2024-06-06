@@ -8209,6 +8209,126 @@
 			"name": "Inventory",
 			"item": [
 				{
+					"name": "Fetch Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "705e8dcd-10b8-46b9-b508-9ef41324d574",
+								"exec": [
+									"try {",
+									"",
+									"    const { status, data } = pm.response.json()",
+									"",
+									"    pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
+									"",
+									"    pm.test(\"Response body property\", function () {",
+									"        pm.expect(data).to.be.an('array');",
+									"        pm.expect(status).to.be.a('string');",
+									"    });",
+									"",
+									"} catch (error) {",
+									"    console.error('Error from test says:', error)",
+									"}",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "72c7fa14-68fd-4cf5-9c12-0bfdaad836dc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendor_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor",
+								"disabled": true
+							}
+						],
+						"url": "{{base_url}}/meals/categories"
+					},
+					"response": [
+						{
+							"id": "14430deb-09e6-4b4b-b43d-30f9b2df8295",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/meals/categories"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1340"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"53c-wEFHP1DfXjPoEuF3293te8LxAJQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Mar 2024 00:55:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Categories fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"African\",\n            \"slug\": \"african\"\n        },\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Italian\",\n            \"slug\": \"italian\"\n        },\n        {\n            \"id\": 3,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Chinese\",\n            \"slug\": \"chinese\"\n        },\n        {\n            \"id\": 4,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Indian\",\n            \"slug\": \"indian\"\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Thai\",\n            \"slug\": \"thai\"\n        },\n        {\n            \"id\": 6,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"American\",\n            \"slug\": \"american\"\n        },\n        {\n            \"id\": 7,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegan\",\n            \"slug\": \"vegan\"\n        },\n        {\n            \"id\": 8,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegetarian\",\n            \"slug\": \"vegetarian\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
 					"name": "Add Meal",
 					"id": "a470fc4f-8fff-4cd0-a544-eba8b5ad1856",
 					"protocolProfileBehavior": {
@@ -8436,41 +8556,8 @@
 					]
 				},
 				{
-					"name": "Fetch Categories",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "705e8dcd-10b8-46b9-b508-9ef41324d574",
-								"exec": [
-									"try {",
-									"",
-									"    const { status, data } = pm.response.json()",
-									"",
-									"    pm.test(\"Status code is 200\", function () {",
-									"        pm.response.to.have.status(200);",
-									"    });",
-									"",
-									"    pm.test(\"Response body property\", function () {",
-									"        pm.expect(data).to.be.an('array');",
-									"        pm.expect(status).to.be.a('string');",
-									"    });",
-									"",
-									"} catch (error) {",
-									"    console.error('Error from test says:', error)",
-									"}",
-									"",
-									"",
-									"",
-									"",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "72c7fa14-68fd-4cf5-9c12-0bfdaad836dc",
+					"name": "Update Meal",
+					"id": "1db3ba79-f6c6-4fa4-a1ee-1e87451c55ca",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -8481,27 +8568,263 @@
 								"token": "{{vendor_access_token}}"
 							}
 						},
-						"method": "GET",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor",
-								"disabled": true
+								"value": "vendor"
 							}
 						],
-						"url": "{{base_url}}/meals/categories"
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Spicy Burger Vibes",
+									"type": "text"
+								},
+								{
+									"key": "categoryIds[0]",
+									"value": "68f587d4-eef4-4900-a26b-8f62c1827a99",
+									"type": "text"
+								},
+								{
+									"key": "allergens[0]",
+									"value": "glutenssss",
+									"type": "text"
+								},
+								{
+									"key": "ingredients[0]",
+									"value": "vibes",
+									"type": "text"
+								},
+								{
+									"key": "spiceLevel",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "availability[sun]",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "availability[mon]",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "availability[tue]",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "availability[wed]",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "availability[thu]",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "availability[fri]",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "availability[sat]",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "customAvailability[startDate]",
+									"value": "2024-05-15T00:00:00",
+									"type": "text"
+								},
+								{
+									"key": "customAvailability[endDate]",
+									"value": "2024-05-15T23:00:00",
+									"type": "text"
+								},
+								{
+									"key": "customAvailability[available]",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+								},
+								{
+									"key": "priceOptions[0][size]",
+									"value": "litres",
+									"type": "text"
+								},
+								{
+									"key": "priceOptions[0][servings]",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "priceOptions[0][amount]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "priceOptions[0][price]",
+									"value": "50.9034",
+									"type": "text"
+								},
+								{
+									"key": "published",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/vendor/meals/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vendor",
+								"meals",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "d445dca1-d5b1-4db8-8823-dcf98adbd4b6",
+									"key": "id",
+									"value": "ff4d2147-ab2b-4366-a220-d89d7df32fe3"
+								}
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "14430deb-09e6-4b4b-b43d-30f9b2df8295",
-							"name": "success",
+							"id": "94787b08-34fa-4b99-b9fc-b3b9491d0275",
+							"name": "price_option_validation_error",
 							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}/meals/categories"
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Spicy Burger Mediul",
+											"type": "text"
+										},
+										{
+											"key": "categoryIds[0]",
+											"value": "68f587d4-eef4-4900-a26b-8f62c1827a99",
+											"type": "text"
+										},
+										{
+											"key": "allergens[0]",
+											"value": "gluten",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[0]",
+											"value": "vibes",
+											"type": "text"
+										},
+										{
+											"key": "spiceLevel",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "30",
+											"type": "text"
+										},
+										{
+											"key": "availability[sun]",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "availability[mon]",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "availability[tue]",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "availability[wed]",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "availability[thu]",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "availability[fri]",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "availability[sat]",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "customAvailability[startDate]",
+											"value": "2024-05-15T00:00:00",
+											"type": "text"
+										},
+										{
+											"key": "customAvailability[endDate]",
+											"value": "2024-05-15T23:00:00",
+											"type": "text"
+										},
+										{
+											"key": "customAvailability[available]",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+										},
+										{
+											"key": "priceOptions[0][size]",
+											"value": "litres",
+											"type": "text"
+										},
+										{
+											"key": "priceOptions[0][servings]",
+											"value": "litres",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/vendor/meals"
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Bad Request",
+							"code": 400,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -8530,15 +8853,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "1340"
+									"value": "165"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"53c-wEFHP1DfXjPoEuF3293te8LxAJQ\""
+									"value": "W/\"a5-YTz7ixJUVJJ1FXU0Zgge+/wRdC4\""
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 20 Mar 2024 00:55:15 GMT"
+									"value": "Sun, 19 May 2024 21:11:45 GMT"
 								},
 								{
 									"key": "Connection",
@@ -8551,7 +8874,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Categories fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"African\",\n            \"slug\": \"african\"\n        },\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Italian\",\n            \"slug\": \"italian\"\n        },\n        {\n            \"id\": 3,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Chinese\",\n            \"slug\": \"chinese\"\n        },\n        {\n            \"id\": 4,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Indian\",\n            \"slug\": \"indian\"\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Thai\",\n            \"slug\": \"thai\"\n        },\n        {\n            \"id\": 6,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"American\",\n            \"slug\": \"american\"\n        },\n        {\n            \"id\": 7,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegan\",\n            \"slug\": \"vegan\"\n        },\n        {\n            \"id\": 8,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegetarian\",\n            \"slug\": \"vegetarian\"\n        }\n    ]\n}"
+							"body": "{\n    \"message\": \"Validation Error\",\n    \"data\": {\n        \"0\": {\n            \"servings\": \"servings must be a number string\",\n            \"amount\": \"amount should not be empty\",\n            \"price\": \"price should not be empty\"\n        }\n    }\n}"
 						}
 					]
 				},
@@ -8959,329 +9282,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Update Meal Copy",
-					"id": "1db3ba79-f6c6-4fa4-a1ee-1e87451c55ca",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{vendor_access_token}}"
-							}
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "vendor"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "Spicy Burger Vibes",
-									"type": "text"
-								},
-								{
-									"key": "categoryIds[0]",
-									"value": "68f587d4-eef4-4900-a26b-8f62c1827a99",
-									"type": "text"
-								},
-								{
-									"key": "allergens[0]",
-									"value": "glutenssss",
-									"type": "text"
-								},
-								{
-									"key": "ingredients[0]",
-									"value": "vibes",
-									"type": "text"
-								},
-								{
-									"key": "spiceLevel",
-									"value": "3",
-									"type": "text"
-								},
-								{
-									"key": "stock",
-									"value": "30",
-									"type": "text"
-								},
-								{
-									"key": "availability[sun]",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "availability[mon]",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "availability[tue]",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "availability[wed]",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "availability[thu]",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "availability[fri]",
-									"value": "false",
-									"type": "text"
-								},
-								{
-									"key": "availability[sat]",
-									"value": "false",
-									"type": "text"
-								},
-								{
-									"key": "customAvailability[startDate]",
-									"value": "2024-05-15T00:00:00",
-									"type": "text"
-								},
-								{
-									"key": "customAvailability[endDate]",
-									"value": "2024-05-15T23:00:00",
-									"type": "text"
-								},
-								{
-									"key": "customAvailability[available]",
-									"value": "false",
-									"type": "text"
-								},
-								{
-									"key": "images",
-									"type": "file",
-									"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
-								},
-								{
-									"key": "priceOptions[0][size]",
-									"value": "litres",
-									"type": "text"
-								},
-								{
-									"key": "priceOptions[0][servings]",
-									"value": "5",
-									"type": "text"
-								},
-								{
-									"key": "priceOptions[0][amount]",
-									"value": "10",
-									"type": "text"
-								},
-								{
-									"key": "priceOptions[0][price]",
-									"value": "50.9034",
-									"type": "text"
-								},
-								{
-									"key": "published",
-									"value": "true",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{base_url}}/vendor/meals/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"vendor",
-								"meals",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "d445dca1-d5b1-4db8-8823-dcf98adbd4b6",
-									"key": "id",
-									"value": "ff4d2147-ab2b-4366-a220-d89d7df32fe3"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"id": "94787b08-34fa-4b99-b9fc-b3b9491d0275",
-							"name": "price_option_validation_error",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-request-source",
-										"value": "vendor"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "name",
-											"value": "Spicy Burger Mediul",
-											"type": "text"
-										},
-										{
-											"key": "categoryIds[0]",
-											"value": "68f587d4-eef4-4900-a26b-8f62c1827a99",
-											"type": "text"
-										},
-										{
-											"key": "allergens[0]",
-											"value": "gluten",
-											"type": "text"
-										},
-										{
-											"key": "ingredients[0]",
-											"value": "vibes",
-											"type": "text"
-										},
-										{
-											"key": "spiceLevel",
-											"value": "3",
-											"type": "text"
-										},
-										{
-											"key": "stock",
-											"value": "30",
-											"type": "text"
-										},
-										{
-											"key": "availability[sun]",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "availability[mon]",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "availability[tue]",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "availability[wed]",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "availability[thu]",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "availability[fri]",
-											"value": "false",
-											"type": "text"
-										},
-										{
-											"key": "availability[sat]",
-											"value": "false",
-											"type": "text"
-										},
-										{
-											"key": "customAvailability[startDate]",
-											"value": "2024-05-15T00:00:00",
-											"type": "text"
-										},
-										{
-											"key": "customAvailability[endDate]",
-											"value": "2024-05-15T23:00:00",
-											"type": "text"
-										},
-										{
-											"key": "customAvailability[available]",
-											"value": "false",
-											"type": "text"
-										},
-										{
-											"key": "images",
-											"type": "file",
-											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
-										},
-										{
-											"key": "priceOptions[0][size]",
-											"value": "litres",
-											"type": "text"
-										},
-										{
-											"key": "priceOptions[0][servings]",
-											"value": "litres",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/vendor/meals"
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "60"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "165"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"a5-YTz7ixJUVJJ1FXU0Zgge+/wRdC4\""
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 19 May 2024 21:11:45 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"Validation Error\",\n    \"data\": {\n        \"0\": {\n            \"servings\": \"servings must be a number string\",\n            \"amount\": \"amount should not be empty\",\n            \"price\": \"price should not be empty\"\n        }\n    }\n}"
-						}
-					]
 				}
 			],
 			"id": "3f978caf-08c3-4c43-a63f-d40f17f4648e"
