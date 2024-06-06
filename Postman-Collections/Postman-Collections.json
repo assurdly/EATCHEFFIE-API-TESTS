@@ -12100,6 +12100,160 @@
 							]
 						},
 						{
+							"name": "No Id - Fetch Banner By ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6c68d82e-2d85-40a2-a756-9067542706ec",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify id must be a UUID\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
+											"       \r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "efc2e96f-a08a-452b-86ee-912db1e18685",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/banner/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"banner",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "d1ae8189-2d13-4418-818f-de312efd9885",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/builder/banner/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"builder",
+												"banner",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner fetched successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+								}
+							]
+						},
+						{
 							"name": "No Auth - Fetch Banner By ID",
 							"event": [
 								{
@@ -12483,6 +12637,160 @@
 							"response": [
 								{
 									"id": "3d3f365e-1106-4673-9af9-9e1c485e5c50",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/builder/banner/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"builder",
+												"banner",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner fetched successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "No Id - Fetch Campaign By ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8f3d3047-01f6-46d6-856f-9042828d08e7",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify id must be a UUID\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
+											"       \r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "d02624e1-19b1-4518-a8ed-6c74b5b754f1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/campaign/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"campaign",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "81f807ed-7adc-4c77-abf7-21769ec99b2c",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
@@ -13079,7 +13387,7 @@
 							]
 						},
 						{
-							"name": "Invalid Id - Update Banner Copy",
+							"name": "No Id - Update Banner",
 							"event": [
 								{
 									"listen": "test",
@@ -13165,9 +13473,8 @@
 									],
 									"variable": [
 										{
-											"id": "c4214937-e1d5-4778-8403-39d2f2b573d6",
 											"key": "id",
-											"value": "56321484-480f-4756-b9b1-796ee05c9"
+											"value": ""
 										}
 									]
 								}
@@ -13968,6 +14275,185 @@
 							]
 						},
 						{
+							"name": "No Id - Update Campaign",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "922056dd-f7f0-4e5f-9d10-08cae9a2a6e2",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify id must be a UUID\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
+											"       \r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "94c23269-74f1-4731-9a1e-abe065f5071c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Banner",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Description",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/builder/campaign/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"campaign",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "6f1a6afe-9a91-48f9-9ecb-1715a9102f8e",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/builder/banner/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"builder",
+												"banner",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"campaign updated successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+								}
+							]
+						},
+						{
 							"name": "Empty fields - Update Campaign",
 							"event": [
 								{
@@ -14632,6 +15118,160 @@
 							]
 						},
 						{
+							"name": "No Id - Delete Campaign",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1804a694-bf2b-42bc-9c7e-6d050c2b4fb6",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify id must be a UUID\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
+											"       \r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "92b24d8a-49c9-4b52-94b6-dd306d25350b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/campaign/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"campaign",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "a0700c76-ebc0-47af-a49d-315b5367f3a7",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/builder/banner/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"builder",
+												"banner",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"campaign deleted successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+								}
+							]
+						},
+						{
 							"name": "No Auth - Delete Campaign",
 							"event": [
 								{
@@ -15009,6 +15649,160 @@
 							"response": [
 								{
 									"id": "32182839-3b65-495a-b162-cc98a9779ca2",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/builder/banner/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"builder",
+												"banner",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "56321484-480f-4756-b9b1-796ee05c95f1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"109-47LzvzKcVoOVrURkryL+579JNTk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 Jun 2024 19:46:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"banner deleted successfully\",\n    \"data\": {\n        \"title\": \"Banner name\",\n        \"description\": null,\n        \"id\": \"56321484-480f-4756-b9b1-796ee05c95f1\",\n        \"createdAt\": \"2024-06-02T18:43:43.977Z\",\n        \"updatedAt\": \"2024-06-02T18:43:43.977Z\",\n        \"status\": \"active\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "No Id - Delete Banner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7e7181ec-f7fe-48aa-ba9f-671817f144c4",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'Bad request'\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
+											"});\r",
+											"pm.test(\"Verify id must be a UUID\", function () {\r",
+											"    pm.expect(pm.response.json().data.id).to.eql(\"id must be a UUID\");\r",
+											"       \r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "bc12a319-6dc9-4439-881d-eac8467d3e98",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/builder/banner/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"builder",
+										"banner",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "b06b9f84-57e4-44f6-ae54-328a1312001f",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
