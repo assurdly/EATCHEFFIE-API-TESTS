@@ -3878,7 +3878,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"description\": \"Administer\",\n    \"status\": \"inactive\", // active or inactive\n    \"permissions\": [\"{{permissionId3}}\", \"{{permissionId2}}\"] // array of permission ids from the list permissions endpoint\n}",
+											"raw": "{\n    \"description\": \"Administer\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId3}}\", \"{{permissionId2}}\"] // array of permission ids from the list permissions endpoint\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6716,6 +6716,9 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "noauth"
+										},
 										"method": "POST",
 										"header": [
 											{
@@ -6726,7 +6729,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"email\": \"super@admin.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Randompassword1@\"\n}\n",
+											"raw": "{\n    \"email\": \"Jocelyn@yopmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}\n",
 											"options": {
 												"raw": {
 													"language": "json"
