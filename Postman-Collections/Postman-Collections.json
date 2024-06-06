@@ -9206,10 +9206,42 @@
 			"id": "e4456701-42d8-49b2-b4b3-230bac513b66"
 		},
 		{
-			"name": "Stats Copy",
+			"name": "Stats",
 			"item": [
 				{
 					"name": "Get Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bfd225f4-0c2f-478b-9311-9b4ab772f181",
+								"exec": [
+									"try {",
+									"    const { data, status } = pm.response.json()",
+									"",
+									"    pm.test(\"Verify that audit data is not empty\", () => {",
+									"        pm.expect(data).to.not.be.empty",
+									"    })",
+									"",
+									"    pm.test(\"Status is 'success'\", function () {",
+									"        pm.expect(status).to.eql('success');",
+									"    });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
+									"",
+									"",
+									"    console.log(data)",
+									"} catch (error) {",
+									"",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "dd6f32bd-4eff-434a-8693-789480f6c20d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -9218,14 +9250,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{vendorAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/vendor/stats"
@@ -9233,6 +9266,130 @@
 					"response": [
 						{
 							"id": "79c370ea-4537-4c2d-8424-f780fa3df3e5",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor"
+									}
+								],
+								"url": "{{base_url}}/vendor/stats"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "601"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"259-VLJI/CKIg/t6GGXhtiLhuHlFvH0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 May 2024 01:16:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched dashboard stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_7_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_30_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_60_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_90_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_6_months\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_1_year\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Stats Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bfd225f4-0c2f-478b-9311-9b4ab772f181",
+								"exec": [
+									"try {",
+									"    const { data, status } = pm.response.json()",
+									"",
+									"    pm.test(\"Verify that audit data is not empty\", () => {",
+									"        pm.expect(data).to.not.be.empty",
+									"    })",
+									"",
+									"    pm.test(\"Status is 'success'\", function () {",
+									"        pm.expect(status).to.eql('success');",
+									"    });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
+									"",
+									"",
+									"    console.log(data)",
+									"} catch (error) {",
+									"",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "bcc4a25f-dec9-45d4-a79f-1d91601604bf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendorAccessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor",
+								"disabled": true
+							}
+						],
+						"url": "{{base_url}}/vendor/stats"
+					},
+					"response": [
+						{
+							"id": "1f47f677-87f2-4e54-a721-8b442d667300",
 							"name": "success",
 							"originalRequest": {
 								"method": "GET",
@@ -9371,24 +9528,16 @@
 								"id": "6091b825-4e23-41a0-ac48-7c695e1a0085",
 								"exec": [
 									"try {",
-									"    const { data, status } = pm.response.json()",
-									"",
-									"    pm.test(\"Verify that audit data is not empty\", () => {",
-									"        pm.expect(data).to.not.be.empty",
-									"    })",
-									"",
+									"    const { message } = pm.response.json()",
 									"    pm.test(\"Status is 'success'\", function () {",
-									"        pm.expect(status).to.eql('success');",
+									"        pm.expect(message).to.eql('Session expired. Please login again.');",
+									"    });",
+									"        pm.test(\"Status code is 401\", function () {",
+									"        pm.response.to.have.status(401);",
 									"    });",
 									"",
-									"        pm.test(\"Status code is 200\", function () {",
-									"        pm.response.to.have.status(200);",
-									"    });",
-									"",
-									"",
-									"    console.log(data)",
 									"} catch (error) {",
-									"",
+									"    console.error(\"Error form test:\", error)",
 									"}"
 								],
 								"type": "text/javascript",
@@ -9402,10 +9551,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{vendorAccessToken}}"
-							}
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [
