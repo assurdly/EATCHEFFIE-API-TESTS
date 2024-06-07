@@ -2,7 +2,7 @@ name: Postman Test and Allure Report
 on:
   push:
     branches:
-      - draft-vendor
+      - customer
   schedule:
     - cron: '0 13 * * 4' # Runs every Wednesday by 4pm
     - cron: '0 18 * * 5' # Runs every Friday by 4pm
@@ -91,7 +91,7 @@ jobs:
           echo "Summary Path: $summary_path"
           if [[ -e "$summary_path" ]]; then
             cat "$summary_path"  # Print content before
-            sudo sed -i 's/Allure Report/Vendor - API Quality Readiness/' "$summary_path"
+            sudo sed -i 's/Allure Report/Customer - API Quality Readiness/' "$summary_path"
             cat "$summary_path"  # Print content after
           else
             echo "Error: summary.json not found in the latest folder."
@@ -137,8 +137,8 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: 'C070KUKPDLZ'
           SLACK_MESSAGE: |
-            *NGX-IPO Gateway Merchant - API Quality Readiness*
-            *Contributors - Azeez*
+            *Eatchffie Custormer - API Quality Readiness*
+            *Contributors - Priscaline*
             Status: ${{ job.status }}
             Passing Tests: ${{ steps.parse_json.outputs.passing_percentage }}%
             Failing Tests: ${{ steps.parse_json.outputs.failing_percentage }}%
