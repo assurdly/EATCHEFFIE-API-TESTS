@@ -2,7 +2,7 @@ name: Postman Test and Allure Report
 on:
   push:
     branches:
-      - main
+      - draft-vendor
   schedule:
     - cron: '0 13 * * 4' # Runs every Wednesday by 4pm
     - cron: '0 18 * * 5' # Runs every Friday by 4pm
