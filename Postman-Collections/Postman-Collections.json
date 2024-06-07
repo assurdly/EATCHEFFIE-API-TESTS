@@ -9968,85 +9968,21 @@
 			"name": "Transactions Copy",
 			"item": [
 				{
-					"name": "New Folder",
-					"item": [],
-					"id": "d0f4d140-dd2a-406a-97cd-f64852c2422a"
-				},
-				{
-					"name": "Fetch Transactions",
-					"id": "8fd3aae6-1ded-4088-8618-dc9800cbd3a9",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "ec"
-							}
-						],
-						"url": {
-							"raw": "{{base_url}}/admin/transactions",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"transactions"
-							],
-							"query": [
-								{
-									"key": "filter[orgId]",
-									"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
-									"disabled": true
-								},
-								{
-									"key": "filter[customerId]",
-									"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
-									"disabled": true
-								},
-								{
-									"key": "filter[status]",
-									"value": "pending",
-									"description": "pending | success | failed |",
-									"disabled": true
-								},
-								{
-									"key": "filter[type]",
-									"value": "purchase",
-									"description": "purchase | commission | payout",
-									"disabled": true
-								},
-								{
-									"key": "filter[reference]",
-									"value": "ec_ref_f6425b875a",
-									"disabled": true
-								},
-								{
-									"key": "filter[createdAt][gte]",
-									"value": "2024-05-31T23:00:00",
-									"disabled": true
-								},
-								{
-									"key": "filter[createdAt][lte]",
-									"value": "2024-06-06T23:00:00",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": [
+					"name": "Fetch Transeactions",
+					"item": [
 						{
-							"id": "2ec3ca40-3ec9-43f0-8600-c2c427cbd95f",
-							"name": "success",
-							"originalRequest": {
+							"name": "Fetch Transactions",
+							"id": "8fd3aae6-1ded-4088-8618-dc9800cbd3a9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -10054,62 +9990,266 @@
 										"value": "ec"
 									}
 								],
-								"url": "{{base_url}}/admin/transactions"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "100"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "99"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "60"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1352"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"548-OrKrwStXNfcLtzebKaSskuzM36g\""
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 06 Jun 2024 10:50:55 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+								"url": {
+									"raw": "{{base_url}}/admin/transactions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "filter[orgId]",
+											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"disabled": true
+										},
+										{
+											"key": "filter[customerId]",
+											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "pending",
+											"description": "pending | success | failed |",
+											"disabled": true
+										},
+										{
+											"key": "filter[type]",
+											"value": "purchase",
+											"description": "purchase | commission | payout",
+											"disabled": true
+										},
+										{
+											"key": "filter[reference]",
+											"value": "ec_ref_f6425b875a",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][gte]",
+											"value": "2024-05-31T23:00:00",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][lte]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										}
+									]
 								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transactions successfully\",\n    \"data\": [\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:31 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f6425b875a\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d4b6f907-ff00-4ce4-8818-1f22ba5a915d\",\n            \"createdAt\": \"2024-06-06T03:31:45.821Z\",\n            \"updatedAt\": \"2024-06-06T03:31:45.821Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:28 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f34ff1ae3d\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"11674a26-fa39-4b09-9f82-d1c8420d5023\",\n            \"createdAt\": \"2024-06-06T03:28:10.143Z\",\n            \"updatedAt\": \"2024-06-06T03:28:10.143Z\"\n        },\n        {\n            \"amount\": 71.95,\n            \"description\": null,\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_6d748e5ca9\",\n            \"status\": \"pending\",\n            \"type\": \"purchase\",\n            \"id\": \"f2676752-2c39-48ad-a961-af2003fbc208\",\n            \"createdAt\": \"2024-06-06T03:26:19.612Z\",\n            \"updatedAt\": \"2024-06-06T03:26:19.612Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:17 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_ce82f585bc\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d7a8b461-385f-4b74-a96e-bd50ef2826cc\",\n            \"createdAt\": \"2024-06-06T03:17:46.777Z\",\n            \"updatedAt\": \"2024-06-06T03:17:46.777Z\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 4,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+							},
+							"response": [
+								{
+									"id": "2ec3ca40-3ec9-43f0-8600-c2c427cbd95f",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": "{{base_url}}/admin/transactions"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1352"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"548-OrKrwStXNfcLtzebKaSskuzM36g\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 06 Jun 2024 10:50:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transactions successfully\",\n    \"data\": [\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:31 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f6425b875a\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d4b6f907-ff00-4ce4-8818-1f22ba5a915d\",\n            \"createdAt\": \"2024-06-06T03:31:45.821Z\",\n            \"updatedAt\": \"2024-06-06T03:31:45.821Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:28 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f34ff1ae3d\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"11674a26-fa39-4b09-9f82-d1c8420d5023\",\n            \"createdAt\": \"2024-06-06T03:28:10.143Z\",\n            \"updatedAt\": \"2024-06-06T03:28:10.143Z\"\n        },\n        {\n            \"amount\": 71.95,\n            \"description\": null,\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_6d748e5ca9\",\n            \"status\": \"pending\",\n            \"type\": \"purchase\",\n            \"id\": \"f2676752-2c39-48ad-a961-af2003fbc208\",\n            \"createdAt\": \"2024-06-06T03:26:19.612Z\",\n            \"updatedAt\": \"2024-06-06T03:26:19.612Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:17 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_ce82f585bc\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d7a8b461-385f-4b74-a96e-bd50ef2826cc\",\n            \"createdAt\": \"2024-06-06T03:17:46.777Z\",\n            \"updatedAt\": \"2024-06-06T03:17:46.777Z\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 4,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Transactions Copy",
+							"id": "70127065-b9cf-420e-ad78-5757deacba2e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/transactions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "filter[orgId]",
+											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"disabled": true
+										},
+										{
+											"key": "filter[customerId]",
+											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "pending",
+											"description": "pending | success | failed |",
+											"disabled": true
+										},
+										{
+											"key": "filter[type]",
+											"value": "purchase",
+											"description": "purchase | commission | payout",
+											"disabled": true
+										},
+										{
+											"key": "filter[reference]",
+											"value": "ec_ref_f6425b875a",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][gte]",
+											"value": "2024-05-31T23:00:00",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][lte]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "60b7963a-13b0-4a27-9eab-189e2583c129",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": "{{base_url}}/admin/transactions"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1352"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"548-OrKrwStXNfcLtzebKaSskuzM36g\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 06 Jun 2024 10:50:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transactions successfully\",\n    \"data\": [\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:31 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f6425b875a\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d4b6f907-ff00-4ce4-8818-1f22ba5a915d\",\n            \"createdAt\": \"2024-06-06T03:31:45.821Z\",\n            \"updatedAt\": \"2024-06-06T03:31:45.821Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:28 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f34ff1ae3d\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"11674a26-fa39-4b09-9f82-d1c8420d5023\",\n            \"createdAt\": \"2024-06-06T03:28:10.143Z\",\n            \"updatedAt\": \"2024-06-06T03:28:10.143Z\"\n        },\n        {\n            \"amount\": 71.95,\n            \"description\": null,\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_6d748e5ca9\",\n            \"status\": \"pending\",\n            \"type\": \"purchase\",\n            \"id\": \"f2676752-2c39-48ad-a961-af2003fbc208\",\n            \"createdAt\": \"2024-06-06T03:26:19.612Z\",\n            \"updatedAt\": \"2024-06-06T03:26:19.612Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:17 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_ce82f585bc\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d7a8b461-385f-4b74-a96e-bd50ef2826cc\",\n            \"createdAt\": \"2024-06-06T03:17:46.777Z\",\n            \"updatedAt\": \"2024-06-06T03:17:46.777Z\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 4,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
 						}
-					]
+					],
+					"id": "d0f4d140-dd2a-406a-97cd-f64852c2422a"
 				}
 			],
 			"id": "38b17ddf-e428-4fc7-8acf-5b24fab7662f"
