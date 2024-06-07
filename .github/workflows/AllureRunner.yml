@@ -28,15 +28,22 @@ jobs:
 
       - name: Configure Git user
         run: |
-          git config --global user.email "azeez@assurdly.com"
-          git config --global user.name "ibrahimazeez"
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
 
       - name: Create gh-pages branch
         run: |
+          # Remove all files from the current branch
+          git rm -rf * || true
+          # Remove all directories from the current branch
+          rm -rf * || true
+          # Create a new orphan gh-pages branch
           git checkout --orphan gh-pages
-          git rm -rf .
+          # Create the vendor directory
           mkdir vendor
+          # Add the vendor directory to git
           git add vendor
+          # Commit the changes
           git commit -m "Create gh-pages branch with vendor folder"
 
       - name: Allure report action
