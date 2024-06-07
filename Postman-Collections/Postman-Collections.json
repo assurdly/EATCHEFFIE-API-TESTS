@@ -9921,6 +9921,193 @@
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
 		},
 		{
+			"name": "Order Copy",
+			"item": [
+				{
+					"name": "Fetch Orders",
+					"id": "4fb0a05a-9463-4248-b6a7-37abe2577c1d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/orders?filter[status]&filter[q]&filter[createdAt]",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "filter[status]",
+									"value": null
+								},
+								{
+									"key": "filter[q]",
+									"value": null
+								},
+								{
+									"key": "filter[createdAt]",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "a202ee52-92ca-4a5d-89e2-9aa98aef5f69"
+		},
+		{
+			"name": "Transactions Copy",
+			"item": [
+				{
+					"name": "Fetch Transactions",
+					"id": "8fd3aae6-1ded-4088-8618-dc9800cbd3a9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "filter[orgId]",
+									"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+									"disabled": true
+								},
+								{
+									"key": "filter[customerId]",
+									"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+									"disabled": true
+								},
+								{
+									"key": "filter[status]",
+									"value": "pending",
+									"description": "pending | success | failed |",
+									"disabled": true
+								},
+								{
+									"key": "filter[type]",
+									"value": "purchase",
+									"description": "purchase | commission | payout",
+									"disabled": true
+								},
+								{
+									"key": "filter[reference]",
+									"value": "ec_ref_f6425b875a",
+									"disabled": true
+								},
+								{
+									"key": "filter[createdAt][gte]",
+									"value": "2024-05-31T23:00:00",
+									"disabled": true
+								},
+								{
+									"key": "filter[createdAt][lte]",
+									"value": "2024-06-06T23:00:00",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "2ec3ca40-3ec9-43f0-8600-c2c427cbd95f",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/transactions"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1352"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"548-OrKrwStXNfcLtzebKaSskuzM36g\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 10:50:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transactions successfully\",\n    \"data\": [\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:31 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f6425b875a\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d4b6f907-ff00-4ce4-8818-1f22ba5a915d\",\n            \"createdAt\": \"2024-06-06T03:31:45.821Z\",\n            \"updatedAt\": \"2024-06-06T03:31:45.821Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:28 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f34ff1ae3d\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"11674a26-fa39-4b09-9f82-d1c8420d5023\",\n            \"createdAt\": \"2024-06-06T03:28:10.143Z\",\n            \"updatedAt\": \"2024-06-06T03:28:10.143Z\"\n        },\n        {\n            \"amount\": 71.95,\n            \"description\": null,\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_6d748e5ca9\",\n            \"status\": \"pending\",\n            \"type\": \"purchase\",\n            \"id\": \"f2676752-2c39-48ad-a961-af2003fbc208\",\n            \"createdAt\": \"2024-06-06T03:26:19.612Z\",\n            \"updatedAt\": \"2024-06-06T03:26:19.612Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:17 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_ce82f585bc\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d7a8b461-385f-4b74-a96e-bd50ef2826cc\",\n            \"createdAt\": \"2024-06-06T03:17:46.777Z\",\n            \"updatedAt\": \"2024-06-06T03:17:46.777Z\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 4,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "38b17ddf-e428-4fc7-8acf-5b24fab7662f"
+		},
+		{
 			"name": "Promos",
 			"item": [
 				{
@@ -16142,6 +16329,255 @@
 				}
 			],
 			"id": "7a2d9a26-55d6-468e-ab9d-1ff893ca0f5c"
+		},
+		{
+			"name": "Payouts Copy",
+			"item": [
+				{
+					"name": "Initiate Payout",
+					"id": "96249d6c-15e8-42fb-8286-9569283334d2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							},
+							{
+								"key": "x-authentication-code",
+								"value": "123456"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vendorId\": \"0b1d86b7-7706-4a7d-be3a-3cdf15422f31\",\n    \"amount\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/admin/payouts"
+					},
+					"response": []
+				}
+			],
+			"id": "886b3b96-b5e8-4563-b362-13e8892cb487"
+		},
+		{
+			"name": "System Settings Copy",
+			"item": [
+				{
+					"name": "Fetch Settings",
+					"id": "3595da99-7352-4823-aafe-a265e2c024fa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/settings"
+					},
+					"response": [
+						{
+							"id": "25e9454f-568d-478c-99ee-34195631f47b",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/settings"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "336"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"150-CaLZXkL0naA7dMLZtKFlZBzkCgI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jun 2024 11:21:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Settings updated successfully\",\n    \"data\": {\n        \"id\": \"b8c79fed-f135-4307-9900-6ca73e8c6163\",\n        \"createdAt\": \"2024-06-05T07:39:47.691Z\",\n        \"updatedAt\": \"2024-06-05T07:39:47.691Z\",\n        \"value\": {\n            \"sessionTimeout\": 15,\n            \"invalidPasswordAttempts\": 5,\n            \"sessionInactivity\": 5,\n            \"orderLimit\": 20,\n            \"openTime\": 900,\n            \"closeTime\": 2200\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Settings",
+					"id": "a070780f-860e-40c2-82ba-b7e38232d099",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/settings"
+					},
+					"response": [
+						{
+							"id": "c0650fd9-a20d-40e7-a631-93839909ae73",
+							"name": "success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"orderLimit\": 20,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/settings"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "55"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "336"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"150-zz2858pOEP5wy0ZzhHTPahXeAe8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jun 2024 11:34:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Settings updated successfully\",\n    \"data\": {\n        \"id\": \"b8c79fed-f135-4307-9900-6ca73e8c6163\",\n        \"createdAt\": \"2024-06-05T07:39:47.691Z\",\n        \"updatedAt\": \"2024-06-05T10:34:56.908Z\",\n        \"value\": {\n            \"sessionTimeout\": 10,\n            \"invalidPasswordAttempts\": 5,\n            \"sessionInactivity\": 5,\n            \"orderLimit\": 20,\n            \"openTime\": 900,\n            \"closeTime\": 2200\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "3da07091-0603-4cdc-ae3b-d7b6fce2019f"
 		},
 		{
 			"name": "Audit Trail",
