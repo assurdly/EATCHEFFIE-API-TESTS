@@ -37,8 +37,8 @@ jobs:
       - name: Copy existing content to allure-history
         run: |
           mkdir -p allure-history
-          if [ -d gh-pages ]; then
-            cp -r gh-pages/* allure-history/
+          if [ -d gh-pages/vendor ]; then
+            cp -r gh-pages/vendor/* allure-history/
           fi
 
       - name: Allure report action
@@ -48,7 +48,7 @@ jobs:
         continue-on-error: true
         with:
           allure_results: allure-results
-          gh_pages: gh-pages
+          gh_pages: gh-pages/vendor
           allure_report: allure-report
           allure_history: allure-history
 
@@ -66,35 +66,23 @@ jobs:
         continue-on-error: true
         run: sleep 150
 
-      - name: Find latest folder in gh-pages
-        id: new_folder
-        run: |
-          latest_folder=$(find gh-pages -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | sort -n | tail -n 1)
-          latest_folder_number=$(basename $latest_folder)
-          new_folder_number=$((latest_folder_number + 1))
-          echo "Latest Folder Number: $latest_folder_number"
-          echo "New Folder Number: $new_folder_number"
-          echo "::set-output name=latest_folder_number::$latest_folder_number"
-          echo "::set-output name=new_folder_number::$new_folder_number"
-
       - name: Update Allure Report Widget Title
         continue-on-error: true
         run: |
-          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
-          summary_path="gh-pages/$new_folder_number/widgets/summary.json"
+          summary_path="gh-pages/vendor/widgets/summary.json"
           echo "Summary Path: $summary_path"
           if [[ -e "$summary_path" ]]; then
             cat "$summary_path"  # Print content before
             sudo sed -i 's/Allure Report/Vendor - API Quality Readiness/' "$summary_path"
             cat "$summary_path"  # Print content after
           else
-            echo "Error: summary.json not found in the new folder."
+            echo "Error: summary.json not found in the vendor folder."
           fi
 
       - name: Parse new summary.json
         id: parse_new_json
         run: |
-          new_summary_path="gh-pages/${{ steps.new_folder.outputs.new_folder_number }}/widgets/summary.json"
+          new_summary_path="gh-pages/vendor/widgets/summary.json"
           echo "New Summary Path: $new_summary_path"
           if [ -f "$new_summary_path" ]; then
             cat "$new_summary_path"
@@ -138,4 +126,4 @@ jobs:
             Failing Tests: ${{ steps.parse_new_json.outputs.failing_percentage }}%
             Total Passed: ${{ steps.parse_new_json.outputs.passed_tests }}
             Total Failed: ${{ steps.parse_new_json.outputs.failed_tests }}
-            GitHub Pages URL: ${{ secrets.PAGES_URL }}/${{ steps.new_folder.outputs.new_folder_number }}
+            GitHub Pages URL: ${{ secrets.PAGES_URL }}/vendor
