@@ -28,23 +28,8 @@ jobs:
 
       - name: Configure Git user
         run: |
-          git config --global user.email "azeez@assurdly.com"
-          git config --global user.name "ibrahimazeez"
-
-      - name: Create gh-pages branch
-        run: |
-          # Remove all files from the current branch
-          git rm -rf * || true
-          # Remove all directories from the current branch
-          rm -rf * || true
-          # Create a new orphan gh-pages branch
-          git checkout --orphan gh-pages
-          # Create the vendor directory
-          mkdir vendor
-          # Add the vendor directory to git
-          git add vendor
-          # Commit the changes
-          git commit -m "Create gh-pages branch with vendor folder"
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
 
       - name: Allure report action
         id: build
@@ -62,6 +47,7 @@ jobs:
         with:
           branch: gh-pages
           folder: vendor
+          force: true
 
       - name: Wait for Allure report to be generated
         if: always()
