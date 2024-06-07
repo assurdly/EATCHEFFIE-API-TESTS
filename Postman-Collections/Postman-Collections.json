@@ -9923,19 +9923,66 @@
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
 		},
 		{
-			"name": "Order Copy",
+			"name": "Order",
 			"item": [
 				{
 					"name": "Fetch Orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"const adminOrder = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminOrder\", adminOrder)\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "4fb0a05a-9463-4248-b6a7-37abe2577c1d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/admin/orders?filter[status]&filter[q]&filter[createdAt]",
+							"raw": "{{base_url}}/admin/orders",
 							"host": [
 								"{{base_url}}"
 							],
@@ -9946,15 +9993,18 @@
 							"query": [
 								{
 									"key": "filter[status]",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "filter[q]",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "filter[createdAt]",
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
