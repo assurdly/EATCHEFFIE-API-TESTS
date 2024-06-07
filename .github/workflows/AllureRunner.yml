@@ -28,8 +28,8 @@ jobs:
 
       - name: Configure Git user
         run: |
-          git config --global user.email "github-actions@example.com"
-          git config --global user.name "GitHub Actions"
+          git config --global user.email "azeez@assurdly.com"
+          git config --global user.name "ibrahimazeez"
 
       - name: Create gh-pages branch
         run: |
@@ -56,4 +56,77 @@ jobs:
           gh_pages: vendor
           allure_report: allure-report
 
-      # ... (rest of the workflow remains the same)
+      - name: Deploy report to GitHub Pages
+        if: always()
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: vendor
+
+      - name: Wait for Allure report to be generated
+        if: always()
+        continue-on-error: true
+        run: sleep 150
+
+      - name: Update Allure Report Widget Title
+        continue-on-error: true
+        run: |
+          summary_path="vendor/widgets/summary.json"
+          echo "Summary Path: $summary_path"
+          if [[ -e "$summary_path" ]]; then
+            cat "$summary_path"  # Print content before
+            sudo sed -i 's/Allure Report/Vendor - API Quality Readiness/' "$summary_path"
+            cat "$summary_path"  # Print content after
+          else
+            echo "Error: summary.json not found in the vendor folder."
+          fi
+
+      - name: Parse new summary.json
+        id: parse_new_json
+        run: |
+          new_summary_path="vendor/widgets/summary.json"
+          echo "New Summary Path: $new_summary_path"
+          if [ -f "$new_summary_path" ]; then
+            cat "$new_summary_path"
+            passed_tests=$(jq -r '.statistic.passed' "$new_summary_path")
+            failed_tests=$(jq -r '.statistic.failed' "$new_summary_path")
+            total_tests=$((passed_tests + failed_tests))
+            if [ "$total_tests" -gt 0 ]; then
+              passing_percentage=$(( passed_tests * 100 / total_tests ))
+              failing_percentage=$(( failed_tests * 100 / total_tests ))
+            else
+              passing_percentage=0
+              failing_percentage=0
+            fi
+            echo "Passed Tests: $passed_tests"
+            echo "Failed Tests: $failed_tests"
+            echo "Passing Percentage: $passing_percentage%"
+            echo "Failing Percentage: $failing_percentage%"
+            echo "::set-output name=passing_percentage::$passing_percentage"
+            echo "::set-output name=failing_percentage::$failing_percentage"
+            echo "::set-output name=passed_tests::$passed_tests"
+            echo "::set-output name=failed_tests::$failed_tests"
+          else
+            echo "summary.json not found"
+            echo "::set-output name=passing_percentage::0"
+            echo "::set-output name=failing_percentage::0"
+            echo "::set-output name=passed_tests::0"
+            echo "::set-output name=failed_tests::0"
+          fi
+
+      # - name: Notify Slack
+      #   if: always()
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_CHANNEL: 'C070KUKPDLZ'
+      #   with:
+      #     text: |
+      #       *Eatcheffie Vendor - API Quality Readiness*
+      #       *Contributors - Azeez*
+      #       Status: ${{ job.status }}
+      #       Passing Tests: ${{ steps.parse_new_json.outputs.passing_percentage }}%
+      #       Failing Tests: ${{ steps.parse_new_json.outputs.failing_percentage }}%
+      #       Total Passed: ${{ steps.parse_new_json.outputs.passed_tests }}
+      #       Total Failed: ${{ steps.parse_new_json.outputs.failed_tests }}
+      #       GitHub Pages URL: ${{ secrets.PAGES_URL }}/vendor
