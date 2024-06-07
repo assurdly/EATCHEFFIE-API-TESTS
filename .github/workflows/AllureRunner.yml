@@ -42,10 +42,11 @@ jobs:
       - name: Copy existing content to allure-history
         run: |
           mkdir -p allure-history
+          mkdir -p gh-pages/vendor  # Create gh-pages/vendor directory if it doesn't exist
           if [ -d gh-pages/vendor ]; then
-          cp -r gh-pages/vendor/* allure-history/
+            cp -r gh-pages/vendor/* allure-history/
           else
-          echo "No existing content to copy."
+            echo "No existing content to copy."
           fi
 
       - name: Allure report action
