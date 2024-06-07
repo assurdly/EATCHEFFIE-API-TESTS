@@ -49,18 +49,16 @@ jobs:
           allure_report: allure-report
 
       - name: Deploy report to GitHub Pages
-        id: deploy
         if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: gh-pages/vendor
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: gh-pages/vendor
 
       - name: Wait for Allure report to be generated
         if: always()
         continue-on-error: true
-        run: sleep 60
+        run: sleep 50
 
       - name: Update Allure Report Widget Title
         continue-on-error: true
