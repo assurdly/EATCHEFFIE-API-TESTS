@@ -130,6 +130,14 @@ jobs:
           echo "New Folder Number: $new_folder_number"
           echo "::set-output name=new_folder_number::$new_folder_number"
 
+      - name: Increment folder number
+        id: increment_folder
+        run: |
+          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
+          new_folder_number_incremented=$((new_folder_number + 1))
+          echo "Incremented Folder Number: $new_folder_number_incremented"
+          echo "::set-output name=new_folder_number_incremented::$new_folder_number_incremented"
+
       - name: Notify Slack
         if: always()
         uses: rtCamp/action-slack-notify@v2
@@ -137,11 +145,11 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: 'C070KUKPDLZ'
           SLACK_MESSAGE: |
-            *NGX-IPO Gateway Merchant - API Quality Readiness*
+            *Eatcheffie Customer - API Quality Readiness*
             *Contributors - Priscaline*
             Status: ${{ job.status }}
             Passing Tests: ${{ steps.parse_json.outputs.passing_percentage }}%
             Failing Tests: ${{ steps.parse_json.outputs.failing_percentage }}%
             Total Passed: ${{ steps.parse_json.outputs.passed_tests }}
             Total Failed: ${{ steps.parse_json.outputs.failed_tests }}
-            GitHub Pages URL: ${{ secrets.PAGES_URL }}/${{ steps.new_folder.outputs.new_folder_number }}
+            GitHub Pages URL: ${{ secrets.PAGES_URL }}/${{ steps.increment_folder.outputs.new_folder_number_incremented }}
