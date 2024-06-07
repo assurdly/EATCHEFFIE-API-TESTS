@@ -112,8 +112,9 @@ jobs:
         id: new_folder
         run: |
           new_folder=$(find gh-pages -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | sort -n | tail -n 1)
-          echo "New Folder: $new_folder"
-          echo "::set-output name=new_folder::$new_folder"
+          new_folder_number=$(basename $new_folder)
+          echo "New Folder Number: $new_folder_number"
+          echo "::set-output name=new_folder_number::$new_folder_number"
 
       - name: Deploy report to GitHub Pages
         id: deploy
@@ -136,11 +137,11 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: 'C070KUKPDLZ'
           SLACK_MESSAGE: |
-            *Eatcheffie Vendor - API Quality Readiness*
+            *NGX-IPO Gateway Merchant - API Quality Readiness*
             *Contributors - Azeez*
             Status: ${{ job.status }}
             Passing Tests: ${{ steps.parse_json.outputs.passing_percentage }}%
             Failing Tests: ${{ steps.parse_json.outputs.failing_percentage }}%
             Total Passed: ${{ steps.parse_json.outputs.passed_tests }}
             Total Failed: ${{ steps.parse_json.outputs.failed_tests }}
-            GitHub Pages URL: ${{ secrets.PAGES_URL }}/${{ steps.new_folder.outputs.new_folder }}
+            GitHub Pages URL: ${{ secrets.PAGES_URL }}/${{ steps.new_folder.outputs.new_folder_number }}
