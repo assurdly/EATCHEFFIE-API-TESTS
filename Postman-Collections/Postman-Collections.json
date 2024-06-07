@@ -6447,7 +6447,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Temitato\",\n    \"lastName\": \"Osunkiyesi\",\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
+											"raw": "{\n    \"firstName\": \"Bayee\", //\"Temitato\",\n    \"lastName\": \"Deanil\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6604,7 +6604,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"email\": \"Jocelyn@yopmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}\n",
+											"raw": "{\n    \"email\": \"bayo@yopmail.com\",\n    // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Password1@\"\n}\n",
 											"options": {
 												"raw": {
 													"language": "json"
