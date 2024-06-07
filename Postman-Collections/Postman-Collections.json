@@ -9972,6 +9972,49 @@
 					"item": [
 						{
 							"name": "Fetch Transactions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "10d7ebf3-f68f-470a-8aa1-81f5b18c733f",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminCustomer = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched transactions successfully\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "8fd3aae6-1ded-4088-8618-dc9800cbd3a9",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9980,14 +10023,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"url": {
@@ -10002,17 +10046,17 @@
 									"query": [
 										{
 											"key": "filter[orgId]",
-											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"value": "e26e2d5d-5c5d-410b-a1c1-a463eae78722",
 											"disabled": true
 										},
 										{
 											"key": "filter[customerId]",
-											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"value": "98f1694d-85ee-4eae-932c-3640ed13294b",
 											"disabled": true
 										},
 										{
 											"key": "filter[status]",
-											"value": "pending",
+											"value": "success",
 											"description": "pending | success | failed |",
 											"disabled": true
 										},
@@ -10110,7 +10154,50 @@
 							]
 						},
 						{
-							"name": "Fetch Transactions Copy",
+							"name": "By Status - Fetch Transactions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "da50ed43-3625-41c4-b76f-f7afdb42e17a",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminCustomer = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched transactions successfully\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "70127065-b9cf-420e-ad78-5757deacba2e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -10119,18 +10206,19 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/transactions",
+									"raw": "{{base_url}}/admin/transactions?filter[status]=pending",
 									"host": [
 										"{{base_url}}"
 									],
@@ -10152,8 +10240,7 @@
 										{
 											"key": "filter[status]",
 											"value": "pending",
-											"description": "pending | success | failed |",
-											"disabled": true
+											"description": "pending | success | failed |"
 										},
 										{
 											"key": "filter[type]",
@@ -10182,6 +10269,370 @@
 							"response": [
 								{
 									"id": "60b7963a-13b0-4a27-9eab-189e2583c129",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": "{{base_url}}/admin/transactions"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1352"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"548-OrKrwStXNfcLtzebKaSskuzM36g\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 06 Jun 2024 10:50:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transactions successfully\",\n    \"data\": [\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:31 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f6425b875a\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d4b6f907-ff00-4ce4-8818-1f22ba5a915d\",\n            \"createdAt\": \"2024-06-06T03:31:45.821Z\",\n            \"updatedAt\": \"2024-06-06T03:31:45.821Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:28 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f34ff1ae3d\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"11674a26-fa39-4b09-9f82-d1c8420d5023\",\n            \"createdAt\": \"2024-06-06T03:28:10.143Z\",\n            \"updatedAt\": \"2024-06-06T03:28:10.143Z\"\n        },\n        {\n            \"amount\": 71.95,\n            \"description\": null,\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_6d748e5ca9\",\n            \"status\": \"pending\",\n            \"type\": \"purchase\",\n            \"id\": \"f2676752-2c39-48ad-a961-af2003fbc208\",\n            \"createdAt\": \"2024-06-06T03:26:19.612Z\",\n            \"updatedAt\": \"2024-06-06T03:26:19.612Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:17 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_ce82f585bc\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d7a8b461-385f-4b74-a96e-bd50ef2826cc\",\n            \"createdAt\": \"2024-06-06T03:17:46.777Z\",\n            \"updatedAt\": \"2024-06-06T03:17:46.777Z\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 4,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "By Type - Fetch Transactions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "da50ed43-3625-41c4-b76f-f7afdb42e17a",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminCustomer = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched transactions successfully\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "02efa478-ac4c-4d99-9f0d-5270c30d40b1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/transactions?filter[type]=purchase",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "filter[orgId]",
+											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"disabled": true
+										},
+										{
+											"key": "filter[customerId]",
+											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "pending",
+											"description": "pending | success | failed |",
+											"disabled": true
+										},
+										{
+											"key": "filter[type]",
+											"value": "purchase",
+											"description": "purchase | commission | payout"
+										},
+										{
+											"key": "filter[reference]",
+											"value": "ec_ref_f6425b875a",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][gte]",
+											"value": "2024-05-31T23:00:00",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][lte]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "f723b543-fbf2-4738-8c6e-89e6a6c3e0d1",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": "{{base_url}}/admin/transactions"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1352"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"548-OrKrwStXNfcLtzebKaSskuzM36g\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 06 Jun 2024 10:50:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transactions successfully\",\n    \"data\": [\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:31 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f6425b875a\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d4b6f907-ff00-4ce4-8818-1f22ba5a915d\",\n            \"createdAt\": \"2024-06-06T03:31:45.821Z\",\n            \"updatedAt\": \"2024-06-06T03:31:45.821Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:28 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_f34ff1ae3d\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"11674a26-fa39-4b09-9f82-d1c8420d5023\",\n            \"createdAt\": \"2024-06-06T03:28:10.143Z\",\n            \"updatedAt\": \"2024-06-06T03:28:10.143Z\"\n        },\n        {\n            \"amount\": 71.95,\n            \"description\": null,\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_6d748e5ca9\",\n            \"status\": \"pending\",\n            \"type\": \"purchase\",\n            \"id\": \"f2676752-2c39-48ad-a961-af2003fbc208\",\n            \"createdAt\": \"2024-06-06T03:26:19.612Z\",\n            \"updatedAt\": \"2024-06-06T03:26:19.612Z\"\n        },\n        {\n            \"amount\": 10,\n            \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:17 AM\",\n            \"paymentConfirmationDate\": null,\n            \"reference\": \"ec_ref_ce82f585bc\",\n            \"status\": \"pending\",\n            \"type\": \"payout\",\n            \"id\": \"d7a8b461-385f-4b74-a96e-bd50ef2826cc\",\n            \"createdAt\": \"2024-06-06T03:17:46.777Z\",\n            \"updatedAt\": \"2024-06-06T03:17:46.777Z\"\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 4,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "By Type - Fetch Transactions Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "da50ed43-3625-41c4-b76f-f7afdb42e17a",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminCustomer = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched transactions successfully\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().data).to.be.an(\"array\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "10996191-5006-44bf-bcb0-cf680f90cfc8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/transactions?filter[type]=purchase",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "filter[orgId]",
+											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"disabled": true
+										},
+										{
+											"key": "filter[customerId]",
+											"value": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "pending",
+											"description": "pending | success | failed |",
+											"disabled": true
+										},
+										{
+											"key": "filter[type]",
+											"value": "purchase",
+											"description": "purchase | commission | payout"
+										},
+										{
+											"key": "filter[reference]",
+											"value": "ec_ref_f6425b875a",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][gte]",
+											"value": "2024-05-31T23:00:00",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][lte]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "9be63d86-4a4b-4774-b398-d0131c829d72",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
