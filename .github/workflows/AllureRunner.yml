@@ -43,9 +43,9 @@ jobs:
         run: |
           mkdir -p allure-history
           if [ -d gh-pages/vendor ]; then
-            cp -r gh-pages/vendor/* allure-history/
+          cp -r gh-pages/vendor/* allure-history/
           else
-            echo "No existing content to copy."
+          echo "No existing content to copy."
           fi
 
       - name: Allure report action
@@ -119,19 +119,19 @@ jobs:
             echo "::set-output name=failed_tests::0"
           fi
 
-      - name: Notify Slack
-        if: always()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_CHANNEL: 'C070KUKPDLZ'
-        with:
-          text: |
-            *Eatcheffie Vendor - API Quality Readiness*
-            *Contributors - Azeez*
-            Status: ${{ job.status }}
-            Passing Tests: ${{ steps.parse_new_json.outputs.passing_percentage }}%
-            Failing Tests: ${{ steps.parse_new_json.outputs.failing_percentage }}%
-            Total Passed: ${{ steps.parse_new_json.outputs.passed_tests }}
-            Total Failed: ${{ steps.parse_new_json.outputs.failed_tests }}
-            GitHub Pages URL: ${{ secrets.PAGES_URL }}/vendor
+      # - name: Notify Slack
+      #   if: always()
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_CHANNEL: 'C070KUKPDLZ'
+      #   with:
+      #     text: |
+      #       *Eatcheffie Vendor - API Quality Readiness*
+      #       *Contributors - Azeez*
+      #       Status: ${{ job.status }}
+      #       Passing Tests: ${{ steps.parse_new_json.outputs.passing_percentage }}%
+      #       Failing Tests: ${{ steps.parse_new_json.outputs.failing_percentage }}%
+      #       Total Passed: ${{ steps.parse_new_json.outputs.passed_tests }}
+      #       Total Failed: ${{ steps.parse_new_json.outputs.failed_tests }}
+      #       GitHub Pages URL: ${{ secrets.PAGES_URL }}/vendor
