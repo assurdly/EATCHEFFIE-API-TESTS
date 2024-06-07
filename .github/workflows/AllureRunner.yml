@@ -26,17 +26,13 @@ jobs:
            newman run Postman-Collections/Postman-Collections.json --reporters cli,allure
            echo "Postman tests run."
 
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v2
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Create vendor folder
+      - name: Create gh-pages branch
         run: |
-          mkdir -p gh-pages/vendor
+          git checkout --orphan gh-pages
+          git rm -rf .
+          mkdir vendor
+          git add vendor
+          git commit -m "Create gh-pages branch with vendor folder"
 
       - name: Allure report action
         id: build
@@ -45,7 +41,7 @@ jobs:
         continue-on-error: true
         with:
           allure_results: allure-results
-          gh_pages: gh-pages/vendor
+          gh_pages: vendor
           allure_report: allure-report
 
       - name: Deploy report to GitHub Pages
@@ -53,17 +49,17 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: gh-pages/vendor
+          folder: vendor
 
       - name: Wait for Allure report to be generated
         if: always()
         continue-on-error: true
-        run: sleep 50
+        run: sleep 150
 
       - name: Update Allure Report Widget Title
         continue-on-error: true
         run: |
-          summary_path="gh-pages/vendor/widgets/summary.json"
+          summary_path="vendor/widgets/summary.json"
           echo "Summary Path: $summary_path"
           if [[ -e "$summary_path" ]]; then
             cat "$summary_path"  # Print content before
@@ -76,7 +72,7 @@ jobs:
       - name: Parse new summary.json
         id: parse_new_json
         run: |
-          new_summary_path="gh-pages/vendor/widgets/summary.json"
+          new_summary_path="vendor/widgets/summary.json"
           echo "New Summary Path: $new_summary_path"
           if [ -f "$new_summary_path" ]; then
             cat "$new_summary_path"
