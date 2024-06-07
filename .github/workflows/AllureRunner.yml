@@ -26,7 +26,7 @@ jobs:
            newman run Postman-Collections/Postman-Collections.json --reporters cli,allure
            echo "Postman tests run."
 
-      - name: Get Allure history
+      - name: Checkout gh-pages branch
         uses: actions/checkout@v2
         if: always()
         continue-on-error: true
@@ -34,12 +34,15 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
+      - name: Create or clear vendor folder
+        run: |
+          mkdir -p gh-pages/vendor
+          rm -rf gh-pages/vendor/*
+
       - name: Copy existing content to allure-history
         run: |
           mkdir -p allure-history
-          if [ -d gh-pages/vendor ]; then
-            cp -r gh-pages/vendor/* allure-history/
-          fi
+          cp -r gh-pages/vendor/* allure-history/
 
       - name: Allure report action
         id: build
@@ -59,7 +62,7 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          PUBLISH_DIR: gh-pages/vendor
 
       - name: Wait for Allure report to be generated
         if: always()
@@ -117,8 +120,9 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_CHANNEL: 'C070KUKPDLZ'
-          SLACK_MESSAGE: |
+          SLACK_CHANNEL: 'C070KUKPDL'
+        with:
+          text: |
             *Eatcheffie Vendor - API Quality Readiness*
             *Contributors - Azeez*
             Status: ${{ job.status }}
