@@ -34,20 +34,9 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Create or clear vendor folder
+      - name: Create vendor folder
         run: |
           mkdir -p gh-pages/vendor
-          rm -rf gh-pages/vendor/*
-
-      - name: Copy existing content to allure-history
-        run: |
-          mkdir -p allure-history
-          mkdir -p gh-pages/vendor  # Create gh-pages/vendor directory if it doesn't exist
-          if [ -d gh-pages/vendor ]; then
-            cp -r gh-pages/vendor/* allure-history/
-          else
-            echo "No existing content to copy."
-          fi
 
       - name: Allure report action
         id: build
@@ -58,7 +47,6 @@ jobs:
           allure_results: allure-results
           gh_pages: gh-pages/vendor
           allure_report: allure-report
-          allure_history: allure-history
 
       - name: Deploy report to GitHub Pages
         id: deploy
@@ -72,7 +60,7 @@ jobs:
       - name: Wait for Allure report to be generated
         if: always()
         continue-on-error: true
-        run: sleep 150
+        run: sleep 60
 
       - name: Update Allure Report Widget Title
         continue-on-error: true
