@@ -9980,9 +9980,9 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"const adminCustomer = jsonData.data[0].id\r",
+											"const transactionRef = jsonData.data[0].reference\r",
 											"\r",
-											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
+											"pm.environment.set(\"transactionRef\", transactionRef)\r",
 											"\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
@@ -10035,7 +10035,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/transactions",
+									"raw": "{{base_url}}/admin/transactions?filter[customerId]=98f1694d-85ee-4eae-932c-3640ed13294b",
 									"host": [
 										"{{base_url}}"
 									],
@@ -10046,13 +10046,12 @@
 									"query": [
 										{
 											"key": "filter[orgId]",
-											"value": "e26e2d5d-5c5d-410b-a1c1-a463eae78722",
+											"value": "0077edff-24f4-4397-83c9-05d5d4198b26",
 											"disabled": true
 										},
 										{
 											"key": "filter[customerId]",
-											"value": "98f1694d-85ee-4eae-932c-3640ed13294b",
-											"disabled": true
+											"value": "98f1694d-85ee-4eae-932c-3640ed13294b"
 										},
 										{
 											"key": "filter[status]",
@@ -10518,7 +10517,7 @@
 							]
 						},
 						{
-							"name": "By Type - Fetch Transactions Copy",
+							"name": "By transactionRef - Fetch Transactions",
 							"event": [
 								{
 									"listen": "test",
@@ -10582,7 +10581,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/transactions?filter[type]=purchase",
+									"raw": "{{base_url}}/admin/transactions?filter[reference]={{transactionRef}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -10610,12 +10609,12 @@
 										{
 											"key": "filter[type]",
 											"value": "purchase",
-											"description": "purchase | commission | payout"
+											"description": "purchase | commission | payout",
+											"disabled": true
 										},
 										{
 											"key": "filter[reference]",
-											"value": "ec_ref_f6425b875a",
-											"disabled": true
+											"value": "{{transactionRef}}"
 										},
 										{
 											"key": "filter[createdAt][gte]",
