@@ -10946,7 +10946,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Vibes\",\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"type\": \"user_activity\", // promo_code | user_activity\n    \"maxUseCount\": 100,\n    \"discountType\": \"percentage\", // percentage | flat \n    \"discount\": 5,\n    \"startDate\": \"2024-06-04\",\n    \"endDate\": \"2024-06-31\",\n   //\"promoCode\": \"2235SWING\", // For promo_code type promos\n\"activityType\": \"transaction\", // For user_activity promo type. For example if you want it to kick in for users with 10 transactions you will set this to transaction and activityCount to 10\n     \"activityCount\": 5\n}",
+									"raw": "{\n    \"name\": \"Vibes\",\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"type\": \"promo_code\", // promo_code | user_activity\n    \"maxUseCount\": 100,\n    \"discountType\": \"percentage\", // percentage | flat \n    \"discount\": 5,\n    \"startDate\": \"2024-06-04\",\n    \"endDate\": \"2024-06-31\",\n   \"promoCode\": \"JUNE12\" // For promo_code type promos\n//\"activityType\": \"transaction\", // For user_activity promo type. For example if you want it to kick in for users with 10 transactions you will set this to transaction and activityCount to 10\n  //   \"activityCount\": 5\n}",
 									"options": {
 										"raw": {
 											"language": "json"
