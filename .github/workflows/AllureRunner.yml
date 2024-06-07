@@ -23,7 +23,7 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-           newman run Postman-Collections/Postman-Collections.json --reporters cli,allure
+           newman run Postman-Collections/Postman-Collection.json --reporters cli,allure
            echo "Postman tests run."
 
       - name: Get Allure history
@@ -64,7 +64,7 @@ jobs:
       - name: Wait for Allure report to be generated
         if: always()
         continue-on-error: true
-        run: sleep 180
+        run: sleep 120
 
       - name: Find new folder in gh-pages
         id: new_folder
@@ -74,23 +74,15 @@ jobs:
           echo "New Folder Number: $new_folder_number"
           echo "::set-output name=new_folder_number::$new_folder_number"
 
-      - name: Increment folder number
-        id: increment_folder
-        run: |
-          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
-          new_folder_number_incremented=$((new_folder_number + 1))
-          echo "Incremented Folder Number: $new_folder_number_incremented"
-          echo "::set-output name=new_folder_number_incremented::$new_folder_number_incremented"
-
       - name: Update Allure Report Widget Title
         continue-on-error: true
         run: |
-          new_folder_number_incremented=${{ steps.increment_folder.outputs.new_folder_number_incremented }}
-          summary_path="gh-pages/$new_folder_number_incremented/widgets/summary.json"
+          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
+          summary_path="gh-pages/$new_folder_number/widgets/summary.json"
           echo "Summary Path: $summary_path"
           if [[ -e "$summary_path" ]]; then
             cat "$summary_path"  # Print content before
-            sudo sed -i 's/Allure Report/Gateway Merchant - API Quality Readiness/' "$summary_path"
+            sudo sed -i 's/Allure Report/Vendor - API Quality Readiness/' "$summary_path"
             cat "$summary_path"  # Print content after
           else
             echo "Error: summary.json not found in the new folder."
@@ -99,7 +91,7 @@ jobs:
       - name: Parse new summary.json
         id: parse_new_json
         run: |
-          new_summary_path="gh-pages/${{ steps.increment_folder.outputs.new_folder_number_incremented }}/widgets/summary.json"
+          new_summary_path="gh-pages/${{ steps.new_folder.outputs.new_folder_number }}/widgets/summary.json"
           echo "New Summary Path: $new_summary_path"
           if [ -f "$new_summary_path" ]; then
             cat "$new_summary_path"
@@ -137,10 +129,10 @@ jobs:
           SLACK_CHANNEL: 'C070KUKPDLZ'
           SLACK_MESSAGE: |
             *Eatcheffie Vendor - API Quality Readiness*
-            *Contributors - Azeez*
+            *Contributors - Moses George*
             Status: ${{ job.status }}
             Passing Tests: ${{ steps.parse_new_json.outputs.passing_percentage }}%
             Failing Tests: ${{ steps.parse_new_json.outputs.failing_percentage }}%
             Total Passed: ${{ steps.parse_new_json.outputs.passed_tests }}
             Total Failed: ${{ steps.parse_new_json.outputs.failed_tests }}
-            GitHub Pages URL: ${{ secrets.PAGES_URL }}/${{ steps.increment_folder.outputs.new_folder_number_incremented }}
+            GitHub Pages URL: ${{ secrets.PAGES_URL }}/${{ steps.new_folder.outputs.new_folder_number }}
