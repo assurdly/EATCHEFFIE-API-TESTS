@@ -66,12 +66,15 @@ jobs:
         continue-on-error: true
         run: sleep 150
 
-      - name: Find new folder in gh-pages
+      - name: Find latest folder in gh-pages
         id: new_folder
         run: |
-          new_folder=$(find gh-pages -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | sort -n | tail -n 1)
-          new_folder_number=$(basename $new_folder)
+          latest_folder=$(find gh-pages -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | sort -n | tail -n 1)
+          latest_folder_number=$(basename $latest_folder)
+          new_folder_number=$((latest_folder_number + 1))
+          echo "Latest Folder Number: $latest_folder_number"
           echo "New Folder Number: $new_folder_number"
+          echo "::set-output name=latest_folder_number::$latest_folder_number"
           echo "::set-output name=new_folder_number::$new_folder_number"
 
       - name: Update Allure Report Widget Title
