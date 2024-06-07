@@ -9965,7 +9965,7 @@
 			"id": "a202ee52-92ca-4a5d-89e2-9aa98aef5f69"
 		},
 		{
-			"name": "Transactions Copy",
+			"name": "Transactions",
 			"item": [
 				{
 					"name": "Fetch Transeactions",
@@ -10699,7 +10699,7 @@
 							]
 						},
 						{
-							"name": "By transactionRef - Fetch Transactions",
+							"name": "By TransactionRef - Fetch Transactions",
 							"event": [
 								{
 									"listen": "test",
