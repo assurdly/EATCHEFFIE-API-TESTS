@@ -11165,6 +11165,46 @@
 					"item": [
 						{
 							"name": "Get Promo By ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "011d756d-1ed4-4653-932f-f6b397204e48",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"/*\r",
+											"const promoId = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"promoId\", promoId)\r",
+											"*/\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Promos fetched successfully\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Promo fetched successfully');\r",
+											"});\r",
+											"pm.test(\"Verify that data is a string\", function () {\r",
+											"    pm.expect(jsonData.data).to.be.an('object').and.not.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "606fb040-3194-4a44-895b-128481a38cd7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
