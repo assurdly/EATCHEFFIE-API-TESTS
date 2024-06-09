@@ -9696,6 +9696,51 @@
 						}
 					],
 					"id": "d4187fe9-e730-49de-98cf-dc479181dde7"
+				},
+				{
+					"name": "Blacklist Customer",
+					"item": [
+						{
+							"name": "Blacklist Customer Copy",
+							"id": "46f96932-71f8-4b7c-b5c3-49f3fd68b946",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reason\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/customers/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "fd709728-d865-45fc-b3a5-fd4422c7bd61",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "bdd764f0-38ec-4696-82bb-5572d1d83261"
 				}
 			],
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
