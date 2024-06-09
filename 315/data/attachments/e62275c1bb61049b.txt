@@ -1,0 +1,6 @@
+{
+    "name": "Handcrafted Test Role",
+    "description": "Random Test Role",
+    "status": "inactive", 
+    "permissions": ["9ac19871-791a-467d-b057-0611561f557e"] 
+}
