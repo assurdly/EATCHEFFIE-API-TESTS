@@ -83,6 +83,7 @@ jobs:
           new_folder=$(find gh-pages -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | sort -n | tail -n 1)
           new_folder_number=$(basename $new_folder)
           new_folder_number=$((new_folder_number + 1))
+          mkdir -p gh-pages/$new_folder_number
           echo "New Folder Number: $new_folder_number"
           echo "::set-output name=new_folder_number::$new_folder_number"
 
@@ -96,6 +97,11 @@ jobs:
           else
             echo "New folder number ($new_folder_number) is greater than current latest folder number ($current_latest_number)."
           fi
+
+      - name: List contents of new folder
+        run: |
+          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
+          ls -R gh-pages/$new_folder_number
 
       - name: Update Allure Report Widget Title
         continue-on-error: true
