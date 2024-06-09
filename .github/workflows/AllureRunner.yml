@@ -34,8 +34,8 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-           newman run Postman-Collections/Postman-Collections.json --reporters cli,allure
-           echo "Postman tests run."
+          newman run Postman-Collections/Postman-Collections.json --reporters cli,allure
+          echo "Postman tests run."
 
       - name: Get Allure history
         uses: actions/checkout@v2
@@ -75,7 +75,7 @@ jobs:
       - name: Wait for Allure report to be generated
         if: always()
         continue-on-error: true
-        run: sleep 120
+        run: sleep 60
 
       - name: Find new folder in gh-pages
         id: new_folder
@@ -158,4 +158,68 @@ jobs:
             echo "::set-output name=passed_tests::$passed_tests"
             echo "::set-output name=failed_tests::$failed_tests"
           else
-            echo "summary.json not
+            echo "summary.json not found"
+            echo "::set-output name=passing_percentage::0"
+            echo "::set-output name=failing_percentage::0"
+            echo "::set-output name=passed_tests::0"
+            echo "::set-output name=failed_tests::0"
+          fi
+
+      # - name: Notify Slack
+      #   if: always()
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_CHANNEL: 'C070KUKPDLZ'
+      #   with:
+      #     payload: |
+      #       {
+      #         "text": "*Eatcheffie Vendor - API Quality Readiness*",
+      #         "blocks": [
+      #           {
+      #             "type": "section",
+      #             "text": {
+      #               "type": "mrkdwn",
+      #               "text": "*Eatcheffie Vendor - API Quality Readiness*"
+      #             }
+      #           },
+      #           {
+      #             "type": "section",
+      #             "fields": [
+      #               {
+      #                 "type": "mrkdwn",
+      #                 "text": "*Contributors:*\nMoses George"
+      #               },
+      #               {
+      #                 "type": "mrkdwn",
+      #                 "text": "*Status:*\n${{ job.status }}"
+      #               }
+      #             ]
+      #           },
+      #           {
+      #             "type": "section",
+      #             "fields": [
+      #               {
+      #                 "type": "mrkdwn",
+      #                 "text": "*Passing Tests:*\n${{ steps.parse_new_json.outputs.passing_percentage }}%"
+      #               },
+      #               {
+      #                 "type": "mrkdwn",
+      #                 "text": "*Failing Tests:*\n${{ steps.parse_new_json.outputs.failing_percentage }}%"
+      #               },
+      #               {
+      #                 "type": "mrkdwn",
+      #                 "text": "*Total Passed:*\n${{ steps.parse_new_json.outputs.passed_tests }}"
+      #               },
+      #               {
+      #                 "type": "mrkdwn",
+      #                 "text": "*Total Failed:*\n${{ steps.parse_new_json.outputs.failed_tests }}"
+      #               },
+      #               {
+      #                 "type": "mrkdwn",
+      #                 "text": "*GitHub Pages URL:*\n${{ secrets.PAGES_URL }}/${{ steps.get_current_latest.outputs.current_latest_number }}"
+      #               }
+      #             ]
+      #           }
+      #         ]
+      #       }
