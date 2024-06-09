@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Meal created successfully","data":{"id":"6cd64c17-d90a-424e-8d15-4ea27d57015b","name":"Good Food Road","description":"Spicy Burger Mediul","tags":"vibes","specialtyCategories":"vibes","isPublished":false}}
