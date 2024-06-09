@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Meal created successfully","data":{"id":"474cfd94-2a9f-4840-bf7a-9db9537b8828","name":"Good Food infrastructure","description":"Spicy Burger Mediul","tags":"vibes","specialtyCategories":"vibes","isPublished":false}}
