@@ -1,0 +1,7 @@
+{
+    "firstName": "Amaya",
+    "lastName": "VonRueden",
+    "password": "Password12@@",
+    "confirmPassword": "Password12@@",
+    "token": "f739a376a31e86bd6802600896bbb9e9ca432b4e"
+}

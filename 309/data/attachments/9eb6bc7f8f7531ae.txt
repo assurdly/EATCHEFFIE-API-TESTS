@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Meal created successfully","data":{"id":"c8035577-3a89-446c-800b-6480dcaf7a92","name":"Good Food Toys","description":"Spicy Burger Mediul","tags":"vibes","specialtyCategories":"vibes","isPublished":false}}

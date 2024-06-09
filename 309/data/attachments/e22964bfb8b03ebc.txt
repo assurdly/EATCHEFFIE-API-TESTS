@@ -1,0 +1,1 @@
+level: log, messages: Role with name "magenta Test Role" already exists
