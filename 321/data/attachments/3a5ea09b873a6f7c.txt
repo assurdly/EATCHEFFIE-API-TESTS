@@ -1,0 +1,6 @@
+{
+    "phone": "{{signedUpVendorPhone}}",
+    "password": "Password12@@"
+}
+
+
