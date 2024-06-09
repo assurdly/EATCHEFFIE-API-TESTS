@@ -1,0 +1,5 @@
+{
+    "oldPassword": "",
+    "password": "Password1*",
+    "confirmPassword": "Password1*"
+}

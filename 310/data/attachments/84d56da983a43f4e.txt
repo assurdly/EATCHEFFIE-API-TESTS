@@ -1,0 +1,1 @@
+{"message":"Validation Error.","data":{"email":"email should not be empty","phone":"phone should not be empty","password":"password should not be empty"}}
