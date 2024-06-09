@@ -1,3 +1,6 @@
+For Multiple branches in a single repo @here
+
+
 name: Postman Test and Allure Report
 on:
   push:
@@ -23,13 +26,23 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-           newman run Postman-Collections/Postman-Collections.json --reporters cli,allure
+           newman run Postman-Collections/Postman-Collection.json --reporters cli,allure
            echo "Postman tests run."
 
-      - name: Configure Git user
+      - name: Get Allure history
+        uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Copy existing content to allure-history
         run: |
-          git config --global user.email "github-actions@example.com"
-          git config --global user.name "GitHub Actions"
+          mkdir -p allure-history
+          if [ -d gh-pages ]; then
+            cp -r gh-pages/* allure-history/
+          fi
 
       - name: Allure report action
         id: build
@@ -38,39 +51,50 @@ jobs:
         continue-on-error: true
         with:
           allure_results: allure-results
-          gh_pages: vendor
+          gh_pages: gh-pages
           allure_report: allure-report
+          allure_history: allure-history
 
       - name: Deploy report to GitHub Pages
+        id: deploy
         if: always()
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: vendor
-          force: true
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
 
       - name: Wait for Allure report to be generated
         if: always()
         continue-on-error: true
-        run: sleep 150
+        run: sleep 60
+
+      - name: Find new folder in gh-pages
+        id: new_folder
+        run: |
+          new_folder=$(find gh-pages -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | sort -n | tail -n 1)
+          new_folder_number=$(basename $new_folder)
+          echo "New Folder Number: $new_folder_number"
+          echo "::set-output name=new_folder_number::$new_folder_number"
 
       - name: Update Allure Report Widget Title
         continue-on-error: true
         run: |
-          summary_path="vendor/widgets/summary.json"
+          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
+          summary_path="gh-pages/$new_folder_number/widgets/summary.json"
           echo "Summary Path: $summary_path"
           if [[ -e "$summary_path" ]]; then
             cat "$summary_path"  # Print content before
             sudo sed -i 's/Allure Report/Vendor - API Quality Readiness/' "$summary_path"
             cat "$summary_path"  # Print content after
           else
-            echo "Error: summary.json not found in the vendor folder."
+            echo "Error: summary.json not found in the new folder."
           fi
 
       - name: Parse new summary.json
         id: parse_new_json
         run: |
-          new_summary_path="vendor/widgets/summary.json"
+          new_summary_path="gh-pages/${{ steps.new_folder.outputs.new_folder_number }}/widgets/summary.json"
           echo "New Summary Path: $new_summary_path"
           if [ -f "$new_summary_path" ]; then
             cat "$new_summary_path"
@@ -106,13 +130,12 @@ jobs:
       #   env:
       #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       #     SLACK_CHANNEL: 'C070KUKPDLZ'
-      #   with:
-      #     text: |
+      #     SLACK_MESSAGE: |
       #       *Eatcheffie Vendor - API Quality Readiness*
-      #       *Contributors - Azeez*
+      #       *Contributors - Moses George*
       #       Status: ${{ job.status }}
       #       Passing Tests: ${{ steps.parse_new_json.outputs.passing_percentage }}%
       #       Failing Tests: ${{ steps.parse_new_json.outputs.failing_percentage }}%
       #       Total Passed: ${{ steps.parse_new_json.outputs.passed_tests }}
       #       Total Failed: ${{ steps.parse_new_json.outputs.failed_tests }}
-      #       GitHub Pages URL: ${{ secrets.PAGES_URL }}/vendor
+      #       GitHub Pages URL: ${{ secrets.PAGES_URL }}/${{ steps.new_folder.outputs.new_folder_number }}
