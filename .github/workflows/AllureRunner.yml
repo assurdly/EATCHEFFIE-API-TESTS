@@ -1,6 +1,3 @@
-For Multiple branches in a single repo @here
-
-
 name: Postman Test and Allure Report
 on:
   push:
