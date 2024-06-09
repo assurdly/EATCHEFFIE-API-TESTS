@@ -1,0 +1,4 @@
+level: warn, messages: Form param `avatar`, file load error: "sujGito2S/35aafae62a179278337ea396cdb11432.jpg", no such file
+level: warn, messages: Form param `banner`, file load error: "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a", no such file
+level: warn, messages: Form param `hygieneRatingCertificate`, file load error: "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a", no such file
+level: warn, messages: Form param `certificationDocument`, file load error: "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a", no such file
