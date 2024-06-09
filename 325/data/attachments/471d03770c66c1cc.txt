@@ -1,0 +1,6 @@
+{
+    "firstName": "Juliet",
+    "lastName": "Altenwerth",
+    "gender": "male",
+    "dob": "2004-03-12"
+}
