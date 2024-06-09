@@ -75,7 +75,7 @@ jobs:
       - name: Wait for Allure report to be generated
         if: always()
         continue-on-error: true
-        run: sleep 60
+        run: sleep 120
 
       - name: Find new folder in gh-pages
         id: new_folder
@@ -97,15 +97,6 @@ jobs:
             exit 1
           fi
 
-      - name: List contents of new folder
-        run: |
-          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
-          ls -R gh-pages/$new_folder_number
-
-      - name: List all folders in gh-pages
-        run: |
-          ls -R gh-pages
-
       - name: Copy Allure report to new and previous folder
         run: |
           new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
@@ -113,8 +104,6 @@ jobs:
           cp -r allure-report/* gh-pages/$new_folder_number/
           cp -r allure-report/* gh-pages/$current_latest_number/
           echo "Allure report copied to gh-pages/$new_folder_number and gh-pages/$current_latest_number"
-          ls -R gh-pages/$new_folder_number
-          ls -R gh-pages/$current_latest_number
 
       - name: Update Allure Report Widget Title in new folder
         continue-on-error: true
@@ -161,8 +150,7 @@ jobs:
             echo "summary.json not found"
             echo "::set-output name=passing_percentage::0"
             echo "::set-output name=failing_percentage::0"
-            echo "::set-output name=passed_tests::0"
-            echo "::set-output name=failed_tests::0"
+            echo "::
           fi
 
       # - name: Notify Slack
