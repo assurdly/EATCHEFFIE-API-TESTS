@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Successfully fetched roles","data":[{"id":"dd73084d-df67-4099-a71e-e158b7ed4364","name":"Customer Response Analyst","slug":"customer-response-analyst","description":"Role for Jobtitle","status":"active","createdAt":"2024-06-09T21:02:02.982Z"}],"meta":{"totalNumberOfRecords":1,"totalNumberOfPages":1,"pageNumber":1,"pageSize":20}}
