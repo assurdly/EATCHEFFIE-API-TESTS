@@ -14,6 +14,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Get current latest folder in gh-pages
+        id: get_current_latest
+        run: |
+          git fetch origin gh-pages
+          mkdir -p gh-pages
+          git clone --depth 1 --branch gh-pages https://github.com/${{ github.repository }} gh-pages
+          current_latest=$(find gh-pages -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | sort -n | tail -n 1)
+          current_latest_number=$(basename $current_latest)
+          echo "Current Latest Folder Number: $current_latest_number"
+          echo "::set-output name=current_latest_number::$current_latest_number"
+
       - name: Install newman and newman-reporter-allure
         run: |
           npm install -g newman newman-reporter-allure
@@ -37,8 +48,8 @@ jobs:
       - name: Copy existing content to allure-history
         run: |
           mkdir -p allure-history
-          if [ -d gh-pages/vendor ]; then
-            cp -r gh-pages/vendor/* allure-history/
+          if [ -d gh-pages ]; then
+            cp -r gh-pages/* allure-history/
           fi
 
       - name: Allure report action
@@ -48,7 +59,7 @@ jobs:
         continue-on-error: true
         with:
           allure_results: allure-results
-          gh_pages: gh-pages/vendor
+          gh_pages: gh-pages
           allure_report: allure-report
           allure_history: allure-history
 
@@ -64,25 +75,52 @@ jobs:
       - name: Wait for Allure report to be generated
         if: always()
         continue-on-error: true
-        run: sleep 150
+        run: sleep 60
+
+      - name: Find new folder in gh-pages
+        id: new_folder
+        run: |
+          new_folder=$(find gh-pages -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | sort -n | tail -n 1)
+          new_folder_number=$(basename $new_folder)
+          new_folder_number=$((new_folder_number + 1))
+          mkdir -p gh-pages/$new_folder_number
+          echo "New Folder Number: $new_folder_number"
+          echo "::set-output name=new_folder_number::$new_folder_number"
+
+      - name: Ensure new folder number is greater
+        run: |
+          current_latest_number=${{ steps.get_current_latest.outputs.current_latest_number }}
+          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
+          if [ "$new_folder_number" -le "$current_latest_number" ]; then
+            echo "New folder number ($new_folder_number) is not greater than current latest folder number ($current_latest_number). Exiting."
+            exit 1
+          else
+            echo "New folder number ($new_folder_number) is greater than current latest folder number ($current_latest_number)."
+          fi
+
+      - name: List contents of new folder
+        run: |
+          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
+          ls -R gh-pages/$new_folder_number
 
       - name: Update Allure Report Widget Title
         continue-on-error: true
         run: |
-          summary_path="gh-pages/vendor/widgets/summary.json"
+          new_folder_number=${{ steps.new_folder.outputs.new_folder_number }}
+          summary_path="gh-pages/$new_folder_number/widgets/summary.json"
           echo "Summary Path: $summary_path"
           if [[ -e "$summary_path" ]]; then
             cat "$summary_path"  # Print content before
             sudo sed -i 's/Allure Report/Vendor - API Quality Readiness/' "$summary_path"
             cat "$summary_path"  # Print content after
           else
-            echo "Error: summary.json not found in the vendor folder."
+            echo "Error: summary.json not found in the new folder."
           fi
 
       - name: Parse new summary.json
         id: parse_new_json
         run: |
-          new_summary_path="gh-pages/vendor/widgets/summary.json"
+          new_summary_path="gh-pages/${{ steps.new_folder.outputs.new_folder_number }}/widgets/summary.json"
           echo "New Summary Path: $new_summary_path"
           if [ -f "$new_summary_path" ]; then
             cat "$new_summary_path"
@@ -120,10 +158,10 @@ jobs:
           SLACK_CHANNEL: 'C070KUKPDLZ'
           SLACK_MESSAGE: |
             *Eatcheffie Vendor - API Quality Readiness*
-            *Contributors - Azeez*
+            *Contributors - Moses George*
             Status: ${{ job.status }}
             Passing Tests: ${{ steps.parse_new_json.outputs.passing_percentage }}%
             Failing Tests: ${{ steps.parse_new_json.outputs.failing_percentage }}%
             Total Passed: ${{ steps.parse_new_json.outputs.passed_tests }}
             Total Failed: ${{ steps.parse_new_json.outputs.failed_tests }}
-            GitHub Pages URL: ${{ secrets.PAGES_URL }}/vendor
+            GitHub Pages URL: ${{ secrets.PAGES_URL }}/${{ steps.new_folder.outputs.new_folder_number }}
