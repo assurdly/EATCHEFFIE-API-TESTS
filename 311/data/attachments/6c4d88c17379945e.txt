@@ -1,0 +1,4 @@
+{
+    "code": "4/0AdLIrYdzKtcnubbwKArnP1rSZS8FG9KTxmVtx25xdYMuEk3vtmblR4kQTtfFw0TimUcRjQ",
+    "purpose": "signup"
+}

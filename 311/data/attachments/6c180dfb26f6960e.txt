@@ -1,0 +1,4 @@
+{
+    "roleId": "e0f293e3-23a6-4ca3-89b1-d6a8ea211116",
+    "email": "VinnieIVmailinator"
+}
