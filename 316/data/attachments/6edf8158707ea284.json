@@ -1,0 +1,12 @@
+{
+    "x-request-source": "vendor",
+    "Authorization": "Bearer {{vendor_access_token}}",
+    "User-Agent": "PostmanRuntime/7.37.1",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "dc001a5a-459c-4fb0-bf97-212aae041317",
+    "Host": "api.eatcheffie.com",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "2663"
+}

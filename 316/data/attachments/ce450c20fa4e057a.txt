@@ -1,0 +1,14 @@
+{
+    "sessionTimeout": 10,
+    "invalidPasswordAttempts": 5,
+    "sessionInactivity": 5,
+    "orderLimit": 20,
+    "openTime": "2024-05-27T07:00:00",
+    "closeTime": "2024-05-27T19:00:00",
+    "fees": [
+        {
+            "areaId": "63216e5f-abed-4690-a0e6-4732bc3dd275",
+            "rate": 30
+        }
+    ]
+}

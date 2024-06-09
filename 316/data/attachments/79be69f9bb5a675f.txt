@@ -1,0 +1,4 @@
+{
+    "roleId": "01f08b6e-45f2-4206-a66a-160a95acc8f3",
+    "email": "PhilipJr.mailinator"
+}
