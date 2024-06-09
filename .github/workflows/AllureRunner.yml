@@ -163,7 +163,7 @@ jobs:
           SLACK_CHANNEL: 'C070KUKPDLZ'
           SLACK_MESSAGE: |
             *Eatcheffie Vendor - API Quality Readiness*
-            *Contributors - Moses George*
+            *Contributors - Azeez*
             Status: ${{ job.status }}
             Passing Tests: ${{ steps.parse_new_json.outputs.passing_percentage }}%
             Failing Tests: ${{ steps.parse_new_json.outputs.failing_percentage }}%
