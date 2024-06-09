@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"User created succesfully. An email has been sent with instructions on how to setup the account.","data":{"resetPasswordToken":"611970f2d2955dd0ee844a766f27eeef9dd945bb","resetUrl":"http://api.eatcheffie.com/user/invite?token=611970f2d2955dd0ee844a766f27eeef9dd945bb"}}
