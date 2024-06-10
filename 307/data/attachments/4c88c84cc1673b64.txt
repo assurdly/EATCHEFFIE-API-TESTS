@@ -1,1 +1,0 @@
-level: log, messages: Role with name "RSS Test Role" already exists
