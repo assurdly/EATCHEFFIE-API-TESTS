@@ -9220,7 +9220,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"inactive\" // \"active\" | \"inactive\"\n}",
+									"raw": "{\n    \"status\": \"active\" // \"active\" | \"inactive\",\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9240,7 +9240,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "c1ef7d8f-4d14-4f1f-b2b8-d46f3560c80d"
+											"value": "{{adminCustomer}}"
 										}
 									]
 								}
