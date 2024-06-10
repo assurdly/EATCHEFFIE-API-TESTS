@@ -1,0 +1,1 @@
+{"message":"Validation Error.","data":{"mealId":"mealId must be a UUID","priceId":"priceId should not be empty"}}

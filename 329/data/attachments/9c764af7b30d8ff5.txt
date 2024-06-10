@@ -1,0 +1,4 @@
+{
+    "vendorId": "641f6a34-adb5-4200-aef9-cc3b2f53d198",
+    "addressId": ""
+}
