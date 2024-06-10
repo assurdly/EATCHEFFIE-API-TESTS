@@ -1868,7 +1868,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"tara@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n    \"password\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5192,9 +5192,6 @@
 											"",
 											"pm.test(\"Status code name has OK\", function () {",
 											"    pm.response.to.have.status(\"OK\");",
-											"});",
-											"pm.test(\"Status is success\", function () {",
-											"    pm.expect(pm.response.json().success).to.be.true;",
 											"});",
 											"",
 											"pm.test(\"Status is success\", function () {",
