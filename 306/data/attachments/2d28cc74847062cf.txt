@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"Meal created successfully","data":{"id":"b1cb1c3c-a0ac-44c8-8a66-60acd91ac812","name":"Good Food Trafficway","description":"Spicy Burger Mediul","tags":"vibes","specialtyCategories":"vibes","isPublished":false}}
