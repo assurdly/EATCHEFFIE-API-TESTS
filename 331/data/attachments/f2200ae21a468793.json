@@ -1,0 +1,14 @@
+{
+    "x-request-source": "ec",
+    "x-authentication-code": "123456",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {{admin_access_token}}",
+    "User-Agent": "PostmanRuntime/7.39.0",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "51450be2-66da-4467-bc40-bacbbbf19f7f",
+    "Host": "api.eatcheffie.com",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "76"
+}

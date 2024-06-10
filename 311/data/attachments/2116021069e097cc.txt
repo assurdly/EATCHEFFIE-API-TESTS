@@ -1,5 +1,0 @@
-{
-    "firstName": "Azeez",
-    "lastName": "Ibrahim",
-    "dob": "1990-03-12"
-}

@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Campaign updated successfully","data":{"title":"Banner","description":"Description","images":[],"id":"e3ab70e0-6750-4c4f-9635-1ee8c8f49ac6","createdAt":"2024-06-10T01:09:39.229Z","updatedAt":"2024-06-10T14:48:19.392Z","status":"active"}}
