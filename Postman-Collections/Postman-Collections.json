@@ -8808,6 +8808,170 @@
 						}
 					],
 					"id": "7aabb0e6-e186-4900-a422-9669ef9a9e95"
+				},
+				{
+					"name": "Reviews Copy",
+					"item": [
+						{
+							"name": "Fetch Reviews",
+							"id": "ad2d0cc6-52be-4cb8-9d23-6e1dda42f355",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/vendors/reviews",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"vendors",
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "filter[vendorId]",
+											"value": null,
+											"description": "The business ID of the vendor in question",
+											"disabled": true
+										},
+										{
+											"key": "filter[rating][gt]",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][gt]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][lt]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Review",
+							"id": "94d3aac9-127e-4842-9617-fe36f4eae125",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reason\": \"Vibes\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/vendors/reviews/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"vendors",
+										"reviews",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "1355d323-7a19-444d-b4ad-cb35ff09e618",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "9d230a7b-e0fe-4a59-be4c-599747b853ca"
+				},
+				{
+					"name": "Blacklist Vendor Copy",
+					"id": "20e57e8d-522a-46c0-b356-d1bcda9ed7fb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"vibes\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/vendors/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"vendors",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "78254bbc-ddad-4d29-b8c1-c5a107de01b8",
+									"key": "id",
+									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "9f9e6412-3fa2-4731-89f2-406c223553a7"
