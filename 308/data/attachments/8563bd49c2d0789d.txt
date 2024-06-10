@@ -1,7 +1,0 @@
-{
-    "firstName": "Jerry",
-    "lastName": "Glover",
-    "password": "Password12@@",
-    "confirmPassword": "Password12@@",
-    "token": "e599bb3e8f6f781accaa7c799d4cba1a27c2d47a"
-}
