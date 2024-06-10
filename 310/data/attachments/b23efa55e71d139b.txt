@@ -1,4 +1,0 @@
-{
-    "roleId": "d196c1a4-c36f-4450-a68f-0773c8316aec",
-    "email": "CamilaIV@mailinator.com"
-}

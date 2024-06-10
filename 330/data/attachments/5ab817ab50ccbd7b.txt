@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Banner updated successfully","data":{"title":"Banner","description":"Vendor","images":[],"id":"2546529e-0134-4ee5-b79b-4ca8df7f4d0c","createdAt":"2024-06-10T01:04:00.949Z","updatedAt":"2024-06-10T09:38:09.598Z","status":"active"}}
