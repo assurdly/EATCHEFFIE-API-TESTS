@@ -1,0 +1,4 @@
+{
+    "vendorId": "0b1d86b7-7706-4a7d-be3a-3cdf15422f31",
+    "amount": 10
+}

@@ -1,6 +1,0 @@
-{
-    "firstName": "Lisa",
-    "lastName": "Gorczany",
-    "gender": "male",
-    "dob": "2004-03-12"
-}
