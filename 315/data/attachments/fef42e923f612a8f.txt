@@ -1,4 +1,0 @@
-{
-    "roleId": "45f2b9c2-3c1d-4048-9867-96182b397fad",
-    "email": "MauriceSr.mailinator"
-}

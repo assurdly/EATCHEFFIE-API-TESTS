@@ -1,4 +1,0 @@
-{
-    "email": "Aisha@mailinator.com",
-    "password": "Pass"
-}
