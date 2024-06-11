@@ -1,5 +1,0 @@
-{
-    "token": "d2e2ebd2b59901881b54c2a1ad885e2b48125a80",
-    "password": "Randompassword1@",
-    "confirmPassword": "Randompassword1@"
-}

@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Successfully fetched roles","data":[{"id":"46b17a19-14fd-48d0-b2d4-7afdfa711fb8","name":"Legacy Mobility Liaison","slug":"legacy-mobility-liaison","description":"Role for Jobtitle","status":"active","createdAt":"2024-06-11T16:42:43.938Z"}],"meta":{"totalNumberOfRecords":1,"totalNumberOfPages":1,"pageNumber":1,"pageSize":20}}
