@@ -9543,7 +9543,7 @@
 							"response": []
 						},
 						{
-							"name": "Fetch Customers Copy 2",
+							"name": "Fetch Customers",
 							"event": [
 								{
 									"listen": "test",
