@@ -1,0 +1,5 @@
+{
+    "oldPassword": "Randompassword1@",
+    "password": "randompassword",
+    "confirmPassword": "randompassword"
+}

@@ -1,0 +1,8 @@
+{
+    "description": "Description",
+    "status": "active",
+    "maxUseCount": 100,
+    "discount": 5,
+    "startDate": "2024-05-31",
+    "endDate": "2024-05-31"
+}
