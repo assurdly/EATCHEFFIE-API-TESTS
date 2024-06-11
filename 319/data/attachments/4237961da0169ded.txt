@@ -1,6 +1,0 @@
-{
-    "firstName": "Adelle",
-    "lastName": "Smith",
-    "gender": "male",
-    "dob": "2004-03-12"
-}

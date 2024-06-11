@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"Meal created successfully","data":{"id":"2a37c6a7-42a3-46d6-ae38-f193dde3e3b0","name":"Good Food Lek","description":"Spicy Burger Mediul","tags":"vibes","specialtyCategories":"vibes","isPublished":false}}

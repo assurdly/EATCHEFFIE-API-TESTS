@@ -1,6 +1,0 @@
-{
-    "firstName": "John",
-    "lastName": "Doe",
-    "gender": "",
-    "dob": "2024-10-12"
-}
