@@ -16696,10 +16696,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{adminAccessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "DELETE",
 								"header": [
@@ -17311,10 +17308,7 @@
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{adminAccessToken}}"
-									}
+									"type": "noauth"
 								},
 								"method": "DELETE",
 								"header": [
