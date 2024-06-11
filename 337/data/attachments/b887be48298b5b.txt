@@ -1,0 +1,7 @@
+{
+    "sessionTimeout": 10,
+    "invalidPasswordAttempts": 5,
+    "sessionInactivity": 5,
+    "systemCancelOrderTime": 20, 
+    "platformCommission": 20 
+}

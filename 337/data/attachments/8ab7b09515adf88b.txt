@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Successfully fetched roles","data":[{"id":"c0297375-8559-4735-8441-c7e3b9464ecc","name":"Senior Branding Producer","slug":"senior-branding-producer","description":"Role for Jobtitle","status":"active","createdAt":"2024-06-11T12:37:43.904Z"}],"meta":{"totalNumberOfRecords":1,"totalNumberOfPages":1,"pageNumber":1,"pageSize":20}}

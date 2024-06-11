@@ -1,0 +1,13 @@
+{
+    "x-request-source": "ec",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOWVkYzMzLWIwODUtNDE1MC05OWQ1LWMwZGY4ZWI2MjM0MSIsImlhdCI6MTcxODEwOTQ2MCwiZXhwIjoxNzE4MTEzMDYwfQ.-_b9-IT49rBTPhUiSkvpduSR1lvJ3578sPN_fsM9fQM",
+    "User-Agent": "PostmanRuntime/7.39.0",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "0ada6d64-8c5d-43a0-b9c8-95909455e455",
+    "Host": "api.eatcheffie.com",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "130"
+}
