@@ -9385,7 +9385,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/customers",
+									"raw": "{{base_url}}/admin/customers?filter[status]=active",
 									"host": [
 										"{{base_url}}"
 									],
@@ -9406,7 +9406,245 @@
 										},
 										{
 											"key": "filter[q]",
-											"value": "emerald",
+											"value": "t.osunk",
+											"description": "Searches by name and email",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "active",
+											"description": "active"
+										},
+										{
+											"key": "filter[createdAt][gt]",
+											"value": "2024-06-05",
+											"description": "active",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][lt]",
+											"value": "2024-06-05",
+											"description": "active",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Customers Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "282ee08f-3b7d-4128-bcd0-0af3974331ff",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminCustomer = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Customers fetched successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "175b2ed8-deca-4a36-b5dc-321372a14cfa",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/customers?filter[status]=active",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "6",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "filter[q]",
+											"value": "t.osunk",
+											"description": "Searches by name and email",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "active",
+											"description": "active"
+										},
+										{
+											"key": "filter[createdAt][gt]",
+											"value": "2024-06-05",
+											"description": "active",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][lt]",
+											"value": "2024-06-05",
+											"description": "active",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Customers Copy 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "282ee08f-3b7d-4128-bcd0-0af3974331ff",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminCustomer = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Customers fetched successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "bcc0cb74-6665-4c3c-aa5a-943d67b9b733",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/customers?filter[status]=active",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "6",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "filter[q]",
+											"value": "t.osunk",
+											"description": "Searches by name and email",
+											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "active",
+											"description": "active"
+										},
+										{
+											"key": "filter[createdAt][gt]",
+											"value": "2024-06-05",
+											"description": "active",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][lt]",
+											"value": "2024-06-05",
+											"description": "active",
 											"disabled": true
 										}
 									]
@@ -10293,6 +10531,45 @@
 						}
 					],
 					"id": "bdd764f0-38ec-4696-82bb-5572d1d83261"
+				},
+				{
+					"name": "Blacklist Customer",
+					"id": "6d9c1d80-83c9-42b5-87ba-5806643d1da9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "3befb522-3609-4df3-b24d-f3edd7725755",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
