@@ -1,0 +1,6 @@
+{
+    "name": "Poss",
+    "description": "Role for Poss",
+    "status": "declined", 
+    "permissions": ["9ac19871-791a-467d-b057-0611561f557e"] 
+}

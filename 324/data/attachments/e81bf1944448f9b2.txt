@@ -1,4 +1,0 @@
-{
-    "roleId": "5846ff73-5174-4702-9778-ad50e21c10ac",
-    "email": "ShadSr.@mailinator.com"
-}
