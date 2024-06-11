@@ -7639,7 +7639,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/vendors?filter[q]=Temi's Kitchen Fab",
+									"raw": "{{base_url}}/admin/vendors",
 									"host": [
 										"{{base_url}}"
 									],
@@ -7651,7 +7651,8 @@
 										{
 											"key": "filter[q]",
 											"value": "Temi's Kitchen Fab",
-											"description": "filters by vendor name, primary user email and phone"
+											"description": "filters by vendor name, primary user email and phone",
+											"disabled": true
 										},
 										{
 											"key": "filter[status]",
