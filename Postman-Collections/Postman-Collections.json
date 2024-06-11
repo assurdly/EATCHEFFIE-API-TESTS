@@ -9435,7 +9435,7 @@
 							"response": []
 						},
 						{
-							"name": "Fetch Customers Copy",
+							"name": "By Status - Fetch Customers",
 							"event": [
 								{
 									"listen": "test",
