@@ -10570,6 +10570,45 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Customer Copy",
+					"id": "52005a8f-8d24-45a2-b95f-2838c28827bd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"Vibes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "6eadfdfd-9754-404b-a6e2-25613265ebef",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
