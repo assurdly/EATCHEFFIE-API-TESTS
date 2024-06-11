@@ -9333,8 +9333,10 @@
 											"const jsonData = pm.response.json();\r",
 											"\r",
 											"const adminCustomer = jsonData.data[0].id\r",
+											"const customerCreatedAt = jsonData.data[0].createdAt\r",
 											"\r",
 											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
+											"pm.environment.set(\"customerCreatedAt\", customerCreatedAt)\r",
 											"\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
@@ -9385,7 +9387,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/customers?filter[status]=active",
+									"raw": "{{base_url}}/admin/customers?filter[createdAt][gt]=2024-06-11",
 									"host": [
 										"{{base_url}}"
 									],
@@ -9406,20 +9408,20 @@
 										},
 										{
 											"key": "filter[q]",
-											"value": "t.osunk",
+											"value": "Temitayo",
 											"description": "Searches by name and email",
 											"disabled": true
 										},
 										{
 											"key": "filter[status]",
 											"value": "active",
-											"description": "active"
+											"description": "active",
+											"disabled": true
 										},
 										{
 											"key": "filter[createdAt][gt]",
-											"value": "2024-06-05",
-											"description": "active",
-											"disabled": true
+											"value": "2024-06-11",
+											"description": "active"
 										},
 										{
 											"key": "filter[createdAt][lt]",
@@ -9543,7 +9545,7 @@
 							"response": []
 						},
 						{
-							"name": "Fetch Customers",
+							"name": "By CreatedAt - Fetch Customers",
 							"event": [
 								{
 									"listen": "test",
@@ -9551,11 +9553,6 @@
 										"id": "282ee08f-3b7d-4128-bcd0-0af3974331ff",
 										"exec": [
 											"const jsonData = pm.response.json();\r",
-											"\r",
-											"const adminCustomer = jsonData.data[0].id\r",
-											"\r",
-											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
-											"\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -9605,7 +9602,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/customers?filter[status]=active",
+									"raw": "{{base_url}}/admin/customers?filter[createdAt][gt]={{customerCreatedAt}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -9633,13 +9630,13 @@
 										{
 											"key": "filter[status]",
 											"value": "active",
-											"description": "active"
+											"description": "active",
+											"disabled": true
 										},
 										{
 											"key": "filter[createdAt][gt]",
-											"value": "2024-06-05",
-											"description": "active",
-											"disabled": true
+											"value": "{{customerCreatedAt}}",
+											"description": "active"
 										},
 										{
 											"key": "filter[createdAt][lt]",
