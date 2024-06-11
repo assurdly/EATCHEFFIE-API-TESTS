@@ -1,6 +1,0 @@
-{
-    "firstName": "Therese",
-    "lastName": "Bergnaum",
-    "gender": "male",
-    "dob": "2004-03-12"
-}
