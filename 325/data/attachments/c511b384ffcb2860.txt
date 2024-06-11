@@ -1,1 +1,0 @@
-{"message":"Validation Error.","data":{"phone":"phone must be a valid phone number"}}

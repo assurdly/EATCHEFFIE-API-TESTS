@@ -1,0 +1,5 @@
+{
+    "description": "Role for Job title",
+    "status": "active", 
+    "permissions": ["60f7f5dc-7203-45f1-a95a-b42c34364f9d"] 
+}

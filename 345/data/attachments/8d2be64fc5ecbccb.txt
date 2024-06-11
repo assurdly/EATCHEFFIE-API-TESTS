@@ -1,0 +1,6 @@
+{
+    "name": "Admin",
+    "description": "Role for HR personnel",
+    "status": "active", 
+    "permissions": ["04f6790f-cea0-487d-8e10-4602ecabc348"] 
+}

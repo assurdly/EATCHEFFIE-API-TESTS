@@ -1,1 +1,0 @@
-{"statusCode":400,"message":"When `stripe_dashboard[type]=express`, your platform must collect fees and be liable for negative balances or refunds and chargebacks."}
