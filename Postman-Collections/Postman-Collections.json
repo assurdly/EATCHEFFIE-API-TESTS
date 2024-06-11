@@ -6601,7 +6601,142 @@
 												"disabled": true
 											}
 										],
-										"url": "{{base_url}}/users"
+										"url": {
+											"raw": "{{base_url}}/users?filter[roleId]=2fd20713-52c8-413f-a81b-2c5e9077f074",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users"
+											],
+											"query": [
+												{
+													"key": "filter[q]",
+													"value": "Temitayo",
+													"description": "Searches by name, email and phone",
+													"disabled": true
+												},
+												{
+													"key": "filter[roleId]",
+													"value": "2fd20713-52c8-413f-a81b-2c5e9077f074"
+												},
+												{
+													"key": "filter[status]",
+													"value": null,
+													"disabled": true
+												},
+												{
+													"key": "filter[createdAt][gt]",
+													"value": "2024-05-21",
+													"disabled": true
+												},
+												{
+													"key": "filter[createdAt][lt]",
+													"value": "2024-05-30",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "By roleId - List Users",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "13600a12-91da-427c-b074-ae02577e3ff4",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"const userId = jsonData.data[0].id\r",
+													"\r",
+													"pm.environment.set(\"userId\", userId)\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'OK'\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"pm.test(\"Response body property\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.status).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status is 'success'\", function () {\r",
+													"    pm.expect(jsonData.status).to.eql('success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify Fetched users successfully\", function () {\r",
+													"    pm.expect(jsonData.message).to.include('Fetched users successfully');\r",
+													"});\r",
+													"pm.test(\"Verify that data is a string\", function () {\r",
+													"    pm.expect(jsonData.data).to.be.an('array').and.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "b62fe960-1947-40c3-9738-dea8bfcb238a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "admin",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/users?filter[roleId]={{roleId}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users"
+											],
+											"query": [
+												{
+													"key": "filter[q]",
+													"value": "Temitayo",
+													"description": "Searches by name, email and phone",
+													"disabled": true
+												},
+												{
+													"key": "filter[roleId]",
+													"value": "{{roleId}}"
+												},
+												{
+													"key": "filter[status]",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "filter[createdAt][gt]",
+													"value": "2024-05-21",
+													"disabled": true
+												},
+												{
+													"key": "filter[createdAt][lt]",
+													"value": "2024-05-30",
+													"disabled": true
+												}
+											]
+										}
 									},
 									"response": []
 								},
