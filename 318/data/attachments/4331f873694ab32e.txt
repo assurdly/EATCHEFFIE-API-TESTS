@@ -1,6 +1,0 @@
-{
-    "phone": "0902762717",
-    "password": "Password12@@"
-}
-
-

@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"Meal created successfully","data":{"id":"74ebd229-1b08-4fcb-bc75-73b7692f0406","name":"Good Food Rubber","description":"Spicy Burger Mediul","tags":"vibes","specialtyCategories":"vibes","isPublished":false}}
