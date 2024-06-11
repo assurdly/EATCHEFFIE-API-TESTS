@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"Campaign deleted successfully","data":{"title":"Banner","description":"Description","images":[],"id":"f73ee59e-bcce-4acc-a042-d3ffdb89c78e","createdAt":"2024-06-04T16:43:15.549Z","updatedAt":"2024-06-09T20:47:02.681Z","status":"active"}}
