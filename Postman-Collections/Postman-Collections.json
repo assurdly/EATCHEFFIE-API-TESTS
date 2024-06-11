@@ -7639,7 +7639,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/vendors",
+									"raw": "{{base_url}}/admin/vendors?filter[q]=Temi's Kitchen Fab",
 									"host": [
 										"{{base_url}}"
 									],
@@ -7650,8 +7650,8 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "Azeez",
-											"disabled": true
+											"value": "Temi's Kitchen Fab",
+											"description": "filters by vendor name, primary user email and phone"
 										},
 										{
 											"key": "filter[status]",
@@ -7662,11 +7662,28 @@
 										{
 											"key": "limit",
 											"value": "5",
+											"description": "azeez+51@assurdly.com\"",
 											"disabled": true
 										},
 										{
 											"key": "page",
 											"value": "1",
+											"description": "Temi's Kitchen Fab",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][gt]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][gt]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										},
+										{
+											"key": "filter[rating][gt]",
+											"value": "3",
 											"disabled": true
 										}
 									]
@@ -9445,11 +9462,6 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"const adminCustomer = jsonData.data[0].id\r",
-											"\r",
-											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
-											"\r",
-											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
@@ -9603,7 +9615,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/customers?filter[createdAt][gt]={{customerCreatedAt}}",
+									"raw": "{{base_url}}/admin/customers",
 									"host": [
 										"{{base_url}}"
 									],
@@ -9636,8 +9648,9 @@
 										},
 										{
 											"key": "filter[createdAt][gt]",
-											"value": "{{customerCreatedAt}}",
-											"description": "active"
+											"value": "2024-06-09",
+											"description": "active",
+											"disabled": true
 										},
 										{
 											"key": "filter[createdAt][lt]",
@@ -10297,7 +10310,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{adminCustomer}}"
+											"value": "98f1694d-85ee-4eae-932c-3640ed13294b"
 										}
 									]
 								}
