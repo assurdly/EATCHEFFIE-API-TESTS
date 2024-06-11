@@ -6604,7 +6604,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{base_url}}/users?filter[createdAt][gt]={{createdAt}}",
+											"raw": "{{base_url}}/users",
 											"host": [
 												"{{base_url}}"
 											],
@@ -6630,7 +6630,8 @@
 												},
 												{
 													"key": "filter[createdAt][gt]",
-													"value": "{{createdAt}}"
+													"value": "{{createdAt}}",
+													"disabled": true
 												},
 												{
 													"key": "filter[createdAt][lt]",
@@ -18348,7 +18349,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"super@admin.com\" \n}",
+							"raw": "{\n    \"email\":\"super@admin.com\" \n  //   \"email\":\"Celine@yopmail.com\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
