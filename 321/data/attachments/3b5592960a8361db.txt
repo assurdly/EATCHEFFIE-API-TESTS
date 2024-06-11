@@ -1,1 +1,0 @@
-{"message":"Validation Error.","data":{"categoryIds":"each value in categoryIds must be a UUID"}}

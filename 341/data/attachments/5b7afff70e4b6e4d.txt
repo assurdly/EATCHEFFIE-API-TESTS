@@ -1,0 +1,4 @@
+pm.request.headers.add({
+    key: 'x-request-source',
+    value: 'ec'
+});
