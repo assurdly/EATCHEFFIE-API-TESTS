@@ -10544,45 +10544,6 @@
 					"id": "bdd764f0-38ec-4696-82bb-5572d1d83261"
 				},
 				{
-					"name": "Blacklist Customer",
-					"id": "6d9c1d80-83c9-42b5-87ba-5806643d1da9",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"reason\": \"\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/admin/customers/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"customers",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "3befb522-3609-4df3-b24d-f3edd7725755",
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Delete Customer Copy",
 					"id": "52005a8f-8d24-45a2-b95f-2838c28827bd",
 					"protocolProfileBehavior": {
@@ -13920,6 +13881,39 @@
 				}
 			],
 			"id": "886b3b96-b5e8-4563-b362-13e8892cb487"
+		},
+		{
+			"name": "Notifications Copy",
+			"item": [
+				{
+					"name": "Fetch Notifications",
+					"id": "ce93a11e-8c44-4776-9917-69cf14f0db6a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications?filter[createdAt]=2024-06-10T23:00:00",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "filter[createdAt]",
+									"value": "2024-06-10T23:00:00"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "bc90701d-734c-4a77-b4be-1a5dfa7eb72c"
 		},
 		{
 			"name": "System Settings",
