@@ -14142,11 +14142,55 @@
 			"item": [
 				{
 					"name": "Fetch Notifications",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a11c7c85-8af9-4ea9-be3f-32b8abf11b90",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched customer successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer successfully\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify data returns customers\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "ce93a11e-8c44-4776-9917-69cf14f0db6a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
