@@ -9616,7 +9616,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/customers?filter[createdAt][gt]=2024-06-09",
+									"raw": "{{base_url}}/admin/customers?filter[createdAt][lt]=2024-06-05",
 									"host": [
 										"{{base_url}}"
 									],
@@ -9650,13 +9650,13 @@
 										{
 											"key": "filter[createdAt][gt]",
 											"value": "2024-06-09",
-											"description": "active"
+											"description": "active",
+											"disabled": true
 										},
 										{
 											"key": "filter[createdAt][lt]",
 											"value": "2024-06-05",
-											"description": "active",
-											"disabled": true
+											"description": "active"
 										}
 									]
 								}
@@ -14065,7 +14065,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/notifications?filter[createdAt]=2024-06-10T23:00:00",
+							"raw": "{{base_url}}/notifications?filter[createdAt]=2024-06-12T23:00:00",
 							"host": [
 								"{{base_url}}"
 							],
@@ -14075,7 +14075,7 @@
 							"query": [
 								{
 									"key": "filter[createdAt]",
-									"value": "2024-06-10T23:00:00"
+									"value": "2024-06-12T23:00:00"
 								}
 							]
 						}
