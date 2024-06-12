@@ -10544,7 +10544,7 @@
 					"id": "bdd764f0-38ec-4696-82bb-5572d1d83261"
 				},
 				{
-					"name": "Delete Customer Copy",
+					"name": "Delete Customer",
 					"id": "52005a8f-8d24-45a2-b95f-2838c28827bd",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -10656,17 +10656,17 @@
 							"query": [
 								{
 									"key": "filter[status]",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "filter[q]",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "filter[createdAt]",
-									"value": null,
+									"value": "",
 									"disabled": true
 								}
 							]
