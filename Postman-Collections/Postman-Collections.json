@@ -14243,7 +14243,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password12@@\",\n    \"confirmPassword\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
