@@ -10454,133 +10454,6 @@
 						}
 					],
 					"id": "d4187fe9-e730-49de-98cf-dc479181dde7"
-				},
-				{
-					"name": "Blacklist Customer",
-					"item": [
-						{
-							"name": "Blacklist Customer",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "f9560719-a133-4a06-bac3-c9d34cf0501c",
-										"exec": [
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Status code name has 'OK'\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
-											"});\r",
-											"pm.test(\"Response body property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.status).to.be.a('string');\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"    pm.expect(jsonData.data).to.be.an('object');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status is 'success'\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify Fetched customer successfully\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer successfully\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify data returns customers\", function () {\r",
-											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "46f96932-71f8-4b7c-b5c3-49f3fd68b946",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{adminAccessToken}}"
-									}
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"reason\": \"Rude\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/admin/customers/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"admin",
-										"customers",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "0603b95e-471a-49c5-a845-a5932e351be7"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"id": "bdd764f0-38ec-4696-82bb-5572d1d83261"
-				},
-				{
-					"name": "Delete Customer",
-					"id": "52005a8f-8d24-45a2-b95f-2838c28827bd",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"reason\": \"Vibes\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/admin/customers/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"customers",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "6eadfdfd-9754-404b-a6e2-25613265ebef",
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			],
 			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
@@ -14522,6 +14395,94 @@
 				}
 			],
 			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
+		},
+		{
+			"name": "Blacklist Customer",
+			"item": [
+				{
+					"name": "Blacklist Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9560719-a133-4a06-bac3-c9d34cf0501c",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched customer successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer successfully\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify data returns customers\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "46f96932-71f8-4b7c-b5c3-49f3fd68b946",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"Rude\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0603b95e-471a-49c5-a845-a5932e351be7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "bdd764f0-38ec-4696-82bb-5572d1d83261"
 		},
 		{
 			"name": "Delete customer",
