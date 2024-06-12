@@ -9616,7 +9616,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/customers",
+									"raw": "{{base_url}}/admin/customers?filter[createdAt][gt]=2024-06-09",
 									"host": [
 										"{{base_url}}"
 									],
@@ -9650,8 +9650,7 @@
 										{
 											"key": "filter[createdAt][gt]",
 											"value": "2024-06-09",
-											"description": "active",
-											"disabled": true
+											"description": "active"
 										},
 										{
 											"key": "filter[createdAt][lt]",
