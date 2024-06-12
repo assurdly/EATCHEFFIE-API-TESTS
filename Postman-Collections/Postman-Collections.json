@@ -10901,7 +10901,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/admin/orders?filter[q]=emerald",
+							"raw": "{{base_url}}/admin/orders",
 							"host": [
 								"{{base_url}}"
 							],
@@ -10917,11 +10917,12 @@
 								},
 								{
 									"key": "filter[q]",
-									"value": "emerald"
+									"value": "emerald",
+									"disabled": true
 								},
 								{
 									"key": "filter[createdAt]",
-									"value": "",
+									"value": "2024-06-12",
 									"disabled": true
 								}
 							]
