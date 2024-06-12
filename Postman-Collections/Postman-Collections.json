@@ -10953,7 +10953,6 @@
 											"\r",
 											"pm.environment.set(\"transactionRef\", transactionRef)\r",
 											"\r",
-											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
@@ -10966,15 +10965,12 @@
 											"    pm.expect(jsonData.message).to.be.a('string');\r",
 											"    pm.expect(jsonData.data).to.be.an('array');\r",
 											"});\r",
-											"\r",
 											"pm.test(\"Status is 'success'\", function () {\r",
 											"    pm.expect(jsonData.status).to.eql('success');\r",
 											"});\r",
-											"\r",
 											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.equal(\"Fetched transactions successfully\");\r",
 											"});\r",
-											"\r",
 											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
 											"    pm.expect(pm.response.json().data).to.be.an(\"array\");\r",
 											"});"
@@ -11004,7 +11000,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/transactions?filter[customerId]=98f1694d-85ee-4eae-932c-3640ed13294b",
+									"raw": "{{base_url}}/admin/transactions",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11015,12 +11011,13 @@
 									"query": [
 										{
 											"key": "filter[orgId]",
-											"value": "0077edff-24f4-4397-83c9-05d5d4198b26",
+											"value": "",
 											"disabled": true
 										},
 										{
 											"key": "filter[customerId]",
-											"value": "98f1694d-85ee-4eae-932c-3640ed13294b"
+											"value": "98f1694d-85ee-4eae-932c-3640ed13294b",
+											"disabled": true
 										},
 										{
 											"key": "filter[status]",
