@@ -55,7 +55,7 @@
 									"script": {
 										"id": "0201c521-d964-46ae-a56d-05e2fddb8cdb",
 										"exec": [
-											"pm.environment.set('base_url', 'https://api.eatcheffie.com/v1')\r",
+											"pm.environment.set('base_url', ' http://api-test.eatcheffie.com')\r",
 											""
 										],
 										"type": "text/javascript",
