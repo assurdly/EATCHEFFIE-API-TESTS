@@ -11352,6 +11352,36 @@
 							"body": "{\n    \"message\": \"Validation Error.\",\n    \"data\": {\n        \"status\": \"status must be one of the following values: pending, processing, enroute, delivered, completed, cancelled\"\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "Fetch Order By ID Copy",
+					"id": "84e774b2-2697-42ed-9ce4-f437c6a251b7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/orders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "75eb4848-25ab-4962-b828-b2888f0794e5",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "a202ee52-92ca-4a5d-89e2-9aa98aef5f69"
