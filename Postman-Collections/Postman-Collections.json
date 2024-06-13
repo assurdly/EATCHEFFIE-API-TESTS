@@ -7997,7 +7997,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/vendors",
+									"raw": "{{base_url}}/admin/vendors?filter[status]=pending",
 									"host": [
 										"{{base_url}}"
 									],
@@ -8015,8 +8015,7 @@
 										{
 											"key": "filter[status]",
 											"value": "pending",
-											"description": "pending, active, inactive",
-											"disabled": true
+											"description": "pending, active, inactive"
 										},
 										{
 											"key": "limit",
@@ -9276,7 +9275,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"inactive\" // \"active\" | \"inactive\"\n}",
+									"raw": "{\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9296,7 +9295,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{adminVendor}}"
+											"value": "3f78b60e-751e-4495-8f71-27b2982deced"
 										}
 									]
 								}
@@ -9530,6 +9529,42 @@
 					"item": [
 						{
 							"name": "Fetch Reviews",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "94eafdf5-8c58-4da6-a211-322ba49d1593",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Reviews fetched successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "ad2d0cc6-52be-4cb8-9d23-6e1dda42f355",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9545,7 +9580,8 @@
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"url": {
@@ -9587,6 +9623,42 @@
 						},
 						{
 							"name": "Delete Review",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f4120e4f-fa15-4fcf-b123-991637ab262c",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Review deleted successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "94d3aac9-127e-4842-9617-fe36f4eae125",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9627,7 +9699,6 @@
 									],
 									"variable": [
 										{
-											"id": "1355d323-7a19-444d-b4ad-cb35ff09e618",
 											"key": "id",
 											"value": ""
 										}
@@ -9638,6 +9709,92 @@
 						}
 					],
 					"id": "9d230a7b-e0fe-4a59-be4c-599747b853ca"
+				},
+				{
+					"name": "Approve Vendor Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "db17c674-dae9-4018-9717-711c1af0ccd6",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Vendor approved successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "cca3baee-ab89-4ac5-bd1b-474ea27dabbb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/vendors/:id/approve",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"vendors",
+								":id",
+								"approve"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
+								}
+							]
+						}
+					},
+					"response": []
 				},
 				{
 					"name": "Blacklist Vendor Copy",
@@ -9681,48 +9838,6 @@
 							"variable": [
 								{
 									"id": "78254bbc-ddad-4d29-b8c1-c5a107de01b8",
-									"key": "id",
-									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Approve Vendor Copy",
-					"id": "cca3baee-ab89-4ac5-bd1b-474ea27dabbb",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "ec"
-							}
-						],
-						"url": {
-							"raw": "{{base_url}}/admin/vendors/:id/approve",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"vendors",
-								":id",
-								"approve"
-							],
-							"variable": [
-								{
-									"id": "c39caaee-5a5a-4510-b377-cef11876610d",
 									"key": "id",
 									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
 								}
