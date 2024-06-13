@@ -331,19 +331,20 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"otp\": \"792176\"\n}",
+									"raw": "{\n    \"otp\": \"253922\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
