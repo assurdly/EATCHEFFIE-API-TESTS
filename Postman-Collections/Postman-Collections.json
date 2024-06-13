@@ -10864,135 +10864,356 @@
 			"name": "Order",
 			"item": [
 				{
-					"name": "Fetch Orders",
-					"event": [
+					"name": "Fetch Order",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
-								"exec": [
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"const adminOrder = jsonData.data[0].id\r",
-									"\r",
-									"pm.environment.set(\"adminOrder\", adminOrder)\r",
-									"\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Status code name has 'OK'\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"pm.test(\"Response body property\", function () {\r",
-									"    pm.expect(jsonData).to.be.an('object');\r",
-									"    pm.expect(jsonData.status).to.be.a('string');\r",
-									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status is 'success'\", function () {\r",
-									"    pm.expect(jsonData.status).to.eql('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Verify Fetched orders successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
+							"name": "Fetch Orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminOrder = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminOrder\", adminOrder)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "4fb0a05a-9463-4248-b6a7-37abe2577c1d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "filter[status]",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "filter[q]",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt]",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "By status - Fetch Orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminOrder = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminOrder\", adminOrder)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "89f39c4c-20fb-4194-ad8d-ab9d38955024",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/orders?filter[status]=pending",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "filter[status]",
+											"value": "pending"
+										},
+										{
+											"key": "filter[q]",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt]",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "By status - Fetch Orders Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminOrder = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminOrder\", adminOrder)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "b9a3189d-9411-44c1-a8d7-4633ebdb18ae",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/orders?filter[q]=emerald",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "filter[status]",
+											"value": "pending",
+											"disabled": true
+										},
+										{
+											"key": "filter[q]",
+											"value": "emerald"
+										},
+										{
+											"key": "filter[createdAt]",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "By date - Fetch Orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminOrder = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminOrder\", adminOrder)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3b313047-f457-4254-bc6f-0770f832e8cf",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "filter[status]",
+											"value": "pending",
+											"disabled": true
+										},
+										{
+											"key": "filter[q]",
+											"value": "emerald",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt]",
+											"value": "2024-06-12",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
-					"id": "4fb0a05a-9463-4248-b6a7-37abe2577c1d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/admin/orders",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"orders"
-							],
-							"query": [
-								{
-									"key": "filter[status]",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "filter[q]",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "filter[createdAt]",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
+					"id": "e99ea74d-a9c2-49e5-afa1-95f781666960"
 				},
 				{
-					"name": "By status - Fetch Orders",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
-								"exec": [
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"const adminOrder = jsonData.data[0].id\r",
-									"\r",
-									"pm.environment.set(\"adminOrder\", adminOrder)\r",
-									"\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Status code name has 'OK'\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"pm.test(\"Response body property\", function () {\r",
-									"    pm.expect(jsonData).to.be.an('object');\r",
-									"    pm.expect(jsonData.status).to.be.a('string');\r",
-									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status is 'success'\", function () {\r",
-									"    pm.expect(jsonData.status).to.eql('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Verify Fetched orders successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "89f39c4c-20fb-4194-ad8d-ab9d38955024",
+					"name": "Update Order Copy",
+					"id": "848c1571-cdc1-4a47-8ca4-9f5bd28934d4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -11000,210 +11221,137 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{adminAccessToken}}"
+								"token": "{{vendor_access_token}}"
 							}
 						},
-						"method": "GET",
-						"header": [],
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"processing\", // processing, enroute, completed, cancelled\n    \"cancelReason\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{base_url}}/admin/orders?filter[status]=pending",
+							"raw": "{{base_url}}/orders/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"admin",
-								"orders"
+								"orders",
+								":id"
 							],
-							"query": [
+							"variable": [
 								{
-									"key": "filter[status]",
-									"value": "pending"
-								},
-								{
-									"key": "filter[q]",
+									"id": "b419da53-9f6e-422d-8eea-d6d9775dd349",
+									"key": "id",
 									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "filter[createdAt]",
-									"value": "",
-									"disabled": true
+									"description": "The vendor order ID being updated"
 								}
 							]
 						}
 					},
-					"response": []
-				},
-				{
-					"name": "By status - Fetch Orders Copy",
-					"event": [
+					"response": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
-								"exec": [
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"const adminOrder = jsonData.data[0].id\r",
-									"\r",
-									"pm.environment.set(\"adminOrder\", adminOrder)\r",
-									"\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Status code name has 'OK'\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"pm.test(\"Response body property\", function () {\r",
-									"    pm.expect(jsonData).to.be.an('object');\r",
-									"    pm.expect(jsonData.status).to.be.a('string');\r",
-									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status is 'success'\", function () {\r",
-									"    pm.expect(jsonData.status).to.eql('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Verify Fetched orders successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
-									"});\r",
-									"\r",
-									""
+							"id": "2407272e-b408-4f48-b8f2-20fe9748581a",
+							"name": "enum",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor"
+									}
 								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "b9a3189d-9411-44c1-a8d7-4633ebdb18ae",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/admin/orders?filter[q]=emerald",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"orders"
-							],
-							"query": [
-								{
-									"key": "filter[status]",
-									"value": "pending",
-									"disabled": true
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"ded\",\n    \"cancelReason\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "filter[q]",
-									"value": "emerald"
-								},
-								{
-									"key": "filter[createdAt]",
-									"value": "",
-									"disabled": true
+								"url": {
+									"raw": "{{base_url}}/vendor/orders/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendor",
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "By date - Fetch Orders",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
-								"exec": [
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"const adminOrder = jsonData.data[0].id\r",
-									"\r",
-									"pm.environment.set(\"adminOrder\", adminOrder)\r",
-									"\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Status code name has 'OK'\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"pm.test(\"Response body property\", function () {\r",
-									"    pm.expect(jsonData).to.be.an('object');\r",
-									"    pm.expect(jsonData.status).to.be.a('string');\r",
-									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status is 'success'\", function () {\r",
-									"    pm.expect(jsonData.status).to.eql('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Verify Fetched orders successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "3b313047-f457-4254-bc6f-0770f832e8cf",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/admin/orders",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"orders"
-							],
-							"query": [
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "filter[status]",
-									"value": "pending",
-									"disabled": true
+									"key": "X-Powered-By",
+									"value": "Express"
 								},
 								{
-									"key": "filter[q]",
-									"value": "emerald",
-									"disabled": true
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
 								},
 								{
-									"key": "filter[createdAt]",
-									"value": "2024-06-12",
-									"disabled": true
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "97"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "50"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "157"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9d-G1YsnsnIgDeqVapj5MV7jrmxWbQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 May 2024 11:37:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
 								}
-							]
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Validation Error.\",\n    \"data\": {\n        \"status\": \"status must be one of the following values: pending, processing, enroute, delivered, completed, cancelled\"\n    }\n}"
 						}
-					},
-					"response": []
+					]
 				}
 			],
 			"id": "a202ee52-92ca-4a5d-89e2-9aa98aef5f69"
