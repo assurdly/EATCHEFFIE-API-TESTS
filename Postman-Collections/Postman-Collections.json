@@ -9674,7 +9674,8 @@
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"body": {
@@ -9798,6 +9799,42 @@
 				},
 				{
 					"name": "Blacklist Vendor Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d005e414-9cb6-40ec-a1e6-6584c105f3d3",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Vendor blacklisted successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "20e57e8d-522a-46c0-b356-d1bcda9ed7fb",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -9813,7 +9850,8 @@
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -9837,7 +9875,6 @@
 							],
 							"variable": [
 								{
-									"id": "78254bbc-ddad-4d29-b8c1-c5a107de01b8",
 									"key": "id",
 									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
 								}
@@ -9848,6 +9885,42 @@
 				},
 				{
 					"name": "Reject Vendor Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "06cba8cd-6c5e-40c0-9259-63b768d9dd76",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Vendor rejected successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "a2e37e57-ab8e-4480-9fef-b2129fb115bf",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -9863,7 +9936,8 @@
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -9888,7 +9962,6 @@
 							],
 							"variable": [
 								{
-									"id": "e73f9a31-995b-4447-880b-648f8884339a",
 									"key": "id",
 									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
 								}
