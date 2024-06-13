@@ -9639,6 +9639,99 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Approve Vendor Copy",
+					"id": "cca3baee-ab89-4ac5-bd1b-474ea27dabbb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/vendors/:id/approve",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"vendors",
+								":id",
+								"approve"
+							],
+							"variable": [
+								{
+									"id": "c39caaee-5a5a-4510-b377-cef11876610d",
+									"key": "id",
+									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject Vendor Copy",
+					"id": "a2e37e57-ab8e-4480-9fef-b2129fb115bf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/vendors/:id/reject",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"vendors",
+								":id",
+								"reject"
+							],
+							"variable": [
+								{
+									"id": "e73f9a31-995b-4447-880b-648f8884339a",
+									"key": "id",
+									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "9f9e6412-3fa2-4731-89f2-406c223553a7"
