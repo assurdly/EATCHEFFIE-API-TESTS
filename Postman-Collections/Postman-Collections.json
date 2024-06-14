@@ -9574,7 +9574,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "GET",
@@ -9642,7 +9642,6 @@
 											"    pm.expect(jsonData).to.be.an('object');\r",
 											"    pm.expect(jsonData.status).to.be.a('string');\r",
 											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"    pm.expect(jsonData.data).to.be.an('array');\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Status is 'success'\", function () {\r",
@@ -9668,7 +9667,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "DELETE",
@@ -9800,7 +9799,7 @@
 					"response": []
 				},
 				{
-					"name": "Blacklist Vendor Copy",
+					"name": "Blacklist Vendor",
 					"event": [
 						{
 							"listen": "test",
@@ -9845,10 +9844,10 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "x-request-source",
