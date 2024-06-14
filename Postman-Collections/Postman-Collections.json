@@ -14988,6 +14988,46 @@
 				},
 				{
 					"name": "Fetch Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "89cec724-334c-414b-9865-4a272e9cfd6b",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"const adminCategories = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminCategories\", adminCategories)\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Ok'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Categories fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Categories fetched successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "ec6a47e4-9980-44b5-8ee3-ac147c0c82b9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -14996,14 +15036,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{access_token}}"
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyMjBmNWEyLTExOTctNDFhNC1hNzZlLTJhNzI2OTNhNDY5MCIsImlhdCI6MTcxODM2NzU5NCwiZXhwIjoxNzE4MzcxMTk0fQ.8tGqYlhIaxtKY8GAF-D9YJEQAgpqzMmOYRCVjkPIB4Q"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "customer"
+								"value": "customer",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/meals/categories"
