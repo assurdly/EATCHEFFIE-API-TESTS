@@ -9266,7 +9266,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -9333,7 +9333,7 @@
 								"auth": {
 									"type": "noauth"
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -9409,7 +9409,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -9485,7 +9485,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
