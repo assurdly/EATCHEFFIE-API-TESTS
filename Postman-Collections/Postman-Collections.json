@@ -6757,7 +6757,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Bayee\", //\"Temitato\",\n    \"lastName\": \"Deanil\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
+											"raw": "{\n    \"firstName\": \"Priscaline\", //\"Temitato\",\n    \"lastName\": \"Mike\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"cf3b4381757ef10fe6647d115897ecbc14c02474\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
