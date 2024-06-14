@@ -9885,7 +9885,7 @@
 					"response": []
 				},
 				{
-					"name": "Reject Vendor Copy",
+					"name": "Reject Vendor",
 					"event": [
 						{
 							"listen": "test",
@@ -11450,6 +11450,81 @@
 					"id": "e99ea74d-a9c2-49e5-afa1-95f781666960"
 				},
 				{
+					"name": "Fetch Order By ID Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a94a4b33-2968-4cea-a8d0-58abc148eb19",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"const adminOrder = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminOrder\", adminOrder)\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"/*\r",
+									"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+									"});\r",
+									"*/\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "84e774b2-2697-42ed-9ce4-f437c6a251b7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/orders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update Order Copy",
 					"event": [
 						{
@@ -11630,36 +11705,6 @@
 							"body": "{\n    \"message\": \"Validation Error.\",\n    \"data\": {\n        \"status\": \"status must be one of the following values: pending, processing, enroute, delivered, completed, cancelled\"\n    }\n}"
 						}
 					]
-				},
-				{
-					"name": "Fetch Order By ID Copy",
-					"id": "84e774b2-2697-42ed-9ce4-f437c6a251b7",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/admin/orders/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"orders",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "75eb4848-25ab-4962-b828-b2888f0794e5",
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			],
 			"id": "a202ee52-92ca-4a5d-89e2-9aa98aef5f69"
