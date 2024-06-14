@@ -9930,10 +9930,10 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "x-request-source",
