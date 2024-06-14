@@ -1,6 +1,0 @@
-{
-    "mealId": "",
-    "priceId": "6a81fad4-bf4c-4efc-beac-a3865f37a8d1",
-    "quantity": 2,
-    "deliveryDate": "2024-06-10T08:37:17.952Z"
-}

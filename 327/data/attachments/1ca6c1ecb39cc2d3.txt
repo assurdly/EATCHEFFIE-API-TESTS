@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"OTP verified successfully","data":{"otp":"3a3842deba55d6fb731aab6e39314360e409351b"}}
