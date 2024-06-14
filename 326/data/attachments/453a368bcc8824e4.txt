@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"OTP verified successfully.","data":{"onboardingToken":"0fc4195007339c1eb14dcfe0d94ffda6b30111b8"}}

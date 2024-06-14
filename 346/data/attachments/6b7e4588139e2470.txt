@@ -1,0 +1,5 @@
+{
+    "token": "{{forgotPasswordtoken}}",
+    "password": "Password1#",
+    "confirmPassword": "Password12#"
+}

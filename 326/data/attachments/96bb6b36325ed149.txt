@@ -1,1 +1,0 @@
-level: warn, messages: Using "request" is deprecated. Use "pm.request" instead.

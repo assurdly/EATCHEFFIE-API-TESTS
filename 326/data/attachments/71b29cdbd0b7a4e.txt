@@ -1,1 +1,0 @@
-{"message":"An error occurred. Please contact support","_meta":{"name":"JsonWebTokenError","message":"jwt must be provided"}}

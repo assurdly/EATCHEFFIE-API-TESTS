@@ -1,0 +1,4 @@
+{
+    "vendorId": "{{vendorId}}",
+    "addressId": "{{addressId}}"
+}
