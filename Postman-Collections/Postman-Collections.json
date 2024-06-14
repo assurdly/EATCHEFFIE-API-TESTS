@@ -78,7 +78,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"super@admin.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Randompassword1@\"\n   // \"email\": \"Celine@yopmail.com\",\n  //   \"password\": \"Password1@\"\n}\n",
+									"raw": "{\n    \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Randompassword1@\"\n   // \"email\": \"priscaline@assurdly.com\",\n  //   \"password\": \"randompassword\"\n   // \"password\": \"Password1@\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -15200,6 +15200,46 @@
 				},
 				{
 					"name": "Delete Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "143ecc83-f169-4f34-abf4-f7ca29056a6f",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"/*\r",
+									"const adminVendor = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminVendor\", adminVendor)\r",
+									"*/\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Created'\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Category deleted successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Category deleted successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "4296d521-d1f5-43df-a0b5-be4f353b7c83",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
