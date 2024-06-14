@@ -9409,7 +9409,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PATCH",
+								"method": "PUT",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -9485,7 +9485,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PATCH",
+								"method": "PUT",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -9713,7 +9713,7 @@
 					"id": "9d230a7b-e0fe-4a59-be4c-599747b853ca"
 				},
 				{
-					"name": "Approve Vendor Copy",
+					"name": "Approve Vendor",
 					"event": [
 						{
 							"listen": "test",
@@ -9758,14 +9758,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -9791,7 +9792,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
+									"value": "394b7e8c-7a73-4a41-90ee-b12c29758358"
 								}
 							]
 						}
