@@ -14956,7 +14956,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyMjBmNWEyLTExOTctNDFhNC1hNzZlLTJhNzI2OTNhNDY5MCIsImlhdCI6MTcxODM2NzU5NCwiZXhwIjoxNzE4MzcxMTk0fQ.8tGqYlhIaxtKY8GAF-D9YJEQAgpqzMmOYRCVjkPIB4Q"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "POST",
