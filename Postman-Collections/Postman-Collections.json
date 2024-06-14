@@ -10183,13 +10183,13 @@
 										},
 										{
 											"key": "filter[createdAt][gt]",
-											"value": "2024-06-05",
+											"value": "2024-06-13",
 											"description": "active",
 											"disabled": true
 										},
 										{
 											"key": "filter[createdAt][lt]",
-											"value": "2024-06-05",
+											"value": "2024-06-15",
 											"description": "active",
 											"disabled": true
 										}
@@ -10618,7 +10618,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"inactive\", // \"active\" | \"inactive\",\n    \"reason\": \"test\"\n    }",
+									"raw": "{\n    \"status\": \"active\", // \"active\" | \"inactive\",\n    \"reason\": \"test\"\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
