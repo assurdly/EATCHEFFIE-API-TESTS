@@ -11460,14 +11460,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -11490,9 +11491,8 @@
 							],
 							"variable": [
 								{
-									"id": "b419da53-9f6e-422d-8eea-d6d9775dd349",
 									"key": "id",
-									"value": "",
+									"value": "{{adminOrder}}",
 									"description": "The vendor order ID being updated"
 								}
 							]
@@ -12992,7 +12992,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "{{promoId}}"
 										}
 									]
 								}
