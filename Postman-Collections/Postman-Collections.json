@@ -11277,7 +11277,7 @@
 							"response": []
 						},
 						{
-							"name": "By status - Fetch Orders Copy",
+							"name": "By Name - Fetch Orders",
 							"event": [
 								{
 									"listen": "test",
