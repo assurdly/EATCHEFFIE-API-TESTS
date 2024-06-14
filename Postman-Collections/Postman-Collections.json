@@ -15123,14 +15123,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -15160,7 +15161,6 @@
 							],
 							"variable": [
 								{
-									"id": "2ef80322-bfda-491e-859d-940660d2e4dc",
 									"key": "id",
 									"value": "e87cea27-fb5f-4ae3-a18b-982a9edfb6fd"
 								}
