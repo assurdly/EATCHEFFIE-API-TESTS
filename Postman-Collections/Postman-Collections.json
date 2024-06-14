@@ -9296,7 +9296,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "3f78b60e-751e-4495-8f71-27b2982deced"
+											"value": "{{adminVendor}}"
 										}
 									]
 								}
@@ -9409,7 +9409,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -9485,7 +9485,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
