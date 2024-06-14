@@ -14916,14 +14916,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyMjBmNWEyLTExOTctNDFhNC1hNzZlLTJhNzI2OTNhNDY5MCIsImlhdCI6MTcxODM2NzU5NCwiZXhwIjoxNzE4MzcxMTk0fQ.8tGqYlhIaxtKY8GAF-D9YJEQAgpqzMmOYRCVjkPIB4Q"
 							}
 						},
 						"method": "POST",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -14931,13 +14932,13 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Nigerian2",
+									"value": "Burgers",
 									"type": "text"
 								},
 								{
 									"key": "images",
 									"type": "file",
-									"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+									"src": "UaXEFFWhD/Screenshot (14).png"
 								}
 							]
 						},
