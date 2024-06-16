@@ -1,5 +1,0 @@
-{
-    "email": "Jocelyn@yopmail.com",
-    
-    "password": "Password1@"
-}

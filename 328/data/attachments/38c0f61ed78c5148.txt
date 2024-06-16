@@ -1,7 +1,0 @@
-{
-    "firstName": "Temitato",
-    "lastName": "Osunkiyesi",
-    "password": "Password1@",
-    "confirmPassword": "Password1@",
-    "token": "{{adminResetPasswordToken}}"
-}
