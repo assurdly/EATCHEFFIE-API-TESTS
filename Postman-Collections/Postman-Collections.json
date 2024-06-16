@@ -12914,6 +12914,73 @@
 						}
 					],
 					"id": "d0f4d140-dd2a-406a-97cd-f64852c2422a"
+				},
+				{
+					"name": "Fetch Transaction by ID Copy",
+					"id": "19479989-d9cd-4293-bcb3-8b43184a112c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/transactions/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"transactions",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "eb5237a1-46e6-4ac9-a985-845f4fbc01d8",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "79efaf77-69c4-4bab-874d-4f7b14929178",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/transactions/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"transactions",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": ""
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transactions successfully\",\n    \"data\": {\n        \"amount\": 10,\n        \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:31 AM\",\n        \"paymentConfirmationDate\": null,\n        \"reference\": \"ec_ref_f6425b875a\",\n        \"status\": \"pending\",\n        \"type\": \"payout\",\n        \"id\": \"d4b6f907-ff00-4ce4-8818-1f22ba5a915d\",\n        \"createdAt\": \"2024-06-06T03:31:45.821Z\",\n        \"updatedAt\": \"2024-06-06T03:31:45.821Z\"\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "38b17ddf-e428-4fc7-8acf-5b24fab7662f"
