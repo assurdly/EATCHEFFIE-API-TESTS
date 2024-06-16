@@ -7910,58 +7910,64 @@
 								}
 							],
 							"id": "a946ad5c-4d0b-44c7-89df-c778616580d3"
+						},
+						{
+							"name": "Update User",
+							"item": [
+								{
+									"name": "Update User Copy",
+									"id": "9a634c4d-bb33-4da6-96fc-3e3908e23be7",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"id": "6b74b5a2-7527-40d6-9a03-f9c0ac2f60d7",
+													"key": "id",
+													"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "c1cea97a-1e8d-4d93-b018-5e3220c7e5ed"
 						}
 					],
 					"id": "5f1e728f-e65d-41a9-9b59-f902bc700d7c"
-				},
-				{
-					"name": "Update User Copy",
-					"id": "9a634c4d-bb33-4da6-96fc-3e3908e23be7",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "x-request-source",
-								"value": "ec"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"roleId\": \"\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/users/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"users",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "6b74b5a2-7527-40d6-9a03-f9c0ac2f60d7",
-									"key": "id",
-									"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			],
 			"id": "60ba1b48-0180-4f76-88ca-1266fc59b1d5"
