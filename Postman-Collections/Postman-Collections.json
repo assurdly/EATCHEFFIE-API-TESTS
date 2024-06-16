@@ -14971,20 +14971,16 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('object');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
 									"    pm.expect(jsonData.status).to.eql('success');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Verify Fetched customer successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer successfully\");\r",
+									"pm.test(\"Verify Notifications fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Notifications fetched successfully\");\r",
 									"});\r",
-									"\r",
-									"pm.test(\"Verify data returns customers\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
-									"});"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -15026,7 +15022,7 @@
 			"id": "bc90701d-734c-4a77-b4be-1a5dfa7eb72c"
 		},
 		{
-			"name": "Categories Copy",
+			"name": "Categories",
 			"item": [
 				{
 					"name": "Create Category",
@@ -15742,6 +15738,485 @@
 				}
 			],
 			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
+		},
+		{
+			"name": "Stats Copy",
+			"item": [
+				{
+					"name": "Fetch Dashboard Stats",
+					"id": "44b9888c-3f6f-46d6-a87c-fdfbebfca183",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/dashboard"
+					},
+					"response": [
+						{
+							"id": "b09c0b41-4341-424f-8f2c-8996f13df58c",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/dashboard"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "972"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3cc-q6lOQkL7k0xg6j408vQ36iEPWzY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 09:59:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched dashboard stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_7_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_30_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_60_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_90_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_6_months\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_1_year\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Customer Stats",
+					"id": "f9a8b965-a785-47b2-8df1-cbc0bc099ac1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/customer"
+					},
+					"response": [
+						{
+							"id": "c785b409-f7d3-4af4-a0a1-f640c994c2f6",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/customer"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1090"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"442-RkFtuznyih5Fo9a5jpFZyLnU7MI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 10:55:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched customer stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_7_days\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_30_days\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_60_days\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_90_days\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_6_months\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_1_year\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Order Stats",
+					"id": "7e12573c-f6d7-4b33-8a2e-821dcc1f17b6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/orders"
+					},
+					"response": [
+						{
+							"id": "fe0b1bfe-7796-4b56-9c1d-dd1283110694",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/orders"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "730"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2da-Il1Gvuznb3Esiz8/cbjzwaULBic\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 10:34:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched order stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_7_days\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_30_days\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_60_days\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_90_days\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_6_months\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_1_year\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Vendor Stats",
+					"id": "7f4d6a6e-fb0b-446e-a475-4c3c79407a47",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/vendors"
+					},
+					"response": [
+						{
+							"id": "cc807b72-41f6-4535-a558-2a0470b53adf",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/vendors"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1185"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a1-NiB/WgUnntaKZ0d3DQACebVBNCw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 10:57:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched order stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_7_days\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_30_days\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_60_days\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_90_days\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_6_months\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_1_year\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Transaction Stats",
+					"id": "accf9675-8983-4ff1-b97f-e77c045bda77",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/stats/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "vendorId",
+									"value": "c36105e9-9b12-45bb-96f1-92ab66234c27",
+									"description": "Optional. To fetch stats for a particular vendor",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "9c957cda-dc96-4f0a-a856-4fdff2db9d71",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/transactions"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "912"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"390-7QWbFbfukdho+EY3mOVcErKyuJA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 11:15:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched order stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_7_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_30_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_60_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_90_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_6_months\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_1_year\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "0899e354-1087-425e-93d8-1d6eeb7585eb"
 		},
 		{
 			"name": "Blacklist Customer",
