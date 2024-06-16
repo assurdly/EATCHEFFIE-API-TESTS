@@ -3013,7 +3013,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{base_url}}/roles",
+											"raw": "{{base_url}}/roles?filter[permissions]=85eeda8e-b0e1-475d-aedb-14f8df6e936a",
 											"host": [
 												"{{base_url}}"
 											],
@@ -3023,8 +3023,7 @@
 											"query": [
 												{
 													"key": "filter[permissions]",
-													"value": "",
-													"disabled": true
+													"value": "85eeda8e-b0e1-475d-aedb-14f8df6e936a"
 												},
 												{
 													"key": "filter[q]",
