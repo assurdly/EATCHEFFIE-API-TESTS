@@ -3038,7 +3038,7 @@
 												},
 												{
 													"key": "filter[createdAt][lt]",
-													"value": "",
+													"value": "2024-06-14",
 													"disabled": true
 												},
 												{
