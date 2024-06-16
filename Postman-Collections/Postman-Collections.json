@@ -231,7 +231,42 @@
 							]
 						},
 						{
-							"name": "Generate 2FA Secret Copy",
+							"name": "Generate 2FA Secret",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ece5a72a-00e8-4e3e-980f-ff65cfc77156",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.success).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Varify that 'Scan the code to enable 2FA.' is returned\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Scan the code to enable 2FA.');\r",
+											"});\r",
+											"pm.test(\"Varify that 'Scan the code to enable 2FA.' is returned\", function () {\r",
+											"    pm.expect(jsonData.data.otpAuthUrl).to.a('string').and.not.be.empty;\r",
+											"     pm.expect(jsonData.data.qr).to.a('string').and.not.be.empty;\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "82038764-fefe-4639-88ea-387c4c012a4d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -240,14 +275,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"url": "{{base_url}}/auth/2fa/generate"
@@ -322,7 +358,7 @@
 							]
 						},
 						{
-							"name": "Enable 2FA Copy",
+							"name": "Enable 2FA",
 							"id": "0671a217-bf96-4aa2-b62e-83bd3988a205",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -432,7 +468,7 @@
 							]
 						},
 						{
-							"name": "Disable 2FA Copy",
+							"name": "Disable 2FA",
 							"id": "5175a2ac-da7a-48c8-b29b-1df4575bb67c",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -441,14 +477,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"body": {
