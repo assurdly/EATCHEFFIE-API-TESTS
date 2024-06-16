@@ -15464,7 +15464,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Verify Settings updated successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Settings updated successfully\");\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Settings fetched successfully\");\r",
 									"});\r",
 									"\r",
 									""
@@ -15566,6 +15566,47 @@
 				},
 				{
 					"name": "Update Settings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65ba1b62-8dfc-4d0d-9eb0-0a0582513c5a",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"/*\r",
+									"const adminOrder = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminOrder\", adminOrder)\r",
+									"*/\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Settings updated successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Settings updated successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "a070780f-860e-40c2-82ba-b7e38232d099",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -15574,19 +15615,20 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "PUT",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
+							"raw": "{\n    \"sessionTimeout\": 1,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
 							"options": {
 								"raw": {
 									"language": "json"
