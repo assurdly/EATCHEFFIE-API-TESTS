@@ -7915,7 +7915,43 @@
 							"name": "Update User",
 							"item": [
 								{
-									"name": "Update User Copy",
+									"name": "Update User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a10d627b-9d3b-47b1-8b3a-5cad43099371",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'OK'\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"pm.test(\"Response body property\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.status).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status is 'success'\", function () {\r",
+													"    pm.expect(jsonData.status).to.eql('success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify User updated successfully\", function () {\r",
+													"    pm.expect(jsonData.message).to.include('User updated successfully');\r",
+													"});\r",
+													"pm.test(\"Verify that data is a string\", function () {\r",
+													"    pm.expect(jsonData.data).to.be.an('object').and.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "9a634c4d-bb33-4da6-96fc-3e3908e23be7",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -7924,19 +7960,20 @@
 										"auth": {
 											"type": "bearer",
 											"bearer": {
-												"token": "{{admin_access_token}}"
+												"token": "{{adminAccessToken}}"
 											}
 										},
 										"method": "PATCH",
 										"header": [
 											{
 												"key": "x-request-source",
-												"value": "ec"
+												"value": "ec",
+												"disabled": true
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"roleId\": \"\"\n}",
+											"raw": "{\n    \"roleId\": \"{{roleId}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -7954,7 +7991,221 @@
 											],
 											"variable": [
 												{
-													"id": "6b74b5a2-7527-40d6-9a03-f9c0ac2f60d7",
+													"key": "id",
+													"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update User Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a10d627b-9d3b-47b1-8b3a-5cad43099371",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'Bad Request.\", function () {\r",
+													"    pm.response.to.have.status(\"Bad Request\");\r",
+													"});\r",
+													"pm.test(\"Verify message Validation Error.\", function () {\r",
+													"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+													"});\r",
+													"pm.test(\"Verify fields can not be empty\", function () {\r",
+													"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
+													"       });"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "d5a63b31-79dc-4de7-ad49-082c699bf418",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
+											}
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"{{roleId}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update User Copy 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a10d627b-9d3b-47b1-8b3a-5cad43099371",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'Bad Request.\", function () {\r",
+													"    pm.response.to.have.status(\"Bad Request\");\r",
+													"});\r",
+													"pm.test(\"Verify message Validation Error.\", function () {\r",
+													"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+													"});\r",
+													"pm.test(\"Verify fields can not be empty\", function () {\r",
+													"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
+													"       });"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "d93c0e62-680c-4f5f-aa23-82248416ddec",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
+											}
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"{{roleId}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"id": "92e1e906-6c4d-4546-81eb-9d0916e8076f",
+													"key": "id",
+													"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a10d627b-9d3b-47b1-8b3a-5cad43099371",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"pm.test(\"Status code name has Unauthorized\", function () {\r",
+													"    pm.response.to.have.status(\"Unauthorized\");\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "40cf3ae8-7c87-43a3-ad11-fc3d823a7ba2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"{{roleId}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												":id"
+											],
+											"variable": [
+												{
 													"key": "id",
 													"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
 												}
