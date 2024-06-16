@@ -7992,7 +7992,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
+													"value": "{{userId}}"
 												}
 											]
 										}
@@ -8000,7 +8000,7 @@
 									"response": []
 								},
 								{
-									"name": "Update User Copy",
+									"name": "No roleId - Update User",
 									"event": [
 										{
 											"listen": "test",
@@ -8047,7 +8047,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"roleId\": \"{{roleId}}\"\n}",
+											"raw": "{\n    \"roleId\": \"\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -8066,7 +8066,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
+													"value": "{{userId}}"
 												}
 											]
 										}
@@ -8074,7 +8074,7 @@
 									"response": []
 								},
 								{
-									"name": "Update User Copy 2",
+									"name": "No Id - Update User",
 									"event": [
 										{
 											"listen": "test",
@@ -8139,9 +8139,8 @@
 											],
 											"variable": [
 												{
-													"id": "92e1e906-6c4d-4546-81eb-9d0916e8076f",
 													"key": "id",
-													"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
+													"value": ""
 												}
 											]
 										}
