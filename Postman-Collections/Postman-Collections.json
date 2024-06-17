@@ -16508,6 +16508,45 @@
 				},
 				{
 					"name": "Fetch Vendor Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8252cce-baed-4e63-83cf-0cde80a78b3c",
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched order stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched vendor stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify audit trail is returned\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "7f4d6a6e-fb0b-446e-a475-4c3c79407a47",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16599,6 +16638,45 @@
 				},
 				{
 					"name": "Fetch Transaction Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4664da48-7a15-4dff-855b-17b93f9feb5a",
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched order stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched transaction stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify audit trail is returned\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "accf9675-8983-4ff1-b97f-e77c045bda77",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
