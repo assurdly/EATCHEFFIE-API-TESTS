@@ -1,1 +1,0 @@
-{"message":"Vendor ID must be a valid UUID"}
