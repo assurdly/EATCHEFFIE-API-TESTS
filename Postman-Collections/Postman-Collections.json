@@ -1868,7 +1868,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"Clovis@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n   // \"email\": \"Rachael@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2346,7 +2346,7 @@
 										},
 										{
 											"key": "filter[vendorId]",
-											"value": "c760c3b6-41ba-4ab7-b42a-e284b6cda96a",
+											"value": "b2463199-7500-460d-b281-c25b4245feba",
 											"disabled": true
 										},
 										{
@@ -14243,7 +14243,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password1#\",\n    \"confirmPassword\": \"Password1#\"\n}",
+							"raw": "{\n    \"token\": \"{{forgotPasswordtoken}}\",\n    \"password\": \"Password12@@\",\n    \"confirmPassword\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
