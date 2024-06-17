@@ -16116,6 +16116,44 @@
 			"item": [
 				{
 					"name": "Fetch Dashboard Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b2d26453-8dc5-45e1-87cb-dc4932370080",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched dashboard stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched dashboard stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify audit trail is returned\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "44b9888c-3f6f-46d6-a87c-fdfbebfca183",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16124,14 +16162,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/admin/stats/dashboard"
@@ -16207,6 +16246,45 @@
 				},
 				{
 					"name": "Fetch Customer Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a4954c8-b730-41d7-9d0c-4acc01468624",
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched customer stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify audit trail is returned\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "f9a8b965-a785-47b2-8df1-cbc0bc099ac1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16215,14 +16293,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/admin/stats/customer"
@@ -16298,6 +16377,45 @@
 				},
 				{
 					"name": "Fetch Order Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "482f0b95-4271-426e-9cc7-9d91d2c69404",
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched order stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched order stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify audit trail is returned\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "7e12573c-f6d7-4b33-8a2e-821dcc1f17b6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16306,14 +16424,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/admin/stats/orders"
