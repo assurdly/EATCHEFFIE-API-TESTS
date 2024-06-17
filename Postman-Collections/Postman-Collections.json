@@ -16107,6 +16107,57 @@
 						"url": "{{base_url}}/audit-trail"
 					},
 					"response": []
+				},
+				{
+					"name": "Get Audit Trail Copy",
+					"id": "c20189fa-e625-4ebc-aff5-ea01aed9ebce",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/audit-trail?filter[createdAt][gt]=2024-06-10T10:00:00&filter[createdAt][lt]=2024-06-15T10:00:00&filter[q]&filter[action]=role.create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"audit-trail"
+							],
+							"query": [
+								{
+									"key": "filter[createdAt][gt]",
+									"value": "2024-06-10T10:00:00"
+								},
+								{
+									"key": "filter[createdAt][lt]",
+									"value": "2024-06-15T10:00:00"
+								},
+								{
+									"key": "filter[q]",
+									"value": null,
+									"description": "Filters by user's name and email"
+								},
+								{
+									"key": "filter[action]",
+									"value": "role.create"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
