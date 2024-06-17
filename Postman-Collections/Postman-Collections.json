@@ -1868,7 +1868,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   // \"email\": \"{{signedUpCustomerEmail}}\",\n    \"email\": \"emerald@yopmail.com\",\n    \"password\": \"Password12@@\"\n}",
+							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n //   \"email\": \"emerald@yopmail.com\",\n    \"password\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
