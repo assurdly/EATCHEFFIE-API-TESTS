@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"Successfully fetched roles","data":[{"id":"466afeae-95b6-4150-b8d2-d99bc0c97dbb","name":"Principal Brand Orchestrator","slug":"principal-brand-orchestrator","description":"Role for Jobtitle","status":"active","createdAt":"2024-06-11T11:58:09.478Z"}],"meta":{"totalNumberOfRecords":1,"totalNumberOfPages":1,"pageNumber":1,"pageSize":20}}

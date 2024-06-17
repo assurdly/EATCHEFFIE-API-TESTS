@@ -1,4 +1,0 @@
-{
-    "roleId": "ad2ba7ff-b15b-4b7d-8221-c6a3a96c8def",
-    "email": "tayoosunkiyesi@gmail.com"
-}

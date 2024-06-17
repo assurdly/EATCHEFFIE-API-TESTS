@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Settings updated successfully","data":{"id":"b52d910d-fc27-44c6-8b60-e56fb47c2156","createdAt":"2024-06-14T12:03:11.389Z","updatedAt":"2024-06-14T12:03:11.389Z","value":{"sessionTimeout":15,"invalidPasswordAttempts":5,"sessionInactivity":5,"orderLimit":20,"openTime":900,"closeTime":2200},"fees":[]}}

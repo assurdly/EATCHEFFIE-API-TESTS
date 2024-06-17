@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Business details fetched successfully","data":{"id":"f827de66-d678-4514-a6ef-fba128f8ea63","createdAt":"2024-06-14T11:30:08.114Z","updatedAt":"2024-06-14T12:38:51.524Z","name":"The Azeez Kitchen Fabo","description":"The best in the world","kitchenTags":null,"rating":0,"ratingCount":0,"addresses":[]}}
