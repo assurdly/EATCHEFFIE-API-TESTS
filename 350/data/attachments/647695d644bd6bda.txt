@@ -1,0 +1,1 @@
+{"message":"Cannot delete default roles"}

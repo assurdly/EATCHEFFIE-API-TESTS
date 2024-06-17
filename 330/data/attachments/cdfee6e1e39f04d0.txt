@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"Settings updated successfully","data":{"id":"96068bb4-057a-4e1c-93af-d16f2acc8292","createdAt":"2024-06-05T15:44:52.762Z","updatedAt":"2024-06-07T16:42:52.674Z","value":{"sessionTimeout":1,"invalidPasswordAttempts":2,"sessionInactivity":5}}}

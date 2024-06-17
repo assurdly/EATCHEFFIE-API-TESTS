@@ -1,0 +1,6 @@
+{
+    "name": "Investor Branding Representative",
+    "description": "Role for Jobtitle",
+    "status": "active", 
+    "permissions": ["81a33252-a44d-46e8-9a42-3a754765393b", "8036d44c-3c09-4104-b1c8-7a3b3b6982b2"]
+}
