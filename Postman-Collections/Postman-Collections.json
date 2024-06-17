@@ -9545,7 +9545,7 @@
 										"token": "{{vendorAccessToken}}"
 									}
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
