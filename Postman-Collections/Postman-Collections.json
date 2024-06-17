@@ -11461,7 +11461,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/admin/orders",
+									"raw": "{{base_url}}/admin/orders?filter[vendorId]",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11484,6 +11484,11 @@
 											"key": "filter[createdAt]",
 											"value": "",
 											"disabled": true
+										},
+										{
+											"key": "filter[vendorId]",
+											"value": null,
+											"type": "text"
 										}
 									]
 								}
