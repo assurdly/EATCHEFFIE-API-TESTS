@@ -55,7 +55,7 @@
 									"script": {
 										"id": "0201c521-d964-46ae-a56d-05e2fddb8cdb",
 										"exec": [
-											"pm.environment.set('base_url', 'https://api.eatcheffie.com/v1')\r",
+											"pm.environment.set('base_url', 'http://api-test.eatcheffie.com/v1')\r",
 											""
 										],
 										"type": "text/javascript",
@@ -78,7 +78,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"super@admin.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n    \"password\": \"Randompassword1@\"\n   // \"email\": \"Celine@yopmail.com\",\n  //   \"password\": \"Password1@\"\n}\n",
+									"raw": "{\n    \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n  //  \"password\": \"Randompassword1@\"\n //  \"email\": \"nino@yopmail.com\",\n     \"password\": \"randompassword\"\n //   \"password\": \"Password12@@\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -229,6 +229,353 @@
 									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.f2suCR3b-cuc6ObAAV_0NkLHjng8fKuxqCQbxSeEpGY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzEwODkxMDc2LCJleHAiOjE3MTA4OTQ2NzZ9.qKp0zjyO9pFmfsar4hMISzDU8lyhWuqc4peUPOqNgvk\"\n    }\n}"
 								}
 							]
+						},
+						{
+							"name": "Generate 2FA Secret",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ece5a72a-00e8-4e3e-980f-ff65cfc77156",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.success).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Varify that 'Scan the code to enable 2FA.' is returned\", function () {\r",
+											"    pm.expect(jsonData.message).to.include('Scan the code to enable 2FA.');\r",
+											"});\r",
+											"pm.test(\"Varify that 'Scan the code to enable 2FA.' is returned\", function () {\r",
+											"    pm.expect(jsonData.data.otpAuthUrl).to.a('string').and.not.be.empty;\r",
+											"     pm.expect(jsonData.data.qr).to.a('string').and.not.be.empty;\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "82038764-fefe-4639-88ea-387c4c012a4d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"url": "{{base_url}}/auth/2fa/generate"
+							},
+							"response": [
+								{
+									"id": "e420c33d-6ab2-4fa4-ab7a-35dc18085031",
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"url": "{{base_url}}/auth/2fa/generate"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "60"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "4582"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"11e6-DP8Az2oSuajZ/qF93ZA5JW8Isqc\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 07 Jun 2024 06:50:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Scan the code to enable 2FA.\",\n    \"data\": {\n        \"otpAuthUrl\": \"otpauth://totp/EatCheffie_development:dele%40eatcheffie.com?secret=GMAEM5T4FEJTMXCT&period=30&digits=6&algorithm=SHA1&issuer=EatCheffie_development\",\n        \"qr\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADkCAYAAACIV4iNAAAAAklEQVR4AewaftIAAAxUSURBVO3BQY4cy5LAQDLR978yR0tfBZCoain+GzezP1hrXeFhrXWNh7XWNR7WWtd4WGtd42GtdY2HtdY1HtZa13hYa13jYa11jYe11jUe1lrXeFhrXeNhrXWNh7XWNR7WWtf44UMqf1PFGypTxYnKVHETlaniROWNijdUTiomlaliUpkqTlSmiknlb6r4xMNa6xoPa61rPKy1rvHDl1V8k8obKlPFiconVKaKSWWqeEPlDZWTihOVqeKk4kRlqphUTlS+qeKbVL7pYa11jYe11jUe1lrX+OGXqbxR8YbKicpJxaTyRsVvqjhROak4UTlReaNiqphUTipOVL5J5Y2K3/Sw1rrGw1rrGg9rrWv88B9TMamcqEwVJypvVEwqU8WkclLxCZWp4m+qmFQmlanipOK/5GGtdY2HtdY1HtZa1/jhP0blm1S+qeITKm+onKi8UTGpTBW/qeK/7GGtdY2HtdY1HtZa1/jhl1X8TRU3UTmpeKPiDZWp4jepnFRMFZPKpDJVfFPFTR7WWtd4WGtd42GtdY0fvkzlJipTxaQyVZxUTCpTxaQyVUwqU8WkcqIyVbyhMlVMKlPFScWkcqIyVUwqJypTxYnKzR7WWtd4WGtd42GtdY0fPlRxs4qTiknlROVEZao4qfhExTepTBWTyonKGxWTylTxiYr/JQ9rrWs8rLWu8bDWusYPH1KZKiaVb6qYKk5UpopJ5Y2KE5U3VKaKE5VvqphUTio+oXJS8U0q31Txmx7WWtd4WGtd42GtdY0fvkzlpOJEZaqYVKaKSeUmKlPFVDGpnFRMKicVn1A5qXij4kRlqphU3qg4UbnJw1rrGg9rrWs8rLWu8cOXVUwqJypTxaQyVXxCZao4UZlUTiomlX9JZap4o2JSmVS+qWJSeUNlqvhExaRyUvGJh7XWNR7WWtd4WGtdw/7gF6lMFZ9QmSomlaliUjmpmFR+U8WkMlVMKlPFpDJVTConFW+onFScqJxUTCpTxaTyRsWJylQxqUwVn3hYa13jYa11jYe11jXsDz6gMlW8ofKJiknljYpJ5Y2K36QyVfwmlTcqTlTeqHhDZaqYVKaKN1TeqPjEw1rrGg9rrWs8rLWu8cOXqUwVJxVvqJxUnKhMKlPFJ1Q+UfGGylRxojJVTBUnKicqU8WkMlWcqJxUTCqfUJkqJpWp4pse1lrXeFhrXeNhrXUN+4MvUpkq3lA5qZhU3qiYVE4qfpPK31RxovJGxYnKScWkclLxN6m8UfGJh7XWNR7WWtd4WGtdw/7gAypTxaQyVZyoTBX/kspJxaTyiYpJZar4JpWp4kTljYpJZap4Q+VvqphUpopvelhrXeNhrXWNh7XWNewPvkjljYpJ5RMVk8pUcaLyRsWkMlWcqJxUTCpTxaTyRsWkMlV8QmWq+CaVqWJSmSreUDmp+KaHtdY1HtZa13hYa13jhy+r+KaKN1SmiknljYqbVJxUTCpvVEwqU8WkclLxCZWpYqp4Q2WqOKmYVCaVqeITD2utazysta7xsNa6hv3BP6QyVUwqU8Wk8kbFicobFW+oTBWTylRxovKbKj6hMlVMKm9UnKhMFZPKVDGpTBV/08Na6xoPa61rPKy1rmF/8AGVb6o4UZkqJpU3Kk5UpopJ5Y2KSWWq+JtUflPFpPJGxaQyVZyovFHxhspU8YmHtdY1HtZa13hYa13D/uADKlPFicpUMan8pooTlaliUjmpeEPlmyomlTcq3lCZKn6TyhsVk8pUcaIyVfymh7XWNR7WWtd4WGtd44cPVZyonKicVEwqU8WkMlVMKlPFGxWTyqQyVXxTxaTyiYpJ5aRiqnhD5Y2Kk4oTlU9U/E0Pa61rPKy1rvGw1rqG/cEHVP6XVEwqU8WJylQxqUwVJypTxaTymyreUJkqTlSmijdUpopJ5ZsqTlSmim96WGtd42GtdY2HtdY1fviyijdUpoo3VE4qJpVPVEwqb6icqJxUvKFyojJVTCpTxaQyVUwVn6h4o+INlTcqftPDWusaD2utazysta7xwy9TmSreUJkqTiomlaliUvlExb+kMlWcVJyoTBWTylTxhsonKt5QmSpOVD5R8YmHtdY1HtZa13hYa13jhw9VnFR8ouITFScVn1A5qTipmFTeqHhD5Q2VE5WTiqniRGWq+ETFGxWTylTxmx7WWtd4WGtd42GtdQ37gy9SmSomld9U8YbKVPEJlZOKSeVfqnhD5TdVTCp/U8Wk8kbFJx7WWtd4WGtd42GtdY0f/rKKE5Wp4g2Vb1KZKk4qJpVJ5Y2KSWWqmFTeUDmpmComlZOKN1SmijdUpopJZap4o+I3Pay1rvGw1rrGw1rrGvYHv0hlqnhD5aRiUpkqJpWp4kTljYoTlaliUjmpmFROKr5JZaqYVE4qJpU3Kt5QeaPiX3pYa13jYa11jYe11jV++DKVqWJSOamYKk5UpopJZao4UTmpmFTeqHij4o2KSWWqmFSmipOKNyreqJhUTlSmiqniROUmD2utazysta7xsNa6hv3BB1Smik+ovFExqUwVn1A5qZhUpopJZar4JpWp4kTljYpJZaqYVKaKSeWNikllqjhRmSomlaliUjmp+MTDWusaD2utazysta5hf/ABlZOKSeWNihOVk4pJ5aTiRGWqmFROKk5UTireUJkqJpWpYlJ5o+JEZao4UZkqTlSmihOVT1R808Na6xoPa61rPKy1rvHDl1VMKm9UTConFZPKpHJS8S+pnFRMKlPFpHKi8kbFicqkMlVMFZPKVPGJik9UTCpTxaQyVXziYa11jYe11jUe1lrX+OFDFW9UTConFScqJxVvqEwVU8VJxaTyCZWpYlI5qThReUPlDZWp4o2KT6hMFVPFpDJVTCq/6WGtdY2HtdY1HtZa1/jhl1WcVEwqJxUnFZPKGxUnKn9TxaRyUvFGxaQyVbxRMalMKm+onFR8QuWNit/0sNa6xsNa6xoPa61r/HC5ikllqvhExaTyRsWkcqJyUjGpTBVvqEwVk8pU8U0Vk8qJyknFpHJS8UbFGypTxSce1lrXeFhrXeNhrXWNHz6kMlWcqEwVJypvqEwVk8o3qUwVk8pUcaLyhspJxaQyVUwqJxWTyqQyVUwVJyonKicVk8pUcaJyUvGbHtZa13hYa13jYa11jR8+VPEJlZOKNyreUPlExaTyhsonKiaVSWWqmFTeUDmp+KaKSeWbKk5UJpXf9LDWusbDWusaD2uta/zwZSpTxVRxojKpnFScqEwVJyonFW9UvFExqZyoTBWTyqQyVXyTylQxqUwVJyonFZPKicpUMalMFScq3/Sw1rrGw1rrGg9rrWvYH3yRyhsV36TyRsUbKicVJyonFW+ovFExqbxRMalMFZPKVPGGylTxCZWp4g2VqeKbHtZa13hYa13jYa11DfuDD6i8UfGGyicqJpWTiknlmyomlaliUvmmihOVNyomlU9UnKj8SxW/6WGtdY2HtdY1HtZa17A/+B+mMlVMKicVk8onKiaVk4oTlaniDZWpYlL5pooTlTcqJpWTijdUTiomlanimx7WWtd4WGtd42GtdY0fPqTyN1VMFZPKVDGpTCqfqJhU/iaVqeJEZar4JpVPVEwqU8WkcqIyVZxUnFRMKlPFJx7WWtd4WGtd42GtdY0fvqzim1ROVKaKSWWqeEPlExWTyjdVvFHxTSpTxYnKVHFSMam8UfEJlaniNz2sta7xsNa6xsNa6xo//DKVNyq+qWJSmSomlTdUpopJZao4UTlR+U0qU8WkMlVMKlPFicpUMalMFZPKpPIJlaliUvlND2utazysta7xsNa6xg//MSpTxYnKGxWfUHmj4g2VqeKNiknlROVEZaqYVE4qTireUHlDZaqYVL7pYa11jYe11jUe1lrX+OH/mYpJ5aRiUpkqJpWp4kRlqjhReUNlqjhROal4Q2VSOVGZKiaVqeJE5aTiDZXf9LDWusbDWusaD2uta/zwyyp+U8WkMqmcVEwqk8obFZPKGyqfqHhD5RMqJxWTylTxRsVvUjmpmFS+6WGtdY2HtdY1HtZa1/jhy1T+JpWTim+qmFROKiaVqWJS+YTKGxW/SWWqOFGZKiaVNyreqJhUJpXf9LDWusbDWusaD2uta9gfrLWu8LDWusbDWusaD2utazysta7xsNa6xsNa6xoPa61rPKy1rvGw1rrGw1rrGg9rrWs8rLWu8bDWusbDWusaD2uta/wf4r/K846yk6IAAAAASUVORK5CYII=\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Enable 2FA",
+							"id": "0671a217-bf96-4aa2-b62e-83bd3988a205",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"otp\": \"253922\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auth/2fa/enable"
+							},
+							"response": [
+								{
+									"id": "12138970-24db-4901-bee2-ffe914be39ca",
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"otp\": \"792176\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/auth/2fa/enable"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "49"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "234"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"ea-Ih9EdkJc4mZ2KHw0Gw46AIBv7Hs\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 07 Jun 2024 06:52:46 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully enabled two factor authentication.\",\n    \"data\": [\n        \"44b1edd717\",\n        \"7cb5bd7cb0\",\n        \"c980ec6ce9\",\n        \"5763f9dea1\",\n        \"55a7a321f2\",\n        \"0e9e6bfbe8\",\n        \"9e3c0ae90f\",\n        \"96de4b0305\",\n        \"8a7f5a0d90\",\n        \"8106bb1900\"\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Disable 2FA",
+							"id": "5175a2ac-da7a-48c8-b29b-1df4575bb67c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"otp\": \"792176\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auth/2fa/disable"
+							},
+							"response": [
+								{
+									"id": "d5f56d31-27a1-4d46-9687-eec4b92bbbcf",
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"otp\": \"574501\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/auth/2fa/disable"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "41"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "96"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"60-3EkUZ1crSKebylkhJGMv2wv9mRc\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 07 Jun 2024 06:57:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Successfully disabled two factor authentication.\"\n}"
+								}
+							]
 						}
 					],
 					"id": "839826e2-eeae-4d33-bd16-c08d7ef9bfdb"
@@ -296,7 +643,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1@@\",\n    \"confirmPassword\": \"Randompassword1@@\"\n}",
+									"raw": "{\n     \"oldPassword\":\"randompassword\",\n   // \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1@@\",\n    \"confirmPassword\": \"Randompassword1@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2609,12 +2956,10 @@
 													"const jsonData = pm.response.json();\r",
 													"\r",
 													"const roleId = jsonData.data[0].id\r",
-													"const roleId1 = jsonData.data[1].id\r",
 													"const roleName = jsonData.data[0].name\r",
 													"const roleDate = jsonData.data[0].createdAt\r",
 													"\r",
 													"pm.environment.set(\"roleId\", roleId)\r",
-													"pm.environment.set(\"roleId1\", roleId1)\r",
 													"pm.environment.set(\"roleName\", roleName)\r",
 													"pm.environment.set(\"roleDate\", roleDate)\r",
 													"\r",
@@ -2678,7 +3023,7 @@
 											"query": [
 												{
 													"key": "filter[permissions]",
-													"value": "",
+													"value": "85eeda8e-b0e1-475d-aedb-14f8df6e936a",
 													"disabled": true
 												},
 												{
@@ -2693,7 +3038,7 @@
 												},
 												{
 													"key": "filter[createdAt][lt]",
-													"value": "",
+													"value": "2024-06-14",
 													"disabled": true
 												},
 												{
@@ -2838,7 +3183,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{base_url}}/roles?filter[permissions]=a6deb555-247d-414d-a13b-feeda1ed863e",
+											"raw": "{{base_url}}/roles?filter[permissions]=85eeda8e-b0e1-475d-aedb-14f8df6e936a",
 											"host": [
 												"{{base_url}}"
 											],
@@ -2848,16 +3193,16 @@
 											"query": [
 												{
 													"key": "filter[permissions]",
-													"value": "a6deb555-247d-414d-a13b-feeda1ed863e"
+													"value": "85eeda8e-b0e1-475d-aedb-14f8df6e936a"
 												},
 												{
 													"key": "filter[q]",
-													"value": "vibes",
+													"value": "admin",
 													"disabled": true
 												},
 												{
 													"key": "filter[createdAt][gt]",
-													"value": "",
+													"value": "2024-06-17",
 													"disabled": true
 												},
 												{
@@ -3878,7 +4223,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"description\": \"Administer\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"{{permissionId3}}\", \"{{permissionId2}}\"] // array of permission ids from the list permissions endpoint\n}",
+											"raw": "{\n    \"description\": \"Administer\",\n    \"status\": \"active\", // active or inactive\n   \"permissions\": [\"{{permissionId3}}\", \"{{permissionId2}}\"] // array of permission ids from the list permissions endpoint\n   // \"permissions\": [\"85eeda8e-b0e1-475d-aedb-14f8df6e936a\"]\n}\n",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6447,7 +6792,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Bayee\", //\"Temitato\",\n    \"lastName\": \"Deanil\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
+											"raw": "{\n    \"firstName\": \"Priscaline\", //\"Temitato\",\n    \"lastName\": \"Mike\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"cf3b4381757ef10fe6647d115897ecbc14c02474\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6614,13 +6959,13 @@
 											"query": [
 												{
 													"key": "filter[q]",
-													"value": "Temitayo",
+													"value": "nino",
 													"description": "Searches by name, email and phone",
 													"disabled": true
 												},
 												{
 													"key": "filter[roleId]",
-													"value": "2fd20713-52c8-413f-a81b-2c5e9077f074",
+													"value": "daa5f63d-19c6-4849-a9ae-0a99bc5388dc",
 													"disabled": true
 												},
 												{
@@ -6932,7 +7277,7 @@
 												},
 												{
 													"key": "filter[createdAt][gt]",
-													"value": "2024-05-21",
+													"value": "2024-06-17",
 													"disabled": true
 												},
 												{
@@ -7228,6 +7573,15 @@
 										},
 										"method": "PATCH",
 										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reason\": \"test\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
 										"url": {
 											"raw": "{{base_url}}/users/:id/deactivate",
 											"host": [
@@ -7563,6 +7917,311 @@
 								}
 							],
 							"id": "a946ad5c-4d0b-44c7-89df-c778616580d3"
+						},
+						{
+							"name": "Update User",
+							"item": [
+								{
+									"name": "Update User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a10d627b-9d3b-47b1-8b3a-5cad43099371",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'OK'\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"pm.test(\"Response body property\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.status).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status is 'success'\", function () {\r",
+													"    pm.expect(jsonData.status).to.eql('success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify User updated successfully\", function () {\r",
+													"    pm.expect(jsonData.message).to.include('User updated successfully');\r",
+													"});\r",
+													"pm.test(\"Verify that data is a string\", function () {\r",
+													"    pm.expect(jsonData.data).to.be.an('object').and.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "9a634c4d-bb33-4da6-96fc-3e3908e23be7",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
+											}
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"{{roleId}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{userId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "No roleId - Update User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a10d627b-9d3b-47b1-8b3a-5cad43099371",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'Bad Request.\", function () {\r",
+													"    pm.response.to.have.status(\"Bad Request\");\r",
+													"});\r",
+													"pm.test(\"Verify message Validation Error.\", function () {\r",
+													"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+													"});\r",
+													"pm.test(\"Verify fields can not be empty\", function () {\r",
+													"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
+													"       });"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "d5a63b31-79dc-4de7-ad49-082c699bf418",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
+											}
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{userId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "No Id - Update User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a10d627b-9d3b-47b1-8b3a-5cad43099371",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'Bad Request.\", function () {\r",
+													"    pm.response.to.have.status(\"Bad Request\");\r",
+													"});\r",
+													"pm.test(\"Verify message Validation Error.\", function () {\r",
+													"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
+													"});\r",
+													"pm.test(\"Verify fields can not be empty\", function () {\r",
+													"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
+													"       });"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "d93c0e62-680c-4f5f-aa23-82248416ddec",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
+											}
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"{{roleId}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a10d627b-9d3b-47b1-8b3a-5cad43099371",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"pm.test(\"Status code name has Unauthorized\", function () {\r",
+													"    pm.response.to.have.status(\"Unauthorized\");\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "40cf3ae8-7c87-43a3-ad11-fc3d823a7ba2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "ec",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"roleId\": \"{{roleId}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "c1cea97a-1e8d-4d93-b018-5e3220c7e5ed"
 						}
 					],
 					"id": "5f1e728f-e65d-41a9-9b59-f902bc700d7c"
@@ -7639,7 +8298,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/vendors",
+									"raw": "{{base_url}}/admin/vendors?filter[status]=pending",
 									"host": [
 										"{{base_url}}"
 									],
@@ -7650,23 +8309,40 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "Azeez",
+											"value": "Temi's Kitchen Fab",
+											"description": "filters by vendor name, primary user email and phone",
 											"disabled": true
 										},
 										{
 											"key": "filter[status]",
 											"value": "pending",
-											"description": "pending, active, inactive",
-											"disabled": true
+											"description": "pending, active, inactive"
 										},
 										{
 											"key": "limit",
 											"value": "5",
+											"description": "azeez+51@assurdly.com\"",
 											"disabled": true
 										},
 										{
 											"key": "page",
 											"value": "1",
+											"description": "Temi's Kitchen Fab",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][gt]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt][gt]",
+											"value": "2024-06-06T23:00:00",
+											"disabled": true
+										},
+										{
+											"key": "filter[rating][gt]",
+											"value": "3",
 											"disabled": true
 										}
 									]
@@ -8890,7 +9566,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -8900,7 +9576,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"inactive\" // \"active\" | \"inactive\"\n}",
+									"raw": "{\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8957,7 +9633,7 @@
 								"auth": {
 									"type": "noauth"
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -9033,7 +9709,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -9109,7 +9785,7 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PUT",
+								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
@@ -9154,6 +9830,42 @@
 					"item": [
 						{
 							"name": "Fetch Reviews",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "94eafdf5-8c58-4da6-a211-322ba49d1593",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Reviews fetched successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "ad2d0cc6-52be-4cb8-9d23-6e1dda42f355",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9162,14 +9874,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"url": {
@@ -9211,6 +9924,41 @@
 						},
 						{
 							"name": "Delete Review",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f4120e4f-fa15-4fcf-b123-991637ab262c",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Review deleted successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "94d3aac9-127e-4842-9617-fe36f4eae125",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9219,14 +9967,15 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{adminAccessToken}}"
 									}
 								},
 								"method": "DELETE",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "ec"
+										"value": "ec",
+										"disabled": true
 									}
 								],
 								"body": {
@@ -9251,7 +10000,6 @@
 									],
 									"variable": [
 										{
-											"id": "1355d323-7a19-444d-b4ad-cb35ff09e618",
 											"key": "id",
 											"value": ""
 										}
@@ -9264,7 +10012,130 @@
 					"id": "9d230a7b-e0fe-4a59-be4c-599747b853ca"
 				},
 				{
-					"name": "Blacklist Vendor Copy",
+					"name": "Approve Vendor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "db17c674-dae9-4018-9717-711c1af0ccd6",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Vendor approved successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "cca3baee-ab89-4ac5-bd1b-474ea27dabbb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/vendors/:id/approve",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"vendors",
+								":id",
+								"approve"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "394b7e8c-7a73-4a41-90ee-b12c29758358"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blacklist Vendor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d005e414-9cb6-40ec-a1e6-6584c105f3d3",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Vendor blacklisted successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "20e57e8d-522a-46c0-b356-d1bcda9ed7fb",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -9273,14 +10144,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -9304,7 +10176,93 @@
 							],
 							"variable": [
 								{
-									"id": "78254bbc-ddad-4d29-b8c1-c5a107de01b8",
+									"key": "id",
+									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject Vendor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "06cba8cd-6c5e-40c0-9259-63b768d9dd76",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Vendor rejected successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "a2e37e57-ab8e-4480-9fef-b2129fb115bf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/vendors/:id/reject",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"vendors",
+								":id",
+								"reject"
+							],
+							"variable": [
+								{
 									"key": "id",
 									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
 								}
@@ -9387,7 +10345,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/customers?filter[createdAt][gt]=2024-06-11",
+									"raw": "{{base_url}}/admin/customers",
 									"host": [
 										"{{base_url}}"
 									],
@@ -9421,7 +10379,8 @@
 										{
 											"key": "filter[createdAt][gt]",
 											"value": "2024-06-11",
-											"description": "active"
+											"description": "active",
+											"disabled": true
 										},
 										{
 											"key": "filter[createdAt][lt]",
@@ -9443,11 +10402,6 @@
 										"id": "282ee08f-3b7d-4128-bcd0-0af3974331ff",
 										"exec": [
 											"const jsonData = pm.response.json();\r",
-											"\r",
-											"const adminCustomer = jsonData.data[0].id\r",
-											"\r",
-											"pm.environment.set(\"adminCustomer\", adminCustomer)\r",
-											"\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -9529,13 +10483,13 @@
 										},
 										{
 											"key": "filter[createdAt][gt]",
-											"value": "2024-06-05",
+											"value": "2024-06-13",
 											"description": "active",
 											"disabled": true
 										},
 										{
 											"key": "filter[createdAt][lt]",
-											"value": "2024-06-05",
+											"value": "2024-06-15",
 											"description": "active",
 											"disabled": true
 										}
@@ -9602,7 +10556,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/customers?filter[createdAt][gt]={{customerCreatedAt}}",
+									"raw": "{{base_url}}/admin/customers?filter[createdAt][lt]=2024-06-05",
 									"host": [
 										"{{base_url}}"
 									],
@@ -9635,14 +10589,14 @@
 										},
 										{
 											"key": "filter[createdAt][gt]",
-											"value": "{{customerCreatedAt}}",
-											"description": "active"
+											"value": "2024-06-09",
+											"description": "active",
+											"disabled": true
 										},
 										{
 											"key": "filter[createdAt][lt]",
 											"value": "2024-06-05",
-											"description": "active",
-											"disabled": true
+											"description": "active"
 										}
 									]
 								}
@@ -9964,7 +10918,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"active\" // \"active\" | \"inactive\",\n    }",
+									"raw": "{\n    \"status\": \"active\", // \"active\" | \"inactive\",\n    \"reason\": \"test\"\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10296,7 +11250,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{adminCustomer}}"
+											"value": "98f1694d-85ee-4eae-932c-3640ed13294b"
 										}
 									]
 								}
@@ -10440,19 +11394,30 @@
 						}
 					],
 					"id": "d4187fe9-e730-49de-98cf-dc479181dde7"
-				},
+				}
+			],
+			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
+		},
+		{
+			"name": "Order",
+			"item": [
 				{
-					"name": "Blacklist Customer",
+					"name": "Fetch Order",
 					"item": [
 						{
-							"name": "Blacklist Customer",
+							"name": "Fetch Orders",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
-										"id": "f9560719-a133-4a06-bac3-c9d34cf0501c",
+										"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
 										"exec": [
 											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminOrder = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminOrder\", adminOrder)\r",
+											"\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -10464,27 +11429,25 @@
 											"    pm.expect(jsonData).to.be.an('object');\r",
 											"    pm.expect(jsonData.status).to.be.a('string');\r",
 											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"    pm.expect(jsonData.data).to.be.an('object');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Status is 'success'\", function () {\r",
 											"    pm.expect(jsonData.status).to.eql('success');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Verify Fetched customer successfully\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer successfully\");\r",
+											"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Verify data returns customers\", function () {\r",
-											"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
 									}
 								}
 							],
-							"id": "46f96932-71f8-4b7c-b5c3-49f3fd68b946",
+							"id": "4fb0a05a-9463-4248-b6a7-37abe2577c1d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -10495,31 +11458,288 @@
 										"token": "{{adminAccessToken}}"
 									}
 								},
-								"method": "PATCH",
+								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"reason\": \"Rude\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
-									"raw": "{{base_url}}/admin/customers/:id",
+									"raw": "{{base_url}}/admin/orders",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"admin",
-										"customers",
-										":id"
+										"orders"
 									],
-									"variable": [
+									"query": [
 										{
-											"key": "id",
-											"value": "{{adminCustomer}}"
+											"key": "filter[status]",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "filter[q]",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt]",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "By status - Fetch Orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminOrder = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminOrder\", adminOrder)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "89f39c4c-20fb-4194-ad8d-ab9d38955024",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/orders?filter[status]=pending",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "filter[status]",
+											"value": "pending"
+										},
+										{
+											"key": "filter[q]",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt]",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "By Name - Fetch Orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminOrder = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminOrder\", adminOrder)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "b9a3189d-9411-44c1-a8d7-4633ebdb18ae",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/orders?filter[q]=emerald",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "filter[status]",
+											"value": "pending",
+											"disabled": true
+										},
+										{
+											"key": "filter[q]",
+											"value": "emerald"
+										},
+										{
+											"key": "filter[createdAt]",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "By date - Fetch Orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const adminOrder = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"adminOrder\", adminOrder)\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Status code name has 'OK'\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Response body property\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.status).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.data).to.be.an('array');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status is 'success'\", function () {\r",
+											"    pm.expect(jsonData.status).to.eql('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3b313047-f457-4254-bc6f-0770f832e8cf",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{adminAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "filter[status]",
+											"value": "pending",
+											"disabled": true
+										},
+										{
+											"key": "filter[q]",
+											"value": "emerald",
+											"disabled": true
+										},
+										{
+											"key": "filter[createdAt]",
+											"value": "2024-06-12",
+											"disabled": true
 										}
 									]
 								}
@@ -10527,99 +11747,15 @@
 							"response": []
 						}
 					],
-					"id": "bdd764f0-38ec-4696-82bb-5572d1d83261"
+					"id": "e99ea74d-a9c2-49e5-afa1-95f781666960"
 				},
 				{
-					"name": "Blacklist Customer",
-					"id": "6d9c1d80-83c9-42b5-87ba-5806643d1da9",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"reason\": \"\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/admin/customers/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"customers",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "3befb522-3609-4df3-b24d-f3edd7725755",
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Customer Copy",
-					"id": "52005a8f-8d24-45a2-b95f-2838c28827bd",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"reason\": \"Vibes\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/admin/customers/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"customers",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "6eadfdfd-9754-404b-a6e2-25613265ebef",
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"id": "949d2409-b645-43ea-bf5f-5481ca605c4e"
-		},
-		{
-			"name": "Order",
-			"item": [
-				{
-					"name": "Fetch Orders",
+					"name": "Fetch Order By ID Copy",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
+								"id": "a94a4b33-2968-4cea-a8d0-58abc148eb19",
 								"exec": [
 									"const jsonData = pm.response.json();\r",
 									"\r",
@@ -10638,17 +11774,16 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
 									"    pm.expect(jsonData.status).to.eql('success');\r",
 									"});\r",
-									"\r",
+									"/*\r",
 									"pm.test(\"Verify Fetched orders successfully\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
 									"});\r",
-									"\r",
+									"*/\r",
 									""
 								],
 								"type": "text/javascript",
@@ -10656,7 +11791,7 @@
 							}
 						}
 					],
-					"id": "4fb0a05a-9463-4248-b6a7-37abe2577c1d",
+					"id": "84e774b2-2697-42ed-9ce4-f437c6a251b7",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -10670,34 +11805,206 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/admin/orders",
+							"raw": "{{base_url}}/admin/orders/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"admin",
-								"orders"
+								"orders",
+								":id"
 							],
-							"query": [
+							"variable": [
 								{
-									"key": "filter[status]",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "filter[q]",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "filter[createdAt]",
-									"value": null,
-									"disabled": true
+									"key": "id",
+									"value": ""
 								}
 							]
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update Order Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1aff6dee-aad5-4137-8af9-ce233131b8fa",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"const adminOrder = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminOrder\", adminOrder)\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"/*\r",
+									"pm.test(\"Verify Fetched orders successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
+									"});\r",
+									"*/\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "848c1571-cdc1-4a47-8ca4-9f5bd28934d4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"processing\", // processing, enroute, completed, cancelled\n    \"cancelReason\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{adminOrder}}",
+									"description": "The vendor order ID being updated"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "2407272e-b408-4f48-b8f2-20fe9748581a",
+							"name": "enum",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"ded\",\n    \"cancelReason\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/vendor/orders/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendor",
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "97"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "50"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "157"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9d-G1YsnsnIgDeqVapj5MV7jrmxWbQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 May 2024 11:37:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Validation Error.\",\n    \"data\": {\n        \"status\": \"status must be one of the following values: pending, processing, enroute, delivered, completed, cancelled\"\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "a202ee52-92ca-4a5d-89e2-9aa98aef5f69"
@@ -10722,7 +12029,6 @@
 											"\r",
 											"pm.environment.set(\"transactionRef\", transactionRef)\r",
 											"\r",
-											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
@@ -10735,15 +12041,12 @@
 											"    pm.expect(jsonData.message).to.be.a('string');\r",
 											"    pm.expect(jsonData.data).to.be.an('array');\r",
 											"});\r",
-											"\r",
 											"pm.test(\"Status is 'success'\", function () {\r",
 											"    pm.expect(jsonData.status).to.eql('success');\r",
 											"});\r",
-											"\r",
 											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
 											"    pm.expect(pm.response.json().message).to.equal(\"Fetched transactions successfully\");\r",
 											"});\r",
-											"\r",
 											"pm.test(\"Verify Customers fetched successfully\", function () {\r",
 											"    pm.expect(pm.response.json().data).to.be.an(\"array\");\r",
 											"});"
@@ -10773,7 +12076,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/transactions?filter[customerId]=98f1694d-85ee-4eae-932c-3640ed13294b",
+									"raw": "{{base_url}}/admin/transactions",
 									"host": [
 										"{{base_url}}"
 									],
@@ -10784,12 +12087,13 @@
 									"query": [
 										{
 											"key": "filter[orgId]",
-											"value": "0077edff-24f4-4397-83c9-05d5d4198b26",
+											"value": "",
 											"disabled": true
 										},
 										{
 											"key": "filter[customerId]",
-											"value": "98f1694d-85ee-4eae-932c-3640ed13294b"
+											"value": "98f1694d-85ee-4eae-932c-3640ed13294b",
+											"disabled": true
 										},
 										{
 											"key": "filter[status]",
@@ -11620,6 +12924,73 @@
 						}
 					],
 					"id": "d0f4d140-dd2a-406a-97cd-f64852c2422a"
+				},
+				{
+					"name": "Fetch Transaction by ID Copy",
+					"id": "19479989-d9cd-4293-bcb3-8b43184a112c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/transactions/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"transactions",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "eb5237a1-46e6-4ac9-a985-845f4fbc01d8",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "79efaf77-69c4-4bab-874d-4f7b14929178",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/transactions/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"transactions",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": ""
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transactions successfully\",\n    \"data\": {\n        \"amount\": 10,\n        \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:31 AM\",\n        \"paymentConfirmationDate\": null,\n        \"reference\": \"ec_ref_f6425b875a\",\n        \"status\": \"pending\",\n        \"type\": \"payout\",\n        \"id\": \"d4b6f907-ff00-4ce4-8818-1f22ba5a915d\",\n        \"createdAt\": \"2024-06-06T03:31:45.821Z\",\n        \"updatedAt\": \"2024-06-06T03:31:45.821Z\"\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "38b17ddf-e428-4fc7-8acf-5b24fab7662f"
@@ -12072,7 +13443,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "{{promoId}}"
 										}
 									]
 								}
@@ -13908,6 +15279,486 @@
 			"id": "886b3b96-b5e8-4563-b362-13e8892cb487"
 		},
 		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Fetch Notifications",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a11c7c85-8af9-4ea9-be3f-32b8abf11b90",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Notifications fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Notifications fetched successfully\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "ce93a11e-8c44-4776-9917-69cf14f0db6a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications?filter[createdAt]=2024-06-12T23:00:00",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "filter[createdAt]",
+									"value": "2024-06-12T23:00:00"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "bc90701d-734c-4a77-b4be-1a5dfa7eb72c"
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Create Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "78b488f1-877c-49bf-907a-a97506120cd2",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"/*\r",
+									"const adminVendor = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminVendor\", adminVendor)\r",
+									"*/\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Created'\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Category successfully created\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Category successfully created\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "8c290ee9-0cd9-48a7-a9d3-dca00e9b4098",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{$randomCountry}}",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "-9MSuJC6j/lily-banse--YHSwy6uqvk-unsplash.jpg"
+								}
+							]
+						},
+						"url": "{{base_url}}/admin/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "89cec724-334c-414b-9865-4a272e9cfd6b",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"const adminCategories = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminCategories\", adminCategories)\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'Ok'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Categories fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Categories fetched successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "ec6a47e4-9980-44b5-8ee3-ac147c0c82b9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyMjBmNWEyLTExOTctNDFhNC1hNzZlLTJhNzI2OTNhNDY5MCIsImlhdCI6MTcxODM2NzU5NCwiZXhwIjoxNzE4MzcxMTk0fQ.8tGqYlhIaxtKY8GAF-D9YJEQAgpqzMmOYRCVjkPIB4Q"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"disabled": true
+							}
+						],
+						"url": "{{base_url}}/meals/categories"
+					},
+					"response": [
+						{
+							"id": "545e44ef-a2ea-423d-97ff-0e8477ef5f4b",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/meals/categories"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1340"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"53c-wEFHP1DfXjPoEuF3293te8LxAJQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Mar 2024 00:55:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Categories fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"African\",\n            \"slug\": \"african\"\n        },\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Italian\",\n            \"slug\": \"italian\"\n        },\n        {\n            \"id\": 3,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Chinese\",\n            \"slug\": \"chinese\"\n        },\n        {\n            \"id\": 4,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Indian\",\n            \"slug\": \"indian\"\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Thai\",\n            \"slug\": \"thai\"\n        },\n        {\n            \"id\": 6,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"American\",\n            \"slug\": \"american\"\n        },\n        {\n            \"id\": 7,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegan\",\n            \"slug\": \"vegan\"\n        },\n        {\n            \"id\": 8,\n            \"createdAt\": \"2024-03-19T23:54:56.334Z\",\n            \"updatedAt\": \"2024-03-19T23:55:07.474Z\",\n            \"deletedAt\": null,\n            \"deletedById\": null,\n            \"name\": \"Vegetarian\",\n            \"slug\": \"vegetarian\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "143ecc83-f169-4f34-abf4-f7ca29056a6f",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"/*\r",
+									"const adminVendor = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminVendor\", adminVendor)\r",
+									"*/\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Category deleted successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Category deleted successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "4296d521-d1f5-43df-a0b5-be4f353b7c83",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Nigerian2",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/categories/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "e87cea27-fb5f-4ae3-a18b-982a9edfb6fd"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "e81b950c-11d2-4a3f-9cfb-f6717f383930",
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Nigerian2",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": "postman-cloud:///1ef17790-8e39-4930-b8ae-f3f5574e6b07"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/categories/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "e87cea27-fb5f-4ae3-a18b-982a9edfb6fd"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "98"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "46"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-y41TSS8X9WHMTXDvVVicQ6cT/0o\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 15:00:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Category deleted successfully\"\n}"
+						}
+					]
+				}
+			],
+			"id": "2cf489b9-9ee5-4a22-96a0-9179bacefc1c"
+		},
+		{
 			"name": "System Settings",
 			"item": [
 				{
@@ -13943,7 +15794,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Verify Settings updated successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Settings updated successfully\");\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Settings fetched successfully\");\r",
 									"});\r",
 									"\r",
 									""
@@ -14045,6 +15896,47 @@
 				},
 				{
 					"name": "Update Settings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65ba1b62-8dfc-4d0d-9eb0-0a0582513c5a",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"/*\r",
+									"const adminOrder = jsonData.data[0].id\r",
+									"\r",
+									"pm.environment.set(\"adminOrder\", adminOrder)\r",
+									"*/\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Settings updated successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Settings updated successfully\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "a070780f-860e-40c2-82ba-b7e38232d099",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -14053,19 +15945,20 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "PUT",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
+							"raw": "{\n    \"sessionTimeout\": 1,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14217,6 +16110,573 @@
 				}
 			],
 			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
+		},
+		{
+			"name": "Stats Copy",
+			"item": [
+				{
+					"name": "Fetch Dashboard Stats",
+					"id": "44b9888c-3f6f-46d6-a87c-fdfbebfca183",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/dashboard"
+					},
+					"response": [
+						{
+							"id": "b09c0b41-4341-424f-8f2c-8996f13df58c",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/dashboard"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "972"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3cc-q6lOQkL7k0xg6j408vQ36iEPWzY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 09:59:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched dashboard stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_7_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_30_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_60_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_90_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_6_months\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        },\n        \"last_1_year\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0,\n            \"totalMeals\": 0,\n            \"totalTeamMembers\": 0,\n            \"totalVendors\": 1\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Customer Stats",
+					"id": "f9a8b965-a785-47b2-8df1-cbc0bc099ac1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/customer"
+					},
+					"response": [
+						{
+							"id": "c785b409-f7d3-4af4-a0a1-f640c994c2f6",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/customer"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1090"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"442-RkFtuznyih5Fo9a5jpFZyLnU7MI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 10:55:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched customer stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_7_days\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_30_days\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_60_days\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_90_days\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_6_months\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        },\n        \"last_1_year\": {\n            \"totalCustomers\": 0,\n            \"totalActiveCustomers\": 0,\n            \"totalDeletedCustomers\": 0,\n            \"totalInactiveCustomers\": 0,\n            \"totalBlacklistedCustomers\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Order Stats",
+					"id": "7e12573c-f6d7-4b33-8a2e-821dcc1f17b6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/orders"
+					},
+					"response": [
+						{
+							"id": "fe0b1bfe-7796-4b56-9c1d-dd1283110694",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/orders"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "730"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2da-Il1Gvuznb3Esiz8/cbjzwaULBic\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 10:34:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched order stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_7_days\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_30_days\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_60_days\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_90_days\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_6_months\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        },\n        \"last_1_year\": {\n            \"totalCancelledOrders\": 0,\n            \"totalDeliveredOrders\": 0,\n            \"totalInProgressOrders\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Vendor Stats",
+					"id": "7f4d6a6e-fb0b-446e-a475-4c3c79407a47",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/vendors"
+					},
+					"response": [
+						{
+							"id": "cc807b72-41f6-4535-a558-2a0470b53adf",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/vendors"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1185"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a1-NiB/WgUnntaKZ0d3DQACebVBNCw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 10:57:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched order stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_7_days\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_30_days\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_60_days\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_90_days\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_6_months\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        },\n        \"last_1_year\": {\n            \"totalActiveVendors\": 0,\n            \"totalDeletedVendors\": 0,\n            \"totalInactiveVendors\": 0,\n            \"totalPendingVendors\": 1,\n            \"totalVendors\": 1,\n            \"totalBlacklistedVendors\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Transaction Stats",
+					"id": "accf9675-8983-4ff1-b97f-e77c045bda77",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/stats/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "vendorId",
+									"value": "c36105e9-9b12-45bb-96f1-92ab66234c27",
+									"description": "Optional. To fetch stats for a particular vendor",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "9c957cda-dc96-4f0a-a856-4fdff2db9d71",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/transactions"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "912"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"390-7QWbFbfukdho+EY3mOVcErKyuJA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 11:15:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched order stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_7_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_30_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_60_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_90_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_6_months\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_1_year\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "0899e354-1087-425e-93d8-1d6eeb7585eb"
+		},
+		{
+			"name": "Blacklist Customer",
+			"item": [
+				{
+					"name": "Blacklist Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9560719-a133-4a06-bac3-c9d34cf0501c",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched customer successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer successfully\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify data returns customers\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "46f96932-71f8-4b7c-b5c3-49f3fd68b946",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"Rude\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0603b95e-471a-49c5-a845-a5932e351be7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "bdd764f0-38ec-4696-82bb-5572d1d83261"
 		},
 		{
 			"name": "Delete customer",
