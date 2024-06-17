@@ -2599,6 +2599,17 @@
 											"        // pm.expect(jsonData.data).to.be.an('object');",
 											"    });",
 											"",
+											"        pm.test(\"Response body properties\", function () {",
+											"        pm.expect(data).to.be.an('object');",
+											"        pm.expect(status).to.be.a('string');",
+											"        pm.expect(message).to.be.a('string');",
+											"        // pm.expect(jsonData.data).to.be.an('object');",
+											"    });",
+											"",
+											"    pm.test(\"Status is 'success'\", function () {",
+											"        pm.expect(status).to.eql('success');",
+											"    });",
+											"",
 											"    pm.test(\"Status is 'success'\", function () {",
 											"        pm.expect(status).to.eql('success');",
 											"    });",
@@ -2611,8 +2622,7 @@
 											"}",
 											""
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
