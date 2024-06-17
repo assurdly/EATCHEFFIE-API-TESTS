@@ -16586,6 +16586,97 @@
 							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched order stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_7_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_30_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_60_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_90_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_6_months\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_1_year\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        }\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "Fetch Promo Stats Copy",
+					"id": "1e234089-09dd-47dd-aa1c-130f3610030f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/promos"
+					},
+					"response": [
+						{
+							"id": "a746e3c4-4e37-4bb4-948f-33770fdc383b",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/promos"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "562"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"232-iPlXbuXlCouOIxt6x0kx/CN85fw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jun 2024 20:49:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched promo stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_7_days\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_30_days\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_60_days\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_90_days\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_6_months\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_1_year\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        }\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "0899e354-1087-425e-93d8-1d6eeb7585eb"
