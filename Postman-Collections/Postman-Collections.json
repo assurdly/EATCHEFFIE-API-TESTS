@@ -16354,8 +16354,9 @@
 									"pm.test(\"Verify Fetched customer stats successfully\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer stats successfully\");\r",
 									"});\r",
-									"pm.test(\"Verify audit trail is returned\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"pm.test(\"Verify that data returns stats\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\").and.not.be.empty;\r",
 									"});\r",
 									""
 								],
@@ -16383,7 +16384,29 @@
 								"disabled": true
 							}
 						],
-						"url": "{{base_url}}/admin/stats/customer"
+						"url": {
+							"raw": "{{base_url}}/admin/stats/customer?date[from]=2024-04-16T00:00:00&date[to]=2024-05-16T00:00:00",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "date[from]",
+									"value": "2024-04-16T00:00:00",
+									"type": "text"
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-05-16T00:00:00",
+									"type": "text"
+								}
+							]
+						}
 					},
 					"response": [
 						{
@@ -17013,11 +17036,11 @@
 								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PATCH",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reason\": \"Rude\"\n}",
+							"raw": "{\n    \"status\": \"active\",\n    \"reason\": \"Rude\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17034,10 +17057,18 @@
 								"customers",
 								":id"
 							],
+							"query": [
+								{
+									"key": null,
+									"value": "0603b95e-471a-49c5-a845-a5932e351be7",
+									"type": "text",
+									"disabled": true
+								}
+							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "0603b95e-471a-49c5-a845-a5932e351be7"
+									"value": "bc58049d-a03f-4cf8-9d9d-62b0d385b59d"
 								}
 							]
 						}
