@@ -16064,63 +16064,6 @@
 			"item": [
 				{
 					"name": "Get Audit Trail",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4a2509df-b4be-4cd9-9164-0402bde93397",
-								"exec": [
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Status code name has 'OK'\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"pm.test(\"Response body property\", function () {\r",
-									"    pm.expect(jsonData).to.be.an('object');\r",
-									"    pm.expect(jsonData.status).to.be.a('string');\r",
-									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status is 'success'\", function () {\r",
-									"    pm.expect(jsonData.status).to.eql('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Audit trail fetched successfully\");\r",
-									"});\r",
-									"pm.test(\"Verify audit trail is returned\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "fcae0ab7-2eea-4e78-ae15-f6c1274693c5",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "{{base_url}}/audit-trail"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Audit Trail Copy",
 					"id": "c20189fa-e625-4ebc-aff5-ea01aed9ebce",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
