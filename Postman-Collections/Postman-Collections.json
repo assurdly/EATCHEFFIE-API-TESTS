@@ -8105,27 +8105,27 @@
 								"exec": [
 									"try {",
 									"",
-									"const { status, message, data } = pm.response.json()",
-									"pm.environment.set('fetchedCategory1', data[0].id)",
-									"pm.environment.set('fetchedCategory2', data[1].id)",
-									"pm.environment.set('fetchedCategory3', data[2].id)",
-									"pm.environment.set('fetchedCategory4', data[3].id)",
+									"    const { status, message, data } = pm.response.json()",
+									"    pm.environment.set('fetchedCategory1', data[0].id)",
+									"    pm.environment.set('fetchedCategory2', data[1].id)",
+									"    pm.environment.set('fetchedCategory3', data[2].id)",
+									"    pm.environment.set('fetchedCategory4', data[3].id)",
 									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
+									"    pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
 									"",
-									"pm.test(\"Status is success\", function () {",
-									"   pm.expect(status).to.eql('success')",
-									"});",
+									"    pm.test(\"Status is success\", function () {",
+									"        pm.expect(status).to.eql('success')",
+									"    });",
 									"",
-									"pm.test(\"Data is an array\", function () {",
-									"   pm.expect(data).to.be.an('array')",
-									"});",
+									"    pm.test(\"Data is an array\", function () {",
+									"        pm.expect(data).to.be.an('array')",
+									"    });",
 									"",
-									"pm.test(\"Categories fetched successfully\", function () {",
-									"    pm.expect(message).to.eql('Categories fetched successfully');",
-									"});",
+									"    pm.test(\"Categories fetched successfully\", function () {",
+									"        pm.expect(message).to.eql('Categories fetched successfully');",
+									"    });",
 									"",
 									"} catch (error) {",
 									"    console.error(\"Error caught in running tests:\", error)",
@@ -10732,31 +10732,43 @@
 			"id": "aa56ff97-df4b-4147-b3f2-6e1b8314b01d"
 		},
 		{
-			"name": "Fetch Notifications Copy",
-			"id": "df0b5bac-b3f3-4417-ad72-b811a3e394bb",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/notifications?filter[createdAt]=2024-06-10T23:00:00",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"notifications"
-					],
-					"query": [
-						{
-							"key": "filter[createdAt]",
-							"value": "2024-06-10T23:00:00"
+			"name": "Notification",
+			"item": [
+				{
+					"name": "Fetch Notifications",
+					"id": "df0b5bac-b3f3-4417-ad72-b811a3e394bb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendorAccessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications?filter[createdAt]=2024-06-10T23:00:00",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "filter[createdAt]",
+									"value": "2024-06-10T23:00:00"
+								}
+							]
 						}
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"id": "686b0ee6-a141-47f0-a044-f9f10993823c"
 		}
 	],
 	"event": [
