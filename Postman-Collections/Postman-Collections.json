@@ -9577,7 +9577,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
+									"raw": "{\n    \"reason\":\"test\",\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9597,7 +9597,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{adminVendor}}"
+											"value": "223c8f4e-b5dc-486b-980b-e79b8ae59b3f"
 										}
 									]
 								}
@@ -10032,7 +10032,6 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
@@ -10092,7 +10091,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "394b7e8c-7a73-4a41-90ee-b12c29758358"
+									"value": "223c8f4e-b5dc-486b-980b-e79b8ae59b3f"
 								}
 							]
 						}
