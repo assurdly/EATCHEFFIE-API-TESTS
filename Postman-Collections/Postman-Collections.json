@@ -10125,7 +10125,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Vendor blacklisted successfully\");\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Vendor updated successfully\");\r",
 									"});\r",
 									"\r",
 									""
