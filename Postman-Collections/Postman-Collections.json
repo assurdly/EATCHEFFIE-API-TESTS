@@ -78,7 +78,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n  //  \"password\": \"Randompassword1@\"\n //  \"email\": \"nino@yopmail.com\",\n     \"password\": \"randompassword\"\n //   \"password\": \"Password12@@\"\n}\n",
+									"raw": "{\n    \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n   \"password\": \"Randompassword1@\"\n //  \"email\": \"nino@yopmail.com\",\n  //   \"password\": \"randompassword\"\n //   \"password\": \"Password12@@\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
