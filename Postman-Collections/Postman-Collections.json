@@ -78,7 +78,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n   \"password\": \"Randompassword1@\"\n //  \"email\": \"nino@yopmail.com\",\n  //   \"password\": \"randompassword\"\n //   \"password\": \"Password12@@\"\n}\n",
+									"raw": "{\n   \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n   \"password\": \"Randompassword1@\"\n //  \"email\": \"dina@yopmail.com\",\n  //   \"password\": \"randompassword\"\n //   \"password\": \"Password1@\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8298,7 +8298,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/vendors?filter[status]=pending",
+									"raw": "{{base_url}}/admin/vendors",
 									"host": [
 										"{{base_url}}"
 									],
@@ -8309,14 +8309,15 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "Temi's Kitchen Fab",
+											"value": "azeez",
 											"description": "filters by vendor name, primary user email and phone",
 											"disabled": true
 										},
 										{
 											"key": "filter[status]",
-											"value": "pending",
-											"description": "pending, active, inactive"
+											"value": "inactive",
+											"description": "pending, active, inactive",
+											"disabled": true
 										},
 										{
 											"key": "limit",
