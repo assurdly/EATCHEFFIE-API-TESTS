@@ -16629,7 +16629,7 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
@@ -16639,8 +16639,9 @@
 									"pm.test(\"Verify Fetched order stats successfully\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.equal(\"Fetched vendor stats successfully\");\r",
 									"});\r",
-									"pm.test(\"Verify audit trail is returned\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"pm.test(\"Verify that data returns stats\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\").and.not.be.empty;\r",
 									"});\r",
 									""
 								],
@@ -16668,7 +16669,31 @@
 								"disabled": true
 							}
 						],
-						"url": "{{base_url}}/admin/stats/vendors"
+						"url": {
+							"raw": "{{base_url}}/admin/stats/vendors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"vendors"
+							],
+							"query": [
+								{
+									"key": "date[from]",
+									"value": "2024-04-16T00:00:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-05-16T00:00:00",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": [
 						{
@@ -16760,7 +16785,7 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
@@ -16770,8 +16795,9 @@
 									"pm.test(\"Verify Fetched order stats successfully\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.equal(\"Fetched transaction stats successfully\");\r",
 									"});\r",
-									"pm.test(\"Verify audit trail is returned\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"pm.test(\"Verify that data returns stats\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\").and.not.be.empty;\r",
 									"});\r",
 									""
 								],
@@ -16814,6 +16840,18 @@
 									"key": "vendorId",
 									"value": "c36105e9-9b12-45bb-96f1-92ab66234c27",
 									"description": "Optional. To fetch stats for a particular vendor",
+									"disabled": true
+								},
+								{
+									"key": "date[from]",
+									"value": "2024-06-16T00:00:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-06-16T00:00:00",
+									"type": "text",
 									"disabled": true
 								}
 							]
