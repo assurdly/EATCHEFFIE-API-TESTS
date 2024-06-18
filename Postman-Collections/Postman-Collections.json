@@ -10601,6 +10601,162 @@
 				}
 			],
 			"id": "5caebb4f-cbcc-495f-bed3-9a14acdae904"
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Fetch Transactions",
+					"id": "b784b616-d020-4d16-8aae-2eb14f7e6379",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendor_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/vendor/transactions?filter[reference]=ec_ref_f6425b875a",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vendor",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "filter[status]",
+									"value": "pending",
+									"description": "pending | success | failed |",
+									"disabled": true
+								},
+								{
+									"key": "filter[reference]",
+									"value": "ec_ref_f6425b875a",
+									"description": "pending | success | failed |"
+								},
+								{
+									"key": "filter[createdAt][gte]",
+									"value": "2024-05-31T23:00:00",
+									"disabled": true
+								},
+								{
+									"key": "filter[createdAt][lte]",
+									"value": "2024-06-06T23:00:00",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Transaction by ID",
+					"id": "1ceb9309-ec94-46b4-beba-0fab2f233fb4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/vendor/transactions/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vendor",
+								"transactions",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "944d267a-ba1d-4cff-8cd6-fed13c2c43d2",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "bbd7de6b-e574-4101-b0a7-aab545d77415",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/vendor/transactions/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendor",
+										"transactions",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": ""
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transactions successfully\",\n    \"data\": {\n        \"amount\": 10,\n        \"description\": \"EatCheffie payout to NexusCooks on June 6, 2024 5:31 AM\",\n        \"paymentConfirmationDate\": null,\n        \"reference\": \"ec_ref_f6425b875a\",\n        \"status\": \"pending\",\n        \"type\": \"payout\",\n        \"id\": \"d4b6f907-ff00-4ce4-8818-1f22ba5a915d\",\n        \"createdAt\": \"2024-06-06T03:31:45.821Z\",\n        \"updatedAt\": \"2024-06-06T03:31:45.821Z\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "aa56ff97-df4b-4147-b3f2-6e1b8314b01d"
+		},
+		{
+			"name": "Fetch Notifications Copy",
+			"id": "df0b5bac-b3f3-4417-ad72-b811a3e394bb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/notifications?filter[createdAt]=2024-06-10T23:00:00",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"notifications"
+					],
+					"query": [
+						{
+							"key": "filter[createdAt]",
+							"value": "2024-06-10T23:00:00"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
