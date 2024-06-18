@@ -16064,6 +16064,44 @@
 			"item": [
 				{
 					"name": "Get Audit Trail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea777314-3131-4617-9f58-8a5048fe9f48",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Audit trail fetched successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify audit trail is returned\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "c20189fa-e625-4ebc-aff5-ea01aed9ebce",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16072,18 +16110,19 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/audit-trail?filter[createdAt][gt]=2024-06-10T10:00:00&filter[createdAt][lt]=2024-06-15T10:00:00&filter[q]&filter[action]=role.create",
+							"raw": "{{base_url}}/audit-trail",
 							"host": [
 								"{{base_url}}"
 							],
@@ -16093,20 +16132,24 @@
 							"query": [
 								{
 									"key": "filter[createdAt][gt]",
-									"value": "2024-06-10T10:00:00"
+									"value": "2024-06-18T19:04:21.478Z",
+									"disabled": true
 								},
 								{
 									"key": "filter[createdAt][lt]",
-									"value": "2024-06-15T10:00:00"
+									"value": "2024-06-17T19:04:21.478Z",
+									"disabled": true
 								},
 								{
 									"key": "filter[q]",
-									"value": null,
-									"description": "Filters by user's name and email"
+									"value": "John Doe",
+									"description": "Filters by user's name and email",
+									"disabled": true
 								},
 								{
 									"key": "filter[action]",
-									"value": "role.create"
+									"value": "vendor.updated",
+									"disabled": true
 								}
 							]
 						}
