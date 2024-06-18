@@ -16741,14 +16741,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -16841,7 +16842,7 @@
 					]
 				},
 				{
-					"name": "Fetch Promo Stats Copy",
+					"name": "Fetch Promo Stats",
 					"id": "1e234089-09dd-47dd-aa1c-130f3610030f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
