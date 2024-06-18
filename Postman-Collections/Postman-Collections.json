@@ -11888,7 +11888,7 @@
 								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PATCH",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "x-request-source",
@@ -11898,7 +11898,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"status\": \"processing\", // processing, enroute, completed, cancelled\n    \"cancelReason\": \"\"\n}",
+							"raw": "{\n    \"status\": \"processing\", // processing, enroute, completed, cancelled\n    \"cancelReason\": \"test\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17382,6 +17382,41 @@
 				},
 				{
 					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28f6ce5e-c9b7-45cd-aa9f-1b6ecb5a7aab",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Logout successful\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Logout successful.\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "90831df7-a9a7-4505-bb50-cc3f9f69172f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
