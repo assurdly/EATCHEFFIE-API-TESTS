@@ -15969,7 +15969,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sessionTimeout\": 1,\n    \"invalidPasswordAttempts\": 3,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
+							"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 3,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
 							"options": {
 								"raw": {
 									"language": "json"
