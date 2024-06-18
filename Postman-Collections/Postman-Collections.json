@@ -67,7 +67,8 @@
 															"}",
 															""
 														],
-														"type": "text/javascript"
+														"type": "text/javascript",
+														"packages": {}
 													}
 												},
 												{
@@ -78,7 +79,8 @@
 															"pm.environment.set('base_url', 'https://api-test.eatcheffie.com/v1')",
 															""
 														],
-														"type": "text/javascript"
+														"type": "text/javascript",
+														"packages": {}
 													}
 												}
 											],
@@ -91,7 +93,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"email\": \"badvendor2@mailinator.com\"\n}",
+													"raw": "{\n    \"email\": \"badvendor3@mailinator.com\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
