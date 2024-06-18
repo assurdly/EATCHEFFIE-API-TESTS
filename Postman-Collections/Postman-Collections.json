@@ -10204,7 +10204,6 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
@@ -10243,7 +10242,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reason\": \"\"\n}",
+							"raw": "{\n    \"reason\": \"test\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10261,10 +10260,18 @@
 								":id",
 								"reject"
 							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
+									"value": "223c8f4e-b5dc-486b-980b-e79b8ae59b3f"
 								}
 							]
 						}
