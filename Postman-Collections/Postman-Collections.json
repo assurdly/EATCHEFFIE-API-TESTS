@@ -15969,7 +15969,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sessionTimeout\": 1,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
+							"raw": "{\n    \"sessionTimeout\": 1,\n    \"invalidPasswordAttempts\": 3,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -16174,7 +16174,7 @@
 			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
 		},
 		{
-			"name": "Stats Copy",
+			"name": "Stats",
 			"item": [
 				{
 					"name": "Fetch Dashboard Stats",
