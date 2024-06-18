@@ -17398,7 +17398,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "POST",
@@ -17406,7 +17406,8 @@
 							{
 								"key": "x-request-source",
 								"value": "customer",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/logout"
@@ -17537,7 +17538,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"super@admin.com\" \n  //   \"email\":\"Celine@yopmail.com\" \n}",
+							"raw": "{\n    \"email\":\"super@admin.com\" \n  //   \"email\":\"dina@yopmail.com\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
