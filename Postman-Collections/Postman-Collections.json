@@ -2632,7 +2632,8 @@
 											"}",
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -2654,7 +2655,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"Weldon@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
+									"raw": "{\n    \"email\": \"Weldon@mailinator.com\",\n   // \"email\": \"badvendor3@mailinator.com\",\n    \"password\": \"Password12@@\"\n    \n   \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3704,7 +3705,7 @@
 										{
 											"type": "text",
 											"key": "addressId",
-											"value": "N2U5ZWM2YjU4YTUwY2QwIDI3OTA5NTA3IDUzOGI0NzE3OTZlMjY5OA=="
+											"value": "N2U5ZWM2YjU4YTUwY2QwIDI3OTA5NTA3IDMwMTdiNzI3MjI3YTA0Mw=="
 										},
 										{
 											"type": "text",
@@ -3734,12 +3735,12 @@
 										{
 											"type": "text",
 											"key": "categoryIds[0]",
-											"value": "{{fetchedCategory1}}"
+											"value": "968b92ab-02d2-42ba-ba0f-9263e30d78c9"
 										},
 										{
 											"type": "text",
 											"key": "categoryIds[1]",
-											"value": "{{fetchedCategory2}}"
+											"value": "9378211a-4d77-4e82-8146-180db7b3edab"
 										},
 										{
 											"key": "banner",
@@ -4072,7 +4073,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/address/autocomplete",
+									"raw": "{{base_url}}/address/autocomplete?q=10 birm",
 									"host": [
 										"{{base_url}}"
 									],
@@ -4083,8 +4084,7 @@
 									"query": [
 										{
 											"key": "q",
-											"value": "10 birm",
-											"disabled": true
+											"value": "10 birm"
 										}
 									]
 								}
