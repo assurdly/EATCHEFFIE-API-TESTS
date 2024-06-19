@@ -2265,8 +2265,8 @@
 										"id": "59c04cbe-b0d3-4ca8-88ff-0fe8224e4908",
 										"exec": [
 											"const jsonData = pm.response.json();\r",
-											"const mealId = jsonData.data[14].id; \r",
-											"const priceId = jsonData.data[14].priceOptions[0].id;\r",
+											"const mealId = jsonData.data[0].id; \r",
+											"const priceId = jsonData.data[0].priceOptions[0].id;\r",
 											"const vendorId = jsonData.data[0].vendor.id; \r",
 											"\r",
 											"pm.environment.set(\"mealId\", mealId);\r",
