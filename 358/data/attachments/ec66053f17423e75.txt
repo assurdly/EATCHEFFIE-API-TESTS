@@ -1,0 +1,5 @@
+{
+    "vendorOrderId": "{{vendorOrderId}}",
+     "rating": 3,
+    "remarks": "Delicious"
+}
