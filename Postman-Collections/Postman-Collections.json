@@ -13206,7 +13206,7 @@
 										},
 										{
 											"key": "filter[createdAt][gt]",
-											"value": "2024-05-31",
+											"value": "2024-06-19",
 											"disabled": true
 										}
 									]
