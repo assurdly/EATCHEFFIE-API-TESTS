@@ -8790,14 +8790,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{vendorAccessToken}}"
 							}
 						},
 						"method": "PUT",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -8810,7 +8811,7 @@
 								},
 								{
 									"key": "categoryIds[0]",
-									"value": "68f587d4-eef4-4900-a26b-8f62c1827a99",
+									"value": "7d48b21c-a826-496d-b112-413f4ed490ef",
 									"type": "text"
 								},
 								{
@@ -8875,7 +8876,7 @@
 								},
 								{
 									"key": "customAvailability[endDate]",
-									"value": "2024-05-15T23:00:00",
+									"value": "2024-07-15T23:00:00",
 									"type": "text"
 								},
 								{
@@ -8927,9 +8928,8 @@
 							],
 							"variable": [
 								{
-									"id": "0f1ba8b4-8ad7-4ab6-b5e6-ab05e3323bc0",
 									"key": "id",
-									"value": "ff4d2147-ab2b-4366-a220-d89d7df32fe3"
+									"value": "279cd7f3-649e-47ae-b328-aec8e5386325"
 								}
 							]
 						}
@@ -9113,7 +9113,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{vendorAccessToken}}"
 							}
 						},
 						"method": "GET",
