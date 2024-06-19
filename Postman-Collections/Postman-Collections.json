@@ -16529,7 +16529,29 @@
 								"disabled": true
 							}
 						],
-						"url": "{{base_url}}/admin/stats/orders"
+						"url": {
+							"raw": "{{base_url}}/admin/stats/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "date[from]",
+									"value": "2024-04-16T00:00:00",
+									"disabled": true
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-05-16T00:00:00",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": [
 						{
@@ -16928,17 +16950,42 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
-						"url": "{{base_url}}/admin/stats/promos"
+						"url": {
+							"raw": "{{base_url}}/admin/stats/promos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"promos"
+							],
+							"query": [
+								{
+									"key": "date[from]",
+									"value": "2024-06-18T00:00:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-06-19T00:00:00",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": [
 						{
