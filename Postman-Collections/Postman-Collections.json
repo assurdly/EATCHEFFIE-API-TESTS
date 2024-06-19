@@ -78,7 +78,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n  //  \"password\": \"Randompassword1@\"\n //  \"email\": \"nino@yopmail.com\",\n     \"password\": \"randompassword\"\n //   \"password\": \"Password12@@\"\n}\n",
+									"raw": "{\n   \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n   \"password\": \"Randompassword1@\"\n //  \"email\": \"dina@yopmail.com\",\n  //   \"password\": \"randompassword\"\n //   \"password\": \"Password1@\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6792,7 +6792,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Priscaline\", //\"Temitato\",\n    \"lastName\": \"Mike\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"cf3b4381757ef10fe6647d115897ecbc14c02474\"\n}",
+											"raw": "{\n    \"firstName\": \"Test\", //\"Temitato\",\n    \"lastName\": \"Tester\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6959,7 +6959,7 @@
 											"query": [
 												{
 													"key": "filter[q]",
-													"value": "nino",
+													"value": "tope@yopmail.com",
 													"description": "Searches by name, email and phone",
 													"disabled": true
 												},
@@ -8298,7 +8298,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/admin/vendors?filter[status]=pending",
+									"raw": "{{base_url}}/admin/vendors",
 									"host": [
 										"{{base_url}}"
 									],
@@ -8309,14 +8309,15 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "Temi's Kitchen Fab",
+											"value": "azeez",
 											"description": "filters by vendor name, primary user email and phone",
 											"disabled": true
 										},
 										{
 											"key": "filter[status]",
-											"value": "pending",
-											"description": "pending, active, inactive"
+											"value": "inactive",
+											"description": "pending, active, inactive",
+											"disabled": true
 										},
 										{
 											"key": "limit",
@@ -9576,7 +9577,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
+									"raw": "{\n    \"reason\":\"test\",\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9596,7 +9597,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{adminVendor}}"
+											"value": "223c8f4e-b5dc-486b-980b-e79b8ae59b3f"
 										}
 									]
 								}
@@ -10031,7 +10032,6 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
@@ -10091,7 +10091,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "394b7e8c-7a73-4a41-90ee-b12c29758358"
+									"value": "223c8f4e-b5dc-486b-980b-e79b8ae59b3f"
 								}
 							]
 						}
@@ -10118,7 +10118,6 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
@@ -10126,7 +10125,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Vendor blacklisted successfully\");\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Vendor updated successfully\");\r",
 									"});\r",
 									"\r",
 									""
@@ -10157,7 +10156,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reason\": \"vibes\" \n}",
+							"raw": "{\n    \"status\": \"inactive\",\n    \"reason\": \"Unserious\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10177,7 +10176,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
+									"value": "3b8651e3-6083-41b3-b968-02b0be43f3e7"
 								}
 							]
 						}
@@ -10204,7 +10203,6 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
@@ -10243,7 +10241,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reason\": \"\"\n}",
+							"raw": "{\n    \"reason\": \"test\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10261,10 +10259,18 @@
 								":id",
 								"reject"
 							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "d2140472-5253-4e94-b622-ff8351af0b0b"
+									"value": "3b8651e3-6083-41b3-b968-02b0be43f3e7"
 								}
 							]
 						}
@@ -11461,7 +11467,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/admin/orders",
+									"raw": "{{base_url}}/admin/orders?filter[vendorId]",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11484,6 +11490,11 @@
 											"key": "filter[createdAt]",
 											"value": "",
 											"disabled": true
+										},
+										{
+											"key": "filter[vendorId]",
+											"value": null,
+											"type": "text"
 										}
 									]
 								}
@@ -11877,7 +11888,7 @@
 								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PATCH",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "x-request-source",
@@ -11887,7 +11898,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"status\": \"processing\", // processing, enroute, completed, cancelled\n    \"cancelReason\": \"\"\n}",
+							"raw": "{\n    \"status\": \"processing\", // processing, enroute, completed, cancelled\n    \"cancelReason\": \"test\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -15958,7 +15969,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sessionTimeout\": 1,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
+							"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 3,\n    \"sessionInactivity\": 5,\n    \"systemCancelOrderTime\": 20, // In hours\n    \"platformCommission\": 20 // percentage\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -16057,7 +16068,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4a2509df-b4be-4cd9-9164-0402bde93397",
+								"id": "ea777314-3131-4617-9f58-8a5048fe9f48",
 								"exec": [
 									"const jsonData = pm.response.json();\r",
 									"\r",
@@ -16091,7 +16102,7 @@
 							}
 						}
 					],
-					"id": "fcae0ab7-2eea-4e78-ae15-f6c1274693c5",
+					"id": "c20189fa-e625-4ebc-aff5-ea01aed9ebce",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -16103,8 +16114,45 @@
 							}
 						},
 						"method": "GET",
-						"header": [],
-						"url": "{{base_url}}/audit-trail"
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/audit-trail",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"audit-trail"
+							],
+							"query": [
+								{
+									"key": "filter[createdAt][gt]",
+									"value": "2024-06-18T19:04:21.478Z",
+									"disabled": true
+								},
+								{
+									"key": "filter[createdAt][lt]",
+									"value": "2024-06-17T19:04:21.478Z",
+									"disabled": true
+								},
+								{
+									"key": "filter[q]",
+									"value": "John Doe",
+									"description": "Filters by user's name and email",
+									"disabled": true
+								},
+								{
+									"key": "filter[action]",
+									"value": "vendor.updated",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -16112,10 +16160,49 @@
 			"id": "f2803757-0acf-4488-9dc7-9d9e201050f9"
 		},
 		{
-			"name": "Stats Copy",
+			"name": "Stats",
 			"item": [
 				{
 					"name": "Fetch Dashboard Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b2d26453-8dc5-45e1-87cb-dc4932370080",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched dashboard stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched dashboard stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns stats\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "44b9888c-3f6f-46d6-a87c-fdfbebfca183",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16124,17 +16211,40 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
-						"url": "{{base_url}}/admin/stats/dashboard"
+						"url": {
+							"raw": "{{base_url}}/admin/stats/dashboard?date[from]=2024-06-15T00:00:00&date[to]=2024-06-16T00:00:00",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"dashboard"
+							],
+							"query": [
+								{
+									"key": "date[from]",
+									"value": "2024-06-15T00:00:00",
+									"type": "text"
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-06-16T00:00:00",
+									"type": "text"
+								}
+							]
+						}
 					},
 					"response": [
 						{
@@ -16207,6 +16317,46 @@
 				},
 				{
 					"name": "Fetch Customer Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a4954c8-b730-41d7-9d0c-4acc01468624",
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched customer stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns stats\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "f9a8b965-a785-47b2-8df1-cbc0bc099ac1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16215,17 +16365,40 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
-						"url": "{{base_url}}/admin/stats/customer"
+						"url": {
+							"raw": "{{base_url}}/admin/stats/customer?date[from]=2024-04-16T00:00:00&date[to]=2024-05-16T00:00:00",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "date[from]",
+									"value": "2024-04-16T00:00:00",
+									"type": "text"
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-05-16T00:00:00",
+									"type": "text"
+								}
+							]
+						}
 					},
 					"response": [
 						{
@@ -16298,6 +16471,45 @@
 				},
 				{
 					"name": "Fetch Order Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "482f0b95-4271-426e-9cc7-9d91d2c69404",
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched order stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched order stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify audit trail is returned\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "7e12573c-f6d7-4b33-8a2e-821dcc1f17b6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16306,14 +16518,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/admin/stats/orders"
@@ -16389,6 +16602,46 @@
 				},
 				{
 					"name": "Fetch Vendor Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8252cce-baed-4e63-83cf-0cde80a78b3c",
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched order stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched vendor stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns stats\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "7f4d6a6e-fb0b-446e-a475-4c3c79407a47",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16397,17 +16650,42 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
-						"url": "{{base_url}}/admin/stats/vendors"
+						"url": {
+							"raw": "{{base_url}}/admin/stats/vendors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"vendors"
+							],
+							"query": [
+								{
+									"key": "date[from]",
+									"value": "2024-04-16T00:00:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-05-16T00:00:00",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": [
 						{
@@ -16480,6 +16758,46 @@
 				},
 				{
 					"name": "Fetch Transaction Stats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4664da48-7a15-4dff-855b-17b93f9feb5a",
+								"exec": [
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Fetched order stats successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Fetched transaction stats successfully\");\r",
+									"});\r",
+									"pm.test(\"Verify that data returns stats\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\").and.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "accf9675-8983-4ff1-b97f-e77c045bda77",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16488,14 +16806,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -16513,6 +16832,18 @@
 									"key": "vendorId",
 									"value": "c36105e9-9b12-45bb-96f1-92ab66234c27",
 									"description": "Optional. To fetch stats for a particular vendor",
+									"disabled": true
+								},
+								{
+									"key": "date[from]",
+									"value": "2024-06-16T00:00:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-06-16T00:00:00",
+									"type": "text",
 									"disabled": true
 								}
 							]
@@ -16586,6 +16917,97 @@
 							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched order stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_7_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_30_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_60_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_90_days\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_6_months\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        },\n        \"last_1_year\": {\n            \"totalCancelledTransactions\": 0,\n            \"totalInProgressTransactions\": 0,\n            \"totalRevenue\": 0,\n            \"totalTransactions\": 0\n        }\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "Fetch Promo Stats",
+					"id": "1e234089-09dd-47dd-aa1c-130f3610030f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec"
+							}
+						],
+						"url": "{{base_url}}/admin/stats/promos"
+					},
+					"response": [
+						{
+							"id": "a746e3c4-4e37-4bb4-948f-33770fdc383b",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "ec"
+									}
+								],
+								"url": "{{base_url}}/admin/stats/promos"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "562"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"232-iPlXbuXlCouOIxt6x0kx/CN85fw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jun 2024 20:49:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched promo stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_7_days\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_30_days\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_60_days\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_90_days\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_6_months\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        },\n        \"last_1_year\": {\n            \"expiredPromos\": 0,\n            \"ongoingPromos\": 0,\n            \"totalPromos\": 0\n        }\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "0899e354-1087-425e-93d8-1d6eeb7585eb"
@@ -16644,11 +17066,11 @@
 								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PATCH",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reason\": \"Rude\"\n}",
+							"raw": "{\n    \"status\": \"active\",\n    \"reason\": \"Rude\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -16665,10 +17087,18 @@
 								"customers",
 								":id"
 							],
+							"query": [
+								{
+									"key": null,
+									"value": "0603b95e-471a-49c5-a845-a5932e351be7",
+									"type": "text",
+									"disabled": true
+								}
+							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "0603b95e-471a-49c5-a845-a5932e351be7"
+									"value": "bc58049d-a03f-4cf8-9d9d-62b0d385b59d"
 								}
 							]
 						}
@@ -16952,6 +17382,41 @@
 				},
 				{
 					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28f6ce5e-c9b7-45cd-aa9f-1b6ecb5a7aab",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has 'OK'\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Response body property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.status).to.be.a('string');\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is 'success'\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Logout successful\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Logout successful.\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "90831df7-a9a7-4505-bb50-cc3f9f69172f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -16960,7 +17425,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "POST",
@@ -16968,7 +17433,8 @@
 							{
 								"key": "x-request-source",
 								"value": "customer",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/logout"
@@ -17099,7 +17565,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"super@admin.com\" \n  //   \"email\":\"Celine@yopmail.com\" \n}",
+							"raw": "{\n    \"email\":\"super@admin.com\" \n  //   \"email\":\"dina@yopmail.com\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
