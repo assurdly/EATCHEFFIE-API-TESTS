@@ -1,0 +1,4 @@
+{
+    "roleId": "1ce0db04-a4d4-48d3-992c-567ca8b62079",
+    "email": "Gregory@yopmail.com"
+}

@@ -1,0 +1,7 @@
+{
+    "firstName": "Test", 
+    "lastName": "Tester",
+    "password": "Password1@",
+    "confirmPassword": "Password1@",
+    "token": "{{adminResetPasswordToken}}"
+}

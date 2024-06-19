@@ -1,6 +1,0 @@
-{
-    "name": "Customer Directives Consultant",
-    "description": "Role for Jobtitle",
-    "status": "active", 
-    "permissions": ["9ac19871-791a-467d-b057-0611561f557e", "c76b6ea4-7cf0-405f-846f-c7c205e4d598"]
-}
