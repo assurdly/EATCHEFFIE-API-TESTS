@@ -16223,7 +16223,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/admin/stats/dashboard?date[from]=2024-06-15T00:00:00&date[to]=2024-06-16T00:00:00",
+							"raw": "{{base_url}}/admin/stats/dashboard",
 							"host": [
 								"{{base_url}}"
 							],
@@ -16236,12 +16236,12 @@
 								{
 									"key": "date[from]",
 									"value": "2024-06-15T00:00:00",
-									"type": "text"
+									"disabled": true
 								},
 								{
 									"key": "date[to]",
 									"value": "2024-06-16T00:00:00",
-									"type": "text"
+									"disabled": true
 								}
 							]
 						}
@@ -16377,7 +16377,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/admin/stats/customer?date[from]=2024-04-16T00:00:00&date[to]=2024-05-16T00:00:00",
+							"raw": "{{base_url}}/admin/stats/customer",
 							"host": [
 								"{{base_url}}"
 							],
@@ -16390,12 +16390,12 @@
 								{
 									"key": "date[from]",
 									"value": "2024-04-16T00:00:00",
-									"type": "text"
+									"disabled": true
 								},
 								{
 									"key": "date[to]",
 									"value": "2024-05-16T00:00:00",
-									"type": "text"
+									"disabled": true
 								}
 							]
 						}
