@@ -10729,7 +10729,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{adminCustomer}}"
+											"value": "104b2ef8-275c-4657-854c-367ce214b49d"
 										}
 									]
 								}
@@ -11256,7 +11256,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "98f1694d-85ee-4eae-932c-3640ed13294b"
+											"value": "104b2ef8-275c-4657-854c-367ce214b49d"
 										}
 									]
 								}
@@ -11467,7 +11467,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/admin/orders?filter[vendorId]",
+									"raw": "{{base_url}}/admin/orders",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11494,7 +11494,7 @@
 										{
 											"key": "filter[vendorId]",
 											"value": null,
-											"type": "text"
+											"disabled": true
 										}
 									]
 								}
