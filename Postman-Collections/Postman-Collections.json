@@ -78,7 +78,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n   \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n   \"password\": \"Randompassword1@\"\n // \"email\": \"nino@yopmail.com\",\n  //   \"password\": \"randompassword\"\n  //  \"password\": \"Password12@@\"\n}\n",
+									"raw": "{\n   \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n \"password\": \"Randompassword1@\"\n  //\"email\": \"Bernard@yopmail.com\",\n  //   \"password\": \"randompassword\"\n   // \"password\": \"Password1@\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11478,22 +11478,22 @@
 									"query": [
 										{
 											"key": "filter[status]",
-											"value": "",
+											"value": "pending",
 											"disabled": true
 										},
 										{
 											"key": "filter[q]",
-											"value": "",
+											"value": "vera",
 											"disabled": true
 										},
 										{
 											"key": "filter[createdAt]",
-											"value": "",
+											"value": "2024-06-19T17:17:11.926Z",
 											"disabled": true
 										},
 										{
 											"key": "filter[vendorId]",
-											"value": null,
+											"value": "e6917b46-3efe-4029-9da8-3dadb9280a85",
 											"disabled": true
 										}
 									]
