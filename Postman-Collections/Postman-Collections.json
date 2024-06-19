@@ -10397,6 +10397,26 @@
 					"item": [
 						{
 							"name": "Fetch Delivery Areas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "39c19ed7-1bc2-4550-af18-d15fdd7a2643",
+										"exec": [
+											"try {",
+											"    const {status, success, message, data} = pm.response.json()",
+											"    pm.test('Test that data is not empty', ()=>{",
+											"        pm.expect(data).to.not.be.empty",
+											"    })",
+											"} catch (errors){",
+											"    console.error(errors)",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "26b10870-f274-43eb-abb1-c6e293354735",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
