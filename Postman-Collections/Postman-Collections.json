@@ -10173,7 +10173,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"orderLimit\": 20,\n    \"openTime\": \"2024-05-27T07:00:00\",\n    \"closeTime\": \"2024-05-27T19:00:00\",\n    \"fees\": [\n        {\n            \"areaId\": \"63216e5f-abed-4690-a0e6-4732bc3dd275\",\n            \"rate\": 30\n        }\n    ]\n}",
+									"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"orderLimit\": 20,\n    \"openTime\": \"2024-05-27T07:00:00\",\n    \"closeTime\": \"2024-12-27T19:00:00\",\n    \"fees\": [\n        {\n            \"areaId\": \"1d4ea545-1f6a-4f14-ba16-f17afec749e5\",\n            \"rate\": 30\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
