@@ -9703,7 +9703,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "223c8f4e-b5dc-486b-980b-e79b8ae59b3f"
+											"value": "{{adminVendor}}"
 										}
 									]
 								}
@@ -16200,7 +16200,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/audit-trail",
+							"raw": "{{base_url}}/audit-trail?filter[q]=John",
 							"host": [
 								"{{base_url}}"
 							],
@@ -16220,13 +16220,12 @@
 								},
 								{
 									"key": "filter[q]",
-									"value": "John Doe",
-									"description": "Filters by user's name and email",
-									"disabled": true
+									"value": "John",
+									"description": "Filters by user's name and email"
 								},
 								{
 									"key": "filter[action]",
-									"value": "vendor.updated",
+									"value": "user.setup",
 									"disabled": true
 								}
 							]
