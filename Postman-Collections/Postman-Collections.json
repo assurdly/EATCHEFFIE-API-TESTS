@@ -13514,6 +13514,70 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Fetch Promo Activity Copy",
+					"id": "7ba79232-7c6c-445f-8ca6-751f1bb2863c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/promo/:id/activities?limit=20&page=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"promo",
+								":id",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"type": "text"
+								}
+							],
+							"variable": [
+								{
+									"id": "3954f610-6b7f-4a42-af9d-ea3716e594c7",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "a217070f-88ed-4c58-b0c2-167ca5344264"
@@ -16405,12 +16469,12 @@
 							"query": [
 								{
 									"key": "date[from]",
-									"value": "2024-04-16T00:00:00",
+									"value": "2024-06-16T00:00:00",
 									"disabled": true
 								},
 								{
 									"key": "date[to]",
-									"value": "2024-05-16T00:00:00",
+									"value": "2024-06-19T00:00:00",
 									"disabled": true
 								}
 							]
