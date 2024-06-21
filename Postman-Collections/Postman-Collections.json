@@ -11526,7 +11526,7 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"const adminOrder = jsonData.data[0].id\r",
+											"const adminOrder = jsonData.data[0].vendorOrders[0].id\r",
 											"const adminOrderName = jsonData.data[0].user.firstName\r",
 											"\r",
 											"pm.environment.set(\"adminOrder\", adminOrder)\r",
