@@ -6792,7 +6792,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Test\", //\"Temitato\",\n    \"lastName\": \"Tester\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
+											"raw": "{\n    \"firstName\": \"Joe\", //\"Temitato\",\n    \"lastName\": \"Tester\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
