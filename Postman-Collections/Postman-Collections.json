@@ -11420,7 +11420,7 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"const adminOrder = jsonData.data.id\r",
+											"const adminOrder = jsonData.data[0].id\r",
 											"\r",
 											"pm.environment.set(\"adminOrder\", adminOrder)\r",
 											"\r",
