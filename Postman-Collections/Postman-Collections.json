@@ -13525,7 +13525,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
@@ -13533,7 +13533,8 @@
 							{
 								"key": "x-request-source",
 								"value": "ec",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -13559,20 +13560,17 @@
 							"query": [
 								{
 									"key": "limit",
-									"value": "20",
-									"type": "text"
+									"value": "20"
 								},
 								{
 									"key": "page",
-									"value": "1",
-									"type": "text"
+									"value": "1"
 								}
 							],
 							"variable": [
 								{
-									"id": "3954f610-6b7f-4a42-af9d-ea3716e594c7",
 									"key": "id",
-									"value": ""
+									"value": "{{promoId}}"
 								}
 							]
 						}
