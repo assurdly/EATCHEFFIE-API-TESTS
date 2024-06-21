@@ -6959,7 +6959,7 @@
 											"query": [
 												{
 													"key": "filter[q]",
-													"value": "tope@yopmail.com",
+													"value": "gill",
 													"description": "Searches by name, email and phone",
 													"disabled": true
 												},
