@@ -13516,7 +13516,7 @@
 					"response": []
 				},
 				{
-					"name": "Fetch Promo Activity Copy",
+					"name": "Fetch Promo Activity",
 					"id": "7ba79232-7c6c-445f-8ca6-751f1bb2863c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
