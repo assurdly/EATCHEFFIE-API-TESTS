@@ -10282,7 +10282,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3b8651e3-6083-41b3-b968-02b0be43f3e7"
+									"value": "{{adminVendor}}"
 								}
 							]
 						}
