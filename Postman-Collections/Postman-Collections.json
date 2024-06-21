@@ -10378,7 +10378,7 @@
 										},
 										{
 											"key": "filter[status]",
-											"value": "active",
+											"value": "inactive",
 											"description": "active",
 											"disabled": true
 										},
