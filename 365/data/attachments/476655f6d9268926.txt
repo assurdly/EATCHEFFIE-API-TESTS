@@ -1,0 +1,1 @@
+{"statusCode":400,"message":"The `business_type` must be provided when sending either of `individual` or `company` parameters."}
