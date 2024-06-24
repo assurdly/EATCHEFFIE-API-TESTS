@@ -1,0 +1,6 @@
+{
+    "description": "Administer",
+    "status": "active", 
+   "permissions": ["992e6fdc-fdb0-4ce1-89d9-5ceed8cd3b2f", "8036d44c-3c09-4104-b1c8-7a3b3b6982b2"] 
+   
+}
