@@ -6876,24 +6876,6 @@
 							"id": "571cc86e-91bf-4db0-8635-454eeaa2275e"
 						},
 						{
-							"name": "Setup User with oauth",
-							"item": [
-								{
-									"name": "Setup user with oauth",
-									"id": "c4265a26-6d6e-4604-92bf-89d7cf40d467",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": []
-									},
-									"response": []
-								}
-							],
-							"id": "d92b8566-ebaf-4f74-b083-d68b2a64a184"
-						},
-						{
 							"name": "List Users",
 							"item": [
 								{
