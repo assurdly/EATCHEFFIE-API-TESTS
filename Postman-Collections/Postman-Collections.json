@@ -93,7 +93,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"email\": \"badvendor@mailinator.com\"\n}",
+													"raw": "{\n    \"email\": \"{{$randomFirstName}}@mailinator.com\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -1720,12 +1720,15 @@
 													"const jsonData = pm.response.json();",
 													"try {",
 													"",
-													"    const {status, success, message, data} = pm.response.json()",
-													"",
+													"    const { status, success, message, data } = pm.response.json()",
 													"    pm.environment.set(\"vendorAccessToken\", data.accessToken)",
 													"",
 													"    pm.test(\"Status code is 200\", function () {",
 													"        pm.response.to.have.status(200);",
+													"    });",
+													"",
+													"    pm.test(\"Status code response is Ok\", function () {",
+													"        pm.response.to.have.status('OK');",
 													"    });",
 													"",
 													"    pm.test(\"Status code response is Ok\", function () {",
