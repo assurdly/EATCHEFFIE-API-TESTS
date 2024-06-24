@@ -1,0 +1,6 @@
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "gender": "male",
+    "dob": "2002-03-12"
+}

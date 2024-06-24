@@ -1,7 +1,0 @@
-{
-    "email": "super@admin.com",
-       
-    "password": "Randompassword1@"
-   
-  
-}
