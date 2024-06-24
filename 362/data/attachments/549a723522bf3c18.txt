@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Meal created successfully","data":{"id":"fd195a39-97ce-4951-97cc-bf4a84ea54da","name":"Good Food Technician","description":"Spicy Burger Mediul","tags":"vibes","specialtyCategories":"vibes","isPublished":false}}
