@@ -1,0 +1,1 @@
+{"message":"Cannot GET /v1/vendor/stats","error":"Not Found","statusCode":404}

@@ -1,1 +1,0 @@
-{"message":"Oops! That reset password token is invalid. Please try again."}
