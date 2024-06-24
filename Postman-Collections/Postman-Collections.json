@@ -78,7 +78,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n   \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n   \"password\": \"Randompassword1@\"\n //  \"email\": \"dina@yopmail.com\",\n  //   \"password\": \"randompassword\"\n //   \"password\": \"Password1@\"\n}\n",
+									"raw": "{\n   \"email\": \"admin@eatcheffie.com\",\n       // \"phone\": \"2348134532012\" //Can be used in place of email \n //  \"email\": \"joe@yopmail.com\",\n  \"password\": \"Randompassword1@\"\n  //   \"password\": \"randompassword\"\n// \"password\": \"Password1@\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6792,7 +6792,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Test\", //\"Temitato\",\n    \"lastName\": \"Tester\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
+											"raw": "{\n    \"firstName\": \"Joe\", //\"Temitato\",\n    \"lastName\": \"Tester\",// \"Osunkiyesi\"\n    \"password\": \"Password1@\",\n    \"confirmPassword\": \"Password1@\",\n    \"token\": \"{{adminResetPasswordToken}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6897,9 +6897,13 @@
 													"\r",
 													"const userId = jsonData.data[0].id\r",
 													"const createdAt = jsonData.data[0].createdAt\r",
+													"const firstName = jsonData.data[0].firstName\r",
+													"\r",
 													"\r",
 													"pm.environment.set(\"userId\", userId)\r",
 													"pm.environment.set(\"createdAt\", createdAt)\r",
+													"pm.environment.set(\"firstName\", firstName)\r",
+													"\r",
 													"\r",
 													"pm.test(\"Status code is 200\", function () {\r",
 													"    pm.response.to.have.status(200);\r",
@@ -6959,7 +6963,7 @@
 											"query": [
 												{
 													"key": "filter[q]",
-													"value": "tope@yopmail.com",
+													"value": "gill",
 													"description": "Searches by name, email and phone",
 													"disabled": true
 												},
@@ -7079,6 +7083,108 @@
 												{
 													"key": "filter[createdAt][gt]",
 													"value": "{{createdAt}}"
+												},
+												{
+													"key": "filter[createdAt][lt]",
+													"value": "2024-06-11",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "By name - List Users",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "13600a12-91da-427c-b074-ae02577e3ff4",
+												"exec": [
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"const userId = jsonData.data[0].id\r",
+													"const createdAt = jsonData.data[0].createdAt\r",
+													"\r",
+													"pm.environment.set(\"userId\", userId)\r",
+													"pm.environment.set(\"createdAt\", createdAt)\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Status code name has 'OK'\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"pm.test(\"Response body property\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.status).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status is 'success'\", function () {\r",
+													"    pm.expect(jsonData.status).to.eql('success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify Fetched users successfully\", function () {\r",
+													"    pm.expect(jsonData.message).to.include('Fetched users successfully');\r",
+													"});\r",
+													"pm.test(\"Verify that data is a string\", function () {\r",
+													"    pm.expect(jsonData.data).to.be.an('array').and.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "9b13eb28-8df2-4d2c-9cff-fe3b5f55f98e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{adminAccessToken}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-request-source",
+												"value": "admin",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/users?filter[q]={{firstName}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users"
+											],
+											"query": [
+												{
+													"key": "filter[q]",
+													"value": "{{firstName}}",
+													"description": "Searches by name, email and phone"
+												},
+												{
+													"key": "filter[roleId]",
+													"value": "2fd20713-52c8-413f-a81b-2c5e9077f074",
+													"disabled": true
+												},
+												{
+													"key": "filter[status]",
+													"value": "active",
+													"disabled": true
+												},
+												{
+													"key": "filter[createdAt][gt]",
+													"value": "{{createdAt}}",
+													"disabled": true
 												},
 												{
 													"key": "filter[createdAt][lt]",
@@ -8343,7 +8449,7 @@
 										},
 										{
 											"key": "filter[rating][gt]",
-											"value": "3",
+											"value": "1",
 											"disabled": true
 										}
 									]
@@ -9597,7 +9703,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "223c8f4e-b5dc-486b-980b-e79b8ae59b3f"
+											"value": "{{adminVendor}}"
 										}
 									]
 								}
@@ -10176,7 +10282,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3b8651e3-6083-41b3-b968-02b0be43f3e7"
+									"value": "{{adminVendor}}"
 								}
 							]
 						}
@@ -10378,7 +10484,7 @@
 										},
 										{
 											"key": "filter[status]",
-											"value": "active",
+											"value": "inactive",
 											"description": "active",
 											"disabled": true
 										},
@@ -10729,7 +10835,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{adminCustomer}}"
+											"value": "104b2ef8-275c-4657-854c-367ce214b49d"
 										}
 									]
 								}
@@ -11256,7 +11362,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "98f1694d-85ee-4eae-932c-3640ed13294b"
+											"value": "104b2ef8-275c-4657-854c-367ce214b49d"
 										}
 									]
 								}
@@ -11420,10 +11526,11 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"const adminOrder = jsonData.data[0].id\r",
+											"const adminOrder = jsonData.data[0].vendorOrders[0].id\r",
+											"const adminOrderName = jsonData.data[0].user.firstName\r",
 											"\r",
 											"pm.environment.set(\"adminOrder\", adminOrder)\r",
-											"\r",
+											"pm.environment.set(\"adminOrderName\", adminOrderName)\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -11467,7 +11574,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/admin/orders?filter[vendorId]",
+									"raw": "{{base_url}}/admin/orders",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11478,23 +11585,23 @@
 									"query": [
 										{
 											"key": "filter[status]",
-											"value": "",
+											"value": "processing",
 											"disabled": true
 										},
 										{
 											"key": "filter[q]",
-											"value": "",
+											"value": "berniece@mailinator.com",
 											"disabled": true
 										},
 										{
 											"key": "filter[createdAt]",
-											"value": "",
+											"value": "2024-06-21T15:02:51.608Z",
 											"disabled": true
 										},
 										{
 											"key": "filter[vendorId]",
-											"value": null,
-											"type": "text"
+											"value": "e6917b46-3efe-4029-9da8-3dadb9280a85",
+											"disabled": true
 										}
 									]
 								}
@@ -11596,11 +11703,6 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"const adminOrder = jsonData.data[0].id\r",
-											"\r",
-											"pm.environment.set(\"adminOrder\", adminOrder)\r",
-											"\r",
-											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
@@ -11643,7 +11745,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/admin/orders?filter[q]=emerald",
+									"raw": "{{base_url}}/admin/orders?filter[q]={{adminOrderName}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11659,97 +11761,11 @@
 										},
 										{
 											"key": "filter[q]",
-											"value": "emerald"
+											"value": "{{adminOrderName}}"
 										},
 										{
 											"key": "filter[createdAt]",
 											"value": "",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "By date - Fetch Orders",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "b5550fdd-5071-4ab1-b938-25ee4a649a27",
-										"exec": [
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"const adminOrder = jsonData.data[0].id\r",
-											"\r",
-											"pm.environment.set(\"adminOrder\", adminOrder)\r",
-											"\r",
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Status code name has 'OK'\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
-											"});\r",
-											"pm.test(\"Response body property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.status).to.be.a('string');\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"    pm.expect(jsonData.data).to.be.an('array');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status is 'success'\", function () {\r",
-											"    pm.expect(jsonData.status).to.eql('success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify Fetched orders successfully\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Fetched orders successfully\");\r",
-											"});\r",
-											"\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "3b313047-f457-4254-bc6f-0770f832e8cf",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{adminAccessToken}}"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/admin/orders",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"admin",
-										"orders"
-									],
-									"query": [
-										{
-											"key": "filter[status]",
-											"value": "pending",
-											"disabled": true
-										},
-										{
-											"key": "filter[q]",
-											"value": "emerald",
-											"disabled": true
-										},
-										{
-											"key": "filter[createdAt]",
-											"value": "2024-06-12",
 											"disabled": true
 										}
 									]
@@ -11761,7 +11777,7 @@
 					"id": "e99ea74d-a9c2-49e5-afa1-95f781666960"
 				},
 				{
-					"name": "Fetch Order By ID Copy",
+					"name": "Fetch Order By ID",
 					"event": [
 						{
 							"listen": "test",
@@ -11828,7 +11844,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "{{adminOrder}}"
 								}
 							]
 						}
@@ -11836,7 +11852,7 @@
 					"response": []
 				},
 				{
-					"name": "Update Order Copy",
+					"name": "Update Order",
 					"event": [
 						{
 							"listen": "test",
@@ -13066,7 +13082,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Vibes\",\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"type\": \"user_activity\", // promo_code | user_activity\n    \"maxUseCount\": 100,\n    \"discountType\": \"percentage\", // percentage | flat \n    \"discount\": 5,\n    \"startDate\": \"2024-06-04\",\n    \"endDate\": \"2024-06-31\",\n   //\"promoCode\": \"JUNE12\" // For promo_code type promos\n\"activityType\": \"transaction\", // For user_activity promo type. For example if you want it to kick in for users with 10 transactions you will set this to transaction and activityCount to 10\n    \"activityCount\": 5\n}",
+									"raw": "{\n    \"name\": \"Vibes\",\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"type\": \"user_activity\", // promo_code | user_activity\n    \"maxUseCount\": 100,\n    \"discountType\": \"percentage\", // percentage | flat \n    \"discount\": 5,\n    \"startDate\": \"2024-06-04\",\n    \"endDate\": \"2024-06-31\",\n    \"notifyUsers\": true,\n   //\"promoCode\": \"JUNE12\" // For promo_code type promos\n\"activityType\": \"transaction\", // For user_activity promo type. For example if you want it to kick in for users with 10 transactions you will set this to transaction and activityCount to 10\n    \"activityCount\": 5\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -13206,7 +13222,7 @@
 										},
 										{
 											"key": "filter[createdAt][gt]",
-											"value": "2024-05-31",
+											"value": "2024-06-19",
 											"disabled": true
 										}
 									]
@@ -13493,6 +13509,68 @@
 								{
 									"key": "id",
 									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Promo Activity",
+					"id": "7ba79232-7c6c-445f-8ca6-751f1bb2863c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "ec",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/promo/:id/activities?limit=20&page=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"promo",
+								":id",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{promoId}}"
 								}
 							]
 						}
@@ -16122,7 +16200,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/audit-trail",
+							"raw": "{{base_url}}/audit-trail?filter[q]=John",
 							"host": [
 								"{{base_url}}"
 							],
@@ -16142,13 +16220,12 @@
 								},
 								{
 									"key": "filter[q]",
-									"value": "John Doe",
-									"description": "Filters by user's name and email",
-									"disabled": true
+									"value": "John",
+									"description": "Filters by user's name and email"
 								},
 								{
 									"key": "filter[action]",
-									"value": "vendor.updated",
+									"value": "user.setup",
 									"disabled": true
 								}
 							]
@@ -16223,7 +16300,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/admin/stats/dashboard?date[from]=2024-06-15T00:00:00&date[to]=2024-06-16T00:00:00",
+							"raw": "{{base_url}}/admin/stats/dashboard",
 							"host": [
 								"{{base_url}}"
 							],
@@ -16236,12 +16313,12 @@
 								{
 									"key": "date[from]",
 									"value": "2024-06-15T00:00:00",
-									"type": "text"
+									"disabled": true
 								},
 								{
 									"key": "date[to]",
-									"value": "2024-06-16T00:00:00",
-									"type": "text"
+									"value": "2024-06-19T00:00:00",
+									"disabled": true
 								}
 							]
 						}
@@ -16377,7 +16454,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/admin/stats/customer?date[from]=2024-04-16T00:00:00&date[to]=2024-05-16T00:00:00",
+							"raw": "{{base_url}}/admin/stats/customer",
 							"host": [
 								"{{base_url}}"
 							],
@@ -16389,13 +16466,13 @@
 							"query": [
 								{
 									"key": "date[from]",
-									"value": "2024-04-16T00:00:00",
-									"type": "text"
+									"value": "2024-06-16T00:00:00",
+									"disabled": true
 								},
 								{
 									"key": "date[to]",
-									"value": "2024-05-16T00:00:00",
-									"type": "text"
+									"value": "2024-06-19T00:00:00",
+									"disabled": true
 								}
 							]
 						}
@@ -16529,7 +16606,29 @@
 								"disabled": true
 							}
 						],
-						"url": "{{base_url}}/admin/stats/orders"
+						"url": {
+							"raw": "{{base_url}}/admin/stats/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "date[from]",
+									"value": "2024-04-16T00:00:00",
+									"disabled": true
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-05-16T00:00:00",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": [
 						{
@@ -16928,17 +17027,42 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "{{adminAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "ec"
+								"value": "ec",
+								"disabled": true
 							}
 						],
-						"url": "{{base_url}}/admin/stats/promos"
+						"url": {
+							"raw": "{{base_url}}/admin/stats/promos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"stats",
+								"promos"
+							],
+							"query": [
+								{
+									"key": "date[from]",
+									"value": "2024-06-18T00:00:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "date[to]",
+									"value": "2024-06-19T00:00:00",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": [
 						{
@@ -17098,7 +17222,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "bc58049d-a03f-4cf8-9d9d-62b0d385b59d"
+									"value": "cfcc8723-b43e-4875-964c-7a9076c45331"
 								}
 							]
 						}
@@ -17565,7 +17689,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"super@admin.com\" \n  //   \"email\":\"dina@yopmail.com\" \n}",
+							"raw": "{\n   \"email\":\"super@admin.com\" \n    // \"email\":\"joe@yopmail.com\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
