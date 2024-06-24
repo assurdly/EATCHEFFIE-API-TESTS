@@ -1,6 +1,0 @@
-{
-    "name": "Baker",
-    "description": "Role forBaker",
-    "status": "active", 
-    "permissions": ["4bc27b4d-6c54-47d6-8f1b-1a21a9"] 
-}

@@ -1,7 +1,0 @@
-{
-    "firstName": "Temitayo",
-    "lastName": "Osunkiyesi",
-    "password": "Password1@",
-    "confirmPassword": "Password1@",
-    "token": "0e2bf0fa15bc6287ec868ef833be5a8e520d1191"
-}

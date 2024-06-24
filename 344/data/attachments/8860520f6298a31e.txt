@@ -1,7 +1,0 @@
-{
-    "firstName": "",
-    "lastName": "",
-    "password": "",
-    "confirmPassword": "",
-    "token": ""
-}

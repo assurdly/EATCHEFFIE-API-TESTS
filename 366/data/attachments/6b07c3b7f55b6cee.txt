@@ -1,0 +1,4 @@
+{
+    "roleId": "989728f9-2459-4246-b01c-32cb982be4cc",
+    "email": "CornellIVmailinator"
+}
