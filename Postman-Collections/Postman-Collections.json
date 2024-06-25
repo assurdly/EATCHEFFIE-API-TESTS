@@ -8634,7 +8634,7 @@
 								},
 								{
 									"key": "priceOptions[0][price]",
-									"value": "30.20",
+									"value": "40.2090",
 									"type": "text"
 								},
 								{
@@ -8864,7 +8864,7 @@
 							"query": [
 								{
 									"key": "filter[isPublished]",
-									"value": "false",
+									"value": "true",
 									"disabled": true
 								}
 							]
