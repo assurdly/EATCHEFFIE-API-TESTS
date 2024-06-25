@@ -9803,7 +9803,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{vendorAccessToken}}"
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwYzA2NGI0LWNmOWYtNGI3OS1iZWM5LTlmNWUzZWZjOTI4MiIsInJlcXVlc3RTb3VyY2UiOiJ2ZW5kb3IiLCJpYXQiOjE3MTkzMDcyNDcsImV4cCI6MTcxOTMwNzg0N30.3bnLGVG0fiA115_1uXcc_nEqYooWE51Zae-d2BobMRM"
 									}
 								},
 								"method": "GET",
