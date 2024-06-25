@@ -1365,7 +1365,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"firstName\": \"Azeez\",\n    \"lastName\": \"Ibrahim\",\n    \"dob\": \"1990-03-12\"\n}",
+											"raw": "{\n    \"firstName\": \"Jeffery\",\n    \"lastName\": \"Moon\",\n    \"dob\": \"2000-06-09\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2652,7 +2652,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"Weldon@mailinator.com\",\n   // \"email\": \"badvendor4@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
+									"raw": "{\n    \"email\": \"Weldon@mailinator.com\",\n   // \"email\": \"jefferey@mailinator.com\",\n    \"password\": \"Password12@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3692,12 +3692,12 @@
 										{
 											"type": "text",
 											"key": "businessName",
-											"value": "The Azeez Kitchen Fab"
+											"value": "Jefferey's Kitchen "
 										},
 										{
 											"type": "text",
 											"key": "businessPhone",
-											"value": "077 3138 8966"
+											"value": "077 3138 8900"
 										},
 										{
 											"type": "text",
@@ -3722,43 +3722,43 @@
 										{
 											"type": "text",
 											"key": "description",
-											"value": "This is the food store of your dreams"
+											"value": "Best in Italian foods"
 										},
 										{
 											"type": "file",
 											"key": "avatar",
-											"src": "sujGito2S/35aafae62a179278337ea396cdb11432.jpg"
+											"src": "GY4gv1vAR/mgg-vitchakorn-PLyJqEJVre0-unsplash.jpg"
 										},
 										{
 											"type": "text",
 											"key": "categoryIds[0]",
-											"value": "968b92ab-02d2-42ba-ba0f-9263e30d78c9"
+											"value": "9378211a-4d77-4e82-8146-180db7b3edab"
 										},
 										{
 											"type": "text",
 											"key": "categoryIds[1]",
-											"value": "9378211a-4d77-4e82-8146-180db7b3edab"
+											"value": "9378211a-4d77-4e82-8146-180db7b3edab",
+											"disabled": true
 										},
 										{
 											"key": "banner",
 											"type": "file",
-											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+											"src": "Iu9Loupl9/mgg-vitchakorn-PLyJqEJVre0-unsplash.jpg"
 										},
 										{
 											"key": "councilRegisterationDocument",
 											"type": "file",
-											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a",
-											"disabled": true
+											"src": "dKdFlm0OM/PassportPhotograph (3) (1).png"
 										},
 										{
 											"key": "hygieneRatingCertificate",
 											"type": "file",
-											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+											"src": "QTIQbClu4/PassportPhotograph (3) (1).png"
 										},
 										{
 											"key": "certificationDocument",
 											"type": "file",
-											"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+											"src": "CydbYyuPe/PassportPhotograph (3) (1).png"
 										}
 									]
 								},
@@ -6886,6 +6886,12 @@
 											"script": {
 												"id": "ba3ab32f-db00-4a38-afab-fcb6d0e7e924",
 												"exec": [
+													"const jsonData = pm.response.json();",
+													"const vendorUserId = jsonData.data[0].id; ",
+													"",
+													"pm.environment.set(\"vendorUserId\", vendorUserId);",
+													"",
+													"",
 													"try {",
 													"    const { status, success, message, data } = pm.response.json()",
 													"",
@@ -7006,6 +7012,55 @@
 								}
 							],
 							"id": "d63fc95e-2e5a-4673-9227-39c6ccbdf6ae"
+						},
+						{
+							"name": "Update User Copy",
+							"id": "5533e8cd-745f-43c1-8692-a1f26d1f615d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"roleId\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "3625952f-5231-4ee3-8b57-ea5088245655",
+											"key": "id",
+											"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "f3b0288e-ce12-40b8-b058-d430f7b66e64"
@@ -8252,32 +8307,32 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Good Food {{$randomWord}}",
+									"value": "Stir Fry Spag",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Spicy Burger Mediul",
+									"value": "Stir Fry Spag",
 									"type": "text"
 								},
 								{
 									"key": "categoryIds[0]",
-									"value": "{{fetchedCategory1}}",
+									"value": "9378211a-4d77-4e82-8146-180db7b3edab",
 									"type": "text"
 								},
 								{
 									"key": "images",
 									"type": "file",
-									"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+									"src": "wfilbRm66/emiliano-vittoriosi-Vaod9mYNmRM-unsplash.jpg"
 								},
 								{
 									"key": "tags",
-									"value": "vibes",
+									"value": "Italian",
 									"type": "text"
 								},
 								{
 									"key": "specialtyCategories",
-									"value": "vibes",
+									"value": "vegan",
 									"type": "text"
 								}
 							]
@@ -8479,12 +8534,12 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Spicy Burger Vibes",
+									"value": "Stir Fry Spag",
 									"type": "text"
 								},
 								{
 									"key": "categoryIds[0]",
-									"value": "7d48b21c-a826-496d-b112-413f4ed490ef",
+									"value": "9378211a-4d77-4e82-8146-180db7b3edab",
 									"type": "text"
 								},
 								{
@@ -8494,17 +8549,17 @@
 								},
 								{
 									"key": "ingredients[0]",
-									"value": "vibes",
+									"value": "Soy sauce, mint",
 									"type": "text"
 								},
 								{
 									"key": "spiceLevel",
-									"value": "3",
+									"value": "2",
 									"type": "text"
 								},
 								{
 									"key": "stock",
-									"value": "30",
+									"value": "20",
 									"type": "text"
 								},
 								{
@@ -8534,12 +8589,12 @@
 								},
 								{
 									"key": "availability[fri]",
-									"value": "false",
+									"value": "true",
 									"type": "text"
 								},
 								{
 									"key": "availability[sat]",
-									"value": "false",
+									"value": "true",
 									"type": "text"
 								},
 								{
@@ -8560,7 +8615,7 @@
 								{
 									"key": "images",
 									"type": "file",
-									"src": "postman-cloud:///1ef10bf3-a30f-4660-8653-41f690ebdb4a"
+									"src": "nwV8l5yDd/emiliano-vittoriosi-Vaod9mYNmRM-unsplash.jpg"
 								},
 								{
 									"key": "priceOptions[0][size]",
@@ -8579,7 +8634,7 @@
 								},
 								{
 									"key": "priceOptions[0][price]",
-									"value": "50.9034",
+									"value": "30.20",
 									"type": "text"
 								},
 								{
@@ -9252,6 +9307,130 @@
 						}
 					],
 					"id": "5ac75f24-d4fb-4d5a-ac46-6f918f4c0b66"
+				},
+				{
+					"name": "Fetch Orders By ID Copy",
+					"id": "2ba065a7-2a5f-43af-8029-1a663087c58f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendorAccessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/vendor/orders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vendor",
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "d6a8a2f7-06c9-4e77-b420-6acb2c5dead0"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "6ad4440b-02c1-4d06-8db0-763c3fc2bae4",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/vendor/orders/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"vendor",
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "bdcf5d21-8bf9-4a6a-ae92-91e3aa642731"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6801"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a91-AdZcaC0QMXE9zwRmU0truF714cY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 May 2024 11:02:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Orders fetched successfully\",\n    \"data\": {\n        \"id\": \"bdcf5d21-8bf9-4a6a-ae92-91e3aa642731\",\n        \"createdAt\": \"2024-05-08T23:39:29.876Z\",\n        \"updatedAt\": \"2024-05-08T23:39:29.876Z\",\n        \"vendorId\": \"8ba6d82e-133d-46da-bdc2-47dbb8af275d\",\n        \"orderMeals\": [\n            {\n                \"id\": \"939fa535-9683-4a16-b169-c687d41f6192\",\n                \"createdAt\": \"2024-05-08T23:39:29.940Z\",\n                \"updatedAt\": \"2024-05-08T23:39:29.940Z\",\n                \"cartMeal\": {\n                    \"id\": \"fd65985a-2f92-4abd-b5ff-413a9ba72e16\",\n                    \"createdAt\": \"2024-05-08T22:30:06.934Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                    \"cartId\": null,\n                    \"deliveryDate\": \"2024-05-08T23:30:06.882Z\",\n                    \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                    \"quantity\": 5,\n                    \"meal\": {\n                        \"id\": \"7b2a2cf5-42a4-4d32-aff6-49089c4bf7c3\",\n                        \"createdAt\": \"2024-05-08T21:53:53.533Z\",\n                        \"updatedAt\": \"2024-05-08T21:53:53.533Z\",\n                        \"name\": \"Margherita Pizza\",\n                        \"daysAvailable\": {\n                            \"sun\": true,\n                            \"mon\": true,\n                            \"tue\": true,\n                            \"thu\": true,\n                            \"fri\": true,\n                            \"sat\": true\n                        },\n                        \"attributes\": {\n                            \"ingredients\": [\n                                \"Pizza Dough\",\n                                \"Tomato Sauce\",\n                                \"Mozzarella Cheese\",\n                                \"Fresh Basil\"\n                            ],\n                            \"additives\": [\n                                \"Fresh Basil\",\n                                \"Garlic Butter Crust\"\n                            ],\n                            \"spiceLevel\": {\n                                \"default\": 1,\n                                \"available\": [\n                                    1,\n                                    2\n                                ]\n                            }\n                        },\n                        \"rating\": 4.8,\n                        \"images\": [\n                            \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                        ]\n                    }\n                }\n            },\n            {\n                \"id\": \"d240802b-f701-425a-afa1-e07fa7ae6297\",\n                \"createdAt\": \"2024-05-08T23:39:29.940Z\",\n                \"updatedAt\": \"2024-05-08T23:39:29.940Z\",\n                \"cartMeal\": {\n                    \"id\": \"550b5b16-6c71-41b0-942e-884e804d6249\",\n                    \"createdAt\": \"2024-05-08T23:09:50.631Z\",\n                    \"updatedAt\": \"2024-05-08T23:39:29.872Z\",\n                    \"cartId\": null,\n                    \"deliveryDate\": \"2024-05-09T00:09:50.578Z\",\n                    \"orderId\": \"f1965a66-0f14-4a18-aeeb-ab3360252553\",\n                    \"quantity\": 1,\n                    \"meal\": {\n                        \"id\": \"39be5b3a-13d6-4523-ac5a-cf0d839c0403\",\n                        \"createdAt\": \"2024-05-08T21:53:55.337Z\",\n                        \"updatedAt\": \"2024-05-08T21:53:55.337Z\",\n                        \"name\": \"Ham and Cheese Crepe\",\n                        \"daysAvailable\": {\n                            \"sun\": true,\n                            \"mon\": true,\n                            \"tue\": true,\n                            \"thu\": true,\n                            \"fri\": true,\n                            \"sat\": true\n                        },\n                        \"attributes\": {\n                            \"ingredients\": [\n                                \"Crepe\",\n                                \"Ham\",\n                                \"Swiss Cheese\"\n                            ],\n                            \"additives\": [\n                                \"Mushrooms\",\n                                \"Spinach\",\n                                \"Bechamel Sauce\"\n                            ],\n                            \"spiceLevel\": {\n                                \"default\": 1,\n                                \"available\": [\n                                    1,\n                                    2\n                                ]\n                            }\n                        },\n                        \"rating\": 4.1,\n                        \"images\": [\n                            \"https://eatcheffie-dev-assets.s3.eu-north-1.amazonaws.com/meals/meal_1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAU6GDYZFWENBMPS7N%2F20240513%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20240513T110234Z&X-Amz-Expires=3600&X-Amz-Signature=e4102d8f04e01e10dd893c95c6de9c68b6a90840ac24c5f36f0e77c18b242575&X-Amz-SignedHeaders=host&x-id=GetObject\"\n                        ]\n                    }\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "e4456701-42d8-49b2-b4b3-230bac513b66"
@@ -9846,7 +10025,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"orderLimit\": 20,\n    \"openTime\": \"2024-05-27T07:00:00\",\n    \"closeTime\": \"2024-12-27T19:00:00\",\n    \"fees\": [\n        {\n            \"areaId\": \"1d4ea545-1f6a-4f14-ba16-f17afec749e5\",\n            \"rate\": 30\n        }\n    ]\n}",
+									"raw": "{\n    \"sessionTimeout\": 10,\n    \"invalidPasswordAttempts\": 5,\n    \"sessionInactivity\": 5,\n    \"orderLimit\": 2,\n    \"openTime\": \"2024-05-27T07:00:00\",\n    \"closeTime\": \"2024-12-27T19:00:00\",\n    \"fees\": [\n        {\n            \"areaId\": \"1d4ea545-1f6a-4f14-ba16-f17afec749e5\",\n            \"rate\": 10\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
