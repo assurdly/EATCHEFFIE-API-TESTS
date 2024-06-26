@@ -9696,6 +9696,188 @@
 							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched dashboard stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_7_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_30_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_60_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_90_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_6_months\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_1_year\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        }\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "Get Transaction Stats Copy",
+					"id": "56642a41-00af-4fbf-a27b-78fb1fb57e62",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendor_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor"
+							}
+						],
+						"url": "{{base_url}}/vendor/stats/transactions"
+					},
+					"response": [
+						{
+							"id": "c89990b7-22a3-4948-b410-ec8ba5baf9b9",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor"
+									}
+								],
+								"url": "{{base_url}}/vendor/stats/transactions"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"99-22UWOShwow4Qt4xxh7OcWamzGp4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Jun 2024 09:35:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched transaction stats successfully\",\n    \"data\": {\n        \"totalRevenue\": 0,\n        \"pendingBalance\": 0,\n        \"totalTransactions\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Dashboard Stats Copy",
+					"id": "d4b3dd7e-9110-4e05-aca1-dcd161b65f0c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{vendor_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "vendor"
+							}
+						],
+						"url": "{{base_url}}/vendor/stats/dashboard"
+					},
+					"response": [
+						{
+							"id": "1d9cd483-a33b-46dc-83a2-5f3b664ba5a3",
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-request-source",
+										"value": "vendor"
+									}
+								],
+								"url": "{{base_url}}/vendor/stats"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "601"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"259-VLJI/CKIg/t6GGXhtiLhuHlFvH0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 May 2024 01:16:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Fetched dashboard stats successfully\",\n    \"data\": {\n        \"all\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_7_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_30_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_60_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_90_days\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_6_months\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        },\n        \"last_1_year\": {\n            \"totalOrders\": 0,\n            \"totalTransactions\": 0,\n            \"totalCustomers\": 0\n        }\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "2d9802fe-a560-42ce-bc73-021ccbff360b"
