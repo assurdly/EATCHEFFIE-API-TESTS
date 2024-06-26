@@ -1,6 +1,0 @@
-{
-    "name": "Lead Mobility Orchestrator",
-    "description": "Role for Jobtitle",
-    "status": "active", 
-    "permissions": ["04f6790f-cea0-487d-8e10-4602ecabc348", "5a0b79e4-60fb-4d53-a9e4-d43a9437fcc9"]
-}

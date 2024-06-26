@@ -1,0 +1,12 @@
+{
+    "Date": "Wed, 26 Jun 2024 18:34:53 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Content-Length": "6416",
+    "Connection": "keep-alive",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "X-RateLimit-Limit": "100",
+    "X-RateLimit-Remaining": "91",
+    "X-RateLimit-Reset": "58",
+    "ETag": "W/\"1910-Kk2LG4a2RSQbfFwjIQjFAnpLIkI\""
+}

@@ -1,1 +1,0 @@
-{"message":"Validation Error.","data":{"roleId":"roleId should not be empty","email":"email should not be empty"}}

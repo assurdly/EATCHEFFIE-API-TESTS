@@ -1,7 +1,0 @@
-{
-    "firstName": "Bayee", 
-    "lastName": "Deanil",
-    "password": "Password1@",
-    "confirmPassword": "Password1@",
-    "token": "null"
-}
