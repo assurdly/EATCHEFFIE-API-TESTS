@@ -9699,6 +9699,38 @@
 				},
 				{
 					"name": "Get Transaction Stats Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7a2d3e6e-3f70-4970-bdc5-2a5da99e6757",
+								"exec": [
+									"try {\r",
+									"    const { data, status } = pm.response.json()\r",
+									"\r",
+									"    pm.test(\"Verify that audit data is not empty\", () => {\r",
+									"        pm.expect(data).to.not.be.empty\r",
+									"    })\r",
+									"\r",
+									"    pm.test(\"Status is 'success'\", function () {\r",
+									"        pm.expect(status).to.eql('success');\r",
+									"    });\r",
+									"\r",
+									"        pm.test(\"Status code is 200\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"\r",
+									"\r",
+									"    console.log(data)\r",
+									"} catch (error) {\r",
+									"\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "56642a41-00af-4fbf-a27b-78fb1fb57e62",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -9707,14 +9739,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{vendorAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/vendor/stats/transactions"
@@ -9790,6 +9823,38 @@
 				},
 				{
 					"name": "Get Dashboard Stats Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31239e63-d8ec-469f-9b3e-e03a0d10f75c",
+								"exec": [
+									"try {\r",
+									"    const { data, status } = pm.response.json()\r",
+									"\r",
+									"    pm.test(\"Verify that audit data is not empty\", () => {\r",
+									"        pm.expect(data).to.not.be.empty\r",
+									"    })\r",
+									"\r",
+									"    pm.test(\"Status is 'success'\", function () {\r",
+									"        pm.expect(status).to.eql('success');\r",
+									"    });\r",
+									"\r",
+									"        pm.test(\"Status code is 200\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"\r",
+									"\r",
+									"    console.log(data)\r",
+									"} catch (error) {\r",
+									"\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "d4b3dd7e-9110-4e05-aca1-dcd161b65f0c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -9798,14 +9863,15 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{vendor_access_token}}"
+								"token": "{{vendorAccessToken}}"
 							}
 						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-request-source",
-								"value": "vendor"
+								"value": "vendor",
+								"disabled": true
 							}
 						],
 						"url": "{{base_url}}/vendor/stats/dashboard"
