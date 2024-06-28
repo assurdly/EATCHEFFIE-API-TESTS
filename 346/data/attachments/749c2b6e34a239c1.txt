@@ -1,6 +1,0 @@
-{
-    "mealId": "{{mealsId}}",
-    "priceId": "{{priceId}}",
-    "quantity": 2,
-    "deliveryDate": ""
-}

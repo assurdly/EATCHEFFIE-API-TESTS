@@ -1,0 +1,4 @@
+{
+    "vendorId": "f8a679e2-0c8d-44e6-9442-81148cd92d0b",
+    "addressId": "2aa61a8b-5a8c-42de-9eab-8895b3336e50"
+}

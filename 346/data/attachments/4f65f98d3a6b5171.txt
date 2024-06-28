@@ -1,4 +1,0 @@
-{
-    "otp": "{{onboardingOtpEmail}}",
-    "email": "{{signedUpCustomerEmail}}"
-}

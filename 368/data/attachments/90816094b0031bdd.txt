@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"","data":"https://appleid.apple.com/auth/authorize?response_type=code&state=state&client_id=com.eatcheffie.web&redirect_uri=https%3A%2F%2Fapi-test.eatcheffie.com%2Fv1%2Foauth%2Fapple%2Fcustomer%2Fsignup%2Fredirect&scope=openid+email+name&response_mode=form_post"}
