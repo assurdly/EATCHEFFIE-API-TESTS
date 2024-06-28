@@ -2340,7 +2340,7 @@
 										},
 										{
 											"key": "filter[category]",
-											"value": "african",
+											"value": "italian",
 											"description": "Get the category slugs from the Fetch Categories endpoint",
 											"disabled": true
 										},
@@ -9586,6 +9586,32 @@
 						}
 					],
 					"id": "dde9487d-80c9-4fa4-af6f-cd904e159c98"
+				},
+				{
+					"name": "Fetch Promos Copy",
+					"id": "8663af72-39e8-4123-aa1d-fd97ca9c494d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{accessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": "{{base_url}}/promos"
+					},
+					"response": []
 				}
 			],
 			"id": "e1d72c4d-216d-4312-a660-d438fce559ee"
@@ -10418,7 +10444,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"{{fetchAddressId}}\",\n // \"promoId\": \"092dc9cf-e2ef-4d0c-b88f-bdd1de46d1cd\" //can also be for activity type promo\n}",
+									"raw": "{\n    \"addressId\": \"{{fetchAddressId}}\"\n // \"promoId\": \"092dc9cf-e2ef-4d0c-b88f-bdd1de46d1cd\" //can also be for activity type promo\n}",
 									"options": {
 										"raw": {
 											"language": "json"
