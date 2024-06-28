@@ -17189,11 +17189,11 @@
 								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"status\": \"active\",\n    \"reason\": \"Rude\"\n}",
+							"raw": "{\n       \"reason\": \"Rude\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17201,14 +17201,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/admin/customers/:id",
+							"raw": "{{base_url}}/admin/customers/:id/blacklist",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"admin",
 								"customers",
-								":id"
+								":id",
+								"blacklist"
 							],
 							"query": [
 								{
@@ -17221,7 +17222,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "cfcc8723-b43e-4875-964c-7a9076c45331"
+									"value": "814b8072-e50e-4db4-89a7-e5fbee523474"
 								}
 							]
 						}
