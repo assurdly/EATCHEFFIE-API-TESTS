@@ -8363,7 +8363,8 @@
 										{
 											"key": "categoryIds[]",
 											"value": "{{fetchedCategory1}}",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
