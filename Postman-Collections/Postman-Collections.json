@@ -8910,18 +8910,19 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwZjAwODIyLTY5YmEtNDdlOC1hYmU5LWZlMDZlZmJkMDY3YiIsInJlcXVlc3RTb3VyY2UiOiJ2ZW5kb3IiLCJpYXQiOjE3MTg4MTY2MjMsImV4cCI6MTcxODgxNzUyM30.eoWs6Ra1RGwyy_BPri5KbG92cQPwqVxLDLqHn6LprI0"
+										"token": "{{vendorAccessToken}}"
 									}
 								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "vendor"
+										"value": "vendor",
+										"disabled": true
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/vendor/meals?filter[isPublished]=false",
+									"raw": "{{base_url}}/vendor/meals?filter[isPublished]=true",
 									"host": [
 										"{{base_url}}"
 									],
@@ -8932,7 +8933,7 @@
 									"query": [
 										{
 											"key": "filter[isPublished]",
-											"value": "false"
+											"value": "true"
 										}
 									]
 								}
