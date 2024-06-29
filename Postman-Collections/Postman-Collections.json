@@ -16930,7 +16930,7 @@
 							"query": [
 								{
 									"key": "vendorId",
-									"value": "c36105e9-9b12-45bb-96f1-92ab66234c27",
+									"value": "bd98e8aa-30ee-4fb8-b101-40c4fd6541d9",
 									"description": "Optional. To fetch stats for a particular vendor",
 									"disabled": true
 								},
