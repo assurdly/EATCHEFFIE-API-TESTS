@@ -10270,14 +10270,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/admin/vendors/:id",
+							"raw": "{{base_url}}/admin/vendors/:id/blacklist",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"admin",
 								"vendors",
-								":id"
+								":id",
+								"blacklist"
 							],
 							"variable": [
 								{
