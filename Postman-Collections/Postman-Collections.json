@@ -16620,12 +16620,12 @@
 							"query": [
 								{
 									"key": "date[from]",
-									"value": "2024-04-16T00:00:00",
+									"value": "2024-06-27T00:00:00",
 									"disabled": true
 								},
 								{
 									"key": "date[to]",
-									"value": "2024-05-16T00:00:00",
+									"value": "2024-06-28T00:00:00",
 									"disabled": true
 								}
 							]
@@ -16774,13 +16774,13 @@
 							"query": [
 								{
 									"key": "date[from]",
-									"value": "2024-04-16T00:00:00",
+									"value": "2024-06-28T00:00:00",
 									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "date[to]",
-									"value": "2024-05-16T00:00:00",
+									"value": "2024-06-29T00:00:00",
 									"type": "text",
 									"disabled": true
 								}
