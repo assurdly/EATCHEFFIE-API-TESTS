@@ -16200,7 +16200,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/audit-trail?filter[q]=John",
+							"raw": "{{base_url}}/audit-trail",
 							"host": [
 								"{{base_url}}"
 							],
@@ -16220,8 +16220,9 @@
 								},
 								{
 									"key": "filter[q]",
-									"value": "John",
-									"description": "Filters by user's name and email"
+									"value": "Johnnu",
+									"description": "Filters by user's name and email",
+									"disabled": true
 								},
 								{
 									"key": "filter[action]",
