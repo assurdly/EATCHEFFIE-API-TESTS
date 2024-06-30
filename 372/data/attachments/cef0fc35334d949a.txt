@@ -1,0 +1,8 @@
+{
+   "email": "admin@eatcheffie.com",
+       
+ 
+  "password": "Randompassword1@"
+  
+
+}

@@ -1,6 +1,0 @@
-{
-     "oldPassword":"randompassword",
-   
-    "password": "Randompassword1@@",
-    "confirmPassword": "Randompassword1@@"
-}

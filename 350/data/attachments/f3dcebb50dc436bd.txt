@@ -1,4 +1,0 @@
-{
-    "email": "super@admin.com",
-    "otp": "962143"
-}
