@@ -3567,7 +3567,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[rating][gte]=3",
+									"raw": "{{base_url}}/meals?filter[rating][gte]=0",
 									"host": [
 										"{{base_url}}"
 									],
@@ -3603,7 +3603,7 @@
 										},
 										{
 											"key": "filter[rating][gte]",
-											"value": "3"
+											"value": "0"
 										},
 										{
 											"key": "filter[rating][lte]",
@@ -5188,6 +5188,9 @@
 										"exec": [
 											"const jsonData = pm.response.json();",
 											"",
+											"const vendorName = jsonData.data[0].name; ",
+											"",
+											"pm.environment.set(\"vendorName\", vendorName);",
 											"",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -5408,7 +5411,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/vendors?filter[q]=Spicy Seoul",
+									"raw": "{{base_url}}/vendors?filter[q]={{vendorName}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -5418,7 +5421,7 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "Spicy Seoul"
+											"value": "{{vendorName}}"
 										},
 										{
 											"key": "filter[category]",
