@@ -10544,7 +10544,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"\",\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
+									"raw": "{\n    \"addressId\": \"\"\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11585,6 +11585,7 @@
 									"script": {
 										"id": "34a08bb9-6794-4b24-b7f9-65ee3518fd35",
 										"exec": [
+											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
@@ -11625,7 +11626,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
+									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]={{vendorId}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11636,7 +11637,7 @@
 									"query": [
 										{
 											"key": "filter[vendorId]",
-											"value": "0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
+											"value": "{{vendorId}}",
 											"description": "This is required"
 										}
 									]
