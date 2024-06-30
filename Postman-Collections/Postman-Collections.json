@@ -15242,11 +15242,7 @@
 								"id": "78b488f1-877c-49bf-907a-a97506120cd2",
 								"exec": [
 									"const jsonData = pm.response.json();\r",
-									"/*\r",
-									"const adminVendor = jsonData.data[0].id\r",
 									"\r",
-									"pm.environment.set(\"adminVendor\", adminVendor)\r",
-									"*/\r",
 									"\r",
 									"pm.test(\"Status code is 201\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -15529,7 +15525,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "e87cea27-fb5f-4ae3-a18b-982a9edfb6fd"
+									"value": "{{adminCategories}}"
 								}
 							]
 						}
@@ -15961,7 +15957,7 @@
 									"    pm.expect(pm.response.json().message).to.equal(\"Audit trail fetched successfully\");\r",
 									"});\r",
 									"pm.test(\"Verify audit trail is returned\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
 									"});\r",
 									""
 								],
