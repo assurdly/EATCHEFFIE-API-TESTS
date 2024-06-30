@@ -643,7 +643,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n     \"oldPassword\":\"randompassword\",\n   // \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1@@\",\n    \"confirmPassword\": \"Randompassword1@@\"\n}",
+									"raw": "{\n    // \"oldPassword\":\"randompassword\",\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1@@\",\n    \"confirmPassword\": \"Randompassword1@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2503,232 +2503,6 @@
 									]
 								},
 								{
-									"name": "Invalid status - Create Role",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "2e344365-ef7e-4928-9d6c-045c8e0e6bbb",
-												"exec": [
-													"pm.test(\"Status code is 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"pm.test(\"Status code name has 'Bad request'\", function () {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});\r",
-													"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.eql(\"Validation Error.\");\r",
-													"});\r",
-													"pm.test(\"Verify that status must be one of the following values: active, inactive\", function () {\r",
-													"    pm.expect(pm.response.json().data.status).to.eql(\"status must be one of the following values: active, inactive\");\r",
-													"});"
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"id": "9ba3535d-6f9d-4077-9a61-62ec2e233d18",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{adminAccessToken}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "x-request-source",
-												"value": "admin",
-												"disabled": true
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"name\": \"Poss\",\n    \"description\": \"Role for Poss\",\n    \"status\": \"declined\", // active or inactive\n    \"permissions\": [\"{{permissionId1}}\"] // array of permission ids from the list permissions endpoint\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{base_url}}/roles/:id",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"roles",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": ""
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"id": "074173ca-9b8b-4aae-b14a-c8ec87e0d547",
-											"name": "success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "x-request-source",
-														"value": "vendor",
-														"type": "text"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"HR\",\n    \"description\": \"Role for HR personnel\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"4bc27b4d-6c54-47d6-8f1b-1a21a97c0101\"] // array of permission ids from the list permissions endpoint\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{base_url}}/roles"
-											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "X-Powered-By",
-													"value": "Express"
-												},
-												{
-													"key": "Access-Control-Allow-Origin",
-													"value": "*"
-												},
-												{
-													"key": "X-RateLimit-Limit",
-													"value": "100"
-												},
-												{
-													"key": "X-RateLimit-Remaining",
-													"value": "97"
-												},
-												{
-													"key": "X-RateLimit-Reset",
-													"value": "38"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json; charset=utf-8"
-												},
-												{
-													"key": "Content-Length",
-													"value": "73"
-												},
-												{
-													"key": "ETag",
-													"value": "W/\"49-7v9Cp5hIPdqePyVagwqlAgJLZPA\""
-												},
-												{
-													"key": "Date",
-													"value": "Thu, 02 May 2024 14:13:17 GMT"
-												},
-												{
-													"key": "Connection",
-													"value": "keep-alive"
-												},
-												{
-													"key": "Keep-Alive",
-													"value": "timeout=5"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Role created successfully\"\n}"
-										},
-										{
-											"id": "f36d9fe6-9e58-4c07-83a2-82ea11eaa774",
-											"name": "conflict",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "x-request-source",
-														"value": "vendor",
-														"type": "text"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"HR\",\n    \"description\": \"Role for HR personnel\",\n    \"status\": \"active\", // active or inactive\n    \"permissions\": [\"4bc27b4d-6c54-47d6-8f1b-1a21a97c0101\"] // array of permission ids from the list permissions endpoint\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{base_url}}/roles"
-											},
-											"status": "Bad Request",
-											"code": 400,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "X-Powered-By",
-													"value": "Express"
-												},
-												{
-													"key": "Access-Control-Allow-Origin",
-													"value": "*"
-												},
-												{
-													"key": "X-RateLimit-Limit",
-													"value": "100"
-												},
-												{
-													"key": "X-RateLimit-Remaining",
-													"value": "97"
-												},
-												{
-													"key": "X-RateLimit-Reset",
-													"value": "14"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json; charset=utf-8"
-												},
-												{
-													"key": "Content-Length",
-													"value": "50"
-												},
-												{
-													"key": "ETag",
-													"value": "W/\"32-eJ6wCbul7RTZda3Q2z3T9Aj8ZUw\""
-												},
-												{
-													"key": "Date",
-													"value": "Thu, 02 May 2024 14:33:48 GMT"
-												},
-												{
-													"key": "Connection",
-													"value": "keep-alive"
-												},
-												{
-													"key": "Keep-Alive",
-													"value": "timeout=5"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n    \"message\": \"Role with name \\\"HR\\\" already exists\"\n}"
-										}
-									]
-								},
-								{
 									"name": "Invalid permission - Create Role",
 									"event": [
 										{
@@ -2956,10 +2730,12 @@
 													"const jsonData = pm.response.json();\r",
 													"\r",
 													"const roleId = jsonData.data[0].id\r",
+													"const roleId1 = jsonData.data[1].id\r",
 													"const roleName = jsonData.data[0].name\r",
 													"const roleDate = jsonData.data[0].createdAt\r",
 													"\r",
 													"pm.environment.set(\"roleId\", roleId)\r",
+													"pm.environment.set(\"roleId1\", roleId1)\r",
 													"pm.environment.set(\"roleName\", roleName)\r",
 													"pm.environment.set(\"roleDate\", roleDate)\r",
 													"\r",
@@ -7754,6 +7530,15 @@
 												"disabled": true
 											}
 										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reason\": \"test\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
 										"url": {
 											"raw": "{{base_url}}/users/:id/deactivate",
 											"host": [
@@ -8086,7 +7871,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"roleId\": \"{{roleId}}\"\n}",
+											"raw": "{\n    \"roleId\": \"{{roleId1}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -8130,8 +7915,8 @@
 													"pm.test(\"Verify message Validation Error.\", function () {\r",
 													"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
 													"});\r",
-													"pm.test(\"Verify fields can not be empty\", function () {\r",
-													"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
+													"pm.test(\"Verify roleId must be a UUID\", function () {\r",
+													"    pm.expect(pm.response.json().data.roleId).to.include(\"roleId must be a UUID\");\r",
 													"       });"
 												],
 												"type": "text/javascript",
@@ -9683,7 +9468,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"reason\":\"test\",\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
+									"raw": "{\n    \"reason\":\"test\",\n    \"status\": \"inactive\" // \"active\" | \"inactive\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9945,6 +9730,11 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
+											"const vendorReview = jsonData.data[0].id\r",
+											"\r",
+											"pm.environment.set(\"vendorReview\", vendorReview)\r",
+											"\r",
+											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
@@ -10039,7 +9829,7 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.test(\"Status code is 00\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"pm.test(\"Status code name has 'OK'\", function () {\r",
@@ -10108,7 +9898,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "22ff8971-ad7e-416c-930a-5fad771b3ae9"
 										}
 									]
 								}
@@ -10197,7 +9987,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "223c8f4e-b5dc-486b-980b-e79b8ae59b3f"
+									"value": "c54bb47f-2cd2-48c4-855e-bd1a0a41fad5"
 								}
 							]
 						}
@@ -10230,7 +10020,7 @@
 									"    pm.expect(jsonData.status).to.eql('success');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"pm.test(\"Verify Vendor updated successfully\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.equal(\"Vendor updated successfully\");\r",
 									"});\r",
 									"\r",
@@ -10270,14 +10060,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/admin/vendors/:id",
+							"raw": "{{base_url}}/admin/vendors/:id/blacklist",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"admin",
 								"vendors",
-								":id"
+								":id",
+								"blacklist"
 							],
 							"variable": [
 								{
@@ -11030,7 +10821,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"active\", // \"active\" | \"inactive\",\n    \"reason\": \"test\"\n    }",
+									"raw": "{\n    \"status\": \"inactive\", // \"active\" | \"inactive\",\n    \"reason\": \"test\"\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11574,7 +11365,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/admin/orders",
+									"raw": "{{base_url}}/admin/orders?filter[createdAt]=2024-06-28",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11595,8 +11386,7 @@
 										},
 										{
 											"key": "filter[createdAt]",
-											"value": "2024-06-21T15:02:51.608Z",
-											"disabled": true
+											"value": "2024-06-28"
 										},
 										{
 											"key": "filter[vendorId]",
@@ -13082,7 +12872,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Vibes\",\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"type\": \"user_activity\", // promo_code | user_activity\n    \"maxUseCount\": 100,\n    \"discountType\": \"percentage\", // percentage | flat \n    \"discount\": 5,\n    \"startDate\": \"2024-06-04\",\n    \"endDate\": \"2024-06-31\",\n    \"notifyUsers\": true,\n   //\"promoCode\": \"JUNE12\" // For promo_code type promos\n\"activityType\": \"transaction\", // For user_activity promo type. For example if you want it to kick in for users with 10 transactions you will set this to transaction and activityCount to 10\n    \"activityCount\": 5\n}",
+									"raw": "{\n    \"name\": \"Vibes\",\n    \"description\": \"Description\",\n    \"status\": \"active\",\n    \"type\": \"user_activity\", // promo_code | user_activity\n    \"maxUseCount\": 100,\n    \"discountType\": \"percentage\", // percentage | flat \n    \"discount\": 5,\n    \"startDate\": \"2024-06-04\",\n    \"endDate\": \"2024-06-31\",\n    \"notifyUsers\": true,\n   //\"promoCode\": \"JUNE12\" // For promo_code type promos\n\"activityType\": \"transaction\", // For user_activity promo type. For example if you want it to kick in for users with 10 transactions you will set this to transaction and activityCount to 10\n    \"activityCount\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -13481,41 +13271,6 @@
 					"id": "0ca65485-a034-43de-a227-0d30a6bd7e84"
 				},
 				{
-					"name": "Delete Promo",
-					"id": "6d9ffed6-7b65-425b-9011-1b71c660b889",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/admin/promo/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"promo",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Fetch Promo Activity",
 					"id": "7ba79232-7c6c-445f-8ca6-751f1bb2863c",
 					"protocolProfileBehavior": {
@@ -13571,6 +13326,41 @@
 								{
 									"key": "id",
 									"value": "{{promoId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Promo",
+					"id": "6d9ffed6-7b65-425b-9011-1b71c660b889",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/promo/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"promo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
 								}
 							]
 						}
@@ -15452,11 +15242,7 @@
 								"id": "78b488f1-877c-49bf-907a-a97506120cd2",
 								"exec": [
 									"const jsonData = pm.response.json();\r",
-									"/*\r",
-									"const adminVendor = jsonData.data[0].id\r",
 									"\r",
-									"pm.environment.set(\"adminVendor\", adminVendor)\r",
-									"*/\r",
 									"\r",
 									"pm.test(\"Status code is 201\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -15739,7 +15525,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "e87cea27-fb5f-4ae3-a18b-982a9edfb6fd"
+									"value": "{{adminCategories}}"
 								}
 							]
 						}
@@ -16171,7 +15957,7 @@
 									"    pm.expect(pm.response.json().message).to.equal(\"Audit trail fetched successfully\");\r",
 									"});\r",
 									"pm.test(\"Verify audit trail is returned\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;\r",
 									"});\r",
 									""
 								],
@@ -16200,7 +15986,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/audit-trail?filter[q]=John",
+							"raw": "{{base_url}}/audit-trail",
 							"host": [
 								"{{base_url}}"
 							],
@@ -16220,8 +16006,9 @@
 								},
 								{
 									"key": "filter[q]",
-									"value": "John",
-									"description": "Filters by user's name and email"
+									"value": "Johnnu",
+									"description": "Filters by user's name and email",
+									"disabled": true
 								},
 								{
 									"key": "filter[action]",
@@ -16413,7 +16200,7 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
@@ -16567,7 +16354,7 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('array');\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
@@ -16578,7 +16365,7 @@
 									"    pm.expect(pm.response.json().message).to.equal(\"Fetched order stats successfully\");\r",
 									"});\r",
 									"pm.test(\"Verify audit trail is returned\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.equal(\"array\").and.not.be.empty;\r",
+									"    pm.expect(pm.response.json().data).to.an(\"object\").and.not.be.empty;\r",
 									"});\r",
 									""
 								],
@@ -16619,12 +16406,12 @@
 							"query": [
 								{
 									"key": "date[from]",
-									"value": "2024-04-16T00:00:00",
+									"value": "2024-06-27T00:00:00",
 									"disabled": true
 								},
 								{
 									"key": "date[to]",
-									"value": "2024-05-16T00:00:00",
+									"value": "2024-06-28T00:00:00",
 									"disabled": true
 								}
 							]
@@ -16773,13 +16560,13 @@
 							"query": [
 								{
 									"key": "date[from]",
-									"value": "2024-04-16T00:00:00",
+									"value": "2024-06-28T00:00:00",
 									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "date[to]",
-									"value": "2024-05-16T00:00:00",
+									"value": "2024-06-29T00:00:00",
 									"type": "text",
 									"disabled": true
 								}
@@ -16929,19 +16716,19 @@
 							"query": [
 								{
 									"key": "vendorId",
-									"value": "c36105e9-9b12-45bb-96f1-92ab66234c27",
+									"value": "bd98e8aa-30ee-4fb8-b101-40c4fd6541d9",
 									"description": "Optional. To fetch stats for a particular vendor",
 									"disabled": true
 								},
 								{
 									"key": "date[from]",
-									"value": "2024-06-16T00:00:00",
+									"value": "2024-06-27T00:00:00",
 									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "date[to]",
-									"value": "2024-06-16T00:00:00",
+									"value": "2024-06-29T00:00:00",
 									"type": "text",
 									"disabled": true
 								}
@@ -17159,20 +16946,17 @@
 									"    pm.expect(jsonData).to.be.an('object');\r",
 									"    pm.expect(jsonData.status).to.be.a('string');\r",
 									"    pm.expect(jsonData.message).to.be.a('string');\r",
-									"    pm.expect(jsonData.data).to.be.an('object');\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status is 'success'\", function () {\r",
 									"    pm.expect(jsonData.status).to.eql('success');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Verify Fetched customer successfully\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Fetched customer successfully\");\r",
+									"pm.test(\"Verify Customer blacklisted successfully\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Customer blacklisted successfully\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Verify data returns customers\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.be.an(\"object\").and.not.be.empty;\r",
-									"});"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -17190,11 +16974,11 @@
 								"token": "{{adminAccessToken}}"
 							}
 						},
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"status\": \"active\",\n    \"reason\": \"Rude\"\n}",
+							"raw": "{\n       \"reason\": \"Rude\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17202,14 +16986,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/admin/customers/:id",
+							"raw": "{{base_url}}/admin/customers/:id/blacklist",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"admin",
 								"customers",
-								":id"
+								":id",
+								"blacklist"
 							],
 							"query": [
 								{
@@ -17222,7 +17007,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "cfcc8723-b43e-4875-964c-7a9076c45331"
+									"value": "814b8072-e50e-4db4-89a7-e5fbee523474"
 								}
 							]
 						}
