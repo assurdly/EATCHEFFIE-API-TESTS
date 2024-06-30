@@ -643,7 +643,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n     \"oldPassword\":\"randompassword\",\n   // \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1@@\",\n    \"confirmPassword\": \"Randompassword1@@\"\n}",
+									"raw": "{\n    // \"oldPassword\":\"randompassword\",\n    \"oldPassword\": \"Randompassword1@\",\n    \"password\": \"Randompassword1@@\",\n    \"confirmPassword\": \"Randompassword1@@\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -13481,41 +13481,6 @@
 					"id": "0ca65485-a034-43de-a227-0d30a6bd7e84"
 				},
 				{
-					"name": "Delete Promo",
-					"id": "6d9ffed6-7b65-425b-9011-1b71c660b889",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{adminAccessToken}}"
-							}
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/admin/promo/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"admin",
-								"promo",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Fetch Promo Activity",
 					"id": "7ba79232-7c6c-445f-8ca6-751f1bb2863c",
 					"protocolProfileBehavior": {
@@ -13571,6 +13536,41 @@
 								{
 									"key": "id",
 									"value": "{{promoId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Promo",
+					"id": "6d9ffed6-7b65-425b-9011-1b71c660b889",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminAccessToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/promo/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"promo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
 								}
 							]
 						}
