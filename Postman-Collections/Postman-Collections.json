@@ -2069,7 +2069,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"phone\": \"+447893929400\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
+							"raw": "{\n    \"phone\": \"+447890029407\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2268,10 +2268,12 @@
 											"const mealId = jsonData.data[0].id; \r",
 											"const priceId = jsonData.data[0].priceOptions[0].id;\r",
 											"const vendorId = jsonData.data[0].vendor.id; \r",
+											"const mealName = jsonData.data.name; \r",
 											"\r",
 											"pm.environment.set(\"mealId\", mealId);\r",
 											"pm.environment.set(\"priceId\", priceId);\r",
 											"pm.environment.set(\"vendorId\", vendorId);\r",
+											"pm.environment.set(\"mealName\", mealName);\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -2524,7 +2526,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[q]=BBQ Chicken Pizza",
+									"raw": "{{base_url}}/meals",
 									"host": [
 										"{{base_url}}"
 									],
@@ -2534,7 +2536,8 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "BBQ Chicken Pizza"
+											"value": "{{mealName}}",
+											"disabled": true
 										},
 										{
 											"key": "filter[price][gt]",
@@ -3148,7 +3151,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[category]=vegan",
+									"raw": "{{base_url}}/meals?filter[category]=italian",
 									"host": [
 										"{{base_url}}"
 									],
@@ -3173,7 +3176,7 @@
 										},
 										{
 											"key": "filter[category]",
-											"value": "vegan",
+											"value": "italian",
 											"description": "Get the category slugs from the Fetch Categories endpoint"
 										},
 										{
@@ -10489,7 +10492,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"{{addressId}}\",\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
+									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
 									"options": {
 										"raw": {
 											"language": "json"
