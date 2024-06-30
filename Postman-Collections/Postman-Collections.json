@@ -9468,7 +9468,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"reason\":\"test\",\n    \"status\": \"active\" // \"active\" | \"inactive\"\n}",
+									"raw": "{\n    \"reason\":\"test\",\n    \"status\": \"inactive\" // \"active\" | \"inactive\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9829,7 +9829,7 @@
 										"exec": [
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.test(\"Status code is 00\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"pm.test(\"Status code name has 'OK'\", function () {\r",
@@ -9898,7 +9898,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "22ff8971-ad7e-416c-930a-5fad771b3ae9"
 										}
 									]
 								}
