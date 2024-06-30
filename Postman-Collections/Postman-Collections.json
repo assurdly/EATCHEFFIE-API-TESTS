@@ -10020,7 +10020,7 @@
 									"    pm.expect(jsonData.status).to.eql('success');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Verify Customers fetched successfully\", function () {\r",
+									"pm.test(\"Verify Vendor updated successfully\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.equal(\"Vendor updated successfully\");\r",
 									"});\r",
 									"\r",
@@ -10821,7 +10821,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"status\": \"active\", // \"active\" | \"inactive\",\n    \"reason\": \"test\"\n    }",
+									"raw": "{\n    \"status\": \"inactive\", // \"active\" | \"inactive\",\n    \"reason\": \"test\"\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
