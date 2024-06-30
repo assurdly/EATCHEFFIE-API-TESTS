@@ -1868,7 +1868,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{signedUpCustomerEmail}}\",\n //   \"email\": \"emerald@yopmail.com\",\n    \"password\": \"Password12@@\"\n}",
+							"raw": "{\n   //\"email\": \"{{signedUpCustomerEmail}}\",\n    \"email\": \"jay@yopmail.com\",\n    \"password\": \"Password12@@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2069,7 +2069,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"phone\": \"+447893929400\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
+							"raw": "{\n    \"phone\": \"+447890029407\",\n    \"password\": \"Password12@@\"\n}\n\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2268,10 +2268,12 @@
 											"const mealId = jsonData.data[0].id; \r",
 											"const priceId = jsonData.data[0].priceOptions[0].id;\r",
 											"const vendorId = jsonData.data[0].vendor.id; \r",
+											"const mealName = jsonData.data.name; \r",
 											"\r",
 											"pm.environment.set(\"mealId\", mealId);\r",
 											"pm.environment.set(\"priceId\", priceId);\r",
 											"pm.environment.set(\"vendorId\", vendorId);\r",
+											"pm.environment.set(\"mealName\", mealName);\r",
 											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -2340,7 +2342,7 @@
 										},
 										{
 											"key": "filter[category]",
-											"value": "african",
+											"value": "italian",
 											"description": "Get the category slugs from the Fetch Categories endpoint",
 											"disabled": true
 										},
@@ -2524,7 +2526,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[q]=BBQ Chicken Pizza",
+									"raw": "{{base_url}}/meals",
 									"host": [
 										"{{base_url}}"
 									],
@@ -2534,7 +2536,8 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "BBQ Chicken Pizza"
+											"value": "{{mealName}}",
+											"disabled": true
 										},
 										{
 											"key": "filter[price][gt]",
@@ -3148,7 +3151,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[category]=vegan",
+									"raw": "{{base_url}}/meals?filter[category]=italian",
 									"host": [
 										"{{base_url}}"
 									],
@@ -3173,7 +3176,7 @@
 										},
 										{
 											"key": "filter[category]",
-											"value": "vegan",
+											"value": "italian",
 											"description": "Get the category slugs from the Fetch Categories endpoint"
 										},
 										{
@@ -3564,7 +3567,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/meals?filter[rating][gte]=3",
+									"raw": "{{base_url}}/meals?filter[rating][gte]=0",
 									"host": [
 										"{{base_url}}"
 									],
@@ -3600,7 +3603,7 @@
 										},
 										{
 											"key": "filter[rating][gte]",
-											"value": "3"
+											"value": "0"
 										},
 										{
 											"key": "filter[rating][lte]",
@@ -5185,6 +5188,9 @@
 										"exec": [
 											"const jsonData = pm.response.json();",
 											"",
+											"const vendorName = jsonData.data[0].name; ",
+											"",
+											"pm.environment.set(\"vendorName\", vendorName);",
 											"",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -5405,7 +5411,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/vendors?filter[q]=Spicy Seoul",
+									"raw": "{{base_url}}/vendors?filter[q]={{vendorName}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -5415,7 +5421,7 @@
 									"query": [
 										{
 											"key": "filter[q]",
-											"value": "Spicy Seoul"
+											"value": "{{vendorName}}"
 										},
 										{
 											"key": "filter[category]",
@@ -5438,183 +5444,6 @@
 							"response": [
 								{
 									"id": "e5df7c18-e2b0-4c0f-91e6-b4ddf2ca9ec4",
-									"name": "success",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{base_url}}/vendors?filter[category]=thai",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"vendors"
-											],
-											"query": [
-												{
-													"key": "filter[q]",
-													"value": "luigi",
-													"disabled": true
-												},
-												{
-													"key": "filter[category]",
-													"value": "thai"
-												},
-												{
-													"key": "filter[rating][gte]",
-													"value": "3",
-													"disabled": true
-												},
-												{
-													"key": "filter[rating][lte]",
-													"value": "5",
-													"disabled": true
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "X-Powered-By",
-											"value": "Express"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "100"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "92"
-										},
-										{
-											"key": "X-RateLimit-Reset",
-											"value": "55"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "1015"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"3f7-2FPnFjwI8pC68D+LghyKkD1ijRY\""
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 24 Mar 2024 21:51:24 GMT"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"status\": \"success\",\n    \"success\": true,\n    \"message\": \"Vendors fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"createdAt\": \"2024-03-24T17:59:06.339Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.339Z\",\n            \"name\": \"Spicy Seoul\",\n            \"description\": \"Authentic Korean cuisine bursting with flavor. Try our bibimbap, bulgogi, or kimchi jjigae.\",\n            \"address\": \"456 Elm St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        },\n        {\n            \"id\": 5,\n            \"createdAt\": \"2024-03-24T17:59:06.389Z\",\n            \"updatedAt\": \"2024-03-24T17:59:06.389Z\",\n            \"name\": \"Smokey Q BBQ\",\n            \"description\": \"Slow-cooked and smoked meats that will tantalize your taste buds. We offer pulled pork, brisket, ribs, and more, all slathered in our signature BBQ sauce.\",\n            \"address\": \"1213 Pine St, Anytown, CA\",\n            \"category\": {\n                \"id\": 5,\n                \"createdAt\": \"2024-03-24T17:59:06.283Z\",\n                \"updatedAt\": \"2024-03-24T20:49:35.456Z\",\n                \"name\": \"Thai\",\n                \"slug\": \"thai\"\n            },\n            \"rating\": 0\n        }\n    ],\n    \"meta\": {\n        \"totalNumberOfRecords\": 2,\n        \"totalNumberOfPages\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 20\n    }\n}"
-								}
-							]
-						},
-						{
-							"name": "Fetch Vendors by category",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "4b69f098-790e-4652-973b-fe1831394263",
-										"exec": [
-											"const jsonData = pm.response.json();",
-											"",
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"pm.test(\"Status code name has OK\", function () {",
-											"    pm.response.to.have.status(\"OK\");",
-											"});",
-											"pm.test(\"Status is success\", function () {",
-											"    pm.expect(pm.response.json().success).to.be.true;",
-											"});",
-											"",
-											"pm.test(\"Status is success\", function () {",
-											"    pm.expect(pm.response.json().status).to.eql('success');",
-											"});",
-											"",
-											"pm.test(\"Verify that success returns 'true'\", function () {",
-											"    pm.expect(pm.response.json().success).to.be.true;",
-											"});",
-											"pm.test(\"Verify that message returns 'Vendors fetched successfully'\", function () {",
-											"    pm.expect(pm.response.json().message).to.eql(\"Vendors fetched successfully\");",
-											"});",
-											"pm.test(\"Verify that data returns address details'\", function () {",
-											"    pm.expect(pm.response.json().data).to.be.an(\"array\").and.not.be.empty;",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "3e6ad6b4-0d49-4eb9-9132-84d83967b498",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{accessToken}}"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/vendors?filter[category]=chinese",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"vendors"
-									],
-									"query": [
-										{
-											"key": "filter[q]",
-											"value": "Spicy Seoul",
-											"disabled": true
-										},
-										{
-											"key": "filter[category]",
-											"value": "chinese"
-										},
-										{
-											"key": "filter[rating][gte]",
-											"value": "3",
-											"disabled": true
-										},
-										{
-											"key": "filter[rating][lte]",
-											"value": "5",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "efe5cbab-069c-4a21-b318-f18122865806",
 									"name": "success",
 									"originalRequest": {
 										"method": "GET",
@@ -9586,6 +9415,32 @@
 						}
 					],
 					"id": "dde9487d-80c9-4fa4-af6f-cd904e159c98"
+				},
+				{
+					"name": "Fetch Promos Copy",
+					"id": "8663af72-39e8-4123-aa1d-fd97ca9c494d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{accessToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-request-source",
+								"value": "customer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": "{{base_url}}/promos"
+					},
+					"response": []
 				}
 			],
 			"id": "e1d72c4d-216d-4312-a660-d438fce559ee"
@@ -10007,7 +9862,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"mealId\": \"{{mealId}}\",\n    \"priceId\": \"{{priceId}}\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
+									"raw": "{\n    \"mealId\": \"2a1a158b-d535-4c21-9764-7a3ea0d32cf6\", //{{mealId}}\",\n    \"priceId\": \"df2557cc-a9e4-4d34-a3e1-c5559c438c7b\", //{{priceId}}\",\n    \"quantity\": 2,\n    \"deliveryDate\": \"{{$isoTimestamp}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10418,7 +10273,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"{{fetchAddressId}}\",\n // \"promoId\": \"092dc9cf-e2ef-4d0c-b88f-bdd1de46d1cd\" //can also be for activity type promo\n}",
+									"raw": "{\n    \"addressId\": \"{{fetchAddressId}}\"\n // \"promoId\": \"092dc9cf-e2ef-4d0c-b88f-bdd1de46d1cd\" //can also be for activity type promo\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10463,7 +10318,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"{{addressId}}\",\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
+									"raw": "{\n    \"addressId\": \"{{addressId}}\"\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10515,7 +10370,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"addressId\": \"\",\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
+									"raw": "{\n    \"addressId\": \"\"\n     // \"promoId\": \"013494ff-9f7c-4915-887a-8662b47b112f\" //can also be for activity type promo\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11556,6 +11411,7 @@
 									"script": {
 										"id": "34a08bb9-6794-4b24-b7f9-65ee3518fd35",
 										"exec": [
+											"\r",
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
@@ -11596,7 +11452,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]=0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
+									"raw": "{{base_url}}/vendors/reviews?filter[vendorId]={{vendorId}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -11607,7 +11463,7 @@
 									"query": [
 										{
 											"key": "filter[vendorId]",
-											"value": "0cd7d048-13ab-47f1-b8a5-7ff258e2b343",
+											"value": "{{vendorId}}",
 											"description": "This is required"
 										}
 									]
@@ -13379,8 +13235,8 @@
 									"pm.test(\"Verify message returns Validation Error.'\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
 									"});\r",
-									"pm.test(\"Verify that email must be an email'\", function () {\r",
-									"    pm.expect(pm.response.json().data.email).to.include(\"email must be an email\");\r",
+									"pm.test(\"Verify that Email address must be in a valid format'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"Email address must be in a valid format\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -13775,8 +13631,8 @@
 									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
 									"});\r",
-									"pm.test(\"Verify that data returns 'email must be an email'\", function () {\r",
-									"    pm.expect(pm.response.json().data.email).to.include(\"email must be an email\");\r",
+									"pm.test(\"Verify that data returns 'Email address must be in a valid format'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"Email address must be in a valid format\");\r",
 									"});"
 								],
 								"type": "text/javascript",
