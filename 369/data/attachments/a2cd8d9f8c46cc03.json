@@ -1,0 +1,12 @@
+{
+    "x-request-source": "customer",
+    "Authorization": "Bearer null",
+    "User-Agent": "PostmanRuntime/7.39.0",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "df31eb33-8860-4fa1-b34c-37398567ed64",
+    "Host": "api-test.eatcheffie.com",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "0"
+}

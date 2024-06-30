@@ -1,4 +1,0 @@
-{
-    "email": "Adellemailinator.com",
-    "otp": "{{forgotPasswordotp}}"
-}
