@@ -7915,8 +7915,8 @@
 													"pm.test(\"Verify message Validation Error.\", function () {\r",
 													"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
 													"});\r",
-													"pm.test(\"Verify fields can not be empty\", function () {\r",
-													"    pm.expect(pm.response.json().data.id).to.include(\"id must be a UUID\");\r",
+													"pm.test(\"Verify roleId must be a UUID\", function () {\r",
+													"    pm.expect(pm.response.json().data.roleId).to.include(\"roleId must be a UUID\");\r",
 													"       });"
 												],
 												"type": "text/javascript",
