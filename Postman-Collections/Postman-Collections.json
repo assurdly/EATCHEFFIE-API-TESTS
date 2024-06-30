@@ -13409,8 +13409,8 @@
 									"pm.test(\"Verify message returns Validation Error.'\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
 									"});\r",
-									"pm.test(\"Verify that email must be an email'\", function () {\r",
-									"    pm.expect(pm.response.json().data.email).to.include(\"email must be an email\");\r",
+									"pm.test(\"Verify that Email address must be in a valid format'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"Email address must be in a valid format\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -13805,8 +13805,8 @@
 									"pm.test(\"Verify that message returns 'Validation Error.'\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.include(\"Validation Error.\");\r",
 									"});\r",
-									"pm.test(\"Verify that data returns 'email must be an email'\", function () {\r",
-									"    pm.expect(pm.response.json().data.email).to.include(\"email must be an email\");\r",
+									"pm.test(\"Verify that data returns 'Email address must be in a valid format'\", function () {\r",
+									"    pm.expect(pm.response.json().data.email).to.include(\"Email address must be in a valid format\");\r",
 									"});"
 								],
 								"type": "text/javascript",
