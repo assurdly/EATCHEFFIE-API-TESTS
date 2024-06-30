@@ -1,4 +1,0 @@
-{
-    "vendorId": "",
-    "addressId": "{{addressId}}"
-}

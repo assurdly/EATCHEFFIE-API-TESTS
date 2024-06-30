@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Successfully fetched delivery rates","data":{"id":"6e600bac-a47e-4c60-a66d-3eb764f24a93","createdAt":"2024-06-29T22:44:57.153Z","updatedAt":"2024-06-29T22:44:57.153Z","rate":10}}
