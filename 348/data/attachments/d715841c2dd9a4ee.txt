@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"","data":"https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Fapi.eatcheffie.com%2Fv1%2Foauth%2Fgoogle%2Fcomplete&response_type=code&client_id=310296340026-jduc4ni5tig1pag6mkp9clttev9knt4a.apps.googleusercontent.com&scope=email%20profile"}
