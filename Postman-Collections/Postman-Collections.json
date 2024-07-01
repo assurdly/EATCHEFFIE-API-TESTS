@@ -10442,7 +10442,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/customer/orders?limit=5&page=1",
+									"raw": "{{base_url}}/customer/orders",
 									"host": [
 										"{{base_url}}"
 									],
@@ -10490,12 +10490,12 @@
 										{
 											"key": "limit",
 											"value": "5",
-											"type": "text"
+											"disabled": true
 										},
 										{
 											"key": "page",
 											"value": "1",
-											"type": "text"
+											"disabled": true
 										}
 									]
 								}
