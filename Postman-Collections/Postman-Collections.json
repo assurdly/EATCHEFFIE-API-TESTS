@@ -10442,7 +10442,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/customer/orders",
+									"raw": "{{base_url}}/customer/orders?limit=5&page=1",
 									"host": [
 										"{{base_url}}"
 									],
@@ -10454,27 +10454,48 @@
 										{
 											"key": "filter[status]",
 											"value": "processing",
+											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "filter[status]",
 											"value": "pending",
+											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "filter[status]",
 											"value": "completed",
+											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "filter[status]",
 											"value": "enroute",
+											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "filter[status]",
 											"value": "cancelled",
+											"type": "text",
 											"disabled": true
+										},
+										{
+											"key": "filter[status]",
+											"value": "processing",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"type": "text"
 										}
 									]
 								}
