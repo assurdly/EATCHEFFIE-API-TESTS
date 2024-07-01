@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Fetched transaction stats successfully","data":{"totalRevenue":2656,"pendingBalance":2656.24,"totalTransactions":9}}

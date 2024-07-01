@@ -1,5 +1,0 @@
-{
-    "token": "null",
-    "password": "",
-    "confirmPassword": "Password1"
-}

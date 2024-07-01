@@ -1,1 +1,0 @@
-{"status":"success","success":true,"message":"Successfully fetched config","data":{}}

@@ -1,0 +1,1 @@
+{"status":"success","success":true,"message":"Meal created successfully","data":{"id":"c1ccf470-d091-4ab7-ac93-1f98d9ec507c","name":"Amala","description":"Black amala","tags":"vibes","specialtyCategories":"vibes","isPublished":false}}
