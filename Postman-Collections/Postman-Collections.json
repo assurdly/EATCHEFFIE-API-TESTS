@@ -7008,19 +7008,20 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{vendorAccessToken}}"
 									}
 								},
 								"method": "PATCH",
 								"header": [
 									{
 										"key": "x-request-source",
-										"value": "vendor"
+										"value": "vendor",
+										"disabled": true
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"roleId\": \"\"\n}",
+									"raw": "{\n    \"roleId\": \"{{createdRole}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7038,7 +7039,6 @@
 									],
 									"variable": [
 										{
-											"id": "3625952f-5231-4ee3-8b57-ea5088245655",
 											"key": "id",
 											"value": "ff3a818c-2389-4ef7-9e86-4a4a938a5e42"
 										}
